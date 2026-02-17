@@ -1,10 +1,10 @@
 ---
-name: accessibility-check
-description: Deep WCAG 2.2 compliance audit on code with specific fixes for every violation found.
+name: include
+description: Deep WCAG 2.2 accessibility audit on code with specific fixes for every violation found. Accessibility IS inclusion.
 user_invocable: true
 ---
 
-# Accessibility Check Command
+# Include — Accessibility Audit
 
 Perform a deep accessibility audit against WCAG 2.2 AA standards on the provided code or component.
 
@@ -71,3 +71,16 @@ Perform a deep accessibility audit against WCAG 2.2 AA standards on the provided
 - [ ] 200% zoom test
 - [ ] Color blindness simulation
 ```
+
+## Cross-References
+When relevant issues are found, load additional context from:
+- `accessibility-inclusive-design` skill for WCAG patterns and neurodiversity accommodations
+- `component-patterns-code` skill for accessible component implementations
+- `cross-cultural-i18n-ux` skill for RTL and i18n accessibility
+
+## Next Steps
+After running `/include`, consider:
+- `/copy-check` — Audit content for readability and inclusive language
+- `/responsive` — Check cross-device accessibility at every breakpoint
+- `/brain-scan` — Evaluate cognitive accessibility (ADHD, dyslexia accommodations)
+- `/ship` — Rebuild a component with full accessibility baked in

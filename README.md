@@ -1,91 +1,123 @@
-# UX/UI Mastery Plugin for Claude Code
+<p align="center">
+  <h1 align="center">taste.</h1>
+  <p align="center">
+    <strong>UX/UI intelligence for Claude Code.</strong>
+    <br />
+    Your AI coding assistant just got a decade of senior design experience.
+  </p>
+  <p align="center">
+    <a href="#install"><strong>Install</strong></a> · <a href="#the-20-commands"><strong>Commands</strong></a> · <a href="#which-command-do-i-use"><strong>Workflows</strong></a> · <a href="#21-skills"><strong>Skills</strong></a> · <a href="#whats-new-in-v40"><strong>What's New</strong></a>
+  </p>
+</p>
 
-### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
+<br />
 
-**v3.0.0** | 19 Skills | 55 References | 10 Commands | 310,000+ Words | 87 Files
-
----
-
-> *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
-
----
-
-## Why This Exists
-
-Most design tools give you components. Most AI assistants give you opinions. Neither gives you **the science of why users behave the way they do** — and the production code to act on it.
-
-This plugin gives Claude Code the equivalent of a senior UX designer's entire career knowledge: cognitive psychology, battle-tested heuristics, platform-native component code, real product case studies, and the latest 2025-2026 research — all activated automatically when you need it.
-
-**The result:** Claude doesn't just suggest "make the button bigger." It tells you Fitts's Law predicts a 23% improvement at 48px, generates the accessible React component with all 10 states, and flags that your 14-option dropdown violates Hick's Law.
-
-## What Changed in v3.0
-
-| Before (v2.0) | After (v3.0) |
-|----------------|-------------|
-| 12 skills, 30 references | **19 skills, 55 references** |
-| ~170K words of theory | **310K+ words of theory AND implementation** |
-| Zero code examples | **40+ production React, SwiftUI, and CSS components** |
-| Zero case studies | **18+ product deep-dives and failure analyses** |
-| No cognitive science | **25+ Laws of UX, 50+ cognitive biases, neurodesign** |
-| No Figma integration | **Full Figma MCP design-to-code flywheel** |
-| Outdated platforms | **iOS 26 Liquid Glass, Material 3 Expressive, modern CSS** |
-| No design critique tools | **Structured critique with Liz Lerman methodology** |
-| 6 commands | **10 commands** |
+<p align="center">
+  <code>20 commands</code> · <code>21 skills</code> · <code>65+ references</code> · <code>375K+ words</code>
+</p>
 
 ---
 
-## Installation
+<br />
 
-### Prerequisites
+## See it in action
 
-- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated
-- No other dependencies — the plugin is pure markdown, zero config
+<table>
+<tr>
+<td width="50%">
 
----
+**Get a complete style direction for any sector**
+```
+/taste fintech
+```
+Color palette (hex + OKLCH), font pairing, spacing system, component personality, motion language, tone of voice, 5 reference apps, do's and don'ts, and a W3C design token starter kit.
 
-### Method 1: Install from GitHub Marketplace (Recommended for End Users)
+</td>
+<td width="50%">
 
-This is the standard way to install Claude Code plugins. Run these commands **inside a Claude Code session**:
+**Build a full production screen**
+```
+/screen checkout
+```
+Semantic HTML, component hierarchy, 7 states (empty → loading → populated → error → partial → offline → updating), responsive breakpoints, ARIA, keyboard nav, and design token consumption.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Roast any design**
+```
+/roast
+```
+Liz Lerman critique across 10 dimensions. Must-fix, should-fix, could-improve — every finding grounded in heuristics and cognitive psychology.
+
+</td>
+<td width="50%">
+
+**Ship a component**
+```
+/ship modal
+```
+Production-ready React/SwiftUI/CSS with 10 states, full ARIA, keyboard handling, design tokens, and a test skeleton. Copy-paste into your codebase.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Scan for dark patterns**
+```
+/dark-scan
+```
+22 deceptive pattern categories checked against FTC, GDPR, DSA, and CPRA. Ethical redesign alternatives for every finding.
+
+</td>
+<td width="50%">
+
+**Find the right pattern**
+```
+/inspo screen login
+```
+Best-practice patterns, 5 reference implementations, key principles, common mistakes, and curated Mobbin/Screenlane/Refero links.
+
+</td>
+</tr>
+</table>
+
+<br />
+
+## How it works
+
+The plugin uses **progressive disclosure** — the same cognitive principle it teaches.
+
+When you ask about "cognitive load," Claude loads the cognitive psychology skill with 25+ Laws of UX. When you say `/ship button`, Claude loads the component patterns skill with the full React/SwiftUI/CSS cookbook. When you type `/taste fintech`, Claude pulls from the sector style intelligence skill with real color palettes, font choices, and spacing systems from Stripe, Mercury, and Wise.
+
+**Every skill cross-references every other skill.** Critique methodology connects to heuristic evaluation. Component code connects to accessibility. Figma workflows connect to design tokens. Cognitive biases connect to ethics. It's a web of knowledge, not a stack of silos.
+
+**Every command chains to the next.** Run `/roast` and the output suggests `/remix` to fix what was found. Run `/taste` and it points you to `/inspo` for screen patterns and `/screen` to start building. No dead ends.
+
+<br />
+
+## Install
+
+### Recommended: Claude Code marketplace
 
 ```
 /plugin marketplace add phazurlabs/taste-ux-ui
 /plugin install ux-ui-mastery@ux-ui-mastery-marketplace
 ```
 
-That's it. The plugin is now permanently installed and available in every session.
+That's it. Available in every session, forever.
 
-To choose installation scope:
-- **User scope** (all projects): Plugin is registered in `~/.claude/settings.json`
-- **Project scope** (team-shared): Plugin is registered in `.claude/settings.json` in your project
-- **Local scope** (personal, gitignored): Plugin is registered in `.claude/settings.local.json`
-
----
-
-### Method 2: Clone + Load Directly (For Development / Testing)
-
-Clone the repo anywhere, then load it with the `--plugin-dir` flag:
+### Alternative: Clone manually
 
 ```bash
-git clone https://github.com/phazurlabs/taste-ux-ui.git
-claude --plugin-dir ./ux-ui-mastery
-```
-
-This loads the plugin for that session only. Great for testing or development.
-
----
-
-### Method 3: Clone + Register Permanently (Manual)
-
-**Step 1:** Clone into the plugins directory:
-
-```bash
-mkdir -p ~/.claude/plugins
-cd ~/.claude/plugins
+mkdir -p ~/.claude/plugins && cd ~/.claude/plugins
 git clone https://github.com/phazurlabs/taste-ux-ui.git
 ```
 
-**Step 2:** Register the plugin in your Claude Code settings. Edit `~/.claude/settings.json`:
-
+Then add to `~/.claude/settings.json`:
 ```json
 {
   "enabledPlugins": {
@@ -94,132 +126,312 @@ git clone https://github.com/phazurlabs/taste-ux-ui.git
 }
 ```
 
-**Step 3:** Restart Claude Code. The plugin loads automatically every session.
+### Verify it works
 
----
-
-### Verify Installation
-
-Start Claude Code and run any slash command:
-
+Restart Claude Code and try any command:
 ```
-/ux-audit
-/cognitive-check
-/component-build
-/design-critique
-/figma-to-code
+/taste saas
+/roast
+/ship button
+/inspo screen dashboard
 ```
 
-Commands appear as `/ux-ui-mastery:command-name` (e.g., `/ux-ui-mastery:ux-audit`).
+Commands appear as `/ux-ui-mastery:command-name` (e.g., `/ux-ui-mastery:taste`).
 
-You can also test skill activation by asking about any trigger topic:
-
+Skills activate automatically — just ask about any UX topic:
 ```
 "What does Fitts's Law say about button sizing?"
 "Audit this component for cognitive load"
-"Build me a React modal with all states"
 "What went wrong with the Snapchat 2018 redesign?"
 ```
 
-The relevant skill and deep references load automatically based on your query.
-
-### Troubleshooting
+<details>
+<summary><strong>Troubleshooting</strong></summary>
 
 | Problem | Solution |
 |---------|----------|
 | Commands not showing up | Restart Claude Code after installation |
 | `/plugin` command not recognized | Update Claude Code to the latest version |
 | Skills not activating on topics | Verify `plugin.json` exists at `.claude-plugin/plugin.json` |
-| Want to uninstall | Run `/plugin uninstall ux-ui-mastery` or remove from `settings.json` |
+| Want to uninstall | `/plugin uninstall ux-ui-mastery` or remove from `settings.json` |
 
-### Requirements
+**Requirements:** Claude Code CLI (latest). No external dependencies — pure markdown, zero config, works offline.
 
-- Claude Code CLI (latest version)
-- No external dependencies — pure markdown, zero config, works offline
+</details>
 
----
+<br />
 
-## 10 Commands at Your Fingertips
+## The 20 Commands
 
-| Command | What It Does |
-|---------|-------------|
-| `/ux-audit` | Audit any interface against Nielsen's 10 heuristics. Get severity ratings, location-specific findings, and prioritized fixes. |
-| `/cognitive-check` | Audit against 25+ Laws of UX, Gestalt principles, and cognitive biases. Score decision architecture, visual cognition, memory load, attention, and bias ethics. |
-| `/component-build` | Generate a production-ready component (React/SwiftUI/CSS) with full state matrix (10 states), ARIA, keyboard nav, design tokens, and test skeleton. |
-| `/design-critique` | Run a Liz Lerman Critical Response Process. Score 10 dimensions. Get must-fix, should-fix, and could-improve findings grounded in heuristics. |
-| `/figma-to-code` | Extract tokens, decompose component trees, and generate platform code from Figma specs. Validate accessibility. Output handoff docs. |
-| `/design-review` | Full design review scoring across all 19 skill domains. |
-| `/accessibility-check` | Deep WCAG 2.2 compliance audit with specific code fixes and WCAG 3.0 readiness notes. |
-| `/generate-design-tokens` | Generate a complete W3C Design Tokens system (Oct 2025 stable spec) with multi-platform output. |
-| `/ai-ux-audit` | Audit AI features across 4 dimensions: Trust, Safety, Usability, Accessibility. Detect AI anti-patterns. |
-| `/ux-metrics-plan` | Generate a HEART framework metrics plan with KPIs, tracking implementation, and dashboards. |
+### Audit — find what's wrong
 
----
+| Command | One-liner | What you get |
+|---------|-----------|-------------|
+| `/vibe-check` | UX heuristic audit | Nielsen's 10 heuristics, severity 0-4, location-specific findings, prioritized fixes |
+| `/roast` | Design critique | Liz Lerman process, 10 dimensions scored 1-10, must-fix/should-fix/could-improve |
+| `/brain-scan` | Cognitive audit | 12 Laws of UX, 6 Gestalt principles, cognitive load analysis, bias ethics check |
+| `/include` | Accessibility audit | WCAG 2.2 AA, semantic HTML, ARIA, keyboard nav, contrast — with code fixes |
+| `/trust-scan` | AI UX audit | Trust, Safety, Usability, Accessibility scored 0-100 each + anti-pattern detection |
+| `/flow` | Flow audit | Multi-screen journey analysis, drop-off risk per step, emotional arc, conversion fixes |
+| `/dark-scan` | Dark pattern scan | 22 deceptive pattern categories, FTC/GDPR/DSA compliance, ethical alternatives |
+| `/copy-check` | Content audit | Reading level, tone, inclusive language, truncation risk, i18n readiness |
+| `/responsive` | Responsive audit | 7 breakpoint tiers, touch targets, reflow, fluid type, container queries, CSS fixes |
 
-## 19 Skills — The Complete Design Brain
+### Build — create something new
 
-### Foundations: The Science Behind Every Decision
+| Command | One-liner | What you get |
+|---------|-----------|-------------|
+| `/ship` | Component builder | React/SwiftUI/CSS with 10 states, ARIA, keyboard, tokens, test skeleton |
+| `/screen` | Screen builder | 25+ screen types, component hierarchy, 7 states, responsive, a11y, production code |
+| `/drip` | Token generator | W3C Design Tokens: 3-tier system (primitive → semantic → component), multi-theme |
+| `/extract` | Figma → code | Token extraction, component decomposition, platform code, a11y validation |
+| `/onboard` | Onboarding builder | Step sequence, progressive disclosure, permission timing, activation metrics |
+| `/remix` | Redesign engine | Top 5 problems identified → redesigned code → UX principle cited for every change |
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Cognitive Psychology UX** | 25+ Laws of UX with formulas. 50+ cognitive biases with ethical annotations. Neurodesign. Attention science. Memory constraints. Flow state design. Hick's Law, Fitts's Law, Miller's Law, Peak-End Rule, Doherty Threshold — all with code examples and anti-patterns. |
-| **NNG UX Heuristics** | Nielsen's 10 heuristics with modern 2025+ interpretation. Severity rating scales. Evaluation protocols. Cross-mapped to cognitive principles. |
-| **UX Research Methods** | Contextual inquiry, usability testing, card sorting, diary studies, A/B testing, surveys. AI-augmented synthesis. JTBD, journey mapping, affinity diagramming. |
-| **UX Metrics & Measurement** | HEART framework, SUS, UEQ, SUPR-Q. Task-based metrics. A/B testing statistics. AI-specific metrics (hallucination rate, trust calibration). Design system ROI. |
+### Strategy — plan and decide
 
-### Implementation: Code That Ships
+| Command | One-liner | What you get |
+|---------|-----------|-------------|
+| `/taste` | Style direction | Color, type, spacing, components, motion, tone, references, tokens — for any sector |
+| `/inspo` | Inspiration finder | Screen, element, or flow patterns with best-in-class references and source links |
+| `/pulse` | Metrics plan | HEART framework mapping, dashboards, experimentation framework, 90-day roadmap |
+| `/judge` | Full review | All 21 skill domains scored, priority roadmap (quick wins → medium → strategic) |
+| `/benchmark` | Competitive analysis | 10-dimension scorecard vs. top 5 apps, gap analysis, improvement tiers |
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Component Patterns & Code** | 40+ production components across React/TypeScript, SwiftUI, and CSS. Every component has: typed props, all 10 states (default through skeleton), ARIA attributes, keyboard handling, design token consumption, and `prefers-reduced-motion` respect. |
-| **Design Systems Architecture** | W3C Design Tokens (Oct 2025 stable). Style Dictionary pipelines. Multi-brand token architecture. 5-level maturity model. Governance. DesignOps. ROI measurement. |
-| **Figma Design Tool Workflows** | Auto Layout mastery. Variable modes. Dev Mode handoff. Figma MCP server integration. Code Connect. The full design-to-code flywheel that cuts development time 50-70%. |
-| **UI Visual Design System** | Typography scales. Color theory (oklch, color-mix, light-dark). Spacing systems. Visual hierarchy. Modern CSS: container queries, :has(), anchor positioning, view transitions, @layer, subgrid. |
+<br />
 
-### Platforms: Every Screen, Every Context
+## Which command do I use?
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Mobile UX Design** | iOS 26 Liquid Glass (.glassEffect, GlassEffectContainer). Material 3 Expressive (spring motion, morphing FAB). Touch, gesture, and wearable/IoT patterns. NNGroup usability critique of Liquid Glass. |
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                                                                     │
+│  "I'm starting a new project"                                       │
+│   /taste  →  /inspo  →  /screen  →  /ship                          │
+│                                                                     │
+│  "I need to check my work"                                          │
+│   /vibe-check  →  /include  →  /brain-scan                         │
+│                                                                     │
+│  "I want to improve what I have"                                    │
+│   /roast  →  /remix                                                 │
+│                                                                     │
+│  "I need to build a specific thing"                                 │
+│   /ship [component]  or  /screen [type]                             │
+│                                                                     │
+│  "I need design direction"                                          │
+│   /taste [sector]  →  /inspo [screen/element/flow]                  │
+│                                                                     │
+│  "Is this ethical?"                                                  │
+│   /dark-scan  →  /copy-check                                        │
+│                                                                     │
+│  "How do I compare to the best?"                                    │
+│   /benchmark [category]                                             │
+│                                                                     │
+│  "I need to build onboarding"                                       │
+│   /onboard  →  /flow  →  /copy-check                               │
+│                                                                     │
+│  "I want metrics"                                                   │
+│   /pulse                                                            │
+│                                                                     │
+│  Every command suggests the logical next command in its output.     │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+<br />
+
+## 21 Skills
+
+The knowledge base behind every command. Skills activate automatically based on your query — no need to invoke them directly.
+
+<details>
+<summary><strong>Foundations</strong> — The science behind every decision</summary>
+
+| Skill | Depth |
+|-------|-------|
+| **Cognitive Psychology UX** | 25+ Laws of UX with mathematical formulas. 50+ cognitive biases with ethical flags. Neurodesign: eye tracking patterns, dopamine loops, flow state. Hick's Law, Fitts's Law, Miller's Law, Peak-End Rule, Doherty Threshold, Von Restorff, Zeigarnik — all with code examples and anti-patterns. |
+| **NNG UX Heuristics** | Nielsen's 10 heuristics with modern 2025+ interpretation. Severity rating scales (0-4). Systematic evaluation protocols. Cross-mapped to cognitive principles. |
+| **UX Research Methods** | Contextual inquiry, usability testing, card sorting, diary studies, A/B testing, surveys. AI-augmented synthesis. JTBD, journey mapping, affinity diagramming, research synthesis. |
+| **UX Metrics & Measurement** | HEART framework, SUS, UEQ, SUPR-Q. Task-based metrics. A/B testing statistics with sample size calculators. AI-specific metrics (hallucination rate, trust calibration). Design system ROI. |
+
+</details>
+
+<details>
+<summary><strong>Implementation</strong> — Code that ships</summary>
+
+| Skill | Depth |
+|-------|-------|
+| **Component Patterns & Code** | 40+ production components across React/TypeScript, SwiftUI, and CSS. Every component: typed props, all 10 states, ARIA, keyboard handling, design token consumption, `prefers-reduced-motion`. |
+| **Design Systems Architecture** | W3C Design Tokens (Oct 2025 stable spec). Style Dictionary pipelines. Multi-brand token architecture. 5-level maturity model. Governance and DesignOps. ROI measurement. |
+| **Figma Design Tool Workflows** | Auto Layout mastery. Variable modes. Dev Mode handoff. Figma MCP server integration. Code Connect. The full design-to-code flywheel. |
+| **UI Visual Design System** | Typography scales. Color theory (oklch, color-mix, light-dark). Spacing systems. Visual hierarchy. Modern CSS: container queries, `:has()`, anchor positioning, view transitions, `@layer`, subgrid. |
+
+</details>
+
+<details>
+<summary><strong>Platforms</strong> — Every screen, every context</summary>
+
+| Skill | Depth |
+|-------|-------|
+| **Mobile UX Design** | iOS 26 Liquid Glass (`.glassEffect`, `GlassEffectContainer`). Material 3 Expressive (spring motion, morphing FAB). Touch, gesture, and wearable/IoT patterns. NNG usability critique of Liquid Glass. |
 | **Desktop App Design** | Enterprise dashboards. Data-dense interfaces. Keyboard-first design. Data visualization (chart selection matrix, D3 patterns, accessible charts with sonification). Industry-vertical patterns. |
-| **Cross-Cultural i18n UX** | RTL layout with CSS logical properties. CJK typography. Hofstede's 6 cultural dimensions mapped to interface design. Payment diversity by region. Trust signals by culture. Pseudo-localization testing. |
-| **Performance States Patterns** | Skeleton screens, optimistic UI, progressive loading (with React/SwiftUI code). Notification system architecture (toast, banner, badge, push). Empty/error/onboarding state patterns. Perceived performance psychology. |
+| **Cross-Cultural i18n UX** | RTL layout with CSS logical properties. CJK typography. Hofstede's 6 cultural dimensions mapped to interface design. Payment diversity by region. Trust signals by culture. |
+| **Performance States Patterns** | Skeleton screens, optimistic UI, progressive loading (React + SwiftUI code). Notification architecture. Empty/error/onboarding state patterns. Perceived performance psychology. |
 
-### Experience: Craft That Users Feel
+</details>
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Interaction & Motion Design** | Animation timing curves. Micro-interactions. M3 Expressive spring physics (stiffness/damping/mass). iOS Core Haptics + Android haptics. Brand haptic vocabulary. Emotional design (Norman's 3 levels). |
-| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 April 2026 preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. AI-adaptive patterns. |
-| **Design Critique & Case Studies** | Liz Lerman Critical Response Process. 10 product deep-dives: Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord. 10 redesign failures: Snapchat, Windows 8, Digg v4, Sonos 2024, Healthcare.gov. |
-| **UX Ethics & Content Strategy** | Dark pattern detection and avoidance. 2025-2026 regulatory landscape. Privacy UX. Sustainable/green UX. Microcopy pattern library: 30+ action verbs, 20+ error templates, empty/loading/confirmation/permission copy. |
+<details>
+<summary><strong>Experience</strong> — Craft that users feel</summary>
 
-### Emerging Tech: What's Next
+| Skill | Depth |
+|-------|-------|
+| **Interaction & Motion Design** | Animation timing curves. Micro-interactions. M3 Expressive spring physics (stiffness/damping/mass). iOS Core Haptics + Android haptics. Brand haptic vocabulary. Don Norman's 3 levels of emotional design. |
+| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 April 2026 preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. |
+| **Design Critique & Case Studies** | Liz Lerman Critical Response Process. 10 product deep-dives: Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord. 10 redesign failure post-mortems. |
+| **UX Ethics & Content Strategy** | Dark pattern detection and avoidance. 2025-2026 regulatory landscape (FTC, GDPR, DSA). Privacy UX. Sustainable/green UX. 50+ microcopy templates. |
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Agentic AI & Generative UX** | Multi-agent orchestration UX. Generative UI. RAG interfaces. LLM hallucination guardrails (taxonomy, confidence indicators, verification UX). Conversational AI dialogue patterns. Smashing Magazine Feb 2026 control/consent/accountability triad. |
-| **AI, Spatial & Voice UX** | AI-native interface patterns. AR/VR spatial design. Voice-first UX. Multimodal interaction. The post-UI paradigm (NNGroup 2026). |
-| **Ambient Calm & Zero UI** | Amber Case's 8 principles of calm technology. Ambient displays. Proactive intelligence. Smart home/office/automotive patterns. Privacy in ambient computing. Peripheral attention design. |
+</details>
 
----
+<details>
+<summary><strong>Emerging Tech</strong> — What's next</summary>
 
-## How It Works
+| Skill | Depth |
+|-------|-------|
+| **Agentic AI & Generative UX** | Multi-agent orchestration UX. Generative UI. RAG interfaces. LLM hallucination guardrails. Conversational AI dialogue patterns. Control/consent/accountability triad. |
+| **AI, Spatial & Voice UX** | AI-native interface patterns. AR/VR spatial design. Voice-first UX. Multimodal interaction. The post-UI paradigm. |
+| **Ambient Calm & Zero UI** | Amber Case's 8 principles of calm technology. Ambient displays. Proactive intelligence. Smart home/office/automotive. Peripheral attention design. |
 
-The plugin uses **progressive disclosure** — the same cognitive principle it teaches. Only the relevant skill and its references load based on your query, keeping Claude's context lean while providing deep expertise on demand.
+</details>
 
-Ask about "cognitive load" and Claude loads the cognitive psychology skill with 25+ Laws of UX. Ask about "React button component" and Claude loads the component patterns skill with the full React cookbook. Ask about "iOS 26" and Claude loads mobile UX with the Liquid Glass deep-dive.
+<details>
+<summary><strong>NEW in v4.0</strong> — Sector intelligence + screen/flow catalog</summary>
 
-Every skill cross-references every other skill. Critique methodology connects to heuristic evaluation. Component code connects to accessibility. Figma workflows connect to design tokens. Cognitive biases connect to ethics. It's a web of knowledge, not a stack of silos.
+| Skill | Depth |
+|-------|-------|
+| **Sector Style Intelligence** | Complete style direction for 20+ sectors. Real hex color palettes from leading apps (Stripe, Headspace, Linear, Shopify, Duolingo, Netflix). Typography norms with specific font recommendations. Component conventions with px values. Motion personality with easing curves. Trust signals. Anti-patterns. W3C design token JSON for every sector. Powers `/taste` and `/benchmark`. |
+| **Screen & Flow Patterns** | 27 screen types with layout patterns, key components, state matrices, and 3 reference implementations each. 15 user flows with step sequences, branching logic, error handling, and metric targets. 26 UI element deep-dives with anatomy, variants, states, platform differences (iOS/Android/Web), and accessibility requirements. Curated inspiration source guide. Powers `/screen`, `/flow`, and `/inspo`. |
 
----
+</details>
 
-## Design Philosophy
+<br />
+
+## What's new in v4.0
+
+<table>
+<tr>
+<th>v3.0</th>
+<th>v4.0</th>
+</tr>
+<tr><td>10 commands</td><td><strong>20 commands</strong></td></tr>
+<tr><td>19 skills</td><td><strong>21 skills</strong></td></tr>
+<tr><td>55 references</td><td><strong>65+ references</strong></td></tr>
+<tr><td>310K words</td><td><strong>375K+ words</strong></td></tr>
+<tr><td>Clinical names (<code>/ux-audit</code>)</td><td><strong>Action-packed (<code>/vibe-check</code>)</strong></td></tr>
+<tr><td>No sector style guidance</td><td><strong>20+ sectors with <code>/taste</code></strong></td></tr>
+<tr><td>No screen builder</td><td><strong>27 screen types with <code>/screen</code></strong></td></tr>
+<tr><td>No flow audit</td><td><strong>15 flow patterns with <code>/flow</code></strong></td></tr>
+<tr><td>No inspiration system</td><td><strong>Mobbin-style taxonomy with <code>/inspo</code></strong></td></tr>
+<tr><td>No competitive analysis</td><td><strong><code>/benchmark</code> vs best-in-class</strong></td></tr>
+<tr><td>No dark pattern scanner</td><td><strong>22 categories with <code>/dark-scan</code></strong></td></tr>
+<tr><td>No content audit</td><td><strong>Microcopy audit with <code>/copy-check</code></strong></td></tr>
+<tr><td>No responsive audit</td><td><strong>7 breakpoint tiers with <code>/responsive</code></strong></td></tr>
+<tr><td>No command workflow</td><td><strong>Decision tree + command chaining</strong></td></tr>
+</table>
+
+### Command name migration
+
+If you're upgrading from v3.0, here's what changed:
+
+| v3.0 | v4.0 | Why |
+|------|------|-----|
+| `/ux-audit` | `/vibe-check` | Everyone knows what a vibe check is |
+| `/design-review` | `/judge` | Direct and authoritative |
+| `/accessibility-check` | `/include` | Accessibility IS inclusion |
+| `/generate-design-tokens` | `/drip` | Design tokens = your visual identity |
+| `/ai-ux-audit` | `/trust-scan` | AI UX is about trust calibration |
+| `/ux-metrics-plan` | `/pulse` | Metrics = the pulse of your product |
+| `/component-build` | `/ship` | You ship components |
+| `/design-critique` | `/roast` | A design roast — fun and direct |
+| `/figma-to-code` | `/extract` | Pull design out of Figma into code |
+| `/cognitive-check` | `/brain-scan` | Scanning UI against how the brain works |
+
+<br />
+
+## Architecture
+
+```
+taste-ux-ui/                                375K+ words · 107 markdown files
+│
+├── commands/                               20 slash commands
+│   ├── Audit:    vibe-check, roast, brain-scan, include, trust-scan,
+│   │             flow, dark-scan, copy-check, responsive
+│   ├── Build:    ship, screen, drip, extract, onboard, remix
+│   └── Strategy: taste, inspo, pulse, judge, benchmark
+│
+├── skills/                                 21 knowledge domains
+│   ├── Foundations:  cognitive-psychology-ux, nng-ux-heuristics,
+│   │                 ux-research-methods, ux-metrics-measurement
+│   ├── Code:         component-patterns-code, design-systems-architecture,
+│   │                 figma-design-tool-workflows, ui-visual-design-system
+│   ├── Platforms:    mobile-ux-design, desktop-app-design,
+│   │                 cross-cultural-i18n-ux, performance-states-patterns
+│   ├── Experience:   interaction-motion-design, accessibility-inclusive-design,
+│   │                 design-critique-case-studies, ux-ethics-content-strategy
+│   ├── Emerging:     agentic-ai-generative-ux, ai-spatial-voice-ux,
+│   │                 ambient-calm-zero-ui
+│   └── NEW:          sector-style-intelligence, screen-flow-patterns
+│
+└── .claude-plugin/                         v4.0.0 manifests
+    ├── plugin.json
+    └── marketplace.json
+```
+
+<br />
+
+## The knowledge inside
+
+| What | Count |
+|------|-------|
+| Total words | **375,777** |
+| Production code components (React, SwiftUI, CSS) | **40+** |
+| Laws of UX (with mathematical formulas) | **25+** |
+| Cognitive biases (with ethical flags) | **50+** |
+| Screen type patterns | **27** |
+| User flow patterns | **15** |
+| UI element deep-dives | **26** |
+| Sector style guides (with real app color palettes) | **6** covering **20+ sectors** |
+| Product case studies (deep-dive analysis) | **10** |
+| Redesign failure post-mortems | **10** |
+| Dark pattern categories | **22** |
+| Haptic feedback patterns | **30+** |
+| Microcopy templates | **50+** |
+| Cultural dimension mappings | **6** |
+| Design system maturity levels | **5** |
+| Platform cookbooks | **3** (React, SwiftUI, CSS) |
+
+<br />
+
+## Research foundations
+
+Every claim traces back to authoritative research:
+
+**Cognitive Science** — Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Working Memory), Iyengar & Lepper (Choice Overload), Fitts, Hick, Miller, Gestalt school, Simon (Satisficing), Csikszentmihalyi (Flow)
+
+**Academic Research** — arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI, Multi-Agent GenAI, AI Literacy
+
+**Standards** — W3C: WCAG 3.0 April 2026 Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates
+
+**Platforms** — Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
+
+**Case Studies** — Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord | Failures: Snapchat 2018, Windows 8, Digg v4, Sonos 2024, Healthcare.gov, Twitter/X, Google Plus, Reddit API, YouTube Dislikes, Skype
+
+<br />
+
+## Design philosophy
 
 Built on the shoulders of giants:
 
-| Thinker | Contribution to This Plugin |
-|---------|----------------------------|
+| | |
+|---|---|
 | **Don Norman** | Affordances, emotional design, the 3 levels of processing |
 | **Jakob Nielsen** | 10 usability heuristics, evidence-based evaluation |
 | **Daniel Kahneman** | Peak-End Rule, cognitive biases, System 1/System 2 |
@@ -231,123 +443,22 @@ Built on the shoulders of giants:
 | **Julie Zhuo** | Design leadership, scaling quality |
 | **Liz Lerman** | Critical Response Process for design critique |
 
----
+> *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
 
-## Architecture
+<br />
 
-```
-ux-ui-mastery/                          310K+ words across 87 files
-├── .claude-plugin/
-│   └── plugin.json                     v3.0.0 manifest
-├── marketplace.json                    Distribution metadata
-│
-├── skills/                             19 skill domains
-│   ├── cognitive-psychology-ux/        Laws of UX, biases, neurodesign
-│   │   ├── SKILL.md                    2K words — overview + cross-refs
-│   │   └── references/
-│   │       ├── laws-of-ux-encyclopedia.md       25+ laws with formulas
-│   │       ├── cognitive-biases-design-patterns.md  50+ biases + dark pattern alerts
-│   │       └── neurodesign-engagement-science.md    Eye tracking, flow, dopamine
-│   │
-│   ├── component-patterns-code/        Production component code
-│   │   ├── SKILL.md                    State matrix methodology
-│   │   └── references/
-│   │       ├── react-component-cookbook.md    15 React/TS components
-│   │       ├── swiftui-component-cookbook.md  10 SwiftUI views + iOS 26
-│   │       └── css-modern-patterns.md        12 modern CSS patterns
-│   │
-│   ├── design-critique-case-studies/   Critique + real-world analysis
-│   │   ├── SKILL.md                    Liz Lerman, 30/60/90 framework
-│   │   └── references/
-│   │       ├── critique-methodology.md       Session formats + frameworks
-│   │       ├── product-deep-dives.md         10 product analyses
-│   │       └── redesign-failure-analysis.md  10 failure post-mortems
-│   │
-│   ├── figma-design-tool-workflows/    Figma MCP + design-to-code
-│   │   ├── SKILL.md                    Figma mastery overview
-│   │   └── references/
-│   │       ├── figma-mastery-workflows.md    Auto Layout, variables, Dev Mode
-│   │       ├── figma-mcp-ai-flywheel.md      MCP pipeline + 50-70% time savings
-│   │       └── design-to-code-pipeline.md    Style Dictionary, CI/CD, visual regression
-│   │
-│   ├── performance-states-patterns/    Loading, errors, notifications
-│   ├── cross-cultural-i18n-ux/        i18n, RTL, cultural dimensions
-│   ├── ambient-calm-zero-ui/          Calm technology, ambient computing
-│   ├── nng-ux-heuristics/            Nielsen's 10 heuristics
-│   ├── ux-research-methods/          Research methodology
-│   ├── mobile-ux-design/             iOS 26, M3 Expressive, wearable
-│   ├── desktop-app-design/           Dashboards, data viz, keyboard-first
-│   ├── ui-visual-design-system/      Typography, color, spacing, modern CSS
-│   ├── accessibility-inclusive-design/ WCAG 2.2 + 3.0, ARIA, neurodiversity
-│   ├── interaction-motion-design/    Animation, haptics, spring physics
-│   ├── ai-spatial-voice-ux/         AI, AR/VR, voice, multimodal
-│   ├── design-systems-architecture/  Tokens, governance, multi-brand
-│   ├── ux-ethics-content-strategy/  Ethics, microcopy, sustainable UX
-│   ├── agentic-ai-generative-ux/   Agentic AI, generative UI, hallucinations
-│   └── ux-metrics-measurement/      HEART, SUS, A/B testing, AI metrics
-│
-├── commands/                          10 executable commands
-│   ├── ux-audit.md                    NNG heuristic audit
-│   ├── design-review.md              Full design review
-│   ├── accessibility-check.md        WCAG 2.2 compliance
-│   ├── generate-design-tokens.md     W3C token generation
-│   ├── ai-ux-audit.md               AI trust/safety audit
-│   ├── ux-metrics-plan.md           HEART metrics plan
-│   ├── component-build.md           Production component builder
-│   ├── design-critique.md           Liz Lerman critique
-│   ├── figma-to-code.md            Design-to-code pipeline
-│   └── cognitive-check.md          Cognitive psychology audit
-│
-└── README.md                         This file
-```
+## Contributing
 
----
+Found something to improve? We welcome contributions:
 
-## Knowledge Base by the Numbers
+1. Fork the repo
+2. Create a branch (`git checkout -b feature/your-feature`)
+3. Make your changes
+4. Submit a PR
 
-| Metric | Count |
-|--------|-------|
-| Total words | **310,407** |
-| Skill domains | **19** |
-| Deep reference files | **55** |
-| Executable commands | **10** |
-| Production code components | **40+** |
-| Laws of UX (with formulas) | **25+** |
-| Cognitive biases (with ethical flags) | **50+** |
-| Product case studies | **10** |
-| Redesign failure analyses | **10** |
-| Eye tracking patterns | **6** |
-| Platform cookbooks | **3** (React, SwiftUI, CSS) |
-| Haptic feedback patterns | **30+** |
-| Microcopy templates | **50+** |
-| Cultural dimension mappings | **6** |
-| Design system maturity levels | **5** |
+**Content contributions are especially welcome**: new case studies, additional Laws of UX, updated platform patterns (WWDC/I/O releases), new sector style guides, and accessibility improvements.
 
----
-
-## Research Sources
-
-Every claim in this plugin traces back to authoritative research:
-
-**Cognitive Science**
-Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Working Memory), Iyengar & Lepper (Choice Overload), Fitts, Hick, Miller, Gestalt school, Simon (Satisficing), Csikszentmihalyi (Flow)
-
-**Academic Research**
-arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction, LLM Hallucination Detection | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI Coding, Multi-Agent GenAI, AI Literacy
-
-**Industry Standards**
-W3C: WCAG 3.0 April 2026 Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates, iOS 26 Usability Critique
-
-**Platform Sources**
-Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
-
-**Industry Voices**
-Smashing Magazine Feb 2026 (Agentic UX) | Microsoft Copilot Framework | OpenAI Apps SDK | Sparkbox (Design System ROI) | Amber Case (Calm Technology) | Liz Lerman (Critical Response Process)
-
-**Case Studies**
-Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord | Failures: Snapchat 2018, Windows 8, Digg v4, Sonos 2024, Healthcare.gov, Twitter/X, Google Plus, Reddit API, YouTube Dislikes, Skype
-
----
+<br />
 
 ## License
 
@@ -355,4 +466,8 @@ MIT
 
 ---
 
-*Built with obsessive attention to detail by Design Tribe Republic. Powered by Claude Opus 4.6.*
+<p align="center">
+  <strong>Built with obsessive attention to detail by <a href="https://github.com/phazurlabs">Design Tribe Republic</a>.</strong>
+  <br />
+  <sub>Powered by Claude Opus 4.6 · v4.0.0</sub>
+</p>

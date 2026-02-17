@@ -1,10 +1,10 @@
 ---
-name: cognitive-check
-description: Audit an interface against Laws of UX, Gestalt principles, and cognitive bias analysis. Evaluates cognitive load, decision architecture, and attention management with scored findings.
+name: brain-scan
+description: Cognitive audit — Laws of UX, Gestalt principles, cognitive bias analysis. Score decision architecture, visual cognition, memory load, and attention management.
 user_invocable: true
 ---
 
-# Cognitive Check Command
+# Brain Scan — Cognitive Psychology Audit
 
 Audit an interface against cognitive psychology principles — Laws of UX, Gestalt principles, cognitive biases, attention science, and memory constraints. Identify where the design works against human cognition and provide evidence-based fixes.
 
@@ -68,7 +68,7 @@ Audit an interface against cognitive psychology principles — Laws of UX, Gesta
 ## Output Format
 
 ```
-## Cognitive Check: [Interface Name]
+## Brain Scan: [Interface Name]
 
 ### Context
 - **Interface**: [type and description]
@@ -109,3 +109,10 @@ When auditing cognitive factors, draw from:
 - `ux-ethics-content-strategy` skill for ethical evaluation of bias exploitation
 - `performance-states-patterns` skill for Doherty Threshold and perceived performance
 - `accessibility-inclusive-design` skill for cognitive accessibility (ADHD, dyslexia, age-related decline)
+
+## Next Steps
+After running `/brain-scan`, consider:
+- `/remix` — Redesign to fix cognitive issues with UX reasoning
+- `/roast` — Full design critique with dimensional scoring
+- `/flow` — Audit the multi-step journey for cognitive load accumulation
+- `/dark-scan` — Check if detected biases cross into dark patterns

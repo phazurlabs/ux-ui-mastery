@@ -1,10 +1,10 @@
 ---
-name: component-build
-description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS).
+name: ship
+description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS). Copy-paste ready.
 user_invocable: true
 ---
 
-# Component Build Command
+# Ship — Production Component Builder
 
 Generate a production-ready UI component with complete state coverage, accessibility, design tokens, and platform-specific code.
 
@@ -90,3 +90,10 @@ When building components, draw implementation patterns from:
 - `design-systems-architecture` skill for token architecture
 - `interaction-motion-design` skill for animation and micro-interactions
 - `performance-states-patterns` skill for loading, error, and empty states
+
+## Next Steps
+After running `/ship`, consider:
+- `/vibe-check` — Audit the component you just built
+- `/include` — Deep accessibility check on the generated code
+- `/roast` — Get a design critique of the component
+- `/drip` — Generate the token system if you don't have one yet

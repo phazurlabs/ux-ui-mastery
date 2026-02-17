@@ -1,10 +1,10 @@
 ---
-name: ux-metrics-plan
-description: Generate a complete UX metrics plan for any product using the HEART framework with goals, signals, metrics, measurement tools, and dashboard specification.
+name: pulse
+description: Generate a complete UX metrics plan — HEART framework with goals, signals, metrics, dashboards, and experimentation strategy.
 user_invocable: true
 ---
 
-# UX Metrics Plan Command
+# Pulse — UX Metrics Plan
 
 Generate a comprehensive UX metrics plan for the specified product or feature, mapping product goals to measurable user experience metrics using the HEART framework.
 
@@ -126,3 +126,9 @@ When generating the plan, draw context from:
 - `nng-ux-heuristics` skill for qualitative evaluation criteria
 - `agentic-ai-generative-ux` skill for AI-specific metrics (if product includes AI features)
 - `design-systems-architecture` skill for design system metrics (if applicable)
+
+## Next Steps
+After running `/pulse`, consider:
+- `/vibe-check` — Audit the experience you're measuring
+- `/flow` — Map the user flows your metrics will track
+- `/benchmark` — Compare your metrics against competitors

@@ -1,10 +1,10 @@
 ---
-name: ux-audit
-description: Audit any UI component, screen, or codebase against NNG's 10 usability heuristics with severity ratings and actionable recommendations.
+name: vibe-check
+description: Full UX audit — audit any UI against Nielsen's 10 usability heuristics with severity ratings and actionable recommendations.
 user_invocable: true
 ---
 
-# UX Audit Command
+# Vibe Check — UX Heuristic Audit
 
 Perform a comprehensive UX audit using Nielsen's 10 usability heuristics against the provided code, component, or screen description.
 
@@ -41,7 +41,7 @@ Perform a comprehensive UX audit using Nielsen's 10 usability heuristics against
 ## Output Format
 
 ```
-## UX Audit Results
+## Vibe Check Results
 
 ### Summary
 - **Target**: [component/screen name]
@@ -64,3 +64,10 @@ When relevant issues are found, load additional context from:
 - `mobile-ux-design` skill for mobile-specific issues
 - `ui-visual-design-system` skill for visual design issues
 - `interaction-motion-design` skill for animation/interaction issues
+
+## Next Steps
+After running `/vibe-check`, consider:
+- `/include` — Deep-dive into accessibility compliance
+- `/brain-scan` — Audit cognitive load and psychology principles
+- `/remix` — Redesign and fix the issues found
+- `/roast` — Get a full critique with dimensional scoring

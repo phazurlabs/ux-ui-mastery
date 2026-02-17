@@ -1,12 +1,12 @@
 ---
-name: design-review
-description: Comprehensive design review scoring a UI across all 10 skill domains with detailed feedback and improvement roadmap.
+name: judge
+description: Comprehensive design review scoring a UI across all 21 skill domains with detailed feedback and improvement roadmap.
 user_invocable: true
 ---
 
-# Design Review Command
+# Judge — Full Design Review
 
-Perform a comprehensive design review evaluating the provided UI across all 10 UX/UI skill domains.
+Perform a comprehensive design review evaluating the provided UI across all UX/UI skill domains.
 
 ## Review Protocol
 
@@ -65,3 +65,11 @@ Perform a comprehensive design review evaluating the provided UI across all 10 U
 ### Detailed Domain Analysis
 [Expandable sections for each domain]
 ```
+
+## Next Steps
+After running `/judge`, consider:
+- `/vibe-check` — Deep-dive heuristic audit on specific findings
+- `/roast` — Focused critique with dimensional scoring
+- `/taste` — Get sector-specific style direction if visual design scored low
+- `/include` — Accessibility deep-dive if a11y scored low
+- `/brain-scan` — Cognitive audit if efficiency/clarity scored low

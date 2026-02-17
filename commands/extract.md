@@ -1,10 +1,10 @@
 ---
-name: figma-to-code
-description: Generate production code from a Figma design specification using the MCP-powered design-to-code flywheel. Extracts tokens, components, and layout to produce platform-ready code.
+name: extract
+description: Figma to production code pipeline — extract tokens, decompose components, and generate platform-ready React/SwiftUI/CSS from design specs.
 user_invocable: true
 ---
 
-# Figma to Code Command
+# Extract — Figma to Code
 
 Transform a Figma design specification into production-ready code using the design-to-code flywheel. This command bridges the gap between design intent and engineering implementation.
 
@@ -69,7 +69,7 @@ Transform a Figma design specification into production-ready code using the desi
 ## Output Format
 
 ```
-## Figma to Code: [Component/Screen Name]
+## Extracted Code: [Component/Screen Name]
 
 ### Design Token Extraction
 [W3C format JSON tokens extracted from the design]
@@ -112,3 +112,10 @@ When generating code from design, draw patterns from:
 - `accessibility-inclusive-design` skill for WCAG validation
 - `ui-visual-design-system` skill for visual system integrity
 - `cross-cultural-i18n-ux` skill for RTL/i18n layout considerations
+
+## Next Steps
+After running `/extract`, consider:
+- `/vibe-check` — Audit the generated code for usability
+- `/include` — Deep accessibility check on extracted code
+- `/responsive` — Verify cross-device behavior of extracted layout
+- `/ship` — Enhance extracted components with full state matrix

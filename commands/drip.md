@@ -1,10 +1,10 @@
 ---
-name: generate-design-tokens
-description: Generate a complete design token system from brand requirements following the W3C Design Tokens specification.
+name: drip
+description: Generate a complete W3C design token system — your visual identity distilled into code. Colors, type, spacing, elevation, and themes.
 user_invocable: true
 ---
 
-# Generate Design Tokens Command
+# Drip — Design Token System Generator
 
 Generate a complete, production-ready design token system following the W3C Design Tokens Community Group specification.
 
@@ -56,7 +56,7 @@ Generate a complete, production-ready design token system following the W3C Desi
 ## Output Format
 
 ```
-## Generated Design Token System
+## Design Token System
 
 ### Configuration
 - Brand: [name/colors]
@@ -76,3 +76,15 @@ Generate a complete, production-ready design token system following the W3C Desi
 ### Usage Guide
 [How to apply tokens in components with examples]
 ```
+
+## Cross-References
+When generating tokens, draw from:
+- `design-systems-architecture` skill for token architecture and W3C specification
+- `ui-visual-design-system` skill for color theory and typography systems
+- `sector-style-intelligence` skill for sector-specific token recommendations
+
+## Next Steps
+After running `/drip`, consider:
+- `/ship` — Build components that consume your new tokens
+- `/screen` — Build full screens using your token system
+- `/taste` — Get sector-specific style direction to inform your tokens

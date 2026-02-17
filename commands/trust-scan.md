@@ -1,10 +1,10 @@
 ---
-name: ai-ux-audit
-description: Audit AI-powered features against agentic, trust, safety, and interaction best practices with scoring and specific fix recommendations.
+name: trust-scan
+description: Audit AI-powered features for trust, safety, usability, and accessibility. Score across 4 dimensions with specific fix recommendations.
 user_invocable: true
 ---
 
-# AI UX Audit Command
+# Trust Scan — AI UX Audit
 
 Perform a comprehensive audit of AI-powered features against agentic AI, trust calibration, safety guardrail, and AI interaction best practices.
 
@@ -66,7 +66,7 @@ Perform a comprehensive audit of AI-powered features against agentic AI, trust c
 ## Output Format
 
 ```
-## AI UX Audit Results
+## Trust Scan Results
 
 ### Summary
 - **Target**: [product/feature name]
@@ -99,3 +99,10 @@ When relevant issues are found, load additional context from:
 - `accessibility-inclusive-design` skill for AI accessibility issues
 - `ux-ethics-content-strategy` skill for AI content and ethical issues
 - `ux-metrics-measurement` skill for measuring AI UX improvements
+
+## Next Steps
+After running `/trust-scan`, consider:
+- `/vibe-check` — Full UX audit beyond AI-specific concerns
+- `/include` — Deep accessibility audit for AI-generated content
+- `/dark-scan` — Check if AI features employ deceptive patterns
+- `/pulse` — Set up AI-specific metrics (hallucination rate, trust calibration)

@@ -1,10 +1,10 @@
 ---
-name: design-critique
-description: Conduct a structured design critique using the Liz Lerman Critical Response Process, scoring across 10 dimensions with heuristic-grounded feedback.
+name: roast
+description: Design critique — Liz Lerman process, 10 dimensions scored, must-fix/should-fix/could-improve findings grounded in heuristics and cognitive psychology.
 user_invocable: true
 ---
 
-# Design Critique Command
+# Roast — Design Critique
 
 Perform a structured design critique using proven critique methodology, scoring the design across multiple dimensions and generating actionable, evidence-based feedback.
 
@@ -56,7 +56,7 @@ Perform a structured design critique using proven critique methodology, scoring 
 ## Output Format
 
 ```
-## Design Critique: [Design Name]
+## Design Roast: [Design Name]
 
 ### Context
 - **Artifact**: [type and description]
@@ -99,3 +99,10 @@ When critiquing designs, draw evaluation criteria from:
 - `accessibility-inclusive-design` skill for accessibility scoring
 - `ux-ethics-content-strategy` skill for ethical design evaluation
 - `ui-visual-design-system` skill for visual design quality assessment
+
+## Next Steps
+After running `/roast`, consider:
+- `/remix` — Redesign and implement fixes for every finding
+- `/vibe-check` — Deeper heuristic audit on specific problem areas
+- `/brain-scan` — Cognitive deep-dive if cognitive load scored low
+- `/include` — Accessibility deep-dive if a11y scored low
