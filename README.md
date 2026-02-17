@@ -14,10 +14,41 @@
   <a href="#whats-new-in-v40"><strong>What's New</strong></a>
 </p>
 <p align="center">
-  <code>20 commands</code> · <code>21 skills</code> · <code>65+ references</code> · <code>375K+ words</code>
+  <code>20 commands</code> · <code>21 skills</code> · <code>65 reference docs</code> · <code>370K+ words</code>
 </p>
 
 ---
+
+<br />
+
+## Built on research
+
+Every recommendation traces to published research.
+
+**Cognitive Science** — Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Working Memory), Iyengar & Lepper (Choice Overload), Fitts, Hick, Miller, Gestalt school, Simon (Satisficing), Csikszentmihalyi (Flow)
+
+**Academic Research** — arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI, Multi-Agent GenAI, AI Literacy
+
+**Standards** — W3C: WCAG 3.0 April 2026 Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates
+
+**Platforms** — Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
+
+**Case Studies** — Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord | Failures: Snapchat 2018, Windows 8, Digg v4, Sonos 2024, Healthcare.gov, Twitter/X, Google Plus, Reddit API, YouTube Dislikes, Skype
+
+| | |
+|---|---|
+| **Don Norman** | Affordances, emotional design, the 3 levels of processing |
+| **Jakob Nielsen** | 10 usability heuristics, evidence-based evaluation |
+| **Daniel Kahneman** | Peak-End Rule, cognitive biases, System 1/System 2 |
+| **John Sweller** | Cognitive Load Theory (intrinsic, extraneous, germane) |
+| **Dieter Rams** | "Less, but better" — systematic minimalism |
+| **Edward Tufte** | Data visualization, information density with clarity |
+| **Amber Case** | Calm technology, peripheral attention |
+| **Luke Wroblewski** | Mobile-first, form design |
+| **Julie Zhuo** | Design leadership, scaling quality |
+| **Liz Lerman** | Critical Response Process for design critique |
+
+> *"Every pixel on a screen is processed by a human brain. This plugin ensures Claude understands that brain."*
 
 <br />
 
@@ -88,18 +119,6 @@ Best-practice patterns, 5 reference implementations, key principles, common mist
 
 <br />
 
-## How it works
-
-The plugin uses **progressive disclosure** — the same cognitive principle it teaches.
-
-When you ask about "cognitive load," Claude loads the cognitive psychology skill with 25+ Laws of UX. When you say `/ship button`, Claude loads the component patterns skill with the full React/SwiftUI/CSS cookbook. When you type `/taste fintech`, Claude pulls from the sector style intelligence skill with real color palettes, font choices, and spacing systems from Stripe, Mercury, and Wise.
-
-**Every skill cross-references every other skill.** Critique methodology connects to heuristic evaluation. Component code connects to accessibility. Figma workflows connect to design tokens. Cognitive biases connect to ethics. It's a web of knowledge, not a stack of silos.
-
-**Every command chains to the next.** Run `/roast` and the output suggests `/remix` to fix what was found. Run `/taste` and it points you to `/inspo` for screen patterns and `/screen` to start building. No dead ends.
-
-<br />
-
 ## Install
 
 ### Recommended: Claude Code marketplace
@@ -109,7 +128,7 @@ When you ask about "cognitive load," Claude loads the cognitive psychology skill
 /plugin install ux-ui-mastery@ux-ui-mastery-marketplace
 ```
 
-That's it. Available in every session, forever.
+That's it. Works in every session.
 
 ### Alternative: Clone manually
 
@@ -240,9 +259,21 @@ Skills activate automatically — just ask about any UX topic:
 
 <br />
 
+## How it works
+
+You type a command. Claude loads the matching skill files — each one 10,000 to 30,000 words of research, patterns, and case studies.
+
+Skills cross-reference each other. A component audit pulls from accessibility, cognitive psychology, and visual design at the same time.
+
+Commands chain. `/roast` points to `/remix`. `/taste` leads to `/inspo`. No dead ends.
+
+Claude uses progressive disclosure: it loads only the skill files each query needs. The full 370K words sit ready. Only the relevant slice activates.
+
+<br />
+
 ## 21 Skills
 
-The knowledge base behind every command. Skills activate automatically based on your query — no need to invoke them directly.
+Skills activate on topic. No manual invocation.
 
 <details>
 <summary><strong>Foundations</strong> — The science behind every decision</summary>
@@ -324,8 +355,8 @@ The knowledge base behind every command. Skills activate automatically based on 
 </tr>
 <tr><td>10 commands</td><td><strong>20 commands</strong></td></tr>
 <tr><td>19 skills</td><td><strong>21 skills</strong></td></tr>
-<tr><td>55 references</td><td><strong>65+ references</strong></td></tr>
-<tr><td>310K words</td><td><strong>375K+ words</strong></td></tr>
+<tr><td>55 references</td><td><strong>65 reference docs</strong></td></tr>
+<tr><td>310K words</td><td><strong>370K+ words</strong></td></tr>
 <tr><td>Clinical names (<code>/ux-audit</code>)</td><td><strong>Action-packed (<code>/vibe-check</code>)</strong></td></tr>
 <tr><td>No sector style guidance</td><td><strong>20+ sectors with <code>/taste</code></strong></td></tr>
 <tr><td>No screen builder</td><td><strong>27 screen types with <code>/screen</code></strong></td></tr>
@@ -360,7 +391,7 @@ If you're upgrading from v3.0, here's what changed:
 ## Architecture
 
 ```
-taste-ux-ui/                                375K+ words · 107 markdown files
+taste-ux-ui/                                370K+ words · 106 markdown files
 │
 ├── commands/                               20 slash commands
 │   ├── Audit:    vibe-check, roast, brain-scan, include, trust-scan,
@@ -392,7 +423,7 @@ taste-ux-ui/                                375K+ words · 107 markdown files
 
 | What | Count |
 |------|-------|
-| Total words | **375,777** |
+| Total words | **373,914** |
 | Production code components (React, SwiftUI, CSS) | **40+** |
 | Laws of UX (with mathematical formulas) | **25+** |
 | Cognitive biases (with ethical flags) | **50+** |
@@ -411,50 +442,13 @@ taste-ux-ui/                                375K+ words · 107 markdown files
 
 <br />
 
-## Research foundations
-
-Every claim traces back to authoritative research:
-
-**Cognitive Science** — Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Working Memory), Iyengar & Lepper (Choice Overload), Fitts, Hick, Miller, Gestalt school, Simon (Satisficing), Csikszentmihalyi (Flow)
-
-**Academic Research** — arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI, Multi-Agent GenAI, AI Literacy
-
-**Standards** — W3C: WCAG 3.0 April 2026 Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates
-
-**Platforms** — Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
-
-**Case Studies** — Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord | Failures: Snapchat 2018, Windows 8, Digg v4, Sonos 2024, Healthcare.gov, Twitter/X, Google Plus, Reddit API, YouTube Dislikes, Skype
-
-<br />
-
-## Design philosophy
-
-Built on the shoulders of giants:
-
-| | |
-|---|---|
-| **Don Norman** | Affordances, emotional design, the 3 levels of processing |
-| **Jakob Nielsen** | 10 usability heuristics, evidence-based evaluation |
-| **Daniel Kahneman** | Peak-End Rule, cognitive biases, System 1/System 2 |
-| **John Sweller** | Cognitive Load Theory (intrinsic, extraneous, germane) |
-| **Dieter Rams** | "Less, but better" — systematic minimalism |
-| **Edward Tufte** | Data visualization, information density with clarity |
-| **Amber Case** | Calm technology, peripheral attention |
-| **Luke Wroblewski** | Mobile-first, form design |
-| **Julie Zhuo** | Design leadership, scaling quality |
-| **Liz Lerman** | Critical Response Process for design critique |
-
-> *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
-
-<br />
-
 ## Meet Sumi
 
 <img src="assets/sumi.svg" alt="Sumi" width="80" align="left" style="margin-right: 16px;" />
 
 **Sumi** (from *sumi-e*, Japanese ink painting) is your design companion. Part KAWS art toy, part Space Invader, part AI — Sumi has one eye for critique (the X) and one eye for precision (the crosshair).
 
-Every command you run, Sumi draws from 375K+ words of design science — cognitive psychology, production code patterns, and real-world case studies — to make sure your pixels are right. No opinions. Only evidence.
+Every command you run, Sumi draws from 370K+ words of design science — cognitive psychology, production code patterns, and real-world case studies — to make sure your pixels are right. No opinions. Only evidence.
 
 <br clear="left" />
 
