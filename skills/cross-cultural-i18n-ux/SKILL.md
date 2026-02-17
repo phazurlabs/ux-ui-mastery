@@ -1,23 +1,6 @@
 ---
 name: Cross-Cultural & Internationalization UX
-description: Comprehensive internationalization and localization patterns covering RTL layouts, CSS logical properties, text expansion, date/time/number/currency formatting, cultural color semantics, Hofstede's cultural dimensions applied to UX, and cross-cultural usability testing.
-triggers:
-  - internationalization
-  - i18n
-  - localization
-  - l10n
-  - RTL
-  - right-to-left
-  - translation
-  - multilingual
-  - cultural design
-  - cross-cultural
-  - locale
-  - CJK
-  - Arabic
-  - Hebrew
-  - text expansion
-  - cultural UX
+description: "Comprehensive internationalization and localization patterns covering RTL layouts, CSS logical properties, text expansion, date/time/number/currency formatting, cultural color semantics, Hofstede's cultural dimensions applied to UX, and cross-cultural usability testing. Use when the user mentions: internationalization, i18n, localization, l10n, RTL, right-to-left, translation, multilingual, cultural design, cross-cultural, locale, CJK, Arabic, Hebrew, text expansion, cultural UX."
 ---
 
 # Cross-Cultural & Internationalization UX

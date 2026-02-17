@@ -1,16 +1,6 @@
 ---
 name: Accessibility & Inclusive Design
-description: Comprehensive accessibility expertise covering WCAG 2.2 compliance, ARIA patterns, screen reader optimization, keyboard navigation, motor and cognitive accommodations, neurodiversity considerations, and inclusive design methodology.
-triggers:
-  - accessibility
-  - WCAG
-  - screen reader
-  - a11y
-  - keyboard navigation
-  - ARIA
-  - inclusive design
-  - color contrast
-  - assistive technology
+description: "Comprehensive accessibility expertise covering WCAG 2.2 compliance, ARIA patterns, screen reader optimization, keyboard navigation, motor and cognitive accommodations, neurodiversity considerations, and inclusive design methodology. Use when the user mentions: accessibility, WCAG, screen reader, a11y, keyboard navigation, ARIA, inclusive design, color contrast, assistive technology."
 ---
 
 # Accessibility & Inclusive Design — Universal Access Framework

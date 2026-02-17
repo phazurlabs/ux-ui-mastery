@@ -1,7 +1,5 @@
 ---
-name: dark-scan
 description: Dark pattern detection — scan any UI for 20+ deceptive design categories with regulatory risk analysis and ethical redesign alternatives.
-user_invocable: true
 ---
 
 # Dark Scan — Dark Pattern Detection

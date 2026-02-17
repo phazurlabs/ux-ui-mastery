@@ -1,7 +1,5 @@
 ---
-name: judge
 description: Comprehensive design review scoring a UI across all 21 skill domains with detailed feedback and improvement roadmap.
-user_invocable: true
 ---
 
 # Judge — Full Design Review

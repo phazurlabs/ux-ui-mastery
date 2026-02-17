@@ -1,7 +1,5 @@
 ---
-name: trust-scan
 description: Audit AI-powered features for trust, safety, usability, and accessibility. Score across 4 dimensions with specific fix recommendations.
-user_invocable: true
 ---
 
 # Trust Scan — AI UX Audit

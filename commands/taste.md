@@ -1,7 +1,5 @@
 ---
-name: taste
 description: Sector-specific style direction generator — generate a complete visual identity direction with color, typography, motion, tone, tokens, and reference apps for any product sector.
-user_invocable: true
 ---
 
 # Taste — Sector-Specific Style Direction Generator

@@ -1,15 +1,6 @@
 ---
 name: Interaction & Motion Design
-description: Micro-interaction patterns, animation timing and easing curves, transition design, emotional design through motion, haptic feedback, loading state choreography, and reduced-motion accessibility support.
-triggers:
-  - animation
-  - micro-interaction
-  - motion design
-  - transition
-  - loading animation
-  - haptic feedback
-  - easing curve
-  - emotional design
+description: "Micro-interaction patterns, animation timing and easing curves, transition design, emotional design through motion, haptic feedback, loading state choreography, and reduced-motion accessibility support. Use when the user mentions: animation, micro-interaction, motion design, transition, loading animation, haptic feedback, easing curve, emotional design."
 ---
 
 # Interaction & Motion Design — Purposeful Animation Framework

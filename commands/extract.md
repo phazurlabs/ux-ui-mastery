@@ -1,7 +1,5 @@
 ---
-name: extract
 description: Figma to production code pipeline — extract tokens, decompose components, and generate platform-ready React/SwiftUI/CSS from design specs.
-user_invocable: true
 ---
 
 # Extract — Figma to Code

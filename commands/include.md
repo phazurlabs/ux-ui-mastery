@@ -1,7 +1,5 @@
 ---
-name: include
 description: Deep WCAG 2.2 accessibility audit on code with specific fixes for every violation found. Accessibility IS inclusion.
-user_invocable: true
 ---
 
 # Include — Accessibility Audit

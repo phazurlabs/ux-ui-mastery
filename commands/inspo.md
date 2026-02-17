@@ -1,7 +1,5 @@
 ---
-name: inspo
 description: Design inspiration and pattern finder — find best-practice patterns, references, and inspiration for any screen type, UI element, or user flow.
-user_invocable: true
 ---
 
 # Inspo — Design Inspiration & Pattern Finder

@@ -1,27 +1,6 @@
 ---
 name: design-critique-case-studies
-description: "Design critique methodology and real-world case studies. Structured critique frameworks (Liz Lerman, 30/60/90), product deep-dives (Stripe, Linear, Notion, Airbnb, Figma, Arc), redesign failure analysis, and actionable feedback protocols."
-triggers:
-  - design critique
-  - case study
-  - design review session
-  - Airbnb design
-  - Stripe design
-  - Notion design
-  - Linear design
-  - Figma design
-  - Arc Browser
-  - Duolingo design
-  - product analysis
-  - design failure
-  - redesign failure
-  - critique session
-  - design feedback
-  - design review
-  - what went wrong
-  - product deep dive
-  - design principles
-  - feedback framework
+description: "Design critique methodology and real-world case studies. Structured critique frameworks (Liz Lerman, 30/60/90), product deep-dives (Stripe, Linear, Notion, Airbnb, Figma, Arc), redesign failure analysis, and actionable feedback protocols. Use when the user mentions: design critique, case study, design review session, Airbnb design, Stripe design, Notion design, Linear design, Figma design, Arc Browser, Duolingo design, product analysis, design failure, redesign failure, critique session, design feedback, design review, what went wrong, product deep dive, design principles, feedback framework."
 ---
 
 # Design Critique & Case Studies — Learning from the Best (and Worst) Product Design

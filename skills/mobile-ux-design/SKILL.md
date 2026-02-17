@@ -1,16 +1,6 @@
 ---
 name: Mobile UX Design
-description: Mobile-first design methodology covering touch interaction patterns, gesture systems, responsive design, iOS and Android platform conventions, mobile form design, thumb-zone optimization, and performance-conscious UX.
-triggers:
-  - mobile app design
-  - responsive design
-  - touch interface
-  - mobile-first
-  - iOS design
-  - Android design
-  - mobile form
-  - thumb zone
-  - mobile navigation
+description: "Mobile-first design methodology covering touch interaction patterns, gesture systems, responsive design, iOS and Android platform conventions, mobile form design, thumb-zone optimization, and performance-conscious UX. Use when the user mentions: mobile app design, responsive design, touch interface, mobile-first, iOS design, Android design, mobile form, thumb zone, mobile navigation."
 ---
 
 # Mobile UX Design — Platform-Native Excellence

@@ -1,7 +1,5 @@
 ---
-name: pulse
 description: Generate a complete UX metrics plan — HEART framework with goals, signals, metrics, dashboards, and experimentation strategy.
-user_invocable: true
 ---
 
 # Pulse — UX Metrics Plan

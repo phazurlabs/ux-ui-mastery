@@ -1,7 +1,5 @@
 ---
-name: drip
 description: Generate a complete W3C design token system — your visual identity distilled into code. Colors, type, spacing, elevation, and themes.
-user_invocable: true
 ---
 
 # Drip — Design Token System Generator

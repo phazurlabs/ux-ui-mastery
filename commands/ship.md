@@ -1,7 +1,5 @@
 ---
-name: ship
 description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS). Copy-paste ready.
-user_invocable: true
 ---
 
 # Ship — Production Component Builder

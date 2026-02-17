@@ -1,7 +1,5 @@
 ---
-name: screen
 description: Screen type builder — generate production-ready code for any standard screen type (25+) with all states, accessibility, responsive breakpoints, and design token consumption.
-user_invocable: true
 ---
 
 # Screen — Screen Type Builder

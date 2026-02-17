@@ -1,16 +1,6 @@
 ---
 name: UI Visual Design System
-description: Visual design mastery covering typography systems, color theory and accessible palettes, spacing and layout grids, visual hierarchy, iconography, elevation and depth, and responsive visual design across platforms.
-triggers:
-  - visual design
-  - typography
-  - color palette
-  - design system
-  - spacing system
-  - visual hierarchy
-  - icon design
-  - UI design
-  - color theory
+description: "Visual design mastery covering typography systems, color theory and accessible palettes, spacing and layout grids, visual hierarchy, iconography, elevation and depth, and responsive visual design across platforms. Use when the user mentions: visual design, typography, color palette, design system, spacing system, visual hierarchy, icon design, UI design, color theory."
 ---
 
 # UI Visual Design System — Visual Excellence Framework

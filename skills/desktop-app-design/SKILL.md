@@ -1,15 +1,6 @@
 ---
 name: Desktop App Design
-description: Desktop and enterprise application design patterns covering data-dense interfaces, dashboard design, complex workflow management, keyboard-first interaction, multi-window patterns, and professional tool design.
-triggers:
-  - desktop app
-  - dashboard design
-  - enterprise UX
-  - data table design
-  - admin panel
-  - complex workflow
-  - professional tool
-  - desktop application
+description: "Desktop and enterprise application design patterns covering data-dense interfaces, dashboard design, complex workflow management, keyboard-first interaction, multi-window patterns, and professional tool design. Use when the user mentions: desktop app, dashboard design, enterprise UX, data table design, admin panel, complex workflow, professional tool, desktop application."
 ---
 
 # Desktop App Design — Professional & Enterprise Excellence

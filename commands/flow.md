@@ -1,7 +1,5 @@
 ---
-name: flow
 description: User flow audit — map, score, and optimize any multi-step user journey for efficiency, cognitive load, emotional arc, and conversion.
-user_invocable: true
 ---
 
 # Flow — User Flow Audit

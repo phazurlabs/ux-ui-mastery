@@ -1,7 +1,5 @@
 ---
-name: remix
 description: Redesign and improve — take any existing screen or component and generate a UX-grounded redesign with before/after reasoning for every change.
-user_invocable: true
 ---
 
 # Remix — Redesign & Improve

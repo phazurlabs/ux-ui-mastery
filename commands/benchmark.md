@@ -1,7 +1,5 @@
 ---
-name: benchmark
 description: Competitive design benchmark — score a design against the best apps in its category across 10 UX dimensions with gap analysis and improvement roadmap.
-user_invocable: true
 ---
 
 # Benchmark — Competitive Design Benchmark

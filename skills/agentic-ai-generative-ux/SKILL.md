@@ -1,19 +1,6 @@
 ---
 name: Agentic AI & Generative UX
-description: Design patterns for agentic AI systems, multi-agent orchestration, generative UI, RAG interfaces, AI safety guardrails, trust calibration, and the paradigm shift from tool-based to agent-based interfaces. Covers AI copilot frameworks, prompt engineering UX, and AI anti-patterns.
-triggers:
-  - agentic AI
-  - AI agent
-  - multi-agent
-  - generative UI
-  - RAG interface
-  - AI guardrails
-  - AI safety UX
-  - AI copilot design
-  - AI trust
-  - AI fatigue
-  - prompt engineering UX
-  - LLM interface
+description: "Design patterns for agentic AI systems, multi-agent orchestration, generative UI, RAG interfaces, AI safety guardrails, trust calibration, and the paradigm shift from tool-based to agent-based interfaces. Covers AI copilot frameworks, prompt engineering UX, and AI anti-patterns. Use when the user mentions: agentic AI, AI agent, multi-agent, generative UI, RAG interface, AI guardrails, AI safety UX, AI copilot design, AI trust, AI fatigue, prompt engineering UX, LLM interface."
 ---
 
 # Agentic AI & Generative UX — The Agent Interface Paradigm

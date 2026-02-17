@@ -1,30 +1,6 @@
 ---
 name: cognitive-psychology-ux
-description: "Cognitive psychology foundations for UX design — Laws of UX, Gestalt principles, cognitive biases, mental models, attention, memory, and perception science applied to interface design"
-triggers:
-  - cognitive load
-  - Fitts's Law
-  - Hick's Law
-  - Gestalt
-  - Laws of UX
-  - cognitive bias
-  - mental model
-  - decision fatigue
-  - attention
-  - memory
-  - perception
-  - Miller's Law
-  - Jakob's Law
-  - Peak-End Rule
-  - Doherty Threshold
-  - Von Restorff
-  - serial position
-  - anchoring bias
-  - confirmation bias
-  - choice overload
-  - framing effect
-  - flow state
-  - cognitive budget
+description: "Cognitive psychology foundations for UX design — Laws of UX, Gestalt principles, cognitive biases, mental models, attention, memory, and perception science applied to interface design. Use when the user mentions: cognitive load, Fitts's Law, Hick's Law, Gestalt, Laws of UX, cognitive bias, mental model, decision fatigue, attention, memory, perception, Miller's Law, Jakob's Law, Peak-End Rule, Doherty Threshold, Von Restorff, serial position, anchoring bias, confirmation bias, choice overload, framing effect, flow state, cognitive budget."
 ---
 
 # Cognitive Psychology for UX Design

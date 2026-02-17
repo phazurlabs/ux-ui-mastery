@@ -1,33 +1,6 @@
 ---
 name: component-patterns-code
-description: "Production-ready UI component patterns with complete code examples in React/TypeScript, SwiftUI, and modern CSS. Covers component state matrices, accessibility patterns, design token integration, and responsive behavior."
-triggers:
-  - React component
-  - SwiftUI view
-  - CSS component
-  - component pattern
-  - button component
-  - modal component
-  - form component
-  - input component
-  - state matrix
-  - code example
-  - build component
-  - select component
-  - combobox
-  - dialog
-  - toast
-  - notification component
-  - skeleton screen
-  - empty state component
-  - data table
-  - loading state
-  - error boundary
-  - focus trap
-  - design tokens code
-  - TypeScript component
-  - accessible component
-  - ARIA component
+description: "Production-ready UI component patterns with complete code examples in React/TypeScript, SwiftUI, and modern CSS. Covers component state matrices, accessibility patterns, design token integration, and responsive behavior. Use when the user mentions: React component, SwiftUI view, CSS component, component pattern, button component, modal component, form component, input component, state matrix, code example, build component, select component, combobox, dialog, toast, notification component, skeleton screen, empty state component, data table, loading state, error boundary, focus trap, design tokens code, TypeScript component, accessible component, ARIA component."
 ---
 
 # Component Patterns & Code — Production-Ready UI Engineering

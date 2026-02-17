@@ -1,7 +1,5 @@
 ---
-name: brain-scan
 description: Cognitive audit — Laws of UX, Gestalt principles, cognitive bias analysis. Score decision architecture, visual cognition, memory load, and attention management.
-user_invocable: true
 ---
 
 # Brain Scan — Cognitive Psychology Audit

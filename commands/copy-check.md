@@ -1,7 +1,5 @@
 ---
-name: copy-check
 description: Microcopy & content audit — evaluate all UI text for clarity, tone, accessibility, inclusive language, and i18n readiness with rewrites.
-user_invocable: true
 ---
 
 # Copy Check — Microcopy & Content Audit

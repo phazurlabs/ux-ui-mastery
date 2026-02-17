@@ -1,7 +1,5 @@
 ---
-name: responsive
 description: Cross-device responsive audit — evaluate design at every breakpoint for layout, touch targets, typography, reflow, and input mode adaptation.
-user_invocable: true
 ---
 
 # Responsive — Cross-Device Responsive Audit

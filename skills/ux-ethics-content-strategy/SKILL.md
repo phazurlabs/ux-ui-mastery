@@ -1,17 +1,6 @@
 ---
 name: UX Ethics & Content Strategy
-description: Ethical design practices covering dark pattern identification and avoidance, persuasive vs. manipulative design, privacy-respecting UX, content strategy, UX writing, microcopy, readability optimization, and inclusive language.
-triggers:
-  - dark patterns
-  - UX ethics
-  - content strategy
-  - UX writing
-  - microcopy
-  - ethical design
-  - privacy UX
-  - readability
-  - inclusive language
-  - deceptive patterns
+description: "Ethical design practices covering dark pattern identification and avoidance, persuasive vs. manipulative design, privacy-respecting UX, content strategy, UX writing, microcopy, readability optimization, and inclusive language. Use when the user mentions: dark patterns, UX ethics, content strategy, UX writing, microcopy, ethical design, privacy UX, readability, inclusive language, deceptive patterns."
 ---
 
 # UX Ethics & Content Strategy — Designing with Integrity

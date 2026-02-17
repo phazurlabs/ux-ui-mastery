@@ -1,22 +1,6 @@
 ---
 name: Sector Style Intelligence
-description: "Sector-specific visual style direction for 20+ industries. Color psychology, typography norms, component conventions, spacing philosophy, motion personality, trust signals, and anti-patterns for fintech, healthcare, social, SaaS, e-commerce, education, and more."
-triggers:
-  - sector style
-  - industry style
-  - fintech design
-  - healthcare design
-  - wellness design
-  - social media design
-  - saas design
-  - e-commerce design
-  - education design
-  - style direction
-  - visual direction
-  - app style
-  - brand direction
-  - sector UX
-  - industry patterns
+description: "Sector-specific visual style direction for 20+ industries. Color psychology, typography norms, component conventions, spacing philosophy, motion personality, trust signals, and anti-patterns for fintech, healthcare, social, SaaS, e-commerce, education, and more. Use when the user mentions: sector style, industry style, fintech design, healthcare design, wellness design, social media design, saas design, e-commerce design, education design, style direction, visual direction, app style, brand direction, sector UX, industry patterns."
 ---
 
 # Sector Style Intelligence — Visual Direction by Industry

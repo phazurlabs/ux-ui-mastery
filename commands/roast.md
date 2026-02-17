@@ -1,7 +1,5 @@
 ---
-name: roast
 description: Design critique — Liz Lerman process, 10 dimensions scored, must-fix/should-fix/could-improve findings grounded in heuristics and cognitive psychology.
-user_invocable: true
 ---
 
 # Roast — Design Critique

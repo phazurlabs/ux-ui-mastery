@@ -1,7 +1,5 @@
 ---
-name: vibe-check
 description: Full UX audit — audit any UI against Nielsen's 10 usability heuristics with severity ratings and actionable recommendations.
-user_invocable: true
 ---
 
 # Vibe Check — UX Heuristic Audit

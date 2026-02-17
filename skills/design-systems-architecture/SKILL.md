@@ -1,15 +1,6 @@
 ---
 name: Design Systems Architecture
-description: Design system architecture covering design token specification (W3C standard), component library patterns, theming architecture, multi-brand systems, governance models, versioning strategy, and design-to-code integration.
-triggers:
-  - design system
-  - design tokens
-  - component library
-  - theming
-  - multi-brand design
-  - design governance
-  - token architecture
-  - design system scale
+description: "Design system architecture covering design token specification (W3C standard), component library patterns, theming architecture, multi-brand systems, governance models, versioning strategy, and design-to-code integration. Use when the user mentions: design system, design tokens, component library, theming, multi-brand design, design governance, token architecture, design system scale."
 ---
 
 # Design Systems Architecture — Systematic Design at Scale

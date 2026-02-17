@@ -1,7 +1,5 @@
 ---
-name: onboard
 description: Onboarding flow builder — generate a complete onboarding sequence with progressive disclosure, activation metrics, and production React/TypeScript code.
-user_invocable: true
 ---
 
 # Onboard — Onboarding Flow Builder
