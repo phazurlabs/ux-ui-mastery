@@ -124,7 +124,7 @@ Best-practice patterns, 5 reference implementations, key principles, common mist
 ### Recommended: Claude Code marketplace
 
 ```
-/plugin marketplace add phazurlabs/taste-ux-ui
+/plugin marketplace add phazurlabs/sumi
 /plugin install sumi@sumi-marketplace
 ```
 
@@ -134,7 +134,7 @@ That's it. Works in every session.
 
 ```bash
 mkdir -p ~/.claude/plugins && cd ~/.claude/plugins
-git clone https://github.com/phazurlabs/taste-ux-ui.git
+git clone https://github.com/phazurlabs/sumi.git
 ```
 
 Then add to `~/.claude/settings.json`:
@@ -391,7 +391,7 @@ If you're upgrading from v3.0, here's what changed:
 ## Architecture
 
 ```
-taste-ux-ui/                                370K+ words · 106 markdown files
+sumi/                                       370K+ words · 106 markdown files
 │
 ├── commands/                               20 slash commands
 │   ├── Audit:    vibe-check, roast, brain-scan, include, trust-scan,

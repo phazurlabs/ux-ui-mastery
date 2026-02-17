@@ -83,7 +83,7 @@ This skill is organized into deeply researched sector reference files:
 
 ## Cross-References
 
-This skill works in concert with several other taste-ux-ui skills:
+This skill works in concert with several other sumi skills:
 
 - **ui-visual-design-system** — For foundational color theory, typography scales, and spacing systems that underpin all sector-specific guidance
 - **design-systems-architecture** — For token architecture and multi-brand/multi-sector design system strategies
