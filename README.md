@@ -8,8 +8,9 @@
 </p>
 <p align="center">
   <a href="#install"><strong>Install</strong></a> ·
-  <a href="#the-20-commands"><strong>Commands</strong></a> ·
+  <a href="#the-21-commands"><strong>Commands</strong></a> ·
   <a href="#which-command-do-i-use"><strong>Workflows</strong></a> ·
+  <a href="#getting-best-results"><strong>Best Results</strong></a> ·
   <a href="#21-skills"><strong>Skills</strong></a> ·
   <a href="#whats-new-in-v40"><strong>What's New</strong></a>
 </p>
@@ -270,6 +271,513 @@ Claude uses progressive disclosure: it loads only the skill files each query nee
 
 <br />
 
+## Getting best results
+
+The difference between a generic output and a precise, production-ready one comes down to what you give Sumi to work with. More context = sharper results. Here's exactly how to get the most out of every command.
+
+### The golden rule: give context, get precision
+
+Every Sumi command works better when it knows **what** you're building, **who** it's for, and **what platform** it targets. Compare:
+
+```
+# Vague — Sumi has to guess everything
+/ship button
+
+# Specific — Sumi tailors every decision
+/ship button for a fintech iOS app, primary CTA for confirming
+wire transfers, must support Face ID confirmation state,
+target audience is 35-55 year old professionals
+```
+
+The second prompt gives Sumi enough to select the right color psychology (trust-first for fintech), motion language (clinical, not bouncy), copy tone (formal-professional), touch targets (generous for older users), and platform conventions (iOS HIG, SF Symbols).
+
+### What input format to use
+
+Each command type accepts different inputs. Using the right format unlocks the full audit or build depth.
+
+#### For Audit commands (`/vibe-check`, `/roast`, `/brain-scan`, `/include`, `/flow`, `/dark-scan`, `/trust-scan`, `/copy-check`, `/responsive`)
+
+| Input type | How to provide it | Quality level |
+|------------|-------------------|---------------|
+| **Code** (best) | Paste the component/screen code directly into the chat, or tell Sumi to read a file path | Highest — Sumi can inspect every element, ARIA attribute, state, and token |
+| **File path** | "Run /vibe-check on `src/components/Checkout.tsx`" | Highest — Sumi reads the actual implementation |
+| **Screenshot** | Paste or attach a screenshot image | High — Claude's vision analyzes layout, hierarchy, color, spacing |
+| **URL description** | "Audit the Stripe checkout flow — the 3-step payment form with card input, address, and confirmation" | Medium — Sumi uses its case study knowledge to infer patterns |
+| **Verbal description** | "I have a dashboard with a sidebar nav, 4 metric cards, and a data table" | Baseline — useful for early-stage concepts, but findings will be general |
+
+**Best practice for audits:**
+```
+# Provide the actual code + context in one message
+Here's my checkout form component. It's a React/TypeScript app
+targeting mobile web for a food delivery startup. Users are
+18-35, often ordering while commuting.
+
+[paste code here]
+
+/vibe-check
+```
+
+#### For Build commands (`/ship`, `/screen`, `/drip`, `/onboard`, `/extract`, `/remix`)
+
+| Input type | How to provide it | What you get |
+|------------|-------------------|--------------|
+| **Component name + context** | `/ship modal` or `/ship date-picker for a travel booking app` | Full component with states, a11y, tokens, code |
+| **Screen type + sector** | `/screen dashboard for a SaaS analytics product` | Complete screen with layout, component hierarchy, all states |
+| **Existing code to improve** | Paste code + `/remix` | Before/after redesign with UX reasoning for every change |
+| **Figma specs** | Paste Figma Dev Mode output or token values + `/extract` | Platform-ready code matching the design spec |
+
+**Best practice for builds:**
+```
+# Stack all the constraints upfront
+/screen settings for an iOS health app targeting elderly users (65+).
+Must support Dynamic Type up to AX5.
+Platform: SwiftUI.
+Design system: uses 8px grid, SF Pro, blue-500 as primary.
+Must include: profile editing, notification preferences,
+data export, account deletion (GDPR), and accessibility toggles.
+```
+
+#### For Strategy commands (`/taste`, `/inspo`, `/benchmark`, `/pulse`, `/judge`)
+
+| Input type | How to provide it | What you get |
+|------------|-------------------|--------------|
+| **Sector name** | `/taste fintech` or `/taste wellness premium` | Full style direction calibrated to sector conventions |
+| **Sector + sub-niche + modifiers** | `/taste fintech neobank, premium, Gen Z, mobile-first` | Highly targeted direction with specific font/color/motion choices |
+| **Screen/element/flow type** | `/inspo screen onboarding` or `/inspo element data-table` or `/inspo flow checkout` | Pattern references with best-in-class examples |
+| **Product + category** | `/benchmark [your app] vs neobanks` | 10-dimension competitive scorecard |
+
+**Best practice for strategy:**
+```
+# Layer the modifiers for a precise direction
+/taste healthcare, telemedicine sub-niche, clinical mood,
+desktop-first, audience is doctors aged 30-50,
+must feel trustworthy but not cold
+```
+
+### Prompting patterns that maximize accuracy
+
+These patterns work across all commands.
+
+#### 1. State your platform and framework
+
+Sumi generates code in React/TypeScript, SwiftUI, and CSS. Tell it which one:
+
+```
+/ship toggle — React with TypeScript, using Radix primitives
+/ship toggle — SwiftUI with ViewModifiers
+/ship toggle — vanilla CSS with custom properties, no framework
+```
+
+Without a platform specified, Sumi defaults to React/TypeScript. Be explicit if you want SwiftUI or CSS.
+
+#### 2. Name your design system constraints
+
+If you have existing tokens, tell Sumi so the output integrates with your system:
+
+```
+/ship card — our tokens use --color-surface-primary, --space-md (16px),
+--radius-lg (12px), --shadow-elevation-1. Font is Inter.
+Border radius is 12px across all cards. 4px base grid.
+```
+
+#### 3. Specify your target audience
+
+Audience changes everything — touch targets, font sizes, color contrast requirements, copy reading level, and density:
+
+```
+# For elderly users: larger targets, higher contrast, simpler language
+/screen settings for users aged 65+
+
+# For power users: denser UI, keyboard shortcuts, advanced features visible
+/screen dashboard for developer-audience, keyboard-first
+
+# For children: playful motion, large targets, limited choices
+/ship navigation for an education app targeting ages 6-10
+```
+
+#### 4. Declare your accessibility level
+
+Sumi defaults to WCAG 2.2 AA. If you need more:
+
+```
+# AAA compliance (highest standard)
+/include — evaluate against WCAG 2.2 AAA, not just AA
+
+# Cognitive accessibility focus
+/brain-scan — prioritize cognitive load for users with ADHD
+
+# Full inclusive audit
+/include — evaluate for screen readers, keyboard-only, motor impairment,
+cognitive accessibility, and color blindness (all types)
+```
+
+#### 5. Tell Sumi what you've already decided
+
+If you've already run `/taste` and have a style direction, reference it:
+
+```
+# Chain context from a previous command
+I ran /taste fintech earlier and got Inter + DM Sans,
+blue-600 primary (#2563EB), 8px grid, medium border radius (8px).
+Now /ship button using that direction.
+```
+
+#### 6. Ask for specific output depth
+
+If a default output is too broad or too narrow:
+
+```
+# Narrow: just the critical issues
+/vibe-check — only report severity 3 and 4 findings
+
+# Wide: maximum depth
+/roast — evaluate every dimension, don't skip any, include
+code fixes for every finding
+
+# Focused: one specific area
+/brain-scan — focus on cognitive load in the form section only
+```
+
+### Chaining commands for complete coverage
+
+Commands are designed to feed into each other. Here are the chains that produce the best results:
+
+#### Full product design (new project)
+```
+/taste [sector]           → establishes visual direction + tokens
+/inspo screen [type]      → finds patterns for your key screens
+/drip                     → expands tokens into a full system
+/screen [type]            → builds screens consuming those tokens
+/ship [component]         → builds components within those screens
+/vibe-check               → audits the result against heuristics
+/include                  → audits accessibility specifically
+/roast                    → critiques the overall design quality
+/remix                    → applies critique findings as a redesign
+```
+
+#### Design review (existing product)
+```
+/vibe-check               → broad heuristic sweep (start here)
+/brain-scan               → cognitive load + Laws of UX
+/include                  → accessibility compliance
+/responsive               → cross-device breakpoint audit
+/copy-check               → microcopy and content quality
+/dark-scan                → ethical pattern check
+/judge                    → comprehensive score across all 21 domains
+```
+
+#### Component quality gate (before shipping)
+```
+/ship [component]         → generate the component
+/include                  → audit accessibility
+/roast                    → design critique
+/remix                    → apply fixes
+/responsive               → verify cross-device behavior
+```
+
+#### Competitive positioning
+```
+/benchmark [category]     → score vs. top 5 competitors
+/taste [sector]           → get the style direction leaders use
+/inspo screen [type]      → see what best-in-class does differently
+/pulse                    → set up metrics to track improvement
+```
+
+### Common mistakes to avoid
+
+| Mistake | Why it hurts | Do this instead |
+|---------|-------------|-----------------|
+| Running `/ship button` with no context | Sumi builds a generic button with no sector personality, audience calibration, or design system alignment | Add sector, audience, platform, and any token constraints |
+| Auditing a description instead of code | Findings stay high-level and can't point to specific lines or ARIA issues | Paste real code or point to a file path |
+| Skipping `/taste` before `/ship` or `/screen` | Components won't have a coherent style direction — colors, type, and spacing will be generic defaults | Run `/taste` first, then reference its output in build commands |
+| Running one audit and stopping | Each audit command checks different dimensions — `/vibe-check` misses what `/brain-scan` catches, `/include` misses what `/dark-scan` catches | Run at least `/vibe-check` + `/include` + `/brain-scan` for minimum coverage |
+| Not specifying the platform | Defaults to React — if you need SwiftUI or CSS you'll get the wrong output | Always state: React, SwiftUI, or CSS |
+| Ignoring "Next Steps" in command output | Every command suggests the logical next command — ignoring it breaks the workflow chain | Follow the suggested next command or use `/guide` to see the full phase map |
+
+### Skill activation — how to trigger the right knowledge
+
+Skills (the 21 knowledge domains) activate automatically when you ask about relevant topics. You don't invoke them directly. But you can steer which skills activate by how you phrase your question:
+
+```
+# Activates: cognitive-psychology-ux
+"What does Fitts's Law say about the size of this CTA?"
+
+# Activates: cognitive-psychology-ux + accessibility-inclusive-design
+"Is this button big enough for users with motor impairments,
+and does it follow Fitts's Law?"
+
+# Activates: mobile-ux-design + interaction-motion-design
+"How should this bottom sheet animate on iOS 26 with Liquid Glass?"
+
+# Activates: agentic-ai-generative-ux + ux-ethics-content-strategy
+"How do I design a trust-calibrated UI for an AI agent
+that makes purchases on behalf of the user?"
+
+# Activates: sector-style-intelligence + ui-visual-design-system
+"What color palette do leading neobanks use and why?"
+
+# Activates: design-critique-case-studies
+"What went wrong with the Sonos 2024 app redesign?"
+```
+
+The more specific your question, the more precisely Sumi selects which of its 370K+ words to draw from.
+
+<br />
+
+## Real-world workflows
+
+End-to-end scenarios showing exactly what to type for common projects.
+
+<details>
+<summary><strong>Workflow 1: "I'm building a fintech app from scratch"</strong></summary>
+
+```
+# Step 1 — Get your visual direction
+/taste fintech, neobank, premium, mobile-first, Gen Z audience
+
+# Step 2 — Find patterns for your key screens
+/inspo screen dashboard
+/inspo screen transaction-history
+/inspo flow onboarding
+
+# Step 3 — See how you compare before you build
+/benchmark [your app name] vs neobanks
+
+# Step 4 — Generate your design token system
+/drip — use the /taste direction above, W3C format, include dark mode
+
+# Step 5 — Build your screens
+/screen dashboard for a neobank, consuming the tokens from /drip above
+/screen settings for a neobank, include account, security, notifications
+
+# Step 6 — Build key components
+/ship transaction-card — React, shows amount, merchant, category, timestamp
+/ship balance-widget — shows total, trend graph, and quick-send CTA
+
+# Step 7 — Build onboarding
+/onboard — neobank, 4-step flow: welcome → KYC → fund account → first transaction
+
+# Step 8 — Audit everything
+/vibe-check — audit the dashboard screen
+/include — WCAG 2.2 AA audit on all components
+/brain-scan — check cognitive load on the onboarding flow
+/dark-scan — verify no deceptive patterns in the sign-up flow
+
+# Step 9 — Critique and refine
+/roast — full critique of the dashboard
+/remix — apply the must-fix findings
+
+# Step 10 — Final score
+/judge — score the complete design across all 21 domains
+```
+
+</details>
+
+<details>
+<summary><strong>Workflow 2: "I need to audit an existing React codebase"</strong></summary>
+
+```
+# Point Sumi at your actual code files
+Run /vibe-check on src/pages/Dashboard.tsx
+
+# Then layer additional audits on the same file
+Run /include on src/pages/Dashboard.tsx
+Run /brain-scan on src/pages/Dashboard.tsx
+Run /responsive on src/pages/Dashboard.tsx
+
+# Audit the user flow across multiple screens
+/flow — evaluate the checkout flow across
+  src/pages/Cart.tsx → src/pages/Shipping.tsx →
+  src/pages/Payment.tsx → src/pages/Confirmation.tsx
+
+# Check content and ethics
+/copy-check on all user-facing strings in the checkout flow
+/dark-scan on the pricing page and checkout flow
+
+# Get the full picture
+/judge — score the complete application
+```
+
+</details>
+
+<details>
+<summary><strong>Workflow 3: "I'm redesigning a settings screen"</strong></summary>
+
+```
+# Start by auditing what exists
+Paste the current settings screen code here.
+/roast
+
+# Get inspiration for what great settings screens look like
+/inspo screen settings
+
+# Redesign based on the roast findings
+/remix — the current settings screen, applying the must-fix items
+
+# Verify the redesign
+/include — audit the new version
+/responsive — check all breakpoints
+/copy-check — verify label clarity and tone
+```
+
+</details>
+
+<details>
+<summary><strong>Workflow 4: "I need to generate a design system from scratch"</strong></summary>
+
+```
+# Step 1 — Establish style direction
+/taste saas, project-management, balanced mood, responsive
+
+# Step 2 — Generate the full token system
+/drip — W3C format, include: color (primitive + semantic + component layers),
+typography (scale + weights + line-heights), spacing (4px base),
+border-radius, elevation, motion/duration, breakpoints.
+Include light + dark themes.
+
+# Step 3 — Build the core component library
+/ship button — all variants (primary, secondary, ghost, destructive, icon-only)
+/ship input — text, email, password, search, textarea, with validation states
+/ship card — content card, stat card, action card variants
+/ship modal — dialog, confirmation, form modal variants
+/ship navigation — sidebar + top nav + mobile bottom nav
+/ship toast — success, error, warning, info with auto-dismiss
+
+# Step 4 — Build screens using those components
+/screen dashboard — consuming the token system and components above
+/screen settings — account, preferences, integrations
+/screen empty-state — first-use, no-results, error variations
+
+# Step 5 — Validate the system
+/judge — score the complete design system
+/include — verify WCAG 2.2 AA across all components
+```
+
+</details>
+
+<details>
+<summary><strong>Workflow 5: "I need to prepare for a design review meeting"</strong></summary>
+
+```
+# Run the full audit battery — paste your screen code first
+/vibe-check — Nielsen's 10 heuristics, get severity ratings
+/brain-scan — cognitive load and Laws of UX violations
+/include — accessibility compliance report
+/flow — user journey efficiency and drop-off risks
+
+# Get a comprehensive score
+/judge — all 21 domains scored, creates a priority roadmap
+
+# Get competitive context
+/benchmark [your app] vs [category] — see where you stand vs. the best
+
+# The /judge output gives you:
+# - Scores across every dimension
+# - A prioritized improvement roadmap (quick wins → medium → strategic)
+# - Evidence-backed reasoning you can present to stakeholders
+```
+
+</details>
+
+<br />
+
+## Pro tips
+
+<details>
+<summary><strong>Stack multiple audits in one session</strong></summary>
+
+Run audit commands back-to-back in the same conversation. Sumi retains context from earlier commands, so `/brain-scan` after `/vibe-check` builds on findings rather than repeating them.
+
+```
+/vibe-check      → finds heuristic violations
+/brain-scan      → adds cognitive load analysis on top
+/include         → adds accessibility on top of both
+```
+
+Each subsequent audit goes deeper because it already knows what the previous one found.
+
+</details>
+
+<details>
+<summary><strong>Use /remix to apply audit findings automatically</strong></summary>
+
+After any audit command, run `/remix` immediately. It reads the findings from the audit and generates a redesigned version with before/after reasoning for every change.
+
+```
+/roast           → identifies 8 findings across 10 dimensions
+/remix           → takes those 8 findings and outputs fixed code
+```
+
+No need to manually translate findings into fixes.
+
+</details>
+
+<details>
+<summary><strong>Target specific platforms precisely</strong></summary>
+
+Sumi knows the latest platform conventions (iOS 26 Liquid Glass, Material 3 Expressive). Be explicit:
+
+```
+# iOS-native
+/ship tab-bar — SwiftUI, iOS 26 Liquid Glass style, SF Symbols
+
+# Android-native
+/ship bottom-sheet — Jetpack Compose, Material 3 Expressive, spring motion
+
+# Web with modern CSS
+/ship dialog — vanilla HTML/CSS, uses popover API, anchor positioning,
+   container queries, no JavaScript framework
+```
+
+</details>
+
+<details>
+<summary><strong>Audit screenshots when you don't have code</strong></summary>
+
+Paste a screenshot directly into the chat. Claude's vision capabilities let Sumi analyze the actual rendered UI:
+
+```
+[paste screenshot]
+/roast this screen — it's a mobile banking app dashboard,
+target audience is 25-40 professionals
+```
+
+Screenshot audits catch visual hierarchy issues, spacing inconsistencies, color contrast problems, and layout issues that code-only audits can miss.
+
+</details>
+
+<details>
+<summary><strong>Ask follow-up questions after any command</strong></summary>
+
+Every Sumi command output is a starting point, not an endpoint. Ask follow-ups:
+
+```
+/taste fintech
+
+→ "Why did you choose Inter over SF Pro for this?"
+→ "Show me the dark mode token mapping in full"
+→ "What would change if the audience were Gen Z instead?"
+→ "Generate just the motion tokens as a separate file"
+```
+
+Sumi's skill knowledge stays active in the conversation, so follow-ups get the same research depth as the initial command.
+
+</details>
+
+<details>
+<summary><strong>Use /guide to reset when you're lost</strong></summary>
+
+At any point in a session, run `/guide` to see which phase you're in, what you've done, and what comes next. It maps all 20 other commands into four phases so you never lose your place.
+
+```
+/guide           → "You're in Phase 3: BUILD. You've run /drip and /screen.
+                    Next recommended: /ship to build your core components."
+```
+
+</details>
+
+<br />
+
 ## 21 Skills
 
 Skills activate on topic. No manual invocation.
@@ -352,7 +860,7 @@ Skills activate on topic. No manual invocation.
 <th>v3.0</th>
 <th>v4.0</th>
 </tr>
-<tr><td>10 commands</td><td><strong>20 commands</strong></td></tr>
+<tr><td>10 commands</td><td><strong>21 commands</strong></td></tr>
 <tr><td>19 skills</td><td><strong>21 skills</strong></td></tr>
 <tr><td>55 references</td><td><strong>65 reference docs</strong></td></tr>
 <tr><td>310K words</td><td><strong>370K+ words</strong></td></tr>
@@ -390,9 +898,10 @@ If you're upgrading from v3.0, here's what changed:
 ## Architecture
 
 ```
-sumi/                                       370K+ words · 106 markdown files
+sumi/                                       370K+ words · 107 markdown files
 │
-├── commands/                               20 slash commands
+├── commands/                               21 slash commands
+│   ├── Guide:    guide
 │   ├── Audit:    vibe-check, roast, brain-scan, include, trust-scan,
 │   │             flow, dark-scan, copy-check, responsive
 │   ├── Build:    ship, screen, drip, extract, onboard, remix
