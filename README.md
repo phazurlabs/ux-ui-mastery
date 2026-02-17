@@ -125,7 +125,7 @@ Best-practice patterns, 5 reference implementations, key principles, common mist
 
 ```
 /plugin marketplace add phazurlabs/taste-ux-ui
-/plugin install ux-ui-mastery@ux-ui-mastery-marketplace
+/plugin install sumi@sumi-marketplace
 ```
 
 That's it. Works in every session.
@@ -141,7 +141,7 @@ Then add to `~/.claude/settings.json`:
 ```json
 {
   "enabledPlugins": {
-    "ux-ui-mastery": true
+    "sumi": true
   }
 }
 ```
@@ -156,7 +156,7 @@ Restart Claude Code and try any command:
 /inspo screen dashboard
 ```
 
-Commands appear as `/ux-ui-mastery:command-name` (e.g., `/ux-ui-mastery:taste`).
+Commands appear as `/sumi:command-name` (e.g., `/sumi:taste`).
 
 Skills activate automatically — just ask about any UX topic:
 ```
@@ -173,7 +173,7 @@ Skills activate automatically — just ask about any UX topic:
 | Commands not showing up | Restart Claude Code after installation |
 | `/plugin` command not recognized | Update Claude Code to the latest version |
 | Skills not activating on topics | Verify `plugin.json` exists at `.claude-plugin/plugin.json` |
-| Want to uninstall | `/plugin uninstall ux-ui-mastery` or remove from `settings.json` |
+| Want to uninstall | `/plugin uninstall sumi` or remove from `settings.json` |
 
 **Requirements:** Claude Code CLI (latest). No external dependencies — pure markdown, zero config, works offline.
 
