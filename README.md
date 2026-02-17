@@ -1,7 +1,7 @@
 <p align="center">
   <img src="assets/sumi.svg" alt="Sumi" width="120" />
 </p>
-<h1 align="center">taste.</h1>
+<h1 align="center">Sumi.</h1>
 <p align="center">
   <strong>UX/UI intelligence for Claude Code.</strong><br />
   Meet <strong>Sumi</strong> — your AI design companion with a decade of senior UX experience.
