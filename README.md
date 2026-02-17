@@ -14,7 +14,7 @@
   <a href="#whats-new-in-v40"><strong>What's New</strong></a>
 </p>
 <p align="center">
-  <code>20 commands</code> · <code>21 skills</code> · <code>65 reference docs</code> · <code>370K+ words</code>
+  <code>21 commands</code> · <code>21 skills</code> · <code>65 reference docs</code> · <code>370K+ words</code>
 </p>
 
 ---
@@ -181,7 +181,15 @@ Skills activate automatically — just ask about any UX topic:
 
 <br />
 
-## The 20 Commands
+## The 21 Commands
+
+### Guide — know where you are
+
+| Command | One-liner | What you get |
+|---------|-----------|-------------|
+| `/guide` | Phase-based companion | 4-phase design process (Discover → Audit → Build → Refine), phase checklist, next command recommendation |
+
+Start here if you're new. `/guide` maps all 20 other commands into four phases so you always know what to do next.
 
 ### Audit — find what's wrong
 
@@ -222,35 +230,26 @@ Skills activate automatically — just ask about any UX topic:
 
 ## Which command do I use?
 
+**New here? Start with `/guide`** — it walks you through the four design phases and recommends commands in order.
+
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                                                                     │
-│  "I'm starting a new project"                                       │
-│   /taste  →  /inspo  →  /screen  →  /ship                          │
+│  "I don't know where to start"                                      │
+│   /guide                                                            │
 │                                                                     │
-│  "I need to check my work"                                          │
-│   /vibe-check  →  /include  →  /brain-scan                         │
+│  Phase 1 DISCOVER — understand the space                            │
+│   /taste  →  /inspo  →  /benchmark  →  /pulse                      │
 │                                                                     │
-│  "I want to improve what I have"                                    │
-│   /roast  →  /remix                                                 │
+│  Phase 2 AUDIT — find what's broken                                 │
+│   /vibe-check  →  /brain-scan  →  /include  →  /flow               │
+│   /dark-scan  →  /trust-scan  →  /copy-check  →  /responsive       │
 │                                                                     │
-│  "I need to build a specific thing"                                 │
-│   /ship [component]  or  /screen [type]                             │
+│  Phase 3 BUILD — make the thing                                     │
+│   /drip  →  /screen  →  /ship  →  /onboard  →  /extract            │
 │                                                                     │
-│  "I need design direction"                                          │
-│   /taste [sector]  →  /inspo [screen/element/flow]                  │
-│                                                                     │
-│  "Is this ethical?"                                                  │
-│   /dark-scan  →  /copy-check                                        │
-│                                                                     │
-│  "How do I compare to the best?"                                    │
-│   /benchmark [category]                                             │
-│                                                                     │
-│  "I need to build onboarding"                                       │
-│   /onboard  →  /flow  →  /copy-check                               │
-│                                                                     │
-│  "I want metrics"                                                   │
-│   /pulse                                                            │
+│  Phase 4 REFINE — make it better                                    │
+│   /roast  →  /remix  →  /judge  →  loop back to BUILD              │
 │                                                                     │
 │  Every command suggests the logical next command in its output.     │
 │                                                                     │
