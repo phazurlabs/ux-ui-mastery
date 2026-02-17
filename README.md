@@ -1,17 +1,18 @@
 <p align="center">
-  <h1 align="center">taste.</h1>
-  <p align="center">
-    <strong>UX/UI intelligence for Claude Code.</strong>
-    <br />
-    Your AI coding assistant just got a decade of senior design experience.
-  </p>
-  <p align="center">
-    <a href="#install"><strong>Install</strong></a> · <a href="#the-20-commands"><strong>Commands</strong></a> · <a href="#which-command-do-i-use"><strong>Workflows</strong></a> · <a href="#21-skills"><strong>Skills</strong></a> · <a href="#whats-new-in-v40"><strong>What's New</strong></a>
-  </p>
+  <img src="assets/sumi.svg" alt="Sumi" width="120" />
 </p>
-
-<br />
-
+<h1 align="center">taste.</h1>
+<p align="center">
+  <strong>UX/UI intelligence for Claude Code.</strong><br />
+  Meet <strong>Sumi</strong> — your AI design companion with a decade of senior UX experience.
+</p>
+<p align="center">
+  <a href="#install"><strong>Install</strong></a> ·
+  <a href="#the-20-commands"><strong>Commands</strong></a> ·
+  <a href="#which-command-do-i-use"><strong>Workflows</strong></a> ·
+  <a href="#21-skills"><strong>Skills</strong></a> ·
+  <a href="#whats-new-in-v40"><strong>What's New</strong></a>
+</p>
 <p align="center">
   <code>20 commands</code> · <code>21 skills</code> · <code>65+ references</code> · <code>375K+ words</code>
 </p>
@@ -444,6 +445,18 @@ Built on the shoulders of giants:
 | **Liz Lerman** | Critical Response Process for design critique |
 
 > *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
+
+<br />
+
+## Meet Sumi
+
+<img src="assets/sumi.svg" alt="Sumi" width="80" align="left" style="margin-right: 16px;" />
+
+**Sumi** (from *sumi-e*, Japanese ink painting) is your design companion. Part KAWS art toy, part Space Invader, part AI — Sumi has one eye for critique (the X) and one eye for precision (the crosshair).
+
+Every command you run, Sumi draws from 375K+ words of design science — cognitive psychology, production code patterns, and real-world case studies — to make sure your pixels are right. No opinions. Only evidence.
+
+<br clear="left" />
 
 <br />
 

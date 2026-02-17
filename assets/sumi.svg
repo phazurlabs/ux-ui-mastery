@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" width="200" height="260">
+  <!-- Sumi: KAWS x Space Invader x Claude mascot -->
+  <!-- Color tokens -->
+  <defs>
+    <style>
+      .body { fill: #E8715A; }
+      .shadow { fill: #D4604D; }
+      .dark { fill: #1A1A2E; }
+      .highlight { fill: #F5C6B8; }
+      .glow { fill: #FF8C73; }
+    </style>
+  </defs>
+
+  <!-- === PIXEL CROWN (Space Invader antenna array) === -->
+  <!-- 5-tier pixel formation: center 3 tall, flanks 2 tall, outer 1 tall -->
+  <!-- Each pixel block = 14x14, 2px gap -->
+  <!-- Center column (3 blocks) -->
+  <rect class="glow" x="93" y="0" width="14" height="14" rx="1"/>
+  <rect class="dark" x="93" y="16" width="14" height="14" rx="1"/>
+  <rect class="dark" x="93" y="32" width="14" height="14" rx="1"/>
+  <!-- Inner-left column (2 blocks) -->
+  <rect class="dark" x="77" y="16" width="14" height="14" rx="1"/>
+  <rect class="dark" x="77" y="32" width="14" height="14" rx="1"/>
+  <!-- Inner-right column (2 blocks) -->
+  <rect class="dark" x="109" y="16" width="14" height="14" rx="1"/>
+  <rect class="dark" x="109" y="32" width="14" height="14" rx="1"/>
+  <!-- Outer-left column (1 block) -->
+  <rect class="dark" x="61" y="32" width="14" height="14" rx="1"/>
+  <!-- Outer-right column (1 block) -->
+  <rect class="dark" x="125" y="32" width="14" height="14" rx="1"/>
+
+  <!-- === HEAD === -->
+  <!-- Main head shape -->
+  <rect class="body" x="20" y="48" width="160" height="120" rx="32"/>
+  <!-- Head shadow (right/bottom edge) -->
+  <path class="shadow" d="M148,48 h0 a32,32 0 0 1 32,32 v56 a32,32 0 0 1 -32,32 h-40 a100,100 0 0 0 40,-120Z" opacity="0.35"/>
+
+  <!-- === LEFT EYE — KAWS X === -->
+  <g transform="translate(68, 95)">
+    <line x1="-14" y1="-14" x2="14" y2="14" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/>
+    <line x1="14" y1="-14" x2="-14" y2="14" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- === RIGHT EYE — Crosshair reticle === -->
+  <g transform="translate(132, 95)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#1A1A2E" stroke-width="2.5"/>
+    <line x1="-17" y1="0" x2="17" y2="0" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="-17" x2="0" y2="17" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="3" class="dark"/>
+  </g>
+
+  <!-- === CHEEK HIGHLIGHTS === -->
+  <ellipse class="highlight" cx="55" cy="125" rx="12" ry="8" opacity="0.6"/>
+  <ellipse class="highlight" cx="145" cy="125" rx="12" ry="8" opacity="0.6"/>
+
+  <!-- === MOUTH === -->
+  <path d="M88,140 Q100,148 112,140" fill="none" stroke="#1A1A2E" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- === BODY === -->
+  <rect class="body" x="50" y="170" width="100" height="55" rx="18"/>
+  <!-- Body shadow -->
+  <path class="shadow" d="M125,170 h7 a18,18 0 0 1 18,18 v19 a18,18 0 0 1 -18,18 h-7 a60,60 0 0 0 0,-55Z" opacity="0.3"/>
+  <!-- Design grid reference (subtle lines on body) -->
+  <g stroke="#D4604D" stroke-width="0.8" opacity="0.3">
+    <!-- Horizontal grid lines -->
+    <line x1="68" y1="185" x2="132" y2="185"/>
+    <line x1="68" y1="197" x2="132" y2="197"/>
+    <line x1="68" y1="209" x2="132" y2="209"/>
+    <!-- Vertical grid lines -->
+    <line x1="84" y1="178" x2="84" y2="217"/>
+    <line x1="100" y1="178" x2="100" y2="217"/>
+    <line x1="116" y1="178" x2="116" y2="217"/>
+  </g>
+
+  <!-- === ARMS === -->
+  <!-- Left arm -->
+  <rect class="body" x="28" y="176" width="20" height="40" rx="10" transform="rotate(-8, 38, 176)"/>
+  <rect class="shadow" x="28" y="204" width="20" height="12" rx="6" transform="rotate(-8, 38, 176)" opacity="0.4"/>
+  <!-- Right arm -->
+  <rect class="body" x="152" y="176" width="20" height="40" rx="10" transform="rotate(8, 162, 176)"/>
+  <rect class="shadow" x="152" y="204" width="20" height="12" rx="6" transform="rotate(8, 162, 176)" opacity="0.4"/>
+
+  <!-- === LEGS === -->
+  <rect class="body" x="66" y="225" width="26" height="32" rx="12"/>
+  <rect class="body" x="108" y="225" width="26" height="32" rx="12"/>
+  <!-- Leg shadows -->
+  <rect class="shadow" x="66" y="245" width="26" height="12" rx="8" opacity="0.3"/>
+  <rect class="shadow" x="108" y="245" width="26" height="12" rx="8" opacity="0.3"/>
+</svg>
