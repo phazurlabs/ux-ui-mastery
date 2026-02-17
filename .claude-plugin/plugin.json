@@ -1,7 +1,7 @@
 {
   "name": "sumi",
-  "description": "UX/UI design mastery plugin — 21 knowledge skills, 21 commands. Commands: /guide (phase-based design companion), /taste (sector style direction), /vibe-check (UX audit), /ship (component builder), /roast (design critique), /screen (screen builder), /inspo (inspiration), /benchmark (competitive analysis), /brain-scan (cognitive audit), /include (accessibility), /trust-scan (AI UX audit), /drip (design tokens), /extract (Figma to code), /pulse (UX metrics), /judge (design review), /flow (user flow audit), /dark-scan (dark pattern detection), /copy-check (content audit), /responsive (responsive audit), /onboard (onboarding flow), /remix (component remix). Covers NNG heuristics, cognitive psychology, production code (React/SwiftUI/CSS), Figma MCP, accessibility (WCAG 2.2+3.0), mobile/desktop/web, motion, AI/spatial/voice UX, design systems, and 20+ industry verticals.",
-  "version": "4.0.0",
+  "description": "UX/UI design mastery plugin — 21 knowledge skills, 21 commands with design rationale. BUILD commands (/ship, /screen, /drip, /onboard) now gather context, apply UX principles with citations, and output design decision rationale. AUDIT commands (/vibe-check) ground findings in cognitive science and check mental models. Phase 1 outputs feed Phase 3 builds. Commands: /guide, /taste, /vibe-check, /ship, /roast, /screen, /inspo, /benchmark, /brain-scan, /include, /trust-scan, /drip, /extract, /pulse, /judge, /flow, /dark-scan, /copy-check, /responsive, /onboard, /remix. Covers NNG heuristics, cognitive psychology, production code (React/SwiftUI/CSS), Figma MCP, accessibility (WCAG 2.2+3.0), mobile/desktop/web, motion, AI/spatial/voice UX, design systems, and 20+ industry verticals.",
+  "version": "4.1.0",
   "author": {
     "name": "phazurlabs"
   }

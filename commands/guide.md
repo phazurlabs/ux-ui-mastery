@@ -68,17 +68,28 @@ The design process moves through four phases. Each phase has a clear goal, a set
 
 ### Phase 3: BUILD — Make the thing
 
-**Goal**: Generate production-ready screens, components, design tokens, and flows. Every output is copy-paste ready with states, accessibility, and responsive behavior built in.
+**Goal**: Generate production-ready screens, components, design tokens, and flows. Every output is copy-paste ready with states, accessibility, and responsive behavior built in. In v4.1, every BUILD command also explains **why** each design decision was made, citing specific UX principles.
 
 **When to use**: You know what to build. Style direction exists. Issues are cataloged. Time to ship.
 
-| Order | Command | What it produces | Output format |
-|-------|---------|-----------------|---------------|
-| 1 | `/drip` | Full W3C design token system — color, type, spacing, elevation, themes | JSON (W3C Design Tokens) |
-| 2 | `/screen` | Complete screen with all states, ARIA, responsive breakpoints | React/SwiftUI/CSS |
-| 3 | `/ship` | Production component with 10 states, keyboard handling, test skeleton | React/SwiftUI/CSS |
-| 4 | `/onboard` | Onboarding flow with progressive disclosure, activation metrics | React/TypeScript |
-| 5 | `/extract` | Figma design → production code pipeline | React/SwiftUI/CSS |
+**Prerequisites**: BUILD commands produce better output when Phase 1 context exists. If no Phase 1 outputs are available, commands use sensible defaults — but running `/taste` first gives you sector-tuned results.
+
+#### Phase 1 → Phase 3 Bridge
+
+| Phase 1 Output | Feeds Into | What It Provides | Default If Missing |
+|----------------|-----------|------------------|-------------------|
+| `/taste` | `/drip`, `/ship`, `/screen`, `/onboard` | Sector palette, type scale, spacing, motion personality, tone | Neutral/minimal style |
+| `/inspo` | `/screen`, `/ship` | Reference patterns, best-practice implementations | Generic best practices |
+| `/benchmark` | `/screen`, `/ship` | Competitive gaps to address, differentiators | No competitive context |
+| `/pulse` | `/onboard` | HEART metrics, activation targets, measurement plan | Industry-standard targets |
+
+| Order | Command | What it produces | Consumes from Phase 1 | Output format |
+|-------|---------|-----------------|----------------------|---------------|
+| 1 | `/drip` | Full W3C design token system — color, type, spacing, elevation, themes | `/taste` | JSON (W3C Design Tokens) |
+| 2 | `/screen` | Complete screen with all states, ARIA, responsive breakpoints | `/taste`, `/inspo`, `/benchmark` | React/SwiftUI/CSS |
+| 3 | `/ship` | Production component with 10 states, keyboard handling, test skeleton | `/taste`, `/inspo`, `/benchmark` | React/SwiftUI/CSS |
+| 4 | `/onboard` | Onboarding flow with progressive disclosure, activation metrics | `/taste`, `/pulse` | React/TypeScript |
+| 5 | `/extract` | Figma design → production code pipeline | `/taste` | React/SwiftUI/CSS |
 
 **Exit criteria — move to Phase 4 when you have**:
 - A token system consumed by your components (from `/drip`)
@@ -120,6 +131,8 @@ The design process moves through four phases. Each phase has a clear goal, a set
    - **Not sure** → Start with Phase 1
 
    If the user provides context (e.g., "I'm building a fintech app" or "review this component"), infer the phase from context rather than asking.
+
+   **Phase 3 readiness check**: When the user enters Phase 3, check if any Phase 1 outputs exist (e.g., prior `/taste` or `/inspo` run). If none exist, recommend running `/taste` first — it takes ~5 minutes and significantly improves BUILD output quality. If the user wants to proceed without Phase 1, BUILD commands default to neutral/minimal style.
 
 2. **Show the phase map**: Display all four phases with the user's current position highlighted.
 
@@ -185,6 +198,9 @@ The guide draws on the full Sumi skill and command system:
 - `ux-research-methods` skill grounds the phase structure in established design process methodology (Double Diamond, Design Thinking)
 - `nng-ux-heuristics` skill provides the evaluation framework used in Phase 2
 - `design-systems-architecture` skill informs the build order in Phase 3 (tokens before components)
+- `sector-style-intelligence` skill provides sector context consumed by Phase 3 BUILD commands via the Phase 1→3 bridge
+
+> **v4.1**: BUILD commands (`/ship`, `/screen`, `/drip`, `/onboard`) now gather context, apply UX principles with citations, and output design decision rationale. AUDIT commands (`/vibe-check`) now ground findings in cognitive science and check mental models. Phase 1 outputs are consumed by Phase 3 commands for sector-tuned results.
 
 ## Next Steps
 After running `/guide`, the user should:

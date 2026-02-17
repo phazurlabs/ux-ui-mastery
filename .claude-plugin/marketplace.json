@@ -7,8 +7,8 @@
     {
       "name": "sumi",
       "source": "./",
-      "description": "UX/UI design mastery plugin — 21 knowledge skills, 21 commands. /guide (phase-based design companion), /taste (sector style), /vibe-check (UX audit), /ship (component builder), /roast (design critique), /screen (screen builder), /inspo (inspiration), /benchmark (competitive analysis), and 13 more. NNG heuristics, cognitive psychology, production code (React/SwiftUI/CSS), Figma MCP, WCAG 2.2+3.0, mobile/desktop/web, AI/spatial/voice UX.",
-      "version": "4.0.0",
+      "description": "UX/UI design mastery plugin — 21 knowledge skills, 21 commands with design rationale. BUILD commands now cite UX principles for every decision. AUDIT commands ground findings in cognitive science. Phase 1→3 bridge connects /taste outputs to /ship, /screen, /drip builds. NNG heuristics, cognitive psychology, production code (React/SwiftUI/CSS), Figma MCP, WCAG 2.2+3.0, mobile/desktop/web, AI/spatial/voice UX.",
+      "version": "4.1.0",
       "author": {
         "name": "phazurlabs"
       }
