@@ -4,19 +4,25 @@
 <h1 align="center">Sumi.</h1>
 <p align="center">
   <strong>UX/UI intelligence for Claude Code.</strong><br />
-  Meet <strong>Sumi</strong> — your AI design companion with a decade of senior UX experience.
+  The design brain that turns vibe coders into product designers.
 </p>
 <p align="center">
   <a href="#install"><strong>Install</strong></a> ·
-  <a href="#the-21-commands"><strong>Commands</strong></a> ·
+  <a href="#the-23-commands"><strong>Commands</strong></a> ·
   <a href="#which-command-do-i-use"><strong>Workflows</strong></a> ·
   <a href="#getting-best-results"><strong>Best Results</strong></a> ·
-  <a href="#21-skills"><strong>Skills</strong></a> ·
-  <a href="#whats-new-in-v40"><strong>What's New</strong></a>
+  <a href="#22-skills"><strong>Skills</strong></a> ·
+  <a href="#whats-new-in-v43"><strong>What's New</strong></a>
 </p>
 <p align="center">
-  <code>21 commands</code> · <code>21 skills</code> · <code>65 reference docs</code> · <code>370K+ words</code>
+  <code>23 commands</code> · <code>22 skills</code> · <code>67 reference docs</code> · <code>480K+ words</code>
 </p>
+
+---
+
+> **The problem:** You're shipping UI from AI prompts. It looks fine. But "fine" doesn't convert. "Fine" doesn't retain. "Fine" is what happens when you skip Empathize, Define, and Test — the phases that separate products people love from products people tolerate.
+>
+> **The fix:** Sumi embeds the entire UX design process — from NNG design thinking to cognitive psychology to production code — directly into your terminal. Every command traces to published research. Every output is copy-paste ready. Zero config. Just better products.
 
 ---
 
@@ -56,6 +62,26 @@ Every recommendation traces to published research.
 ## See it in action
 
 <table>
+<tr>
+<td width="50%">
+
+**Ground yourself before you build**
+```
+/ground
+```
+6-phase NNG process map, methodology selection (IDEO, Sprint, Lean UX...), personalized Sumi command roadmap, and terminal exercises. The 60-second version for when you're moving fast.
+
+</td>
+<td width="50%">
+
+**Define your problem, not just your pixels**
+```
+/intent fitness app for busy parents
+```
+Problem statement, lightweight persona, 5 "How Might We" questions, success criteria, and a **Constraint Stack** you paste into every BUILD command to carry intent forward.
+
+</td>
+</tr>
 <tr>
 <td width="50%">
 
@@ -182,15 +208,24 @@ Skills activate automatically — just ask about any UX topic:
 
 <br />
 
-## The 21 Commands
+## The 23 Commands
 
 ### Guide — know where you are
 
 | Command | One-liner | What you get |
 |---------|-----------|-------------|
-| `/guide` | Phase-based companion | 4-phase design process (Discover → Audit → Build → Refine), phase checklist, next command recommendation |
+| `/guide` | Phase-based companion | 6-phase design process (Ground → Discover → Diagnose → Fortify → Build → Launch), phase checklist, next command recommendation |
 
-Start here if you're new. `/guide` maps all 20 other commands into four phases so you always know what to do next.
+Start here if you're new. `/guide` maps all 22 other commands into six phases so you always know what to do next.
+
+### Ground — know your process
+
+| Command | One-liner | What you get |
+|---------|-----------|-------------|
+| `/ground` | Process orientation | 6-phase NNG process map, methodology selection, personalized Sumi command roadmap |
+| `/intent` | Design intent definition | Problem statement, persona, HMW questions, success criteria, constraint stack |
+
+New to UX or vibe coding? Start here. `/ground` maps the design thinking process to terminal workflows. `/intent` defines your problem before you build.
 
 ### Audit — find what's wrong
 
@@ -224,14 +259,14 @@ Start here if you're new. `/guide` maps all 20 other commands into four phases s
 | `/taste` | Style direction | Color, type, spacing, components, motion, tone, references, tokens — for any sector |
 | `/inspo` | Inspiration finder | Screen, element, or flow patterns with best-in-class references and source links |
 | `/pulse` | Metrics plan | HEART framework mapping, dashboards, experimentation framework, 90-day roadmap |
-| `/judge` | Full review | All 21 skill domains scored, priority roadmap (quick wins → medium → strategic) |
+| `/judge` | Full review | All 22 skill domains scored, priority roadmap (quick wins → medium → strategic) |
 | `/benchmark` | Competitive analysis | 10-dimension scorecard vs. top 5 apps, gap analysis, improvement tiers |
 
 <br />
 
 ## Which command do I use?
 
-**New here? Start with `/guide`** — it walks you through the four design phases and recommends commands in order.
+**New here? Start with `/guide`** — it walks you through the six design phases and recommends commands in order.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -239,17 +274,22 @@ Start here if you're new. `/guide` maps all 20 other commands into four phases s
 │  "I don't know where to start"                                      │
 │   /guide                                                            │
 │                                                                     │
+│  Phase 0 GROUND — know your process                                 │
+│   /ground  →  /intent                                               │
+│                                                                     │
 │  Phase 1 DISCOVER — understand the space                            │
 │   /taste  →  /inspo  →  /benchmark  →  /pulse                      │
 │                                                                     │
-│  Phase 2 AUDIT — find what's broken                                 │
+│  Phase 2 DIAGNOSE — find what's broken                              │
 │   /vibe-check  →  /brain-scan  →  /include  →  /flow               │
+│                                                                     │
+│  Phase 3 FORTIFY — secure your standards                            │
 │   /dark-scan  →  /trust-scan  →  /copy-check  →  /responsive       │
 │                                                                     │
-│  Phase 3 BUILD — make the thing                                     │
+│  Phase 4 BUILD — make the thing                                     │
 │   /drip  →  /screen  →  /ship  →  /onboard  →  /extract            │
 │                                                                     │
-│  Phase 4 REFINE — make it better                                    │
+│  Phase 5 LAUNCH — make it better                                    │
 │   /roast  →  /remix  →  /judge  →  loop back to BUILD              │
 │                                                                     │
 │  Every command suggests the logical next command in its output.     │
@@ -267,7 +307,7 @@ Skills cross-reference each other. A component audit pulls from accessibility, c
 
 Commands chain. `/roast` points to `/remix`. `/taste` leads to `/inspo`. No dead ends.
 
-Claude uses progressive disclosure: it loads only the skill files each query needs. The full 370K words sit ready. Only the relevant slice activates.
+Claude uses progressive disclosure: it loads only the skill files each query needs. The full 480K+ words sit ready. Only the relevant slice activates.
 
 <br />
 
@@ -444,6 +484,8 @@ Commands are designed to feed into each other. Here are the chains that produce 
 
 #### Full product design (new project)
 ```
+/ground                   → orient yourself in the UX process
+/intent                   → define your problem + generate a constraint stack
 /taste [sector]           → establishes visual direction + tokens
 /inspo screen [type]      → finds patterns for your key screens
 /drip                     → expands tokens into a full system
@@ -463,7 +505,7 @@ Commands are designed to feed into each other. Here are the chains that produce 
 /responsive               → cross-device breakpoint audit
 /copy-check               → microcopy and content quality
 /dark-scan                → ethical pattern check
-/judge                    → comprehensive score across all 21 domains
+/judge                    → comprehensive score across all 22 domains
 ```
 
 #### Component quality gate (before shipping)
@@ -496,7 +538,7 @@ Commands are designed to feed into each other. Here are the chains that produce 
 
 ### Skill activation — how to trigger the right knowledge
 
-Skills (the 21 knowledge domains) activate automatically when you ask about relevant topics. You don't invoke them directly. But you can steer which skills activate by how you phrase your question:
+Skills (the 22 knowledge domains) activate automatically when you ask about relevant topics. You don't invoke them directly. But you can steer which skills activate by how you phrase your question:
 
 ```
 # Activates: cognitive-psychology-ux
@@ -520,7 +562,7 @@ that makes purchases on behalf of the user?"
 "What went wrong with the Sonos 2024 app redesign?"
 ```
 
-The more specific your question, the more precisely Sumi selects which of its 370K+ words to draw from.
+The more specific your question, the more precisely Sumi selects which of its 480K+ words to draw from.
 
 <br />
 
@@ -532,6 +574,10 @@ End-to-end scenarios showing exactly what to type for common projects.
 <summary><strong>Workflow 1: "I'm building a fintech app from scratch"</strong></summary>
 
 ```
+# Step 0 — Ground yourself (60 seconds)
+/ground
+/intent neobank for Gen Z, mobile-first
+
 # Step 1 — Get your visual direction
 /taste fintech, neobank, premium, mobile-first, Gen Z audience
 
@@ -568,7 +614,7 @@ End-to-end scenarios showing exactly what to type for common projects.
 /remix — apply the must-fix findings
 
 # Step 10 — Final score
-/judge — score the complete design across all 21 domains
+/judge — score the complete design across all 22 domains
 ```
 
 </details>
@@ -666,7 +712,7 @@ Include light + dark themes.
 /flow — user journey efficiency and drop-off risks
 
 # Get a comprehensive score
-/judge — all 21 domains scored, creates a priority roadmap
+/judge — all 22 domains scored, creates a priority roadmap
 
 # Get competitive context
 /benchmark [your app] vs [category] — see where you stand vs. the best
@@ -765,9 +811,23 @@ Sumi's skill knowledge stays active in the conversation, so follow-ups get the s
 </details>
 
 <details>
+<summary><strong>Ground yourself before building</strong></summary>
+
+New to UX or building with AI? Start with Phase 0:
+
+```
+/ground              → understand the 6-phase UX process, pick your methodology
+/intent              → define your problem, persona, and success criteria
+```
+
+`/intent` generates a **Constraint Stack** — a structured block you paste into any BUILD command to carry your design intent forward. This single habit prevents the three risks of vibe coding: pseudo-productivity, homogenization, and skill erosion.
+
+</details>
+
+<details>
 <summary><strong>Use /guide to reset when you're lost</strong></summary>
 
-At any point in a session, run `/guide` to see which phase you're in, what you've done, and what comes next. It maps all 20 other commands into four phases so you never lose your place.
+At any point in a session, run `/guide` to see which phase you're in, what you've done, and what comes next. It maps all 22 other commands into six phases so you never lose your place.
 
 ```
 /guide           → "You're in Phase 3: BUILD. You've run /drip and /screen.
@@ -778,9 +838,18 @@ At any point in a session, run `/guide` to see which phase you're in, what you'v
 
 <br />
 
-## 21 Skills
+## 22 Skills
 
 Skills activate on topic. No manual invocation.
+
+<details>
+<summary><strong>Process</strong> — Know your methodology before you build</summary>
+
+| Skill | Depth |
+|-------|-------|
+| **UX Process Workflow** | NNG 6-phase design thinking (Empathize → Define → Ideate → Prototype → Test → Implement). 8 company methodology deep-dives (IDEO, Double Diamond, Google Sprint, IBM EDT, Lean UX, Spotify, Microsoft Inclusive Design, Vercel/Figma). The vibe coder's bridge: Before/While/After prompting framework, arXiv:2509.10652 findings, anti-patterns, checklists. Academic foundations (ISO 9241-210, Norman's 7 principles, cognitive laws). Powers `/ground` and `/intent`. |
+
+</details>
 
 <details>
 <summary><strong>Foundations</strong> — The science behind every decision</summary>
@@ -853,6 +922,21 @@ Skills activate on topic. No manual invocation.
 
 <br />
 
+## What's new in v4.3
+
+**The vibe coding fix.** Phase 0 is the answer to the biggest gap in AI-assisted development: skipping the thinking that makes products actually work.
+
+| What | Details |
+|------|---------|
+| **Phase 0: GROUND** | New pre-phase with 2 commands (`/ground`, `/intent`) — forces UX process grounding before building. 60-second speed mode for when you're moving fast. |
+| **`/ground` (0.1)** | Process orientation — NNG 6-phase design thinking mapped to terminal workflow. Choose from 8 company methodologies (IDEO, Sprint, Lean UX...). Get a personalized Sumi command roadmap in 60 seconds. |
+| **`/intent` (0.2)** | Problem definition — generates a problem statement, persona, HMW questions, success criteria, and a **Constraint Stack** you paste into every BUILD command. This single habit prevents homogenized AI output. |
+| **`ux-process-workflow` skill** | 109K+ words of new knowledge: NNG design thinking, 8 company methodology deep-dives with real outcomes (Airbnb $100B, IBM 75% time-to-market reduction), the vibe coder's bridge (arXiv:2509.10652), Hall of Real Consequences (Healthcare.gov $1.7B, Snapchat $1.3B loss). |
+| **6 phases, 22 steps** | Journey expanded from 5 phases to 6 phases, 20 steps to 22 steps. Ground → Discover → Diagnose → Fortify → Build → Launch. |
+| **Speed runs everywhere** | Every new command includes 60-second, 2-minute, and 5-minute paths. No excuses — even under deadline pressure, you can ground your work. |
+
+<br />
+
 ## What's new in v4.0
 
 <table>
@@ -898,16 +982,18 @@ If you're upgrading from v3.0, here's what changed:
 ## Architecture
 
 ```
-sumi/                                       370K+ words · 107 markdown files
+sumi/                                       480K+ words · 112 markdown files
 │
-├── commands/                               21 slash commands
+├── commands/                               23 slash commands
 │   ├── Guide:    guide
+│   ├── Ground:   ground, intent
 │   ├── Audit:    vibe-check, roast, brain-scan, include, trust-scan,
 │   │             flow, dark-scan, copy-check, responsive
 │   ├── Build:    ship, screen, drip, extract, onboard, remix
 │   └── Strategy: taste, inspo, pulse, judge, benchmark
 │
-├── skills/                                 21 knowledge domains
+├── skills/                                 22 knowledge domains
+│   ├── Process:      ux-process-workflow
 │   ├── Foundations:  cognitive-psychology-ux, nng-ux-heuristics,
 │   │                 ux-research-methods, ux-metrics-measurement
 │   ├── Code:         component-patterns-code, design-systems-architecture,
@@ -918,9 +1004,9 @@ sumi/                                       370K+ words · 107 markdown files
 │   │                 design-critique-case-studies, ux-ethics-content-strategy
 │   ├── Emerging:     agentic-ai-generative-ux, ai-spatial-voice-ux,
 │   │                 ambient-calm-zero-ui
-│   └── NEW:          sector-style-intelligence, screen-flow-patterns
+│   └── Intelligence: sector-style-intelligence, screen-flow-patterns
 │
-└── .claude-plugin/                         v4.0.0 manifests
+└── .claude-plugin/                         v4.3.0 manifests
     ├── plugin.json
     └── marketplace.json
 ```
@@ -931,7 +1017,7 @@ sumi/                                       370K+ words · 107 markdown files
 
 | What | Count |
 |------|-------|
-| Total words | **373,914** |
+| Total words | **483,000+** |
 | Production code components (React, SwiftUI, CSS) | **40+** |
 | Laws of UX (with mathematical formulas) | **25+** |
 | Cognitive biases (with ethical flags) | **50+** |
@@ -956,7 +1042,9 @@ sumi/                                       370K+ words · 107 markdown files
 
 **Sumi** (from *sumi-e*, Japanese ink painting) is your design companion. Part KAWS art toy, part Space Invader, part AI — Sumi has one eye for critique (the X) and one eye for precision (the crosshair).
 
-Every command you run, Sumi draws from 370K+ words of design science — cognitive psychology, production code patterns, and real-world case studies — to make sure your pixels are right. No opinions. Only evidence.
+Every command you run, Sumi draws from 480K+ words of design science — cognitive psychology, production code patterns, and real-world case studies — to make sure your pixels are right. No opinions. Only evidence.
+
+Whether you're a solo builder shipping from your terminal, a design engineer bridging Figma and code, or a team that wants UX rigor without the agency retainer — Sumi has you covered. From the 60-second process ground to the 22-domain full review, every level of investment pays off.
 
 <br clear="left" />
 
@@ -984,5 +1072,5 @@ MIT
 <p align="center">
   <strong>Built with obsessive attention to detail by <a href="https://github.com/phazurlabs">Design Tribe Republic</a>.</strong>
   <br />
-  <sub>Powered by Claude Opus 4.6 · v4.0.0</sub>
+  <sub>Powered by Claude Opus 4.6 · v4.3.0</sub>
 </p>

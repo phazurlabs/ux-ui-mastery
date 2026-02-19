@@ -1,28 +1,45 @@
 ---
-description: Phase-based design guide — 20 numbered steps across 5 phases guiding the complete UX process from market research to launch certification.
+description: Phase-based design guide — 22 numbered steps across 6 phases guiding the complete UX process from process grounding to launch certification.
 ---
 
-# Guide — 5-Phase Design Journey
+# Guide — 6-Phase Design Journey
 
-Navigate the complete UX design process with confidence. 20 commands across 5 numbered phases — each grounded in NNG methodology and the visual design process. Every phase has a UX goal, a commercial milestone, and a clear exit gate.
+Navigate the complete UX design process with confidence. 22 commands across 6 numbered phases — each grounded in NNG methodology and the visual design process. Every phase has a UX goal, a commercial milestone, and a clear exit gate.
 
 ## Process Foundation
 
-The 5-phase system integrates two established design processes:
+The 6-phase system integrates two established design processes with a process grounding phase:
+
+**NNG Design Thinking**: Empathize → Define → Ideate → Prototype → Test → Implement (mapped to Understand → Explore → Materialize)
 
 **NNG UX Process**: Generative Research → Expert Evaluation → Compliance Review → Design + Implementation → Summative Evaluation
 
 **Visual Design Process**: Direction & Moodboarding → Quality Assessment → Standards Verification → Token Foundation → Composition → Component Library → Polish & Critique
 
 ```
+Phase 0: GROUND    (2 steps)  "Know your process"
 Phase 1: DISCOVER  (4 steps)  "Know your market"
 Phase 2: DIAGNOSE  (4 steps)  "Know your problems"
 Phase 3: FORTIFY   (4 steps)  "Secure your standards"
 Phase 4: BUILD     (5 steps)  "Ship your product"
 Phase 5: LAUNCH    (3 steps)  "Prove it works"
 
-Total: 20 steps across 5 phases
+Total: 22 steps across 6 phases
 ```
+
+---
+
+### Phase 0: GROUND — Process Orientation & Intent Definition
+*NNG: Understand (Empathize + Define) | Pre-phase: Process Before Product*
+
+| Step | Command | UX Purpose | Commercial Purpose |
+|------|---------|-----------|-------------------|
+| 0.1 | `/ground` | Process orientation, methodology selection | Process maturity, team alignment |
+| 0.2 | `/intent` | Problem statement, persona, HMW questions | Requirements clarity, success criteria, scope definition |
+
+**UX milestone**: Problem defined, persona established, success criteria set, constraint stack ready
+**Commercial milestone**: Scope defined, success metrics agreed, anti-goals documented
+**Exit gate**: You can complete the sentence "Users who [X] need [Y] because [Z]" and have measurable success criteria
 
 ---
 
@@ -121,6 +138,7 @@ Total: 20 steps across 5 phases
 
 | Shortcut | When to Use |
 |----------|------------|
+| Skip Phase 0 | Experienced designer with established process and clear problem definition |
 | Skip Phase 1 | Adding to existing product with established direction |
 | Partial Phase 2 | Quick check: just `/vibe-check` (2.1) + `/include` (2.3) |
 | Skip Phase 3 | No regulatory concerns, no AI features, single-market |
@@ -132,12 +150,13 @@ Total: 20 steps across 5 phases
 ## Guide Protocol
 
 1. **Determine where the user is**: Ask or infer which phase they're in.
+   - **No UX experience / vibe coding / new to UX process** → Phase 0: GROUND — start with `/ground` (0.1)
    - **New project, no direction yet** → Phase 1: DISCOVER — start with `/taste` (1.1)
    - **Have a design or product to evaluate** → Phase 2: DIAGNOSE — start with `/vibe-check` (2.1)
    - **Need compliance/ethics clearance** → Phase 3: FORTIFY — start with `/dark-scan` (3.1)
    - **Know what to build, ready to code** → Phase 4: BUILD — start with `/drip` (4.1)
    - **Built something, need to validate** → Phase 5: LAUNCH — start with `/roast` (5.1)
-   - **Not sure** → Start with Phase 1
+   - **Not sure** → Start with Phase 0
 
    If the user provides context (e.g., "I'm building a fintech app" or "review this component"), infer the phase from context rather than asking.
 
@@ -145,7 +164,9 @@ Total: 20 steps across 5 phases
 
    **Phase 5 readiness check**: When the user enters Phase 5 LAUNCH, check that Phase 4 has produced buildable output. If not, recommend starting with `/drip` (4.1) or `/ship` (4.3).
 
-2. **Show the phase map**: Display the 5-phase journey with the user's current position marked.
+   **Phase 0 readiness check**: When the user has no defined problem statement or persona, recommend starting with `/ground` (0.1) or `/intent` (0.2). Phase 0 takes ~10 minutes and prevents hours of building the wrong thing.
+
+2. **Show the phase map**: Display the 6-phase journey with the user's current position marked.
 
 3. **Recommend the next command**: Based on the phase, suggest the specific next step with a one-line explanation.
 
@@ -162,7 +183,13 @@ Total: 20 steps across 5 phases
 > **Phase [N]: [NAME]** — [description]
 > Step [X.Y]: `/[command]`
 
-### The 20-Step Journey
+### The 22-Step Journey
+
+#### Phase 0: GROUND — Process & Intent (2 steps)
+*NNG: Understand (Empathize + Define) | Pre-phase: Process Before Product*
+Commercial milestone: Scope defined, success metrics agreed
+- [ ] 0.1 `/ground` — Process orientation
+- [ ] 0.2 `/intent` — Problem + persona + constraints
 
 #### Phase 1: DISCOVER — Market Intelligence (4 steps)
 *NNG: Generative Research | Visual: Direction & Moodboarding*
@@ -221,6 +248,7 @@ Commercial milestone: Launch readiness certified
 ### Quick Reference
 | Phase | Steps | Commands | Time |
 |-------|-------|----------|------|
+| 0 GROUND | 0.1–0.2 | /ground → /intent | ~10 min |
 | 1 DISCOVER | 1.1–1.4 | /taste → /inspo → /benchmark → /pulse | ~30 min |
 | 2 DIAGNOSE | 2.1–2.4 | /vibe-check → /brain-scan → /include → /flow | ~45 min |
 | 3 FORTIFY | 3.1–3.4 | /dark-scan → /trust-scan → /copy-check → /responsive | ~30 min |
@@ -230,7 +258,8 @@ Commercial milestone: Launch readiness certified
 
 ## Cross-References
 The guide draws on the full Sumi skill and command system:
-- All 20 commands are organized into the five phases above
+- All 22 commands are organized into the six phases above
+- `ux-process-workflow` skill grounds Phase 0 in NNG design thinking (Empathize → Define → Ideate → Prototype → Test → Implement) and 8 company methodologies
 - `nng-ux-heuristics` skill grounds Phase 2 in the NNG heuristic evaluation protocol (5-phase: scope → calibrate → evaluate → specialize → aggregate)
 - `cognitive-psychology-ux` skill informs progressive disclosure rationale and the cognitive walkthrough in Phase 2
 - `ux-research-methods` skill grounds Phase 1 in generative research methodology (Double Diamond, Design Thinking)
@@ -239,10 +268,12 @@ The guide draws on the full Sumi skill and command system:
 - `sector-style-intelligence` skill provides sector context consumed by Phase 4 BUILD commands via the Phase 1→4 bridge
 - `ux-ethics-content-strategy` skill grounds Phase 3 FORTIFY in ethical design and regulatory compliance
 
+> **v4.3**: Added Phase 0: GROUND (2 steps) with `/ground` (0.1) and `/intent` (0.2). New `ux-process-workflow` skill. 6 phases (0-5), 22 steps (0.1–5.3). Phase 0 grounds developers in NNG design thinking process before building, addressing the vibe coding gap.
+>
 > **v4.2**: Restructured from 4 to 5 phases integrating UX process with commercialization lifecycle. All commands carry phase.step addresses (1.1–5.3). Each phase grounded in NNG methodology and visual design process. Phase 3 FORTIFY is new — separates compliance/standards from core UX audit. Dual UX + commercial milestones per phase.
 
 ## Next Step
 After running `/guide`, the user should:
 - Run the first recommended command for their current phase
 - Return to `/guide` at any time to reorient and check progress
-- Use `/guide [phase]` to jump directly to a specific phase (e.g., `/guide build`)
+- Use `/guide [phase]` to jump directly to a specific phase (e.g., `/guide ground`, `/guide build`)

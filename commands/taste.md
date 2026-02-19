@@ -138,7 +138,7 @@ The flagship command. Given a product sector, generate a complete, opinionated v
 > **Phase 1: DISCOVER** | Step 1 of 4 | `/taste`
 > *NNG: Generative Research | Visual: Direction & Moodboarding*
 >
-> **`/taste` (1.1)** → `/inspo` (1.2)
+> **Phase 0** `/intent` (0.2) → **`/taste` (1.1)** → `/inspo` (1.2)
 
 ## Taste Direction: [Sector] — [Sub-niche if specified]
 
@@ -198,4 +198,4 @@ When generating style directions, draw sector knowledge and design system patter
 **Alternatives**:
 - `/benchmark` (1.3) — Skip ahead to competitive analysis
 - `/drip` (4.1) — Jump to BUILD if you already know what to build
-- `/guide` — See the full 20-step journey
+- `/guide` — See the full 22-step journey
