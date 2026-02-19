@@ -1,5 +1,9 @@
 ---
 description: Full UX audit — audit any UI against Nielsen's 10 usability heuristics with severity ratings and actionable recommendations.
+phase: "2"
+phase_step: "2.1"
+phase_name: "DIAGNOSE"
+step_label: "Step 1 of 4"
 ---
 
 # Vibe Check — UX Heuristic Audit
@@ -59,6 +63,12 @@ Perform a comprehensive UX audit using Nielsen's 10 usability heuristics against
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 2: DIAGNOSE** | Step 1 of 4 | `/vibe-check`
+> *NNG: Heuristic Evaluation | Visual: Quality Assessment*
+>
+> **Phase 1** `/pulse` (1.4) → **`/vibe-check` (2.1)** → `/brain-scan` (2.2)
+
 ## Vibe Check Results
 
 ### Context & Design Intent
@@ -110,9 +120,11 @@ When relevant issues are found, load additional context from:
 - `ui-visual-design-system` skill for visual design issues
 - `interaction-motion-design` skill for animation/interaction issues
 
-## Next Steps
-After running `/vibe-check`, consider:
-- `/include` — Deep-dive into accessibility compliance
-- `/brain-scan` — Audit cognitive load and psychology principles
-- `/remix` — Redesign and fix the issues found
-- `/roast` — Get a full critique with dimensional scoring
+## Next Step
+
+**Next** → `/brain-scan` (2.2) — Go deeper into cognitive load and decision architecture
+
+**Alternatives**:
+- `/include` (2.3) — Skip ahead to accessibility audit
+- `/remix` (5.2) — Fix the issues found immediately
+- `/guide` — See the full 20-step journey

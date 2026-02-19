@@ -1,5 +1,9 @@
 ---
 description: Deep WCAG 2.2 accessibility audit on code with specific fixes for every violation found. Accessibility IS inclusion.
+phase: "2"
+phase_step: "2.3"
+phase_name: "DIAGNOSE"
+step_label: "Step 3 of 4"
 ---
 
 # Include — Accessibility Audit
@@ -46,6 +50,12 @@ Perform a deep accessibility audit against WCAG 2.2 AA standards on the provided
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 2: DIAGNOSE** | Step 3 of 4 | `/include`
+> *NNG: Accessibility Evaluation | Visual: Inclusive Design*
+>
+> `/brain-scan` (2.2) → **`/include` (2.3)** → `/flow` (2.4)
+
 ## Accessibility Audit Results
 
 ### Compliance Level: [A / AA / AAA / Non-compliant]
@@ -76,9 +86,11 @@ When relevant issues are found, load additional context from:
 - `component-patterns-code` skill for accessible component implementations
 - `cross-cultural-i18n-ux` skill for RTL and i18n accessibility
 
-## Next Steps
-After running `/include`, consider:
-- `/copy-check` — Audit content for readability and inclusive language
-- `/responsive` — Check cross-device accessibility at every breakpoint
-- `/brain-scan` — Evaluate cognitive accessibility (ADHD, dyslexia accommodations)
-- `/ship` — Rebuild a component with full accessibility baked in
+## Next Step
+
+**Next** → `/flow` (2.4) — Audit the full user journey for bottlenecks
+
+**Alternatives**:
+- `/dark-scan` (3.1) — Jump to FORTIFY if flow analysis isn't needed
+- `/ship` (4.3) — Rebuild a component with full accessibility baked in
+- `/guide` — See the full 20-step journey

@@ -1,5 +1,9 @@
 ---
 description: Comprehensive design review scoring a UI across all 21 skill domains with detailed feedback and improvement roadmap.
+phase: "5"
+phase_step: "5.3"
+phase_name: "LAUNCH"
+step_label: "Step 3 of 3"
 ---
 
 # Judge — Full Design Review
@@ -39,6 +43,12 @@ Perform a comprehensive design review evaluating the provided UI across all UX/U
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 5: LAUNCH** | Step 3 of 3 | `/judge`
+> *NNG: Summative Evaluation | Visual: Launch Certification*
+>
+> `/remix` (5.2) → **`/judge` (5.3)** → **COMPLETE** or loop → `/drip` (4.1)
+
 ## Design Review Results
 
 ### Overall Score: [X/100]
@@ -64,10 +74,14 @@ Perform a comprehensive design review evaluating the provided UI across all UX/U
 [Expandable sections for each domain]
 ```
 
-## Next Steps
-After running `/judge`, consider:
-- `/vibe-check` — Deep-dive heuristic audit on specific findings
-- `/roast` — Focused critique with dimensional scoring
-- `/taste` — Get sector-specific style direction if visual design scored low
-- `/include` — Accessibility deep-dive if a11y scored low
-- `/brain-scan` — Cognitive audit if efficiency/clarity scored low
+## Next Step
+
+**Phase 5: LAUNCH complete.** All 21 domains scored. You have a launch readiness assessment.
+
+**If all scores 7+ and no must-fix findings** → Ship it.
+
+**If scores need work** → Loop back to **Phase 4: BUILD** — Start with `/drip` (4.1) or `/ship` (4.3)
+
+**Quality loop**: `/roast` (5.1) → `/remix` (5.2) → `/ship` (4.3) → `/roast` (5.1) — repeat until quality bar met.
+
+- `/guide` — See the full 20-step journey

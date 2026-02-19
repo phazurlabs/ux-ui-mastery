@@ -1,5 +1,9 @@
 ---
 description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS). Copy-paste ready.
+phase: "4"
+phase_step: "4.3"
+phase_name: "BUILD"
+step_label: "Step 3 of 5"
 ---
 
 # Ship — Production Component Builder
@@ -71,6 +75,12 @@ Generate a production-ready UI component with complete state coverage, accessibi
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 4: BUILD** | Step 3 of 5 | `/ship`
+> *NNG: Component Design | Visual: Component Library*
+>
+> `/screen` (4.2) → **`/ship` (4.3)** → `/onboard` (4.4)
+
 ## Component: [Name]
 
 ### State Matrix
@@ -124,9 +134,11 @@ When building components, draw implementation patterns from:
 - `sector-style-intelligence` skill for sector-specific conventions, trust signals, and density norms
 - `nng-ux-heuristics` skill for heuristic grounding of design decisions
 
-## Next Steps
-After running `/ship`, consider:
-- `/vibe-check` — Audit the component you just built
-- `/include` — Deep accessibility check on the generated code
-- `/roast` — Get a design critique of the component
-- `/drip` — Generate the token system if you don't have one yet
+## Next Step
+
+**Next** → `/onboard` (4.4) — Build the onboarding flow that activates users
+
+**Alternatives**:
+- `/extract` (4.5) — Skip ahead to Figma-to-code pipeline
+- `/roast` (5.1) — Jump to LAUNCH to critique what you've built
+- `/guide` — See the full 20-step journey

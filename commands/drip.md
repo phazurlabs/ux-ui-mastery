@@ -1,5 +1,9 @@
 ---
 description: Generate a complete W3C design token system — your visual identity distilled into code. Colors, type, spacing, elevation, and themes.
+phase: "4"
+phase_step: "4.1"
+phase_name: "BUILD"
+step_label: "Step 1 of 5"
 ---
 
 # Drip — Design Token System Generator
@@ -70,6 +74,12 @@ Generate a complete, production-ready design token system following the W3C Desi
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 4: BUILD** | Step 1 of 5 | `/drip`
+> *NNG: Design Systems | Visual: Token Foundation*
+>
+> **Phase 3** `/responsive` (3.4) → **`/drip` (4.1)** → `/screen` (4.2)
+
 ## Design Token System
 
 ### Configuration
@@ -119,8 +129,11 @@ When generating tokens, draw from:
 - `accessibility-inclusive-design` skill for WCAG contrast requirements and high-contrast theme generation
 - `cognitive-psychology-ux` skill for perceptual principles (color psychology, Gestalt proximity for spacing)
 
-## Next Steps
-After running `/drip`, consider:
-- `/ship` — Build components that consume your new tokens
-- `/screen` — Build full screens using your token system
-- `/taste` — Get sector-specific style direction to inform your tokens
+## Next Step
+
+**Next** → `/screen` (4.2) — Build screens using your new token system
+
+**Alternatives**:
+- `/ship` (4.3) — Skip screens, build components directly
+- `/taste` (1.1) — Go back to DISCOVER for style direction if tokens feel generic
+- `/guide` — See the full 20-step journey

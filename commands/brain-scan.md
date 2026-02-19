@@ -1,5 +1,9 @@
 ---
 description: Cognitive audit — Laws of UX, Gestalt principles, cognitive bias analysis. Score decision architecture, visual cognition, memory load, and attention management.
+phase: "2"
+phase_step: "2.2"
+phase_name: "DIAGNOSE"
+step_label: "Step 2 of 4"
 ---
 
 # Brain Scan — Cognitive Psychology Audit
@@ -66,6 +70,12 @@ Audit an interface against cognitive psychology principles — Laws of UX, Gesta
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 2: DIAGNOSE** | Step 2 of 4 | `/brain-scan`
+> *NNG: Cognitive Walkthrough | Visual: Cognitive Quality*
+>
+> `/vibe-check` (2.1) → **`/brain-scan` (2.2)** → `/include` (2.3)
+
 ## Brain Scan: [Interface Name]
 
 ### Context
@@ -108,9 +118,11 @@ When auditing cognitive factors, draw from:
 - `performance-states-patterns` skill for Doherty Threshold and perceived performance
 - `accessibility-inclusive-design` skill for cognitive accessibility (ADHD, dyslexia, age-related decline)
 
-## Next Steps
-After running `/brain-scan`, consider:
-- `/remix` — Redesign to fix cognitive issues with UX reasoning
-- `/roast` — Full design critique with dimensional scoring
-- `/flow` — Audit the multi-step journey for cognitive load accumulation
-- `/dark-scan` — Check if detected biases cross into dark patterns
+## Next Step
+
+**Next** → `/include` (2.3) — Audit accessibility — the issues heuristics miss
+
+**Alternatives**:
+- `/flow` (2.4) — Skip ahead to journey analysis
+- `/remix` (5.2) — Fix cognitive issues immediately
+- `/guide` — See the full 20-step journey

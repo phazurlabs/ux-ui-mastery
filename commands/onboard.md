@@ -1,5 +1,9 @@
 ---
 description: Onboarding flow builder — generate a complete onboarding sequence with progressive disclosure, activation metrics, and production React/TypeScript code.
+phase: "4"
+phase_step: "4.4"
+phase_name: "BUILD"
+step_label: "Step 4 of 5"
 ---
 
 # Onboard — Onboarding Flow Builder
@@ -91,6 +95,12 @@ Generate a complete, research-backed onboarding flow for any product type and se
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 4: BUILD** | Step 4 of 5 | `/onboard`
+> *NNG: Onboarding Design | Visual: Activation Flow*
+>
+> `/ship` (4.3) → **`/onboard` (4.4)** → `/extract` (4.5)
+
 ## Onboarding Flow: [Product Name]
 
 ### Flow Parameters
@@ -178,11 +188,11 @@ When building onboarding flows, draw patterns and principles from:
 - `interaction-motion-design` skill for step transition animations, celebration moments, and micro-interactions
 - `ux-metrics-measurement` skill for activation metrics, funnel analysis, and A/B testing methodology
 
-## Next Steps
-After running `/onboard`, consider:
-- `/flow` — Audit the generated onboarding flow for friction points and drop-off risks
-- `/vibe-check` — Audit each individual onboarding screen against usability heuristics
-- `/pulse` — Set up the activation metrics dashboard and measurement plan
-- `/ship` — Build individual components (stepper, permission dialogs, celebration screens)
-- `/include` — Verify the onboarding flow is accessible to all users
-- `/brain-scan` — Check cognitive load across the flow to prevent overwhelm
+## Next Step
+
+**Next** → `/extract` (4.5) — Bridge your Figma designs to production code
+
+**Alternatives**:
+- `/roast` (5.1) — Jump to LAUNCH to validate what you've built
+- `/flow` (2.4) — Go back to audit the onboarding flow for friction
+- `/guide` — See the full 20-step journey

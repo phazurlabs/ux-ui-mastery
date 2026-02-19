@@ -1,5 +1,9 @@
 ---
 description: Generate a complete UX metrics plan — HEART framework with goals, signals, metrics, dashboards, and experimentation strategy.
+phase: "1"
+phase_step: "1.4"
+phase_name: "DISCOVER"
+step_label: "Step 4 of 4"
 ---
 
 # Pulse — UX Metrics Plan
@@ -59,6 +63,12 @@ Generate a comprehensive UX metrics plan for the specified product or feature, m
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 1: DISCOVER** | Step 4 of 4 | `/pulse`
+> *NNG: Metrics & Measurement | Visual: Success Criteria*
+>
+> `/benchmark` (1.3) → **`/pulse` (1.4)** → **Phase 2: DIAGNOSE** `/vibe-check` (2.1)
+
 ## UX Metrics Plan: [Product Name]
 
 ### Product Context
@@ -125,8 +135,12 @@ When generating the plan, draw context from:
 - `agentic-ai-generative-ux` skill for AI-specific metrics (if product includes AI features)
 - `design-systems-architecture` skill for design system metrics (if applicable)
 
-## Next Steps
-After running `/pulse`, consider:
-- `/vibe-check` — Audit the experience you're measuring
-- `/flow` — Map the user flows your metrics will track
-- `/benchmark` — Compare your metrics against competitors
+## Next Step
+
+**Phase 1: DISCOVER complete.** You have style direction, pattern references, competitive gaps, and a metrics plan.
+
+**Next phase** → **Phase 2: DIAGNOSE** — Start with `/vibe-check` (2.1)
+
+**Alternatives**:
+- `/drip` (4.1) — Jump to BUILD if no existing product to audit
+- `/guide` — See the full 20-step journey

@@ -1,5 +1,9 @@
 ---
 description: Dark pattern detection — scan any UI for 20+ deceptive design categories with regulatory risk analysis and ethical redesign alternatives.
+phase: "3"
+phase_step: "3.1"
+phase_name: "FORTIFY"
+step_label: "Step 1 of 4"
 ---
 
 # Dark Scan — Dark Pattern Detection
@@ -64,6 +68,12 @@ Dedicated ethical audit that systematically scans a UI for deceptive design patt
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 3: FORTIFY** | Step 1 of 4 | `/dark-scan`
+> *NNG: Ethical Design Review | Visual: Regulatory Compliance*
+>
+> **Phase 2** `/flow` (2.4) → **`/dark-scan` (3.1)** → `/trust-scan` (3.2)
+
 ## Dark Scan: [Product/Screen Name]
 
 ### Overall Rating: [Clean / Caution / Violation]
@@ -112,10 +122,11 @@ When scanning for dark patterns, draw evaluation criteria from:
 - `cognitive-psychology-ux` skill for cognitive biases exploited by dark patterns (loss aversion, anchoring, default bias, social proof)
 - `accessibility-inclusive-design` skill for intersection of accessibility and dark patterns (users with cognitive disabilities are disproportionately affected)
 
-## Next Steps
-After running `/dark-scan`, consider:
-- `/copy-check` — Audit all microcopy for manipulative language, confirmshaming, and urgency
-- `/roast` — Full design critique to evaluate overall design ethics alongside usability
-- `/include` — Accessibility audit, since dark patterns disproportionately harm users with cognitive disabilities
-- `/flow` — Audit the full user journey for obstruction patterns (roach motels, hidden cancellation)
-- `/trust-scan` — Evaluate overall trust signals and credibility alongside dark pattern findings
+## Next Step
+
+**Next** → `/trust-scan` (3.2) — Check AI feature trust and safety
+
+**Alternatives**:
+- `/copy-check` (3.3) — Skip ahead to content audit if no AI features
+- `/responsive` (3.4) — Jump to responsive audit
+- `/guide` — See the full 20-step journey

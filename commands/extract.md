@@ -1,5 +1,9 @@
 ---
 description: Figma to production code pipeline — extract tokens, decompose components, and generate platform-ready React/SwiftUI/CSS from design specs.
+phase: "4"
+phase_step: "4.5"
+phase_name: "BUILD"
+step_label: "Step 5 of 5"
 ---
 
 # Extract — Figma to Code
@@ -67,6 +71,12 @@ Transform a Figma design specification into production-ready code using the desi
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 4: BUILD** | Step 5 of 5 | `/extract`
+> *NNG: Design Handoff | Visual: Design-to-Code*
+>
+> `/onboard` (4.4) → **`/extract` (4.5)** → **Phase 5: LAUNCH** `/roast` (5.1)
+
 ## Extracted Code: [Component/Screen Name]
 
 ### Design Token Extraction
@@ -111,9 +121,12 @@ When generating code from design, draw patterns from:
 - `ui-visual-design-system` skill for visual system integrity
 - `cross-cultural-i18n-ux` skill for RTL/i18n layout considerations
 
-## Next Steps
-After running `/extract`, consider:
-- `/vibe-check` — Audit the generated code for usability
-- `/include` — Deep accessibility check on extracted code
-- `/responsive` — Verify cross-device behavior of extracted layout
-- `/ship` — Enhance extracted components with full state matrix
+## Next Step
+
+**Phase 4: BUILD complete.** Product built — tokens, screens, components, onboarding, and design-to-code pipeline operational.
+
+**Next phase** → **Phase 5: LAUNCH** — Start with `/roast` (5.1)
+
+**Alternatives**:
+- `/vibe-check` (2.1) — Go back to audit the built product
+- `/guide` — See the full 20-step journey

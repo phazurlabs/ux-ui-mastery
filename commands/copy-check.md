@@ -1,5 +1,9 @@
 ---
 description: Microcopy & content audit — evaluate all UI text for clarity, tone, accessibility, inclusive language, and i18n readiness with rewrites.
+phase: "3"
+phase_step: "3.3"
+phase_name: "FORTIFY"
+step_label: "Step 3 of 4"
 ---
 
 # Copy Check — Microcopy & Content Audit
@@ -69,6 +73,12 @@ Audit all user-facing text in a UI for clarity, tone consistency, inclusive lang
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 3: FORTIFY** | Step 3 of 4 | `/copy-check`
+> *NNG: Content Strategy | Visual: Content Quality*
+>
+> `/trust-scan` (3.2) → **`/copy-check` (3.3)** → `/responsive` (3.4)
+
 ## Copy Check: [Product/Screen Name]
 
 ### Content Summary
@@ -110,10 +120,11 @@ When auditing content, draw evaluation criteria from:
 - `accessibility-inclusive-design` skill for plain language requirements (WCAG 3.1.5), reading level targets, and cognitive accessibility
 - `cross-cultural-i18n-ux` skill for translation readiness, string externalization, bidirectional text, and cultural sensitivity
 
-## Next Steps
-After running `/copy-check`, consider:
-- `/include` — Full accessibility audit if reading level or plain language issues were found
-- `/dark-scan` — Detect manipulative copy patterns (confirmshaming, urgency, guilt)
-- `/responsive` — Test text truncation and reflow at every breakpoint
-- `/flow` — Audit the full journey if tone inconsistencies suggest fragmented authorship
-- `/brain-scan` — Cognitive load analysis if text density is overwhelming users
+## Next Step
+
+**Next** → `/responsive` (3.4) — Verify cross-device behavior
+
+**Alternatives**:
+- `/drip` (4.1) — Jump to BUILD if responsive isn't a concern
+- `/include` (2.3) — Go back for accessibility if reading level issues were found
+- `/guide` — See the full 20-step journey

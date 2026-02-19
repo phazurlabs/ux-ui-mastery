@@ -1,5 +1,9 @@
 ---
 description: Screen type builder — generate production-ready code for any standard screen type (25+) with all states, accessibility, responsive breakpoints, and design token consumption.
+phase: "4"
+phase_step: "4.2"
+phase_name: "BUILD"
+step_label: "Step 2 of 5"
 ---
 
 # Screen — Screen Type Builder
@@ -116,6 +120,12 @@ Generate a complete, production-ready screen for any standard screen type, inclu
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 4: BUILD** | Step 2 of 5 | `/screen`
+> *NNG: Screen Design | Visual: Composition*
+>
+> `/drip` (4.1) → **`/screen` (4.2)** → `/ship` (4.3)
+
 ## Screen Build: [Screen Type] — [Sector if specified]
 
 ### What Makes a Great [Screen Type]
@@ -219,11 +229,11 @@ When building screens, draw patterns and best practices from:
 - `cognitive-psychology-ux` skill for Fitts's Law, Hick's Law, Miller's Law, Von Restorff, Peak-End Rule
 - `nng-ux-heuristics` skill for heuristic grounding of screen-level design decisions
 
-## Next Steps
-After running `/screen`, consider:
-- `/vibe-check` — Audit the generated screen against Nielsen's heuristics
-- `/responsive` — Verify responsive behavior at all breakpoints
-- `/include` — Deep accessibility audit on the generated code
-- `/roast` — Full design critique with dimensional scoring
-- `/flow` — Place the screen in a broader user flow for journey-level analysis
-- `/copy-check` — Audit all text content in the generated screen
+## Next Step
+
+**Next** → `/ship` (4.3) — Extract reusable components from your screens
+
+**Alternatives**:
+- `/onboard` (4.4) — Skip ahead to onboarding flow
+- `/roast` (5.1) — Jump to LAUNCH to critique what you've built
+- `/guide` — See the full 20-step journey

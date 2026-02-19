@@ -1,5 +1,9 @@
 ---
 description: Audit AI-powered features for trust, safety, usability, and accessibility. Score across 4 dimensions with specific fix recommendations.
+phase: "3"
+phase_step: "3.2"
+phase_name: "FORTIFY"
+step_label: "Step 2 of 4"
 ---
 
 # Trust Scan — AI UX Audit
@@ -64,6 +68,12 @@ Perform a comprehensive audit of AI-powered features against agentic AI, trust c
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 3: FORTIFY** | Step 2 of 4 | `/trust-scan`
+> *NNG: AI Trust Evaluation | Visual: Trust Certification*
+>
+> `/dark-scan` (3.1) → **`/trust-scan` (3.2)** → `/copy-check` (3.3)
+
 ## Trust Scan Results
 
 ### Summary
@@ -98,9 +108,11 @@ When relevant issues are found, load additional context from:
 - `ux-ethics-content-strategy` skill for AI content and ethical issues
 - `ux-metrics-measurement` skill for measuring AI UX improvements
 
-## Next Steps
-After running `/trust-scan`, consider:
-- `/vibe-check` — Full UX audit beyond AI-specific concerns
-- `/include` — Deep accessibility audit for AI-generated content
-- `/dark-scan` — Check if AI features employ deceptive patterns
-- `/pulse` — Set up AI-specific metrics (hallucination rate, trust calibration)
+## Next Step
+
+**Next** → `/copy-check` (3.3) — Audit content quality and i18n readiness
+
+**Alternatives**:
+- `/responsive` (3.4) — Skip ahead to cross-device audit
+- `/drip` (4.1) — Jump to BUILD if content is already solid
+- `/guide` — See the full 20-step journey

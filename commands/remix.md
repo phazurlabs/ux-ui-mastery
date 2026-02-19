@@ -1,5 +1,9 @@
 ---
 description: Redesign and improve — take any existing screen or component and generate a UX-grounded redesign with before/after reasoning for every change.
+phase: "5"
+phase_step: "5.2"
+phase_name: "LAUNCH"
+step_label: "Step 2 of 3"
 ---
 
 # Remix — Redesign & Improve
@@ -71,6 +75,12 @@ Take an existing screen, component, or flow and redesign it with explicit UX rea
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 5: LAUNCH** | Step 2 of 3 | `/remix`
+> *NNG: Iterative Design | Visual: Redesign & Polish*
+>
+> `/roast` (5.1) → **`/remix` (5.2)** → `/judge` (5.3)
+
 ## Remix: [Component/Screen Name]
 
 ### Input Analysis
@@ -124,10 +134,11 @@ When remixing designs, draw principles and patterns from:
 - `ui-visual-design-system` skill for visual hierarchy, spacing, typography, and color improvements
 - `performance-states-patterns` skill for loading, error, empty, and skeleton state additions
 
-## Next Steps
-After running `/remix`, consider:
-- `/vibe-check` — Verify the remixed design passes all 10 usability heuristics
-- `/include` — Deep accessibility audit on the redesigned component
-- `/ship` — Polish individual components within the remix to production quality
-- `/roast` — Get a fresh critique of the new design to catch any introduced issues
-- `/brain-scan` — Verify cognitive load has decreased in the redesign
+## Next Step
+
+**Next** → `/judge` (5.3) — Run the final comprehensive review
+
+**Alternatives**:
+- `/roast` (5.1) — Loop back for another critique of the redesign
+- `/ship` (4.3) — Go back to BUILD to rebuild specific components
+- `/guide` — See the full 20-step journey

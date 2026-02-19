@@ -1,5 +1,9 @@
 ---
 description: Competitive design benchmark — score a design against the best apps in its category across 10 UX dimensions with gap analysis and improvement roadmap.
+phase: "1"
+phase_step: "1.3"
+phase_name: "DISCOVER"
+step_label: "Step 3 of 4"
 ---
 
 # Benchmark — Competitive Design Benchmark
@@ -142,6 +146,12 @@ Compare a design against the best apps in its category. Score across 10 dimensio
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 1: DISCOVER** | Step 3 of 4 | `/benchmark`
+> *NNG: Competitive Analysis | Visual: Competitive Quality*
+>
+> `/inspo` (1.2) → **`/benchmark` (1.3)** → `/pulse` (1.4)
+
 ## Benchmark Report: [Product Name] vs. [Category] Leaders
 
 ### Benchmark Set
@@ -197,11 +207,11 @@ When benchmarking designs, draw evaluation frameworks and competitive knowledge 
 - `interaction-motion-design` skill for interaction quality and animation assessment
 - `performance-states-patterns` skill for performance UX evaluation and state handling assessment
 
-## Next Steps
-After running `/benchmark`, consider:
-- `/taste` — Get sector-specific style direction to close visual gaps
-- `/roast` — Deep critique on the specific areas where you scored lowest
-- `/remix` — Redesign screens or components to close identified gaps
-- `/inspo` — Find specific pattern inspiration for areas needing improvement
-- `/onboard` — Rebuild onboarding if that dimension scored low
-- `/pulse` — Set up metrics to track improvement over time
+## Next Step
+
+**Next** → `/pulse` (1.4) — Define metrics to track the gaps you found
+
+**Alternatives**:
+- `/vibe-check` (2.1) — Jump to DIAGNOSE if you already have metrics
+- `/remix` (5.2) — Redesign specific areas where you scored lowest
+- `/guide` — See the full 20-step journey

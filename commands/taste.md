@@ -1,5 +1,9 @@
 ---
 description: Sector-specific style direction generator — generate a complete visual identity direction with color, typography, motion, tone, tokens, and reference apps for any product sector.
+phase: "1"
+phase_step: "1.1"
+phase_name: "DISCOVER"
+step_label: "Step 1 of 4"
 ---
 
 # Taste — Sector-Specific Style Direction Generator
@@ -130,6 +134,12 @@ The flagship command. Given a product sector, generate a complete, opinionated v
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 1: DISCOVER** | Step 1 of 4 | `/taste`
+> *NNG: Generative Research | Visual: Direction & Moodboarding*
+>
+> **`/taste` (1.1)** → `/inspo` (1.2)
+
 ## Taste Direction: [Sector] — [Sub-niche if specified]
 
 ### Direction Summary
@@ -181,11 +191,11 @@ When generating style directions, draw sector knowledge and design system patter
 - `cross-cultural-i18n-ux` skill for culturally appropriate color and typography choices
 - `ux-ethics-content-strategy` skill for tone of voice guidelines and ethical design patterns
 
-## Next Steps
-After running `/taste`, consider:
-- `/inspo` — Find screen patterns and references for the sector
-- `/drip` — Expand the token starter kit into a full design token system
-- `/ship` — Start building components using the style direction
-- `/onboard` — Build a sector-appropriate onboarding flow
-- `/benchmark` — Compare against the reference apps identified
-- `/vibe-check` — Audit screens built with this direction against heuristics
+## Next Step
+
+**Next** → `/inspo` (1.2) — Find screen patterns and references for your new style direction
+
+**Alternatives**:
+- `/benchmark` (1.3) — Skip ahead to competitive analysis
+- `/drip` (4.1) — Jump to BUILD if you already know what to build
+- `/guide` — See the full 20-step journey

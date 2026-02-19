@@ -1,5 +1,9 @@
 ---
 description: Design inspiration and pattern finder — find best-practice patterns, references, and inspiration for any screen type, UI element, or user flow.
+phase: "1"
+phase_step: "1.2"
+phase_name: "DISCOVER"
+step_label: "Step 2 of 4"
 ---
 
 # Inspo — Design Inspiration & Pattern Finder
@@ -141,6 +145,12 @@ Authentication (login/signup/password reset), Onboarding, Checkout, Payment, Boo
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 1: DISCOVER** | Step 2 of 4 | `/inspo`
+> *NNG: Generative Research | Visual: Pattern Research*
+>
+> `/taste` (1.1) → **`/inspo` (1.2)** → `/benchmark` (1.3)
+
 ## Inspo: [Mode] — [Type]
 
 ### Context
@@ -182,11 +192,11 @@ When finding inspiration and patterns, draw knowledge from:
 - `cognitive-psychology-ux` skill for cognitive principles behind effective patterns
 - `design-critique-case-studies` skill for product deep-dives and pattern analysis
 
-## Next Steps
-After running `/inspo`, consider:
-- `/ship` — Build the component or screen pattern you found
-- `/taste` — Get sector-specific visual style for the pattern
-- `/benchmark` — Compare your implementation against the references
-- `/onboard` — If exploring onboarding patterns, generate a complete flow
-- `/remix` — If redesigning an existing implementation of this pattern
-- `/vibe-check` — Audit your implementation against usability heuristics
+## Next Step
+
+**Next** → `/benchmark` (1.3) — Score your references against the competition
+
+**Alternatives**:
+- `/ship` (4.3) — Jump to BUILD with the patterns you found
+- `/screen` (4.2) — Build a screen using your reference patterns
+- `/guide` — See the full 20-step journey

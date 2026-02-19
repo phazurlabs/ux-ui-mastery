@@ -1,5 +1,9 @@
 ---
 description: Cross-device responsive audit — evaluate design at every breakpoint for layout, touch targets, typography, reflow, and input mode adaptation.
+phase: "3"
+phase_step: "3.4"
+phase_name: "FORTIFY"
+step_label: "Step 4 of 4"
 ---
 
 # Responsive — Cross-Device Responsive Audit
@@ -82,6 +86,12 @@ Audit a design or component for responsive behavior across all breakpoints, inpu
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 3: FORTIFY** | Step 4 of 4 | `/responsive`
+> *NNG: Responsive Evaluation | Visual: Cross-platform Quality*
+>
+> `/copy-check` (3.3) → **`/responsive` (3.4)** → **Phase 4: BUILD** `/drip` (4.1)
+
 ## Responsive Audit: [Component/Screen Name]
 
 ### Summary
@@ -139,10 +149,12 @@ When auditing responsive behavior, draw evaluation criteria from:
 - `component-patterns-code` skill for modern CSS techniques (container queries, subgrid, `clamp()`, logical properties, `@layer`)
 - `accessibility-inclusive-design` skill for WCAG 2.5.5 (Target Size), 1.4.10 (Reflow), 1.3.4 (Orientation), and 2.5.8 (Target Size Enhanced)
 
-## Next Steps
-After running `/responsive`, consider:
-- `/include` — Full accessibility audit with focus on cross-device a11y (touch a11y, zoom, reflow)
-- `/ship` — Rebuild components with production-ready responsive CSS
-- `/screen` — Generate a complete responsive screen from scratch
-- `/vibe-check` — Heuristic audit at specific breakpoints where issues were found
-- `/copy-check` — Check for text truncation and reflow issues across breakpoints
+## Next Step
+
+**Phase 3: FORTIFY complete.** Compliance cleared — ethics verified, trust established, content quality assured, all devices covered.
+
+**Next phase** → **Phase 4: BUILD** — Start with `/drip` (4.1)
+
+**Alternatives**:
+- `/screen` (4.2) — Skip tokens if your design system already exists
+- `/guide` — See the full 20-step journey

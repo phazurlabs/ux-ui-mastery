@@ -1,5 +1,9 @@
 ---
 description: User flow audit — map, score, and optimize any multi-step user journey for efficiency, cognitive load, emotional arc, and conversion.
+phase: "2"
+phase_step: "2.4"
+phase_name: "DIAGNOSE"
+step_label: "Step 4 of 4"
 ---
 
 # Flow — User Flow Audit
@@ -59,6 +63,12 @@ Audit a complete user journey across multiple screens or steps, identifying fric
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 2: DIAGNOSE** | Step 4 of 4 | `/flow`
+> *NNG: Task Analysis | Visual: Journey Optimization*
+>
+> `/include` (2.3) → **`/flow` (2.4)** → **Phase 3: FORTIFY** `/dark-scan` (3.1)
+
 ## Flow Audit: [Flow Name]
 
 ### Flow Overview
@@ -117,10 +127,12 @@ When auditing flows, draw evaluation criteria from:
 - `performance-states-patterns` skill for loading states, skeleton screens, and progress indicators within the flow
 - `ux-metrics-measurement` skill for funnel metrics, drop-off benchmarks, and conversion rate optimization
 
-## Next Steps
-After running `/flow`, consider:
-- `/brain-scan` — Deep cognitive analysis on the highest-load steps
-- `/copy-check` — Audit microcopy at each step for clarity and motivation
-- `/screen` — Rebuild specific steps that need redesigning
-- `/responsive` — Verify the flow works across all devices
-- `/dark-scan` — Check if any steps use manipulative patterns to force completion
+## Next Step
+
+**Phase 2: DIAGNOSE complete.** All UX problems cataloged — heuristic violations, cognitive risks, accessibility gaps, and flow bottlenecks.
+
+**Next phase** → **Phase 3: FORTIFY** — Start with `/dark-scan` (3.1)
+
+**Alternatives**:
+- `/drip` (4.1) — Jump to BUILD if compliance isn't a concern
+- `/guide` — See the full 20-step journey

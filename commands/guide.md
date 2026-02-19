@@ -1,144 +1,155 @@
 ---
-description: Phase-based design guide — know where you are in the design process, what to do next, and which commands to run in what order.
+description: Phase-based design guide — 20 numbered steps across 5 phases guiding the complete UX process from market research to launch certification.
 ---
 
-# Guide — Phase-Based Design Companion
+# Guide — 5-Phase Design Journey
 
-Navigate the design process with confidence. Instead of choosing from 20+ commands, tell Sumi where you are and get a guided path forward.
+Navigate the complete UX design process with confidence. 20 commands across 5 numbered phases — each grounded in NNG methodology and the visual design process. Every phase has a UX goal, a commercial milestone, and a clear exit gate.
 
-## Design Phases
+## Process Foundation
 
-The design process moves through four phases. Each phase has a clear goal, a set of commands, and natural exit criteria that signal readiness for the next phase.
+The 5-phase system integrates two established design processes:
+
+**NNG UX Process**: Generative Research → Expert Evaluation → Compliance Review → Design + Implementation → Summative Evaluation
+
+**Visual Design Process**: Direction & Moodboarding → Quality Assessment → Standards Verification → Token Foundation → Composition → Component Library → Polish & Critique
 
 ```
-  DISCOVER          AUDIT            BUILD            REFINE
-  ─────────→       ─────────→       ─────────→       ─────────→
-  "What space       "What's wrong    "Make the        "Make it
-   am I in?"         with what        thing."          better."
-                     exists?"
+Phase 1: DISCOVER  (4 steps)  "Know your market"
+Phase 2: DIAGNOSE  (4 steps)  "Know your problems"
+Phase 3: FORTIFY   (4 steps)  "Secure your standards"
+Phase 4: BUILD     (5 steps)  "Ship your product"
+Phase 5: LAUNCH    (3 steps)  "Prove it works"
+
+Total: 20 steps across 5 phases
 ```
 
-### Phase 1: DISCOVER — Understand the space
+---
 
-**Goal**: Establish visual direction, find patterns, understand the competition, and define what success looks like before touching a single pixel.
+### Phase 1: DISCOVER — Market Intelligence & Visual Direction
+*NNG: Generative Research | Visual: Direction & Moodboarding*
 
-**When to use**: Starting a new product, entering a new sector, redesigning from scratch, or onboarding onto an unfamiliar project.
+| Step | Command | UX Purpose | Commercial Purpose |
+|------|---------|-----------|-------------------|
+| 1.1 | `/taste` | Sector style direction, visual identity | Market positioning, brand differentiation |
+| 1.2 | `/inspo` | Pattern research, best-practice references | Competitive intelligence, feature benchmarking |
+| 1.3 | `/benchmark` | Competitive scoring, gap analysis | Competitive advantage mapping, market gaps |
+| 1.4 | `/pulse` | HEART metrics, measurement plan | KPI definitions, success criteria, growth metrics |
 
-| Order | Command | What it gives you | Output feeds into |
-|-------|---------|-------------------|-------------------|
-| 1 | `/taste` | Complete style direction — color, type, spacing, motion, tokens, tone, reference apps | `/drip`, `/ship`, `/screen` |
-| 2 | `/inspo` | Best-practice patterns, 5 reference implementations, curated inspiration sources | `/screen`, `/ship` |
-| 3 | `/benchmark` | Competitive scoring across 10 dimensions with gap analysis | `/roast`, `/remix` |
-| 4 | `/pulse` | HEART metrics framework, measurement plan, experimentation strategy | All audit commands |
-
-**Exit criteria — move to Phase 2 when you have**:
-- A style direction (from `/taste`)
-- Pattern references for your key screens (from `/inspo`)
-- A clear picture of where competitors are stronger (from `/benchmark`)
-
-**Shortcut**: If you're adding to an existing product (not starting fresh), skip to Phase 2.
+**UX milestone**: Style direction, pattern references, competitive gaps, metrics plan
+**Commercial milestone**: Market position defined, competitive advantages mapped, KPIs set
+**Exit gate**: You know your market, your style, your competition, and how you'll measure success
 
 ---
 
-### Phase 2: AUDIT — Find what's broken
+### Phase 2: DIAGNOSE — UX Quality Assessment
+*NNG: Heuristic Evaluation Protocol | Visual: Quality Assessment*
 
-**Goal**: Systematically evaluate what exists — whether it's a live product, a Figma prototype, code, or a competitor's app. Find every issue before building.
+| Step | Command | UX Purpose | Commercial Purpose |
+|------|---------|-----------|-------------------|
+| 2.1 | `/vibe-check` | Nielsen's 10 heuristics evaluation | Product quality baseline, UX risk assessment |
+| 2.2 | `/brain-scan` | Cognitive load, Laws of UX, bias analysis | Decision architecture quality, user retention risk |
+| 2.3 | `/include` | WCAG 2.2 accessibility compliance | Legal compliance (ADA/EAA), addressable market expansion |
+| 2.4 | `/flow` | Journey optimization, drop-off analysis | Conversion funnel optimization, revenue impact |
 
-**When to use**: Reviewing an existing design, evaluating a prototype, preparing for a redesign, running a design QA pass, or onboarding onto a codebase with UI.
-
-| Order | Command | What it checks | Severity system |
-|-------|---------|---------------|-----------------|
-| 1 | `/vibe-check` | Nielsen's 10 heuristics — the broadest UX sweep | Severity 0-4 |
-| 2 | `/brain-scan` | Cognitive load, Laws of UX, Gestalt, bias ethics | 12-dimension score |
-| 3 | `/include` | WCAG 2.2 AA accessibility — semantic HTML, ARIA, keyboard, contrast | Pass/Fail per criterion |
-| 4 | `/flow` | Multi-step journey analysis — drop-off risk, emotional arc | Per-step scoring |
-| 5 | `/dark-scan` | 22 deceptive pattern categories, regulatory compliance | FTC/GDPR/DSA flags |
-| 6 | `/trust-scan` | AI feature trust, safety, usability, accessibility | 4-dimension 0-100 |
-| 7 | `/copy-check` | Microcopy clarity, tone, inclusive language, i18n readiness | Per-string audit |
-| 8 | `/responsive` | 7 breakpoint tiers, touch targets, reflow, fluid type | Per-breakpoint report |
-
-**Exit criteria — move to Phase 3 when you have**:
-- A prioritized list of must-fix issues (from `/vibe-check` + `/brain-scan`)
-- Accessibility violations cataloged with fixes (from `/include`)
-- Flow bottlenecks identified (from `/flow`)
-
-**Shortcut**: For a quick health check, run just `/vibe-check` + `/include`. For a full audit, run all eight in order.
+**UX milestone**: Prioritized issues, cognitive risks, accessibility violations, flow bottlenecks
+**Commercial milestone**: Due diligence complete, risk assessment documented, improvement ROI quantified
+**Exit gate**: You know every UX problem and the business impact of each
 
 ---
 
-### Phase 3: BUILD — Make the thing
+### Phase 3: FORTIFY — Compliance, Trust & Standards
+*NNG: Standards Compliance Review | Visual: Regulatory & Cross-platform Quality*
 
-**Goal**: Generate production-ready screens, components, design tokens, and flows. Every output is copy-paste ready with states, accessibility, and responsive behavior built in. In v4.1, every BUILD command also explains **why** each design decision was made, citing specific UX principles.
+| Step | Command | UX Purpose | Commercial Purpose |
+|------|---------|-----------|-------------------|
+| 3.1 | `/dark-scan` | Dark pattern detection, ethical design | Regulatory compliance (FTC/GDPR/DSA), legal risk clearance |
+| 3.2 | `/trust-scan` | AI trust, safety, usability | AI governance compliance, trust certification |
+| 3.3 | `/copy-check` | Microcopy clarity, inclusive language | i18n readiness, multi-market content quality |
+| 3.4 | `/responsive` | Cross-device responsive behavior | Multi-device market coverage, mobile market access |
 
-**When to use**: You know what to build. Style direction exists. Issues are cataloged. Time to ship.
+**UX milestone**: Ethics verified, trust established, content quality assured, all devices covered
+**Commercial milestone**: Regulatory clearance, multi-market readiness, trust certification, device coverage
+**Exit gate**: Your product is compliant, trustworthy, clear, and works everywhere
 
-**Prerequisites**: BUILD commands produce better output when Phase 1 context exists. If no Phase 1 outputs are available, commands use sensible defaults — but running `/taste` first gives you sector-tuned results.
+---
 
-#### Phase 1 → Phase 3 Bridge
+### Phase 4: BUILD — Design System & Production Product
+*NNG: Design + Implementation | Visual: Foundation → Composition → Delivery*
+
+| Step | Command | UX Purpose | Commercial Purpose |
+|------|---------|-----------|-------------------|
+| 4.1 | `/drip` | Design token system (color, type, spacing) | Brand system, scalable design foundation |
+| 4.2 | `/screen` | Complete screen compositions with all states | Core product screens, MVP feature set |
+| 4.3 | `/ship` | Production components with accessibility | Reusable component library, engineering velocity |
+| 4.4 | `/onboard` | Onboarding flow with activation metrics | User acquisition funnel, activation rate optimization |
+| 4.5 | `/extract` | Figma to production code pipeline | Design-to-dev handoff, shipping velocity |
+
+**UX milestone**: Token system, screens, components, onboarding, and Figma pipeline operational
+**Commercial milestone**: MVP complete, design system shipped, onboarding funnel built, production-ready
+**Exit gate**: You have a shippable product with infrastructure for iteration
+
+#### Phase 1 → Phase 4 Bridge
 
 | Phase 1 Output | Feeds Into | What It Provides | Default If Missing |
 |----------------|-----------|------------------|-------------------|
-| `/taste` | `/drip`, `/ship`, `/screen`, `/onboard` | Sector palette, type scale, spacing, motion personality, tone | Neutral/minimal style |
-| `/inspo` | `/screen`, `/ship` | Reference patterns, best-practice implementations | Generic best practices |
-| `/benchmark` | `/screen`, `/ship` | Competitive gaps to address, differentiators | No competitive context |
-| `/pulse` | `/onboard` | HEART metrics, activation targets, measurement plan | Industry-standard targets |
-
-| Order | Command | What it produces | Consumes from Phase 1 | Output format |
-|-------|---------|-----------------|----------------------|---------------|
-| 1 | `/drip` | Full W3C design token system — color, type, spacing, elevation, themes | `/taste` | JSON (W3C Design Tokens) |
-| 2 | `/screen` | Complete screen with all states, ARIA, responsive breakpoints | `/taste`, `/inspo`, `/benchmark` | React/SwiftUI/CSS |
-| 3 | `/ship` | Production component with 10 states, keyboard handling, test skeleton | `/taste`, `/inspo`, `/benchmark` | React/SwiftUI/CSS |
-| 4 | `/onboard` | Onboarding flow with progressive disclosure, activation metrics | `/taste`, `/pulse` | React/TypeScript |
-| 5 | `/extract` | Figma design → production code pipeline | `/taste` | React/SwiftUI/CSS |
-
-**Exit criteria — move to Phase 4 when you have**:
-- A token system consumed by your components (from `/drip`)
-- Key screens built with all states handled (from `/screen`)
-- Core components shipping (from `/ship`)
-
-**Shortcut**: If tokens already exist in your codebase, skip `/drip` and start with `/screen` or `/ship`.
+| `/taste` (1.1) | `/drip` (4.1), `/screen` (4.2), `/ship` (4.3), `/onboard` (4.4) | Sector palette, type, spacing, motion, tone | Neutral/minimal |
+| `/inspo` (1.2) | `/screen` (4.2), `/ship` (4.3) | Reference patterns, best practices | Generic patterns |
+| `/benchmark` (1.3) | `/screen` (4.2), `/ship` (4.3) | Competitive gaps, differentiators | No competitive context |
+| `/pulse` (1.4) | `/onboard` (4.4) | HEART metrics, activation targets | Industry defaults |
 
 ---
 
-### Phase 4: REFINE — Make it better
+### Phase 5: LAUNCH — Validation & Quality Certification
+*NNG: Summative Evaluation + Iteration | Visual: Polish & Critique*
 
-**Goal**: Critique what you've built, score it against professional standards, and iterate. This phase loops — refine until the scores are where you want them.
+| Step | Command | UX Purpose | Commercial Purpose |
+|------|---------|-----------|-------------------|
+| 5.1 | `/roast` | Liz Lerman critique, dimensional scoring | Quality certification, pre-launch review |
+| 5.2 | `/remix` | Evidence-based redesign of weak areas | Product polish, competitive edge refinement |
+| 5.3 | `/judge` | Comprehensive review across all 21 skills | Launch readiness score, product-market fit evidence |
 
-**When to use**: After building. Before launch. During design review. When something feels off but you can't articulate why.
+**UX milestone**: All scores 7+, no must-fix findings, WCAG AA passes
+**Commercial milestone**: Launch readiness certified, quality score documented, ship decision made
+**Exit gate**: Product is ready to ship — or loop back to Phase 4 for another iteration
 
-| Order | Command | What it does | Loops back to |
-|-------|---------|-------------|---------------|
-| 1 | `/roast` | Liz Lerman critique, 10 dimensions scored, must-fix/should-fix/could-improve | Phase 3 (`/ship`, `/screen`) |
-| 2 | `/remix` | Takes findings and generates a redesigned version with before/after reasoning | Phase 3 (`/ship`, `/screen`) |
-| 3 | `/judge` | Full scoring across all 21 skill domains — the final exam | Phase 2 (if major issues) |
+**Quality loop**: `/roast` (5.1) → `/remix` (5.2) → `/ship` (4.3) → `/roast` (5.1) until quality bar met.
 
-**Exit criteria — ready to ship when**:
-- `/roast` returns no must-fix findings
-- `/judge` scores 7+ across all dimensions
-- `/include` passes WCAG 2.2 AA
+---
 
-**Loop**: Phase 4 feeds back into Phase 3. `/roast` identifies problems → `/remix` generates fixes → `/ship` rebuilds → `/roast` again. Repeat until quality bar is met.
+## Phase Shortcuts
+
+| Shortcut | When to Use |
+|----------|------------|
+| Skip Phase 1 | Adding to existing product with established direction |
+| Partial Phase 2 | Quick check: just `/vibe-check` (2.1) + `/include` (2.3) |
+| Skip Phase 3 | No regulatory concerns, no AI features, single-market |
+| Skip `/drip` (4.1) | Token system already exists |
+| Repeat Phase 5 | Loop `/roast` → `/remix` → `/ship` → `/roast` until quality bar met |
 
 ---
 
 ## Guide Protocol
 
 1. **Determine where the user is**: Ask or infer which phase they're in.
-   - **New project, no direction yet** → Phase 1: DISCOVER
-   - **Have a design or product to evaluate** → Phase 2: AUDIT
-   - **Know what to build, ready to code** → Phase 3: BUILD
-   - **Built something, need to improve it** → Phase 4: REFINE
+   - **New project, no direction yet** → Phase 1: DISCOVER — start with `/taste` (1.1)
+   - **Have a design or product to evaluate** → Phase 2: DIAGNOSE — start with `/vibe-check` (2.1)
+   - **Need compliance/ethics clearance** → Phase 3: FORTIFY — start with `/dark-scan` (3.1)
+   - **Know what to build, ready to code** → Phase 4: BUILD — start with `/drip` (4.1)
+   - **Built something, need to validate** → Phase 5: LAUNCH — start with `/roast` (5.1)
    - **Not sure** → Start with Phase 1
 
    If the user provides context (e.g., "I'm building a fintech app" or "review this component"), infer the phase from context rather than asking.
 
-   **Phase 3 readiness check**: When the user enters Phase 3, check if any Phase 1 outputs exist (e.g., prior `/taste` or `/inspo` run). If none exist, recommend running `/taste` first — it takes ~5 minutes and significantly improves BUILD output quality. If the user wants to proceed without Phase 1, BUILD commands default to neutral/minimal style.
+   **Phase 4 readiness check**: When the user enters Phase 4 BUILD, check if any Phase 1 outputs exist (e.g., prior `/taste` or `/inspo` run). If none exist, recommend running `/taste` first — it takes ~5 minutes and significantly improves BUILD output quality. If the user wants to proceed without Phase 1, BUILD commands default to neutral/minimal style.
 
-2. **Show the phase map**: Display all four phases with the user's current position highlighted.
+   **Phase 5 readiness check**: When the user enters Phase 5 LAUNCH, check that Phase 4 has produced buildable output. If not, recommend starting with `/drip` (4.1) or `/ship` (4.3).
 
-3. **Recommend the first command**: Based on the phase, suggest the specific command to run next with a one-line explanation of why.
+2. **Show the phase map**: Display the 5-phase journey with the user's current position marked.
 
-4. **Show the phase checklist**: List all commands in the current phase as a checklist so the user can track progress.
+3. **Recommend the next command**: Based on the phase, suggest the specific next step with a one-line explanation.
+
+4. **Show the phase checklist**: List all commands in the current phase as a numbered checklist.
 
 5. **Suggest phase transitions**: When the user has completed enough of the current phase, proactively suggest moving to the next phase.
 
@@ -148,61 +159,89 @@ The design process moves through four phases. Each phase has a clear goal, a set
 ## Sumi Design Guide
 
 ### Where You Are
-> **Phase [N]: [PHASE NAME]** — [one-line description of goal]
+> **Phase [N]: [NAME]** — [description]
+> Step [X.Y]: `/[command]`
 
-### The Full Journey
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│  1 DISCOVER  │───▶│   2 AUDIT    │───▶│   3 BUILD    │───▶│  4 REFINE   │
-│             │    │             │    │             │    │             │
-│ /taste      │    │ /vibe-check │    │ /drip       │    │ /roast      │
-│ /inspo      │    │ /brain-scan │    │ /screen     │    │ /remix      │
-│ /benchmark  │    │ /include    │    │ /ship       │    │ /judge      │
-│ /pulse      │    │ /flow       │    │ /onboard    │    │             │
-│             │    │ /dark-scan  │    │ /extract    │    │     ▲       │
-│             │    │ /trust-scan │    │             │    │     │       │
-│             │    │ /copy-check │    │             │    │  loop until │
-│             │    │ /responsive │    │             │    │  quality ✓  │
-└─────────────┘    └─────────────┘    └─────────────┘    └──────┼──────┘
-                                           ▲                    │
-                                           └────────────────────┘
-[Current phase highlighted with ★]
+### The 20-Step Journey
+
+#### Phase 1: DISCOVER — Market Intelligence (4 steps)
+*NNG: Generative Research | Visual: Direction & Moodboarding*
+Commercial milestone: Market position defined, competitive advantages mapped
+- [ ] 1.1 `/taste` — Sector style direction
+- [ ] 1.2 `/inspo` — Pattern research
+- [ ] 1.3 `/benchmark` — Competitive analysis
+- [ ] 1.4 `/pulse` — Metrics plan
+
+#### Phase 2: DIAGNOSE — UX Quality (4 steps)
+*NNG: Heuristic Evaluation | Visual: Quality Assessment*
+Commercial milestone: Due diligence complete, risk assessment documented
+- [ ] 2.1 `/vibe-check` — Heuristic audit
+- [ ] 2.2 `/brain-scan` — Cognitive audit
+- [ ] 2.3 `/include` — Accessibility audit
+- [ ] 2.4 `/flow` — Flow audit
+
+#### Phase 3: FORTIFY — Compliance & Standards (4 steps)
+*NNG: Standards Compliance | Visual: Regulatory & Cross-platform Quality*
+Commercial milestone: Regulatory clearance, multi-market readiness
+- [ ] 3.1 `/dark-scan` — Dark pattern scan
+- [ ] 3.2 `/trust-scan` — AI trust audit
+- [ ] 3.3 `/copy-check` — Content audit
+- [ ] 3.4 `/responsive` — Responsive audit
+
+#### Phase 4: BUILD — Design System & Product (5 steps)
+*NNG: Design + Implementation | Visual: Foundation → Composition → Delivery*
+Commercial milestone: MVP complete, production-ready
+- [ ] 4.1 `/drip` — Design tokens
+- [ ] 4.2 `/screen` — Screen builder
+- [ ] 4.3 `/ship` — Component builder
+- [ ] 4.4 `/onboard` — Onboarding flow
+- [ ] 4.5 `/extract` — Figma to code
+
+#### Phase 5: LAUNCH — Validation & Ship (3 steps)
+*NNG: Summative Evaluation | Visual: Polish & Critique*
+Commercial milestone: Launch readiness certified
+- [ ] 5.1 `/roast` — Design critique
+- [ ] 5.2 `/remix` — Redesign
+- [ ] 5.3 `/judge` — Final review
+
+[Mark completed with [x], current with ★]
 
 ### Your Phase: [PHASE NAME]
 
 **Goal**: [What this phase achieves]
 
-**Start here** → `[first command]` — [why this command first]
+**Start here** → `[command]` ([X.Y]) — [why this command next]
 
 #### Phase Checklist
-- [ ] `[command 1]` — [what it gives you]
-- [ ] `[command 2]` — [what it gives you]
-- [ ] `[command 3]` — [what it gives you]
-[...]
+[Commands for current phase with status]
 
-#### When to move on
-[Exit criteria for this phase]
+#### When to Move On
+[Exit gate for this phase]
 
 ### Quick Reference
-| Phase | Commands | Time |
-|-------|----------|------|
-| 1 DISCOVER | /taste → /inspo → /benchmark → /pulse | ~30 min |
-| 2 AUDIT | /vibe-check → /brain-scan → /include → +5 more | ~45 min |
-| 3 BUILD | /drip → /screen → /ship → /onboard → /extract | ~60 min |
-| 4 REFINE | /roast → /remix → /judge → loop | ~20 min/cycle |
+| Phase | Steps | Commands | Time |
+|-------|-------|----------|------|
+| 1 DISCOVER | 1.1–1.4 | /taste → /inspo → /benchmark → /pulse | ~30 min |
+| 2 DIAGNOSE | 2.1–2.4 | /vibe-check → /brain-scan → /include → /flow | ~45 min |
+| 3 FORTIFY | 3.1–3.4 | /dark-scan → /trust-scan → /copy-check → /responsive | ~30 min |
+| 4 BUILD | 4.1–4.5 | /drip → /screen → /ship → /onboard → /extract | ~60 min |
+| 5 LAUNCH | 5.1–5.3 | /roast → /remix → /judge → loop | ~20 min/cycle |
 ```
 
 ## Cross-References
 The guide draws on the full Sumi skill and command system:
-- All 20 commands are organized into the four phases above
-- `cognitive-psychology-ux` skill informs the progressive disclosure rationale (Iyengar & Lepper choice overload, Miller's chunking)
-- `ux-research-methods` skill grounds the phase structure in established design process methodology (Double Diamond, Design Thinking)
-- `nng-ux-heuristics` skill provides the evaluation framework used in Phase 2
-- `design-systems-architecture` skill informs the build order in Phase 3 (tokens before components)
-- `sector-style-intelligence` skill provides sector context consumed by Phase 3 BUILD commands via the Phase 1→3 bridge
+- All 20 commands are organized into the five phases above
+- `nng-ux-heuristics` skill grounds Phase 2 in the NNG heuristic evaluation protocol (5-phase: scope → calibrate → evaluate → specialize → aggregate)
+- `cognitive-psychology-ux` skill informs progressive disclosure rationale and the cognitive walkthrough in Phase 2
+- `ux-research-methods` skill grounds Phase 1 in generative research methodology (Double Diamond, Design Thinking)
+- `design-systems-architecture` skill informs the build order in Phase 4 (tokens → screens → components per W3C DTCG)
+- `design-critique-case-studies` skill grounds Phase 5 in Liz Lerman Critical Response Process and 30/60/90 fidelity framework
+- `sector-style-intelligence` skill provides sector context consumed by Phase 4 BUILD commands via the Phase 1→4 bridge
+- `ux-ethics-content-strategy` skill grounds Phase 3 FORTIFY in ethical design and regulatory compliance
 
-> **v4.1**: BUILD commands (`/ship`, `/screen`, `/drip`, `/onboard`) now gather context, apply UX principles with citations, and output design decision rationale. AUDIT commands (`/vibe-check`) now ground findings in cognitive science and check mental models. Phase 1 outputs are consumed by Phase 3 commands for sector-tuned results.
+> **v4.2**: Restructured from 4 to 5 phases integrating UX process with commercialization lifecycle. All commands carry phase.step addresses (1.1–5.3). Each phase grounded in NNG methodology and visual design process. Phase 3 FORTIFY is new — separates compliance/standards from core UX audit. Dual UX + commercial milestones per phase.
 
-## Next Steps
+## Next Step
 After running `/guide`, the user should:
 - Run the first recommended command for their current phase
 - Return to `/guide` at any time to reorient and check progress

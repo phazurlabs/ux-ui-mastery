@@ -1,5 +1,9 @@
 ---
 description: Design critique — Liz Lerman process, 10 dimensions scored, must-fix/should-fix/could-improve findings grounded in heuristics and cognitive psychology.
+phase: "5"
+phase_step: "5.1"
+phase_name: "LAUNCH"
+step_label: "Step 1 of 3"
 ---
 
 # Roast — Design Critique
@@ -54,6 +58,12 @@ Perform a structured design critique using proven critique methodology, scoring 
 ## Output Format
 
 ```
+### Phase Position
+> **Phase 5: LAUNCH** | Step 1 of 3 | `/roast`
+> *NNG: Expert Review | Visual: Design Critique*
+>
+> **Phase 4** `/extract` (4.5) → **`/roast` (5.1)** → `/remix` (5.2)
+
 ## Design Roast: [Design Name]
 
 ### Context
@@ -98,9 +108,11 @@ When critiquing designs, draw evaluation criteria from:
 - `ux-ethics-content-strategy` skill for ethical design evaluation
 - `ui-visual-design-system` skill for visual design quality assessment
 
-## Next Steps
-After running `/roast`, consider:
-- `/remix` — Redesign and implement fixes for every finding
-- `/vibe-check` — Deeper heuristic audit on specific problem areas
-- `/brain-scan` — Cognitive deep-dive if cognitive load scored low
-- `/include` — Accessibility deep-dive if a11y scored low
+## Next Step
+
+**Next** → `/remix` (5.2) — Redesign the weak areas critique identified
+
+**Alternatives**:
+- `/ship` (4.3) — Go back to BUILD to fix specific components
+- `/judge` (5.3) — Skip ahead to final comprehensive review
+- `/guide` — See the full 20-step journey
