@@ -748,13 +748,7 @@ Pure markdown. Zero dependencies. Works offline.
 
 <img src="assets/sumi.svg" alt="Sumi" width="80" align="left" style="margin-right: 16px;" />
 
-**Sumi** — from *sumi-e*, Japanese ink painting. Part KAWS art toy, part Space Invader, part AI. One eye for critique (the X). One eye for precision (the crosshair).
-
-483,000 words of design science. Cognitive psychology. Production code. Real-world case studies. No opinions. Only evidence.
-
-Solo builder shipping from your terminal. Design engineer bridging Figma and code. Team that wants UX rigor without the agency retainer. Sumi has you.
-
-<br clear="left" />
+**Sumi** 
 
 <br />
 
