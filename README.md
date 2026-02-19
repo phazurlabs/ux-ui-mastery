@@ -770,7 +770,7 @@ MIT
 ---
 
 <p align="center">
-  <strong>Built by <a href="https://github.com/phazurlabs">Design Tribe Republic</a>.</strong>
+  <strong>Built by <a href="https://github.com/phazurlabs">Phazur Labs</a>.</strong>
   <br />
   <sub>v4.3.0 · Powered by Claude</sub>
 </p>
