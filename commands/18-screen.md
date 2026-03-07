@@ -1,9 +1,9 @@
 ---
-description: Screen type builder — generate production-ready code for any standard screen type (25+) with all states, accessibility, responsive breakpoints, and design token consumption.
+description: "[4.2] Screen builder — generate production-ready code for any screen type (25+) with all states, accessibility, responsive breakpoints, and token consumption."
 phase: "4"
 phase_step: "4.2"
 phase_name: "BUILD"
-step_label: "Step 2 of 5"
+step_label: "Step 18 of 30"
 ---
 
 # Screen — Screen Type Builder

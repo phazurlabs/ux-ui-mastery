@@ -1,9 +1,9 @@
 ---
-description: Sector-specific style direction generator — generate a complete visual identity direction with color, typography, motion, tone, tokens, and reference apps for any product sector.
+description: "[1.2] Sector style direction — generate visual identity with color, typography, motion, tone, tokens, and reference apps for your product sector."
 phase: "1"
-phase_step: "1.1"
+phase_step: "1.2"
 phase_name: "DISCOVER"
-step_label: "Step 1 of 4"
+step_label: "Step 4 of 30"
 ---
 
 # Taste — Sector-Specific Style Direction Generator

@@ -1,9 +1,9 @@
 ---
-description: Score any UI's visual design quality across 10 dimensions — Typography, Color, Spacing, Composition, Imagery, Iconography, Motion, Polish, Coherence, Craft — calibrated to Awwwards and international design award standards.
-phase: "5"
-phase_step: "5.4"
+description: "[6.2] Visual quality score — score any UI across 10 visual dimensions calibrated to Awwwards and international design award standards."
+phase: "6"
+phase_step: "6.2"
 phase_name: "LAUNCH"
-step_label: "Step 4 of 4"
+step_label: "Step 27 of 30"
 ---
 
 # Visual Score — Visual Design Quality Assessment

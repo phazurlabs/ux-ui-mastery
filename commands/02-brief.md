@@ -1,9 +1,9 @@
 ---
-description: Define your design intent — problem statement, persona, How Might We questions, success criteria, and a constraint stack that carries forward into every BUILD command.
+description: "[0.2] Design brief — define problem statement, persona, How Might We questions, success criteria, and constraint stack."
 phase: "0"
 phase_step: "0.2"
 phase_name: "GROUND"
-step_label: "Step 2 of 2"
+step_label: "Step 2 of 30"
 ---
 
 # Intent — Problem Definition & Constraint Stack Generator

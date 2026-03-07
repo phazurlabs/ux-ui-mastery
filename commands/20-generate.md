@@ -1,9 +1,9 @@
 ---
-description: AI-powered screen generation — use Stitch MCP and image generation tools to create UI screens from text descriptions, informed by Sumi's design intelligence. Design-aware AI generation.
+description: "[4.4] AI screen generation — use Stitch MCP and image generation tools to create UI screens from text descriptions, informed by Sumi's design intelligence."
 phase: "4"
-phase_step: "4.6"
+phase_step: "4.4"
 phase_name: "BUILD"
-step_label: "Step 6 of 7"
+step_label: "Step 20 of 30"
 ---
 
 # Generate — AI Screen Generation Engine

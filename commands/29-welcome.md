@@ -1,9 +1,9 @@
 ---
-description: Onboarding flow builder — generate a complete onboarding sequence with progressive disclosure, activation metrics, and production React/TypeScript code.
-phase: "4"
-phase_step: "4.4"
-phase_name: "BUILD"
-step_label: "Step 4 of 5"
+description: "[6.4] Onboarding builder — generate a complete onboarding sequence with progressive disclosure, activation metrics, and production code."
+phase: "6"
+phase_step: "6.4"
+phase_name: "LAUNCH"
+step_label: "Step 29 of 30"
 ---
 
 # Onboard — Onboarding Flow Builder

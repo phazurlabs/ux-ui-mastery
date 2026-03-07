@@ -1,9 +1,9 @@
 ---
-description: Full UX audit — audit any UI against Nielsen's 10 usability heuristics with severity ratings and actionable recommendations.
-phase: "2"
-phase_step: "2.1"
-phase_name: "DIAGNOSE"
-step_label: "Step 1 of 4"
+description: "[3.1] Heuristic audit — evaluate any UI against Nielsen's 10 usability heuristics with severity ratings and actionable recommendations."
+phase: "3"
+phase_step: "3.1"
+phase_name: "AUDIT"
+step_label: "Step 12 of 30"
 ---
 
 # Vibe Check — UX Heuristic Audit

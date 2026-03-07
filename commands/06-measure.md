@@ -1,9 +1,9 @@
 ---
-description: Generate a complete UX metrics plan — HEART framework with goals, signals, metrics, dashboards, and experimentation strategy.
+description: "[1.4] UX metrics plan — generate a complete HEART framework with goals, signals, metrics, dashboards, and experimentation strategy."
 phase: "1"
 phase_step: "1.4"
 phase_name: "DISCOVER"
-step_label: "Step 4 of 4"
+step_label: "Step 6 of 30"
 ---
 
 # Pulse — UX Metrics Plan

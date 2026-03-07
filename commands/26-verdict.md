@@ -1,9 +1,9 @@
 ---
-description: Comprehensive design review scoring a UI across all 21 skill domains with detailed feedback and improvement roadmap.
-phase: "5"
-phase_step: "5.3"
+description: "[6.1] Comprehensive review — score a UI across all design domains with detailed feedback, improvement roadmap, and launch readiness assessment."
+phase: "6"
+phase_step: "6.1"
 phase_name: "LAUNCH"
-step_label: "Step 3 of 3"
+step_label: "Step 26 of 30"
 ---
 
 # Judge — Full Design Review

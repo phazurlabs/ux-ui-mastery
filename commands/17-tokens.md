@@ -1,9 +1,9 @@
 ---
-description: Generate a complete W3C design token system — your visual identity distilled into code. Colors, type, spacing, elevation, and themes.
+description: "[4.1] Design tokens — generate a complete W3C design token system. Colors, type, spacing, elevation, and themes distilled into code."
 phase: "4"
 phase_step: "4.1"
 phase_name: "BUILD"
-step_label: "Step 1 of 5"
+step_label: "Step 17 of 30"
 ---
 
 # Drip — Design Token System Generator

@@ -7,8 +7,8 @@
     {
       "name": "sumi",
       "source": "./",
-      "description": "UX/UI design mastery plugin — 26 skills, 28 commands across 6 numbered phases (GROUND → DISCOVER → DIAGNOSE → FORTIFY → BUILD → LAUNCH). Phase.step addresses (0.1–5.4) grounded in NNG design thinking and visual design process. Phase Position headers, sequential Next Steps, dual UX + commercial milestones. Visual design mastery (36+ world-class designers, 70 canonical rules, 10-dimension Awwwards-calibrated scoring), platform visual standards (iOS 26 Liquid Glass, M3 Expressive, modern CSS 2025-2026, 9 device types), AI design generation (Stitch MCP, Fal.ai 600+ models, Recraft V3 SVG, Veo 3.1 video), UI pattern intelligence (200+ patterns, 50+ product benchmarks, 100+ anti-patterns), NNG process workflow, heuristics, cognitive psychology, production code (React/SwiftUI/CSS), Figma MCP, WCAG 2.2+3.0, mobile/desktop/web/watch/TV/spatial/automotive, AI/spatial/voice UX.",
-      "version": "5.0.0",
+      "description": "UX/UI design mastery plugin — 30 ordered steps across 7 phases guiding the complete product design lifecycle. GROUND → DISCOVER → SHAPE → AUDIT → BUILD → VALIDATE → LAUNCH. Visual design mastery (36+ designers, 70 rules, Awwwards scoring), platform standards (iOS 26 Liquid Glass, M3 Expressive, CSS 2025-2026, 9 devices), AI generation (Stitch MCP, Fal.ai 600+ models), UI patterns (200+ patterns, 50+ benchmarks, 100+ anti-patterns), user research, wireframing, usability testing, design QA, pre-launch checklist, post-launch iteration.",
+      "version": "6.0.0",
       "author": {
         "name": "phazurlabs"
       }

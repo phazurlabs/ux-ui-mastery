@@ -1,9 +1,9 @@
 ---
-description: UX process orientation — map the 6-phase NNG design thinking process to your terminal workflow, select the right company methodology, and generate a personalized Sumi command roadmap.
+description: "[0.1] Process orientation — map the design process to your workflow, select methodology, and generate a personalized command roadmap."
 phase: "0"
 phase_step: "0.1"
 phase_name: "GROUND"
-step_label: "Step 1 of 2"
+step_label: "Step 1 of 30"
 ---
 
 # Ground — Process Orientation & Methodology Selection

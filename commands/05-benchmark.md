@@ -1,9 +1,9 @@
 ---
-description: Competitive design benchmark — score a design against the best apps in its category across 10 UX dimensions with gap analysis and improvement roadmap.
+description: "[1.3] Competitive design benchmark — score a design against the best apps in its category across 10 UX dimensions with gap analysis."
 phase: "1"
 phase_step: "1.3"
 phase_name: "DISCOVER"
-step_label: "Step 3 of 4"
+step_label: "Step 5 of 30"
 ---
 
 # Benchmark — Competitive Design Benchmark

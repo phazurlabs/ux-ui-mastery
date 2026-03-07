@@ -1,9 +1,9 @@
 ---
-description: Design critique — Liz Lerman process, 10 dimensions scored, must-fix/should-fix/could-improve findings grounded in heuristics and cognitive psychology.
+description: "[5.2] Design critique — Liz Lerman process, 10 dimensions scored, must-fix/should-fix/could-improve findings grounded in heuristics and cognitive psychology."
 phase: "5"
-phase_step: "5.1"
-phase_name: "LAUNCH"
-step_label: "Step 1 of 3"
+phase_step: "5.2"
+phase_name: "VALIDATE"
+step_label: "Step 23 of 30"
 ---
 
 # Roast — Design Critique

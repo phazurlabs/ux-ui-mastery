@@ -1,9 +1,9 @@
 ---
-description: User flow audit — map, score, and optimize any multi-step user journey for efficiency, cognitive load, emotional arc, and conversion.
-phase: "2"
-phase_step: "2.4"
-phase_name: "DIAGNOSE"
-step_label: "Step 4 of 4"
+description: "[3.4] User flow audit — map, score, and optimize any multi-step user journey for efficiency, cognitive load, emotional arc, and conversion."
+phase: "3"
+phase_step: "3.4"
+phase_name: "AUDIT"
+step_label: "Step 15 of 30"
 ---
 
 # Flow — User Flow Audit

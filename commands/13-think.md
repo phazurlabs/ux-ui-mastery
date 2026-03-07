@@ -1,9 +1,9 @@
 ---
-description: Cognitive audit — Laws of UX, Gestalt principles, cognitive bias analysis. Score decision architecture, visual cognition, memory load, and attention management.
-phase: "2"
-phase_step: "2.2"
-phase_name: "DIAGNOSE"
-step_label: "Step 2 of 4"
+description: "[3.2] Cognitive audit — Laws of UX, Gestalt principles, cognitive bias analysis. Score decision architecture, visual cognition, memory load, and attention."
+phase: "3"
+phase_step: "3.2"
+phase_name: "AUDIT"
+step_label: "Step 13 of 30"
 ---
 
 # Brain Scan — Cognitive Psychology Audit

@@ -1,9 +1,9 @@
 ---
-description: Deep WCAG 2.2 accessibility audit on code with specific fixes for every violation found. Accessibility IS inclusion.
-phase: "2"
-phase_step: "2.3"
-phase_name: "DIAGNOSE"
-step_label: "Step 3 of 4"
+description: "[3.3] Accessibility audit — deep WCAG 2.2 audit on code with specific fixes for every violation found. Accessibility IS inclusion."
+phase: "3"
+phase_step: "3.3"
+phase_name: "AUDIT"
+step_label: "Step 14 of 30"
 ---
 
 # Include — Accessibility Audit

@@ -1,9 +1,9 @@
 ---
-description: Generate a complete visual design direction — color, typography, spacing, shape, motion, elevation — informed by 36+ world-class designers and 70 canonical design rules. Your visual identity, grounded in craft.
-phase: "1"
-phase_step: "1.6"
-phase_name: "DISCOVER"
-step_label: "Step 6 of 6"
+description: "[2.3] Visual design direction — generate complete visual identity with color, typography, spacing, shape, motion, elevation, informed by 36+ world-class designers and 70 canonical rules."
+phase: "2"
+phase_step: "2.3"
+phase_name: "SHAPE"
+step_label: "Step 10 of 30"
 ---
 
 # Vision — Visual Design Direction Generator

@@ -1,9 +1,9 @@
 ---
-description: Design inspiration and pattern finder — find best-practice patterns, references, and inspiration for any screen type, UI element, or user flow.
+description: "[1.5] Design inspiration — find best-practice patterns, references, and inspiration for any screen type, UI element, or user flow."
 phase: "1"
-phase_step: "1.2"
+phase_step: "1.5"
 phase_name: "DISCOVER"
-step_label: "Step 2 of 4"
+step_label: "Step 7 of 30"
 ---
 
 # Inspo — Design Inspiration & Pattern Finder

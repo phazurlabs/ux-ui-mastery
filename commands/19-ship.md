@@ -1,9 +1,9 @@
 ---
-description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS). Copy-paste ready.
+description: "[4.3] Component builder — build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code. Copy-paste ready."
 phase: "4"
 phase_step: "4.3"
 phase_name: "BUILD"
-step_label: "Step 3 of 5"
+step_label: "Step 19 of 30"
 ---
 
 # Ship — Production Component Builder

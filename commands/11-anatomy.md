@@ -1,9 +1,9 @@
 ---
-description: Analyze a vibe-coded app's UI patterns, benchmark against world-class products, identify sector-specific gaps, and prescribe exact pattern upgrades. The pattern intelligence engine.
-phase: "1"
-phase_step: "1.5"
-phase_name: "DISCOVER"
-step_label: "Step 5 of 5"
+description: "[2.4] UI pattern analysis — analyze a vibe-coded app's patterns, benchmark against world-class products, identify sector gaps, and prescribe exact upgrades."
+phase: "2"
+phase_step: "2.4"
+phase_name: "SHAPE"
+step_label: "Step 11 of 30"
 ---
 
 # Patterns — UI Pattern Intelligence Engine

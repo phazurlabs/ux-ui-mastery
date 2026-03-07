@@ -1,9 +1,9 @@
 ---
-description: Redesign and improve — take any existing screen or component and generate a UX-grounded redesign with before/after reasoning for every change.
+description: "[5.3] Redesign — take any existing screen or component and generate a UX-grounded redesign with before/after reasoning for every change."
 phase: "5"
-phase_step: "5.2"
-phase_name: "LAUNCH"
-step_label: "Step 2 of 3"
+phase_step: "5.3"
+phase_name: "VALIDATE"
+step_label: "Step 24 of 30"
 ---
 
 # Remix — Redesign & Improve

@@ -1,9 +1,9 @@
 ---
-description: AI-powered design asset generation — create icons (SVG), illustrations, photographs, video, and brand assets using MCP tools, with style consistency ensured by Sumi's design intelligence.
+description: "[4.5] AI asset generation — create icons (SVG), illustrations, photographs, video, and brand assets using MCP tools with style consistency."
 phase: "4"
-phase_step: "4.7"
+phase_step: "4.5"
 phase_name: "BUILD"
-step_label: "Step 7 of 7"
+step_label: "Step 21 of 30"
 ---
 
 # Assets — AI Design Asset Generation Engine
