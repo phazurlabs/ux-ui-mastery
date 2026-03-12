@@ -52,7 +52,19 @@ This skill is organized into deeply researched sector reference files:
 | `references/ecommerce-marketplace-style.md` | E-Commerce, Marketplace, Luxury | 500+ |
 | `references/education-entertainment-style.md` | Education, Entertainment, Gaming | 500+ |
 
-### Each Reference File Includes
+### Page Template Reference Files
+
+Complete page-level templates with block sequences, typography maps, color application, spacing rhythm, component selection, responsive behavior, and React/TSX skeletons:
+
+| File | Pages Covered | Lines |
+|---|---|---|
+| `references/saas-page-templates.md` | 10 SaaS pages (landing, pricing, onboarding, dashboard, settings, team, billing, integrations, changelog, docs) with 3 style variants each (Minimal/Warm/Bold) | 1499 |
+| `references/fintech-page-templates.md` | 10 Fintech pages (dashboard, transactions, transfer, portfolio, card, bills, loan, budget, insights, KYC) with 2 style variants (Clean Modern/Bold Fintech) + compliance and security patterns | 1002 |
+| `references/ecommerce-page-templates.md` | 10 E-Commerce pages (listing, detail, cart, checkout, confirmation, tracking, account, wishlist, returns, reviews) with 2 style variants (Premium/Marketplace) + conversion optimization | 859 |
+| `references/healthcare-education-templates.md` | 5 Healthcare pages (portal, booking, records, telemedicine, medications) + 5 Education pages (catalog, detail, dashboard, lesson, quiz) with accessibility and engagement patterns | 1149 |
+| `references/creative-developer-templates.md` | 5 Creative/Portfolio pages (landing, case study, about, contact, blog) + 5 Developer pages (docs, API reference, CLI landing, changelog, status) | 1254 |
+
+### Each Style Reference File Includes
 
 1. **Color Psychology** — What colors mean in the sector, palettes from leading apps with hex values
 2. **Typography Norms** — Exact fonts top apps use and the reasoning behind those choices

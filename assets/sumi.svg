@@ -1,89 +1,190 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" width="200" height="260">
-  <!-- Sumi: KAWS x Space Invader x Claude mascot -->
-  <!-- Color tokens -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <defs>
-    <style>
-      .body { fill: #E8715A; }
-      .shadow { fill: #D4604D; }
-      .dark { fill: #1A1A2E; }
-      .highlight { fill: #F5C6B8; }
-      .glow { fill: #FF8C73; }
-    </style>
+    <!-- Premium gradient system -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B4A"/>
+      <stop offset="50%" stop-color="#E8573D"/>
+      <stop offset="100%" stop-color="#D44A32"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF8C73"/>
+      <stop offset="100%" stop-color="#FF6B4A"/>
+    </linearGradient>
+    <linearGradient id="crownGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D2D3F"/>
+      <stop offset="100%" stop-color="#1A1A2E"/>
+    </linearGradient>
+    <linearGradient id="shineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D0D14"/>
+      <stop offset="100%" stop-color="#161625"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="crownGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="innerShadow">
+      <feOffset dx="0" dy="3"/>
+      <feGaussianBlur stdDeviation="4"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+
+    <!-- Noise texture -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="noisy"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="normal"/>
+    </filter>
+
+    <!-- Clip for body grid -->
+    <clipPath id="bodyClip">
+      <rect x="120" y="245" width="160" height="85" rx="28"/>
+    </clipPath>
+    <clipPath id="headClip">
+      <rect x="60" y="88" width="280" height="160" rx="48"/>
+    </clipPath>
   </defs>
 
-  <!-- === PIXEL CROWN (Space Invader antenna array) === -->
-  <!-- 5-tier pixel formation: center 3 tall, flanks 2 tall, outer 1 tall -->
-  <!-- Each pixel block = 14x14, 2px gap -->
-  <!-- Center column (3 blocks) -->
-  <rect class="glow" x="93" y="0" width="14" height="14" rx="1"/>
-  <rect class="dark" x="93" y="16" width="14" height="14" rx="1"/>
-  <rect class="dark" x="93" y="32" width="14" height="14" rx="1"/>
-  <!-- Inner-left column (2 blocks) -->
-  <rect class="dark" x="77" y="16" width="14" height="14" rx="1"/>
-  <rect class="dark" x="77" y="32" width="14" height="14" rx="1"/>
-  <!-- Inner-right column (2 blocks) -->
-  <rect class="dark" x="109" y="16" width="14" height="14" rx="1"/>
-  <rect class="dark" x="109" y="32" width="14" height="14" rx="1"/>
-  <!-- Outer-left column (1 block) -->
-  <rect class="dark" x="61" y="32" width="14" height="14" rx="1"/>
-  <!-- Outer-right column (1 block) -->
-  <rect class="dark" x="125" y="32" width="14" height="14" rx="1"/>
+  <!-- === BACKGROUND — Dark premium === -->
+  <rect width="400" height="400" rx="40" fill="url(#bgGrad)"/>
 
-  <!-- === HEAD === -->
-  <!-- Main head shape -->
-  <rect class="body" x="20" y="48" width="160" height="120" rx="32"/>
-  <!-- Head shadow (right/bottom edge) -->
-  <path class="shadow" d="M148,48 h0 a32,32 0 0 1 32,32 v56 a32,32 0 0 1 -32,32 h-40 a100,100 0 0 0 40,-120Z" opacity="0.35"/>
-
-  <!-- === LEFT EYE — KAWS X === -->
-  <g transform="translate(68, 95)">
-    <line x1="-14" y1="-14" x2="14" y2="14" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/>
-    <line x1="14" y1="-14" x2="-14" y2="14" stroke="#1A1A2E" stroke-width="4" stroke-linecap="round"/>
+  <!-- Subtle grid texture on background -->
+  <g opacity="0.04" stroke="#FFFFFF" stroke-width="0.5">
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
   </g>
 
-  <!-- === RIGHT EYE — Crosshair reticle === -->
-  <g transform="translate(132, 95)">
-    <circle cx="0" cy="0" r="12" fill="none" stroke="#1A1A2E" stroke-width="2.5"/>
-    <line x1="-17" y1="0" x2="17" y2="0" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
-    <line x1="0" y1="-17" x2="0" y2="17" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="0" cy="0" r="3" class="dark"/>
+  <!-- === PIXEL CROWN — Elevated with glow === -->
+  <g filter="url(#crownGlow)">
+    <!-- Center column (3 blocks) — top one glows -->
+    <rect fill="#FF6B4A" x="190" y="18" width="20" height="20" rx="3"/>
+    <rect fill="url(#crownGrad)" x="190" y="42" width="20" height="20" rx="3"/>
+    <rect fill="url(#crownGrad)" x="190" y="66" width="20" height="20" rx="3"/>
+    <!-- Inner-left (2 blocks) -->
+    <rect fill="url(#crownGrad)" x="166" y="42" width="20" height="20" rx="3"/>
+    <rect fill="url(#crownGrad)" x="166" y="66" width="20" height="20" rx="3"/>
+    <!-- Inner-right (2 blocks) -->
+    <rect fill="url(#crownGrad)" x="214" y="42" width="20" height="20" rx="3"/>
+    <rect fill="url(#crownGrad)" x="214" y="66" width="20" height="20" rx="3"/>
+    <!-- Outer-left (1 block) -->
+    <rect fill="url(#crownGrad)" x="142" y="66" width="20" height="20" rx="3"/>
+    <!-- Outer-right (1 block) -->
+    <rect fill="url(#crownGrad)" x="238" y="66" width="20" height="20" rx="3"/>
+    <!-- Accent pixels — small dots between crown blocks -->
+    <rect fill="#FF6B4A" opacity="0.5" x="181" y="51" width="6" height="6" rx="1"/>
+    <rect fill="#FF6B4A" opacity="0.5" x="213" y="51" width="6" height="6" rx="1"/>
   </g>
 
-  <!-- === CHEEK HIGHLIGHTS === -->
-  <ellipse class="highlight" cx="55" cy="125" rx="12" ry="8" opacity="0.6"/>
-  <ellipse class="highlight" cx="145" cy="125" rx="12" ry="8" opacity="0.6"/>
+  <!-- === HEAD — Premium rounded form === -->
+  <g filter="url(#innerShadow)">
+    <rect fill="url(#bodyGrad)" x="60" y="88" width="280" height="160" rx="48"/>
+  </g>
+  <!-- Head shine (top-left highlight) -->
+  <path fill="url(#shineGrad)" d="M108,88 h184 a48,48 0 0 1 48,48 v-10 a48,48 0 0 0 -48,-48 h-200 a48,48 0 0 0 -30,12 Z" clip-path="url(#headClip)"/>
 
-  <!-- === MOUTH === -->
-  <path d="M88,140 Q100,148 112,140" fill="none" stroke="#1A1A2E" stroke-width="2.5" stroke-linecap="round"/>
-
-  <!-- === BODY === -->
-  <rect class="body" x="50" y="170" width="100" height="55" rx="18"/>
-  <!-- Body shadow -->
-  <path class="shadow" d="M125,170 h7 a18,18 0 0 1 18,18 v19 a18,18 0 0 1 -18,18 h-7 a60,60 0 0 0 0,-55Z" opacity="0.3"/>
-  <!-- Design grid reference (subtle lines on body) -->
-  <g stroke="#D4604D" stroke-width="0.8" opacity="0.3">
-    <!-- Horizontal grid lines -->
-    <line x1="68" y1="185" x2="132" y2="185"/>
-    <line x1="68" y1="197" x2="132" y2="197"/>
-    <line x1="68" y1="209" x2="132" y2="209"/>
-    <!-- Vertical grid lines -->
-    <line x1="84" y1="178" x2="84" y2="217"/>
-    <line x1="100" y1="178" x2="100" y2="217"/>
-    <line x1="116" y1="178" x2="116" y2="217"/>
+  <!-- === LEFT EYE — KAWS X (refined) === -->
+  <g transform="translate(152, 160)" filter="url(#softGlow)">
+    <!-- X glow ring -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#1A1A2E" stroke-width="1.5" opacity="0.3"/>
+    <!-- X strokes — clean, weighted, rounded -->
+    <line x1="-16" y1="-16" x2="16" y2="16" stroke="#1A1A2E" stroke-width="5" stroke-linecap="round"/>
+    <line x1="16" y1="-16" x2="-16" y2="16" stroke="#1A1A2E" stroke-width="5" stroke-linecap="round"/>
+    <!-- Inner highlight -->
+    <line x1="-14" y1="-14" x2="14" y2="14" stroke="#2A1A1A" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
   </g>
 
-  <!-- === ARMS === -->
+  <!-- === RIGHT EYE — Design reticle (refined) === -->
+  <g transform="translate(248, 160)" filter="url(#softGlow)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#1A1A2E" stroke-width="2.5"/>
+    <!-- Crosshair lines — extending beyond circle -->
+    <line x1="-30" y1="0" x2="-14" y2="0" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+    <line x1="14" y1="0" x2="30" y2="0" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="-30" x2="0" y2="-14" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="14" x2="0" y2="30" stroke="#1A1A2E" stroke-width="2" stroke-linecap="round"/>
+    <!-- Inner ring -->
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#1A1A2E" stroke-width="1.5"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="3.5" fill="#1A1A2E"/>
+    <!-- Corner brackets (precision marks) -->
+    <path d="M-16,-16 L-16,-12 M-16,-16 L-12,-16" fill="none" stroke="#1A1A2E" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M16,-16 L16,-12 M16,-16 L12,-16" fill="none" stroke="#1A1A2E" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M-16,16 L-16,12 M-16,16 L-12,16" fill="none" stroke="#1A1A2E" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M16,16 L16,12 M16,16 L12,16" fill="none" stroke="#1A1A2E" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- === CHEEK HIGHLIGHTS — Soft blush === -->
+  <ellipse fill="#FFB4A0" cx="110" cy="205" rx="18" ry="10" opacity="0.35"/>
+  <ellipse fill="#FFB4A0" cx="290" cy="205" rx="18" ry="10" opacity="0.35"/>
+
+  <!-- === MOUTH — Subtle confident smile === -->
+  <path d="M178,218 Q200,230 222,218" fill="none" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- === BODY — With design grid overlay === -->
+  <g filter="url(#innerShadow)">
+    <rect fill="url(#bodyGrad)" x="120" y="245" width="160" height="85" rx="28"/>
+  </g>
+  <!-- Body shine -->
+  <path fill="url(#shineGrad)" d="M148,245 h104 a28,28 0 0 1 28,28 v-8 a28,28 0 0 0 -28,-28 h-116 a28,28 0 0 0 -16,6 Z" clip-path="url(#bodyClip)"/>
+
+  <!-- Design grid on body — the signature detail -->
+  <g clip-path="url(#bodyClip)" stroke="#FFFFFF" stroke-width="0.6" opacity="0.12">
+    <line x1="120" y1="265" x2="280" y2="265"/>
+    <line x1="120" y1="280" x2="280" y2="280"/>
+    <line x1="120" y1="295" x2="280" y2="295"/>
+    <line x1="120" y1="310" x2="280" y2="310"/>
+    <line x1="153" y1="245" x2="153" y2="330"/>
+    <line x1="186" y1="245" x2="186" y2="330"/>
+    <line x1="219" y1="245" x2="219" y2="330"/>
+    <line x1="252" y1="245" x2="252" y2="330"/>
+  </g>
+  <!-- Golden ratio circle on body (subtle design reference) -->
+  <circle cx="200" cy="287" r="16" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.08"/>
+  <path d="M184,287 A16,16 0 0 1 200,271" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- === ARMS — Refined with shadow === -->
   <!-- Left arm -->
-  <rect class="body" x="28" y="176" width="20" height="40" rx="10" transform="rotate(-8, 38, 176)"/>
-  <rect class="shadow" x="28" y="204" width="20" height="12" rx="6" transform="rotate(-8, 38, 176)" opacity="0.4"/>
+  <rect fill="url(#bodyGrad)" x="88" y="255" width="30" height="60" rx="15" transform="rotate(-6, 103, 255)"/>
+  <ellipse fill="#1A1A2E" cx="103" cy="310" rx="8" ry="4" opacity="0.08" transform="rotate(-6, 103, 310)"/>
   <!-- Right arm -->
-  <rect class="body" x="152" y="176" width="20" height="40" rx="10" transform="rotate(8, 162, 176)"/>
-  <rect class="shadow" x="152" y="204" width="20" height="12" rx="6" transform="rotate(8, 162, 176)" opacity="0.4"/>
+  <rect fill="url(#bodyGrad)" x="282" y="255" width="30" height="60" rx="15" transform="rotate(6, 297, 255)"/>
+  <ellipse fill="#1A1A2E" cx="297" cy="310" rx="8" ry="4" opacity="0.08" transform="rotate(6, 297, 310)"/>
 
-  <!-- === LEGS === -->
-  <rect class="body" x="66" y="225" width="26" height="32" rx="12"/>
-  <rect class="body" x="108" y="225" width="26" height="32" rx="12"/>
-  <!-- Leg shadows -->
-  <rect class="shadow" x="66" y="245" width="26" height="12" rx="8" opacity="0.3"/>
-  <rect class="shadow" x="108" y="245" width="26" height="12" rx="8" opacity="0.3"/>
+  <!-- === LEGS — Clean with ground shadow === -->
+  <rect fill="url(#bodyGrad)" x="150" y="328" width="40" height="44" rx="18"/>
+  <rect fill="url(#bodyGrad)" x="210" y="328" width="40" height="44" rx="18"/>
+  <!-- Ground shadows -->
+  <ellipse fill="#000000" cx="170" cy="376" rx="22" ry="4" opacity="0.2"/>
+  <ellipse fill="#000000" cx="230" cy="376" rx="22" ry="4" opacity="0.2"/>
+
+  <!-- === LOGOTYPE — "SUMI" === -->
+  <text x="200" y="396" text-anchor="middle" font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif" font-weight="700" font-size="11" letter-spacing="6" fill="#FFFFFF" opacity="0.5">SUMI</text>
+
+  <!-- === VERSION BADGE — v7 === -->
+  <g transform="translate(325, 30)">
+    <rect x="0" y="0" width="40" height="20" rx="10" fill="#FF6B4A" opacity="0.9"/>
+    <text x="20" y="14" text-anchor="middle" font-family="'SF Mono', 'JetBrains Mono', monospace" font-weight="600" font-size="9" fill="#FFFFFF">v7</text>
+  </g>
+
+  <!-- === Subtle ambient glow behind character === -->
+  <circle cx="200" cy="200" r="120" fill="#FF6B4A" opacity="0.03"/>
 </svg>
