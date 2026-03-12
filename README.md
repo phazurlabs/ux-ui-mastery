@@ -52,6 +52,22 @@ Chef Sumi is a design intelligence plugin for [Claude Code](https://github.com/a
 
 ---
 
+### Fix AI-generated slop
+
+```
+/fix
+```
+*(paste your AI-generated code or point to a file)*
+
+**What you get:**
+- AI slop detection scan — identifies purple gradient syndrome, font monotony, layout lottery, accessibility void
+- Complete code transformation — every issue fixed, not just flagged
+- Design token generation — if no tokens exist, creates a complete set
+- Before/after quality score showing exactly what improved
+- All business logic preserved — only the design layer is transformed
+
+---
+
 ### Build a production screen
 
 ```
@@ -189,6 +205,7 @@ Chef Sumi is a design intelligence plugin for [Claude Code](https://github.com/a
 
 | Command | What you get |
 |---------|-------------|
+| `/fix` | Anti-slop engine — transforms AI-generated UI into production-quality design |
 | `/style` | Complete visual identity — palette, type, spacing, tokens, references |
 | `/palette` | Color system — oklch scales, APCA scores, dark mode mapping |
 | `/type` | Typography — font pairing, type scale, fluid sizing, platform stacks |
@@ -285,6 +302,6 @@ Restart Claude Code. Run `/sumi` to see all commands.
 ---
 
 <p align="center">
-  <sub>v8.0.0 &middot; 32 commands &middot; 42 skills &middot; 165 reference docs</sub><br />
+  <sub>v8.1.0 &middot; 33 commands &middot; 42 skills &middot; 165 reference docs</sub><br />
   <sub>Built by <a href="https://github.com/phazurlabs">Phazur Labs</a> &middot; Powered by Claude</sub>
 </p>

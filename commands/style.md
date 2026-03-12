@@ -59,6 +59,48 @@ If only a mood or vibe phrase is given (e.g., "dark minimal Japanese"), derive t
 
 ---
 
+## Design Memory v2 — Project Intelligence
+
+Before generating any style decisions, scan the project context to detect existing design decisions and technology stack.
+
+### Auto-Detection Protocol
+
+**Step 1: Technology Stack Detection**
+
+Scan the working directory for project signals:
+
+| File/Pattern | Detection | Action |
+|-------------|-----------|--------|
+| `tailwind.config.js/ts` | Tailwind CSS project | Extract existing theme customizations (colors, fonts, spacing, screens). Use as baseline instead of generating from scratch |
+| `tailwind.config` → `theme.extend.colors` | Custom color tokens exist | Inherit these colors. Do not override unless explicitly asked |
+| `tailwind.config` → `theme.extend.fontFamily` | Custom fonts defined | Use these fonts. Suggest pairing improvements if appropriate |
+| `globals.css` / `app.css` | CSS custom properties | Extract `:root {}` variables. Map to Chef Sumi token structure |
+| `package.json` → dependencies | Framework detection | Detect React, Vue, Svelte, Next.js, Nuxt, SvelteKit. Adjust output format |
+| `tsconfig.json` | TypeScript project | Output TypeScript types for tokens |
+| `.css` files with `--` custom properties | Existing token system | Map to Chef Sumi format. Identify gaps |
+| `theme.json` / `tokens.json` | Design token file | Parse existing tokens. Use as baseline |
+| `*.swift` / `Package.swift` | SwiftUI project | Output SwiftUI color/font extensions |
+| `styles/` or `tokens/` directory | Organized design system | Scan for existing design decisions |
+
+**Step 2: Existing Design Analysis**
+
+If design tokens or theme customizations are found:
+1. Map existing values to Chef Sumi's token structure
+2. Identify GAPS — what the project defines vs. what a complete system needs
+3. Generate ONLY the missing pieces, not the whole system
+4. Flag any inconsistencies found (e.g., 5 different border-radius values, spacing that doesn't follow a scale)
+5. Ask: "I found existing design tokens. Should I (a) extend them, (b) rebuild from scratch, or (c) audit what you have?"
+
+**Step 3: Design Memory Check**
+
+Check for existing Chef Sumi design memory:
+- `.sumi/style.json` — previous style generation
+- `.sumi/context.json` — project context
+- If found: "I found your previous Chef Sumi style. Should I update it or start fresh?"
+- If found and user runs a sector-specific generation: merge with existing decisions, flagging any conflicts
+
+---
+
 ## Generation Protocol
 
 ### Step 1 — Direction Summary
@@ -753,6 +795,132 @@ The file structure:
 ### Saved
 > Tokens saved to `.sumi/style.json` — available to `/palette`, `/type`, `/tokens`, `/screen`, `/ship`
 ```
+
+---
+
+## Design Memory Persistence
+
+After generating style output, persist decisions for use by all other Chef Sumi commands.
+
+### Save to `.sumi/style.json`
+
+Write a JSON file at `.sumi/style.json` in the project root with this structure:
+
+```json
+{
+  "version": "2.0",
+  "generated": "ISO-8601 timestamp",
+  "sector": "the sector used",
+  "mood": "the mood applied",
+  "technology": {
+    "framework": "react|vue|svelte|vanilla|swiftui",
+    "styling": "tailwind|css|styled-components|swiftui",
+    "typescript": true|false
+  },
+  "colors": {
+    "primary": { "value": "oklch(0.65 0.15 250)", "hex": "#2563eb" },
+    "secondary": { "value": "oklch(...)", "hex": "..." },
+    "neutral": {
+      "50": { "value": "...", "hex": "..." },
+      "100": { "value": "...", "hex": "..." },
+      "...": "full 50-950 scale"
+    },
+    "semantic": {
+      "error": { "value": "...", "hex": "..." },
+      "warning": { "value": "...", "hex": "..." },
+      "success": { "value": "...", "hex": "..." },
+      "info": { "value": "...", "hex": "..." }
+    },
+    "surface": {
+      "base": "...",
+      "raised": "...",
+      "overlay": "..."
+    }
+  },
+  "typography": {
+    "heading": { "family": "...", "weights": [...] },
+    "body": { "family": "...", "weights": [...] },
+    "mono": { "family": "...", "weights": [...] },
+    "scale": {
+      "xs": { "size": "0.75rem", "lineHeight": "1rem", "letterSpacing": "..." },
+      "sm": { "size": "...", "lineHeight": "...", "letterSpacing": "..." },
+      "base": "...",
+      "lg": "...",
+      "xl": "...",
+      "2xl": "...",
+      "3xl": "...",
+      "4xl": "...",
+      "5xl": "..."
+    }
+  },
+  "spacing": {
+    "base": 4,
+    "scale": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128]
+  },
+  "radii": {
+    "sm": "...",
+    "md": "...",
+    "lg": "...",
+    "xl": "...",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "...",
+    "md": "...",
+    "lg": "...",
+    "xl": "..."
+  },
+  "motion": {
+    "duration": { "fast": "...", "normal": "...", "slow": "..." },
+    "easing": { "default": "...", "spring": "..." }
+  },
+  "darkMode": {
+    "strategy": "class|media",
+    "colors": { "...inverted/adjusted palette..." }
+  }
+}
+```
+
+### Save to `.sumi/context.json`
+
+Write project context for other commands:
+
+```json
+{
+  "project": {
+    "name": "detected or user-provided",
+    "sector": "fintech",
+    "subNiche": "neobank",
+    "targetAudience": "professionals 25-45",
+    "platforms": ["web", "ios"],
+    "framework": "next.js",
+    "styling": "tailwind"
+  },
+  "designDecisions": [
+    { "decision": "Trust-first palette — blues over warm colors", "reason": "Fintech convention, user research" },
+    { "decision": "Tabular numbers for financial data", "reason": "Alignment in tables and amounts" }
+  ],
+  "lastUpdated": "ISO-8601"
+}
+```
+
+### How Other Commands Use Design Memory
+
+When ANY Chef Sumi command runs (`/screen`, `/component`, `/form`, `/fix`, etc.):
+1. Check for `.sumi/style.json` first
+2. If found, load ALL tokens and use them in generated code
+3. If not found, proceed with defaults but suggest running `/style` first
+4. Never contradict design memory — if style.json says primary is blue, don't generate a green primary
+5. If the user explicitly overrides a decision ("make the button red"), apply the override but note the deviation
+
+### Updating Design Memory
+
+When the user modifies style decisions:
+- `/style` with new parameters → regenerate and overwrite `.sumi/style.json`
+- `/palette` → update only the color section of `.sumi/style.json`
+- `/type` → update only the typography section
+- `/tokens` → update the full token structure
+- Other commands → read-only, never modify style.json
 
 ---
 

@@ -140,6 +140,52 @@ Score each dimension 1-10. Be honest — most production designs score 4-7. An 8
 - Red flag: Missing states, inconsistent border-radius, mixed icon sizes, orphaned styles
 - Principle: God is in the details (Mies van der Rohe). Polish is what separates professional from amateur
 
+### Step 2.5: AI Slop Detection
+
+Scan the design for telltale AI-generated UI patterns. Check each item that applies:
+
+**THE PURPLE GRADIENT SYNDROME**:
+- [ ] Uses default Tailwind indigo/violet/purple as primary color (bg-indigo-500, bg-purple-600, bg-violet-500)
+- [ ] Purple/indigo gradient backgrounds (from-indigo-500 to-purple-600)
+- [ ] White or near-white background with purple accents — the #1 AI-generated look
+- [ ] Uses Tailwind's default color palette with zero customization
+
+**THE FONT MONOTONY**:
+- [ ] Inter as the only font (or Roboto, system-ui with no intentional pairing)
+- [ ] No font pairing — heading and body use same font/weight
+- [ ] Generic font-sans with no typographic hierarchy
+- [ ] Missing type scale — sizes feel random rather than systematic
+
+**THE LAYOUT LOTTERY**:
+- [ ] 3-column equal-width grid for everything (the default AI layout)
+- [ ] Every section has the same padding/spacing
+- [ ] Hero section with centered text + generic gradient background
+- [ ] Features grid: 3 cards with icon + title + paragraph (the AI cliche)
+- [ ] No visual rhythm variation — every section same height/weight
+
+**THE COMPONENT COPY-PASTE**:
+- [ ] Buttons with bg-blue-500 or bg-indigo-600 and no hover state defined
+- [ ] Cards with rounded-lg shadow-md (the AI default card)
+- [ ] Missing states: no loading, error, empty, disabled
+- [ ] No micro-interactions or transitions
+- [ ] Generic placeholder content ("Lorem ipsum" or "Description goes here")
+
+**THE ACCESSIBILITY VOID**:
+- [ ] No ARIA labels on interactive elements
+- [ ] Color as the only meaning indicator
+- [ ] No focus-visible styles
+- [ ] No skip navigation
+- [ ] Images without alt text
+
+**Slop Scoring**:
+Count the number of checks that apply:
+- **0-2**: Clean — this doesn't look AI-generated
+- **3-5**: Mild slop — some AI defaults slipped through
+- **6-8**: Moderate slop — needs a Chef Sumi `/fix` pass
+- **9+**: Full slop — this is raw AI output, run `/fix` immediately
+
+Add a **Slop Score** to the final output alongside the letter grade. Format: `Slop Score: X/23 ([Severity]) — run /fix to transform this into visual cuisine`
+
 ### Step 3: Calculate Total Score
 
 **Total**: Sum of all 10 dimensions (out of 100)
@@ -224,6 +270,21 @@ A single sentence that captures the essence of this design's quality. Be direct.
 | 10 | Polish | X/10 | [one-line observation] |
 
 **Total: [X/100] — Grade: [Letter]**
+**Slop Score: [X/23] ([Clean/Mild/Moderate/Full]) — run `/fix` to transform this into visual cuisine**
+
+---
+
+### AI Slop Detection
+
+| Category | Flags Hit | Details |
+|----------|-----------|---------|
+| Purple Gradient Syndrome | X/4 | [specifics] |
+| Font Monotony | X/4 | [specifics] |
+| Layout Lottery | X/5 | [specifics] |
+| Component Copy-Paste | X/5 | [specifics] |
+| Accessibility Void | X/5 | [specifics] |
+
+**Slop Score: [X/23] ([Clean/Mild/Moderate/Full])**
 
 ---
 
@@ -276,6 +337,7 @@ The output MUST include:
 - [ ] Top 3 strengths with what would break them during iteration
 - [ ] One-line verdict that is specific to THIS design (not generic)
 - [ ] Code fixes included when code input was provided
+- [ ] AI Slop Detection checklist completed with per-category flags and total Slop Score
 
 The output MUST NOT include:
 - Vague criticism ("could be improved") — every finding must cite what specifically and where

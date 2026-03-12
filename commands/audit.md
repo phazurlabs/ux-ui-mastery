@@ -15,6 +15,7 @@ Run every diagnostic lens against a design in a single pass. This is the master 
 - `/audit cognitive` or `/audit section-b` — Cognitive only
 - `/audit flow` or `/audit section-c` — Flow only
 - `/audit fortify` or `/audit section-d` — Fortification only
+- `/audit slop` or `/audit section-d6` — AI Slop Analysis only
 - `/audit score` or `/audit section-e` — Summary score only (requires prior sections)
 - `/audit a11y` — Redirects to `/a11y` (standalone accessibility audit)
 
@@ -396,6 +397,75 @@ Check at 5 breakpoints:
 - Destructive action confirmations: Clear consequences stated?
 - Undo availability: Can the user reverse the last action?
 
+### D.6 — AI Slop Analysis
+
+A thorough scan for AI-generated UI patterns that indicate the design was output by an AI with little or no human design refinement. This goes deeper than a surface check — it evaluates systemic design quality gaps that AI tools consistently produce.
+
+#### D.6.1 — Visual Homogeneity Scan
+
+- **Default palette detection**: Does the design use only Tailwind defaults without customization? Check for the "purple gradient epidemic" — default indigo/violet palette (bg-indigo-500, bg-purple-600, bg-violet-500, from-indigo-500 to-purple-600). Flag white/near-white backgrounds with purple accents as the #1 AI-generated look
+- **Component homogeneity**: Do all components follow the same generic card + rounded-lg + shadow-md pattern? Are there any components with unique visual treatments?
+- **Hero section analysis**: Flag hero sections with centered text on gradient backgrounds — the most common AI layout pattern
+- **Color palette origin**: Is the palette a stock Tailwind palette, a stock theme palette, or a custom/intentional palette? Evidence: custom CSS properties, extended theme config, or raw Tailwind utility classes
+- **Visual monotony score**: Rate 1-10 how visually homogeneous the design is (1 = rich variety, 10 = every section looks identical)
+
+#### D.6.2 — Design System Gap Analysis
+
+For each category, determine whether the design has an intentional system or is using arbitrary values:
+
+| Category | Has System? | Evidence |
+|----------|-------------|----------|
+| **Design tokens** | Yes/No | Are there CSS custom properties, theme config, or hardcoded values? |
+| **Type scale** | Yes/No | Do font sizes follow a consistent ratio (1.2, 1.25, 1.333, 1.5, 1.618) or are sizes arbitrary? |
+| **Spacing system** | Yes/No | Is there a consistent spacing scale (4, 8, 12, 16, 24, 32, 48, 64) or arbitrary padding/margin values? |
+| **Border-radius scale** | Yes/No | Is there a consistent radius scale or mixed values (rounded-md here, rounded-lg there, rounded-xl elsewhere)? |
+| **Elevation/shadow system** | Yes/No | Is there a deliberate shadow hierarchy (sm, md, lg mapped to elevation levels) or random shadow usage? |
+| **Semantic colors** | Yes/No | Are semantic colors used (primary, error, success, warning) or raw color values (bg-red-500, bg-green-400)? |
+| **Font pairing** | Yes/No | Is there an intentional heading/body font pairing, or a single font with no typographic contrast? |
+
+**Design System Score**: Count of "Yes" answers out of 7. Below 3 = strong indicator of AI-generated output.
+
+#### D.6.3 — State Coverage Audit
+
+For each interactive component found in the design, check whether these states are implemented:
+
+| State | Description | What to Look For |
+|-------|-------------|------------------|
+| **Default** | Resting state | Component renders correctly at rest |
+| **Hover** | Mouse over | Visual change on hover (color shift, underline, shadow lift) |
+| **Focus** | Keyboard focus | focus-visible ring or equivalent indicator |
+| **Active/Pressed** | Click/tap down | Visual compression, color darken, or scale reduction |
+| **Disabled** | Not interactive | Reduced opacity, cursor-not-allowed, aria-disabled |
+| **Loading** | Async operation in progress | Spinner, skeleton, shimmer, or progress indicator |
+| **Error** | Invalid or failed | Red border, error message, recovery action |
+| **Empty** | No data | Illustration or message explaining what to do |
+| **Success** | Completed | Confirmation message, checkmark, green indicator |
+
+Document findings per component:
+
+| Component | Default | Hover | Focus | Active | Disabled | Loading | Error | Empty | Success | Coverage |
+|-----------|---------|-------|-------|--------|----------|---------|-------|-------|---------|----------|
+| [name] | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | X/9 |
+
+**State Coverage Score**: Average coverage across all interactive components. Below 4/9 = strong indicator of AI-generated output.
+
+#### D.6.4 — AI Slop Severity Rating
+
+Based on findings from D.6.1, D.6.2, and D.6.3, assign an overall AI Slop severity:
+
+| Rating | Criteria | Action |
+|--------|----------|--------|
+| **None** | Custom palette, intentional type system, full state coverage, visual variety | No action needed |
+| **Mild** | 1-2 default patterns detected, mostly custom design, minor state gaps | Note in findings, low priority |
+| **Moderate** | Stock palette with minimal customization, weak type system, several missing states | Recommend `/fix` pass to customize defaults and add missing states |
+| **Severe** | Default Tailwind palette, no type scale, most states missing, generic card layouts everywhere | Strongly recommend `/fix` — design needs significant human refinement |
+| **Critical** | Full default palette, no design system, minimal states, cookie-cutter AI layout, purple gradient syndrome | This is raw AI output. Run `/fix` immediately before any other work |
+
+For the assigned rating, provide:
+- **Rating**: [None / Mild / Moderate / Severe / Critical]
+- **Evidence**: List the specific findings that justify the rating (cite D.6.1, D.6.2, D.6.3 findings)
+- **Recommended action**: If Moderate or above, recommend `/fix` with specific areas to address
+
 ---
 
 ## Section E: Summary Score & Priority Roadmap
@@ -606,6 +676,42 @@ Call out the top 3 systemic patterns with recommendations.
 
 ---
 
+### Section D.6: AI Slop Analysis
+
+#### Visual Homogeneity Scan
+- **Palette**: [Stock Tailwind / Custom — evidence]
+- **Purple Gradient Syndrome**: [Detected / Not detected — evidence]
+- **Component Homogeneity**: [High / Medium / Low — evidence]
+- **Hero Pattern**: [AI-generic / Intentional — evidence]
+- **Visual Monotony Score**: [X/10]
+
+#### Design System Gap Analysis
+| Category | Has System? | Evidence |
+|----------|-------------|----------|
+| Design tokens | Y/N | [details] |
+| Type scale | Y/N | [details] |
+| Spacing system | Y/N | [details] |
+| Border-radius scale | Y/N | [details] |
+| Elevation/shadow system | Y/N | [details] |
+| Semantic colors | Y/N | [details] |
+| Font pairing | Y/N | [details] |
+
+**Design System Score**: [X/7]
+
+#### State Coverage Audit
+| Component | Default | Hover | Focus | Active | Disabled | Loading | Error | Empty | Success | Coverage |
+|-----------|---------|-------|-------|--------|----------|---------|-------|-------|---------|----------|
+| [name] | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | Y/N | X/9 |
+
+**State Coverage Score**: [X/9 average]
+
+#### AI Slop Severity Rating
+- **Rating**: [None / Mild / Moderate / Severe / Critical]
+- **Evidence**: [specific findings from D.6.1-D.6.3]
+- **Recommended action**: [next step or "No action needed"]
+
+---
+
 ### Section E: Priority Roadmap
 
 #### Must-Fix (before ship)
@@ -653,6 +759,7 @@ The output MUST include:
 - [ ] Priority roadmap with three tiers and effort estimates
 - [ ] Systemic pattern analysis across sections
 - [ ] Code fixes included when code input is provided
+- [ ] AI Slop Analysis completed (D.6) with visual homogeneity scan, design system gap analysis, state coverage audit, and severity rating
 
 The output MUST NOT include:
 - Vague findings ("could be better", "needs work") — every issue must be specific and actionable
