@@ -1,102 +1,104 @@
 ---
-description: "Progress dashboard — see where you are in the 30-step design journey, what's complete, what's next, and your overall progress."
+description: "Progress dashboard — see what you've generated, what's available, and suggested next moves."
+tier: "utility"
 ---
 
-# Status — Journey Progress Dashboard
+# Status — Progress Dashboard
 
-A progress tracking utility that shows the user's position in the 30-step Sumi design journey. The output should be clean, scannable, and motivating -- use progress bars and checkmarks to create a sense of accomplishment and momentum.
+A visual progress tracker showing what Sumi commands have been run in this session. Clean, scannable, motivating.
+
+## Command Registry
+
+All 27 commands organized by tier:
+
+**MAKE (18 commands)**:
+`/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
+
+**REVIEW (5 commands)**:
+`/audit`, `/roast`, `/grade`, `/qa`, `/a11y`
+
+**PLAN (6 commands)**:
+`/brief`, `/research`, `/benchmark`, `/map`, `/measure`, `/preflight`
+
+**Utility (3 commands)**:
+`/sumi`, `/next`, `/status`
 
 ## Protocol
 
-### Step 1: Detect Completed Steps
+### Step 1: Detect Completed Commands
 
-- Scan the conversation context for which Sumi numbered commands have been run.
-- Mark each of the 30 steps as complete or incomplete.
-- Identify the recommended next step (first incomplete step in sequence).
-- Calculate per-phase and overall completion percentages.
+- Scan conversation context for which Sumi commands have been run
+- Mark each as complete or not run
+- Calculate per-tier and overall completion
+- Identify the recommended next command
 
-### Step 2: Display Progress Dashboard
+### Step 2: Display Dashboard
 
-Render the full journey map with completion status for every step.
+Render the progress map with completion status.
 
-### Step 3: Adapt to Context
+### Step 3: Adapt
 
-- Show checkmarks for completed steps, empty boxes for incomplete.
-- Bold or highlight the recommended next step.
-- Show phase completion as progress bars and percentages.
-- Show overall progress as fraction and percentage.
-- If steps were completed out of order, show them as complete without judgment.
-- If no steps have been completed, show the full map with an encouraging message to begin.
+- Checkmarks for completed, empty boxes for not run
+- Bold or highlight the recommended next command
+- Show tier completion as progress indicators
+- If commands were run out of typical order, show them as complete without judgment
+- If nothing has been run, show the full map with encouragement to begin
 
 ## Output Format
 
 ```
-## Sumi Journey Progress
+## Sumi Progress
 
-### Phase 0: GROUND -- "Know your problem"
-  [x] 01. `/01-ground`       Orient in the design process
-  [x] 02. `/02-brief`        Define problem, persona, constraints
-  Phase 0: xxxxxxxxxx 100%
+### MAKE -- Design and Build
+  [x] /style          Sector visual direction
+  [ ] /palette        Deep color system
+  [ ] /type           Typography system
+  [ ] /layout         Layout block patterns
+  [x] /wireframe      Low-fidelity wireframes
+  [x] /screen         Production screens
+  [ ] /component      Production components
+  [ ] /page           Full page compositions
+  [ ] /tokens         Design token system
+  [ ] /form           Form design
+  [ ] /nav            Navigation system
+  [ ] /animate        Motion design
+  [ ] /icon           Icon system
+  [ ] /dark           Dark mode
+  [ ] /responsive     Responsive design
+  [ ] /onboard        Onboarding flow
+  [ ] /generate       AI screen generation
+  [ ] /remix          Evidence-based redesign
+  MAKE: 3/18
 
-### Phase 1: DISCOVER -- "Know your market"
-  [x] 03. `/03-research`     Plan user research
-  [x] 04. `/04-taste`        Sector style direction
-  [ ] 05. `/05-benchmark`    Competitive design analysis       <-- NEXT
-  [ ] 06. `/06-measure`      Plan UX metrics
-  [ ] 07. `/07-inspo`        Find design inspiration
-  Phase 1: xxxx...... 40%
+### REVIEW -- Evaluate and Improve
+  [x] /audit          Heuristic evaluation
+  [ ] /roast          Design critique            <-- NEXT
+  [ ] /grade          Visual quality score
+  [ ] /qa             Design QA
+  [ ] /a11y           Accessibility audit
+  REVIEW: 1/5
 
-### Phase 2: SHAPE -- "Explore your solution"
-  [ ] 08. `/08-map`          Information architecture
-  [ ] 09. `/09-wireframe`    Low-fidelity wireframes
-  [ ] 10. `/10-vision`       Visual design direction
-  [ ] 11. `/11-anatomy`      UI pattern analysis
-  Phase 2: .......... 0%
-
-### Phase 3: AUDIT -- "Find your problems"
-  [ ] 12. `/12-audit`        Heuristic evaluation
-  [ ] 13. `/13-think`        Cognitive audit
-  [ ] 14. `/14-access`       Accessibility audit
-  [ ] 15. `/15-flow`         User flow audit
-  [ ] 16. `/16-expose`       Fortification sweep
-  Phase 3: .......... 0%
-
-### Phase 4: BUILD -- "Ship your product"
-  [ ] 17. `/17-tokens`       Design token system
-  [ ] 18. `/18-screen`       Build production screens
-  [ ] 19. `/19-ship`         Build production components
-  [ ] 20. `/20-generate`     AI-powered screen generation
-  [ ] 21. `/21-assets`       AI-powered asset generation
-  Phase 4: .......... 0%
-
-### Phase 5: VALIDATE -- "Prove it works"
-  [ ] 22. `/22-test`         Usability test plan
-  [ ] 23. `/23-roast`        Design critique
-  [ ] 24. `/24-remix`        Evidence-based redesign
-  [ ] 25. `/25-qa`           Design QA
-  Phase 5: .......... 0%
-
-### Phase 6: LAUNCH -- "Ship and grow"
-  [ ] 26. `/26-verdict`      Comprehensive review
-  [ ] 27. `/27-grade`        Visual quality score
-  [ ] 28. `/28-preflight`    Pre-launch checklist
-  [ ] 29. `/29-welcome`      Onboarding flow builder
-  [ ] 30. `/30-iterate`      Post-launch iteration plan
-  Phase 6: .......... 0%
+### PLAN -- Research and Strategy
+  [x] /brief          Problem definition
+  [ ] /research       User research & testing
+  [ ] /benchmark      Competitive analysis
+  [ ] /map            Information architecture
+  [ ] /measure        Metrics plan
+  [ ] /preflight      Launch readiness
+  PLAN: 1/6
 
 ----------------------------------------------
-Overall: [X]/30 steps ([Y]%)  |  Next --> `/[next-command]`
+Overall: 5/27 commands  |  Next --> /roast
 ----------------------------------------------
 
-Run `/next` to continue  |  `/guide` for the full map
+Run /next for guidance  |  /sumi for full map
 ```
 
 ### Adaptation Rules
 
-- **Progress bar characters**: Use `x` for complete segments and `.` for incomplete segments. 10 characters total per phase, proportional to completion.
-- **NEXT marker**: Place `<-- NEXT` on the first incomplete step in sequence.
-- **Completed journey**: If all 30 steps are complete, replace the footer with a congratulatory message and suggest `/30-iterate` for continuous improvement.
-- **No steps complete**: Show the full empty map with: "Ready to begin? Start with `/01-ground` to orient yourself in the design process."
-- **Out-of-order completion**: Mark completed steps with `[x]` regardless of order. Place `<-- NEXT` on the first incomplete step.
+- **NEXT marker**: Place `<-- NEXT` on the recommended next command (use priority logic from `/next` protocol)
+- **All commands run**: Replace footer with congratulatory message
+- **No commands run**: Show full empty map with: "Ready to start? Try `/style [your sector]` or `/brief` to begin."
+- **Partial completion**: Show counts per tier and overall
 
-The output should fit in one screen when possible. No additional commentary beyond the dashboard itself -- the visual format communicates progress clearly on its own.
+The output should fit on one screen. No commentary beyond the dashboard -- the visual format communicates progress clearly.

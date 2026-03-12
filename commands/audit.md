@@ -1,0 +1,698 @@
+---
+description: "Comprehensive design audit — heuristic, cognitive, flow, fortification, and summary scoring in one command. Run all lenses or pick specific sections."
+tier: "review"
+---
+
+# Audit — Comprehensive Design Audit
+
+Run every diagnostic lens against a design in a single pass. This is the master audit command — it evaluates heuristics, cognitive load, user flows, dark patterns, responsive edge cases, content quality, and produces a unified score with a priority roadmap.
+
+**Accepts**: Code (file paths or pasted), screenshot description, URL description, or Figma reference.
+
+**Section targeting**: Run the full audit or request specific sections:
+- `/audit` — Full audit (all 5 sections)
+- `/audit heuristic` or `/audit section-a` — Heuristic only
+- `/audit cognitive` or `/audit section-b` — Cognitive only
+- `/audit flow` or `/audit section-c` — Flow only
+- `/audit fortify` or `/audit section-d` — Fortification only
+- `/audit score` or `/audit section-e` — Summary score only (requires prior sections)
+- `/audit a11y` — Redirects to `/a11y` (standalone accessibility audit)
+
+---
+
+## Pre-Audit: Context Gathering
+
+Before running any section, establish the baseline:
+
+1. **What is being audited**: Component, screen, flow, or full application
+2. **Design intent**: What was the designer trying to achieve? What problem does this solve?
+3. **Target users**: Who uses this? Sophistication level, context, accessibility needs
+4. **Sector**: Industry determines what counts as a violation vs. an intentional convention
+5. **Platform**: Web, iOS, Android, cross-platform, responsive targets
+6. **Constraints**: Timeline, technical, business trade-offs the designer operated within
+7. **Prior Sumi outputs**: Check for `/taste`, `/benchmark`, `/vision`, `/tokens`, `/screen` outputs. Consume them as baseline context if available
+8. **Specific concerns**: Does the designer suspect weak areas? Prioritize those
+
+If the user provides limited context, proceed with what is available and flag assumptions. Do not block on missing information.
+
+---
+
+## Section A: Heuristic Audit
+
+Evaluate against Nielsen's 10 usability heuristics with cognitive principle grounding for every finding.
+
+### A.1 — Heuristic Evaluation (H1-H10)
+
+For each heuristic, evaluate whether the design complies, partially complies, or violates:
+
+| ID | Heuristic | Core Question |
+|----|-----------|---------------|
+| H1 | Visibility of System Status | Does the system always tell the user what is happening, within reasonable time? |
+| H2 | Match Between System and Real World | Does the system use the user's language, follow real-world conventions, and present information in a natural order? |
+| H3 | User Control and Freedom | Can users undo, redo, and exit unwanted states without penalty? |
+| H4 | Consistency and Standards | Do similar elements behave the same way? Are platform conventions followed? |
+| H5 | Error Prevention | Does the design prevent errors before they happen through constraints, confirmations, and defaults? |
+| H6 | Recognition Rather Than Recall | Is all necessary information visible or easily retrievable without memorization? |
+| H7 | Flexibility and Efficiency of Use | Does the interface serve both novice and expert users with shortcuts and customization? |
+| H8 | Aesthetic and Minimalist Design | Does every element serve a purpose? Is signal-to-noise ratio optimized? |
+| H9 | Help Users Recognize, Diagnose, and Recover from Errors | Are error messages expressed in plain language, indicating the problem and suggesting a solution? |
+| H10 | Help and Documentation | Is help available, searchable, focused on the user's task, and concise? |
+
+### A.2 — Finding Documentation
+
+For EACH finding, document:
+
+- **Heuristic violated**: H1-H10 identifier
+- **Underlying cognitive principle**: Every heuristic violation has a deeper cognitive reason. Cite it:
+  - H1 violation -> Doherty Threshold (system feels unresponsive) or Zeigarnik Effect (incomplete tasks create anxiety)
+  - H2 violation -> Mental Model theory (interface doesn't match user's existing understanding)
+  - H3 violation -> Learned Helplessness (user loses sense of control)
+  - H4 violation -> Jakob's Law (users transfer expectations from other products)
+  - H5 violation -> Cognitive Load Theory (user is forced to hold too much in working memory to avoid errors)
+  - H6 violation -> Miller's Law (interface demands recall of >7 items instead of showing them)
+  - H7 violation -> Power Law of Practice (experts need accelerators to maintain engagement)
+  - H8 violation -> Signal-to-Noise Ratio (irrelevant information competes with relevant)
+  - H9 violation -> Error Recovery Theory (users cannot self-correct without actionable guidance)
+  - H10 violation -> Situated Cognition (help must be contextual to be useful)
+- **Location**: Exact element, component, or screen where the issue occurs
+- **Description**: Clear explanation of the problem
+- **Severity**: Use the Nielsen severity scale:
+  - **0 — Cosmetic**: Not a usability problem unless extra time is available
+  - **1 — Minor**: Cosmetic problem that doesn't affect task completion
+  - **2 — Moderate**: Users can work around it, but it causes delay or frustration
+  - **3 — Major**: Significant usability problem that causes task failure for some users
+  - **4 — Catastrophe**: Must be fixed before release. Blocks task completion or causes data loss
+- **Recommendation**: Specific, actionable fix
+- **Code fix**: When code is provided, include corrected code
+
+### A.3 — Mental Model Assessment
+
+Verify whether the interface communicates a clear, correct mental model:
+
+- **Conceptual model**: Does the interface clearly communicate what this system is and how it works?
+- **Navigational model**: Can the user predict where actions will take them? Is the information architecture intuitive?
+- **Interaction model**: Do controls behave the way the user expects based on their appearance? (e.g., does something that looks clickable respond to clicks?)
+- **Model gaps**: Where does the interface's model diverge from the user's likely expectation? Flag these as HIGH SEVERITY — mental model mismatches cause the deepest usability failures
+
+Reference: Norman's Gulf of Execution and Gulf of Evaluation (1988).
+
+---
+
+## Section B: Cognitive Audit
+
+Audit against cognitive psychology principles — Laws of UX, Gestalt principles, cognitive biases, attention science, and memory constraints.
+
+### B.1 — Laws of UX Evaluation
+
+| Law | What to Check |
+|-----|---------------|
+| **Hick's Law** | How many choices are presented simultaneously? Are options progressively disclosed? Is decision time proportional to importance? |
+| **Fitts's Law** | Are primary actions large enough and positioned near focus? Are destructive actions distant from constructive ones? Mobile tap targets >= 44pt? |
+| **Miller's Law** | Are more than 4-7 items presented without chunking? Is information grouped into meaningful clusters? |
+| **Jakob's Law** | Does the interface follow platform/industry conventions? Where does it deviate, and is the deviation justified? |
+| **Doherty Threshold** | Do interactions respond within 400ms? Are delays masked with feedback (progress, skeleton, optimistic UI)? |
+| **Peak-End Rule** | What is the emotional peak of the experience? What is the final moment? Are both deliberately designed? |
+| **Von Restorff Effect** | Does the most important element visually stand out? Is distinctiveness used strategically (not everywhere)? |
+| **Serial Position Effect** | Are the most important items placed first and last in lists/menus? |
+| **Aesthetic-Usability Effect** | Is visual polish potentially masking usability problems? |
+| **Tesler's Law** | Has complexity been reduced as far as possible without removing essential functionality? |
+| **Postel's Law** | Is the interface liberal in what it accepts from users (flexible input parsing, forgiving formatting)? |
+| **Zeigarnik Effect** | Are incomplete tasks creating productive engagement or anxiety? |
+
+### B.2 — Gestalt Principles Evaluation
+
+- **Proximity**: Are related elements close together? Are unrelated elements sufficiently separated?
+- **Similarity**: Do similar elements share consistent visual treatment?
+- **Closure**: Can users complete partial patterns mentally? Are shapes and regions implied effectively?
+- **Continuity**: Do visual flows guide the eye in the intended direction?
+- **Common Region**: Are groups enclosed or backgrounded to show relationship?
+- **Figure-Ground**: Is the primary content clearly distinguished from background?
+- **Common Fate**: Do elements that function together animate or move together?
+
+### B.3 — Cognitive Load Analysis
+
+- **Intrinsic load**: Is task complexity managed through decomposition (wizard, progressive form)?
+- **Extraneous load**: What unnecessary cognitive demands does the design impose? (confusing labels, hidden controls, inconsistent patterns, visual noise)
+- **Germane load**: Does the design build reusable mental schemas through consistency?
+- **Working memory demand**: At any single step, how many items must the user hold in working memory? Flag if > 4
+
+### B.4 — Cognitive Bias Scan
+
+Scan for bias exploitation or risk:
+
+| Bias | Check |
+|------|-------|
+| Anchoring | Are reference points fair or manipulative? |
+| Default bias | Do defaults serve users or the business? |
+| Confirmation bias | Does the interface surface disconfirming information? |
+| Framing effect | Is information framed neutrally or manipulatively? |
+| Choice overload | Are there too many options without curation? |
+| Sunk cost framing | Does the design leverage past investment to trap users? |
+| FOMO/scarcity | Are urgency signals real or fabricated? |
+| Social proof | Is social proof genuine or manufactured? |
+
+### B.5 — Cognitive Domain Scoring
+
+Score each domain 1-10:
+
+| Domain | Score Criteria |
+|--------|---------------|
+| Decision Architecture | Choice count, defaults, progressive disclosure |
+| Visual Cognition | Gestalt compliance, hierarchy clarity, figure-ground |
+| Memory Load | Working memory demand, recognition vs. recall, chunking |
+| Attention Management | Focus direction, interruption protection, sustained attention support |
+| Bias Ethics | Fair defaults, neutral framing, no dark patterns |
+
+**Cognitive Health Score**: Average of 5 domains (X/10)
+
+---
+
+## Section C: Flow Audit
+
+Audit a complete user journey across multiple screens or steps, identifying friction, drop-off risks, and emotional arc quality.
+
+### C.1 — Flow Classification
+
+- **Flow type**: Onboarding, signup, checkout, settings change, content creation, search-to-action, account recovery, upgrade/upsell, or custom
+- **Criticality**: Revenue-critical, retention-critical, trust-critical, or utility
+- **Entry point**: Where users come from
+- **Success state**: What "done" looks like
+- **Platform context**: Mobile, desktop, cross-device, embedded
+
+### C.2 — Step Mapping
+
+Enumerate every distinct screen, modal, or interaction step from entry to completion:
+
+For each step document:
+- Screen name and purpose
+- Primary action (the ONE thing the user should do)
+- Secondary actions available
+- Data collected or displayed
+- Decisions the user must make
+- Branching paths (conditional steps, error branches, optional steps)
+- System-initiated steps (loading, processing, verification emails, SMS codes)
+
+Calculate:
+- Total step count vs. recommended step count for this flow type
+- Estimated time-to-completion
+
+### C.3 — Per-Step Cognitive Load
+
+For each step:
+- Count decisions (Hick's Law — each decision adds friction)
+- Count input fields (Miller's Law — keep chunks to 4 +/- 1)
+- Assess visual complexity (information density, competing CTAs, distractions)
+- Track cumulative cognitive load across the flow (load should not monotonically increase)
+- Flag steps where load spikes unexpectedly
+
+### C.4 — Drop-Off Risk Assessment
+
+Rate each step 1-5 for drop-off risk based on:
+- Effort required
+- Value unclear to user
+- Trust barrier present
+- Technical friction (slow loading, complex input)
+- Interruption likelihood
+
+Identify the "valley of death" — the step with highest drop-off risk.
+
+Check:
+- Is value demonstrated before effort is demanded? (Reciprocity Principle)
+- Does progress indication exist and is it accurate?
+- Can users save progress and return later?
+
+### C.5 — Emotional Arc Analysis (Peak-End Rule)
+
+Map emotional valence per step:
+
+```
+Step 1: ████████░░ Curiosity (positive)
+Step 2: ██████░░░░ Effort (neutral)
+Step 3: ████░░░░░░ Friction (negative)  <- Valley of Death
+Step 4: ████████░░ Relief (positive)    <- Designed Peak
+Step 5: ██████████ Accomplishment       <- Strong End
+```
+
+Verify:
+- At least one designed peak moment (positive surprise, social proof, personalization)
+- End state is emotionally positive (confirmation, celebration, immediate value delivery)
+- No negative emotional clusters (consecutive friction steps without relief)
+
+### C.6 — Error Recovery Mid-Flow
+
+- What happens if the user makes an error at step 3 of 7? Do they lose progress?
+- Is back-navigation safe (no data loss)?
+- Can users save progress and return later?
+- Are error messages contextual and recovery-oriented?
+
+### C.7 — Flow Dimension Scoring
+
+Score each dimension 1-10:
+
+| Dimension | What It Measures |
+|-----------|-----------------|
+| Flow Efficiency | Ratio of necessary to total steps — can steps be cut or merged? |
+| Cognitive Progression | Does cognitive load distribute well or spike dangerously? |
+| Emotional Arc | Is the Peak-End Rule satisfied? Delight and strong closure? |
+| Error Recovery | Can users recover from mistakes without restarting? |
+| Completion Likelihood | Given all factors, what percentage of users will finish? |
+
+**Overall Flow Score**: Average of 5 dimensions (X/10)
+
+---
+
+## Section D: Fortification
+
+Scan for defensive design issues — dark patterns, responsive edge cases, content/tone, and error recovery.
+
+### D.1 — Dark Pattern Scan
+
+Scan for 20+ deceptive design categories:
+
+**Coercion patterns**:
+- Confirmshaming — guilt-tripping the user into opting in
+- Forced continuity — free trial converts to paid without clear warning
+- Roach motel — easy to sign up, impossible to cancel
+- Forced action — requiring account creation or social sharing to proceed
+
+**Sneaking patterns**:
+- Hidden costs — fees revealed only at checkout
+- Sneak into basket — items added without explicit consent
+- Bait and switch — advertising one thing, delivering another
+- Hidden subscription — recurring charge buried in terms
+
+**Interface manipulation**:
+- Trick questions — double negatives or confusing opt-in/opt-out toggles
+- Misdirection — visual design draws attention away from important information
+- Disguised ads — ads styled to look like content or navigation
+- False hierarchy — making the company-preferred option visually dominant
+
+**Privacy violations**:
+- Privacy zuckering — confusing privacy settings defaulting to maximum data sharing
+- Address book leeching — requesting contacts without clear purpose
+- Surveillance indicators — excessive data collection for the service provided
+
+**Urgency/scarcity**:
+- Fake urgency — countdown timers with no real deadline
+- Fake scarcity — "Only 2 left!" without real inventory limits
+- Fake social proof — fabricated reviews or user counts
+
+**Obstruction**:
+- Hard to cancel — cancellation flow harder than signup
+- Hidden settings — important controls buried deep
+- Comparison prevention — making plan comparison deliberately difficult
+
+For each detected pattern, document:
+- **Pattern name and category**
+- **Location**: Specific component, screen, or flow
+- **Severity**: Illegal (violates FTC/GDPR/DSA), Deceptive, Manipulative, or Questionable
+- **Regulatory risk**: Specific laws/regulations that apply
+- **Ethical redesign**: How to achieve the business goal without the dark pattern
+
+If clean: "No dark patterns detected across 20+ categories scanned."
+
+### D.2 — AI Trust Audit
+
+**Skip if no AI features are present.** Output "N/A — no AI features detected."
+
+If AI features exist, audit:
+
+| Dimension | Score (1-10) | Questions |
+|-----------|-------------|-----------|
+| Transparency | | Does the user know when AI is deciding? Are outputs labeled? Are limitations disclosed? |
+| Control | | Can the user override AI? Opt out? Provide feedback? Escalate to human? |
+| Safety | | What happens when AI is wrong? Guardrails against harm? Bias monitoring? |
+| Usability | | Does AI enhance or complicate UX? Is confidence communicated? |
+
+**AI Trust Score**: Average of 4 dimensions (X/10)
+
+### D.3 — Content & Tone Review
+
+**Clarity**:
+- Is every label, button, and message unambiguous?
+- Can the user predict what will happen before they act?
+- Flag jargon, unexplained acronyms, or insider language
+
+**Tone consistency**:
+- Does voice match throughout the product?
+- Does tone match brand and sector expectations?
+- Is tone appropriate for context? (playful error messages for banking = mismatch)
+
+**Inclusive language**:
+- No gendered assumptions
+- No ableist language ("see below" vs. "refer to")
+- No cultural bias or untranslatable idioms
+- No age-related assumptions
+
+**Error messages**:
+- Helpful and specific? (not "Something went wrong")
+- Tell the user what happened AND what to do next?
+- Friendly tone without blame?
+- Provide a recovery path (retry button, support link, alternative action)?
+
+**CTAs**:
+- Action-oriented with clear outcome? ("Create Account" not "Submit")
+- Consistent verb patterns?
+- Button text matches the result? ("Delete Account" not "Continue" for destructive actions)
+
+**Readability**:
+- Flesch-Kincaid grade level appropriate for audience
+- Sentence length reasonable (avg <20 words)
+- Paragraph length manageable (max 3-4 sentences in UI)
+
+**i18n readiness**:
+- Text externalized from code (not hardcoded strings)?
+- Date/number formatting locale-aware?
+- Text expansion room (German/French can be 30% longer)?
+- No text embedded in images?
+- RTL layout considerations if applicable?
+
+Format rewrites as: "Current: [X] -> Recommended: [Y] -- Reason: [Z]"
+
+### D.4 — Responsive & Cross-Device Edge Cases
+
+Check at 5 breakpoints:
+
+| Breakpoint | Key Checks |
+|-----------|------------|
+| **Mobile (375px)** | Single column? Touch targets >= 44px? Line length <= 75 chars? Mobile nav pattern? No horizontal scroll? |
+| **Tablet (768px)** | 2-column adaptation? Touch + pointer both work? Modal sizing appropriate? Split view patterns? |
+| **Laptop (1024px)** | Multi-column + sidebar? Hover states present? Keyboard nav functional? |
+| **Desktop (1280px)** | Full layout as designed? Max-width container? Comfortable density? |
+| **Wide (1536px+)** | Content constrained to readable width? No awkward stretching? Grid fills proportionally? |
+
+**Cross-cutting checks**:
+- No horizontal scrolling at any breakpoint
+- Print stylesheet if content is printable
+- Orientation changes handled (portrait to landscape)
+- Input mode transitions (touch to keyboard to mouse)
+
+### D.5 — Microcopy & Error Recovery Deep-Dive
+
+- Every form field: label, placeholder, helper text, error message — all present and clear?
+- Empty states: Do they explain what to do, not just say "No items"?
+- Loading states: Skeleton screens, progress indicators, or optimistic UI?
+- Success states: Confirmation with next action?
+- Destructive action confirmations: Clear consequences stated?
+- Undo availability: Can the user reverse the last action?
+
+---
+
+## Section E: Summary Score & Priority Roadmap
+
+### E.1 — Composite Score Calculation
+
+Compute the overall audit score (0-100):
+
+| Section | Weight | Score Source | Raw Score |
+|---------|--------|-------------|-----------|
+| A: Heuristic | 25% | Usability score from A (1-100) | |
+| B: Cognitive | 20% | Cognitive Health Score (1-10, scaled to 100) | |
+| C: Flow | 20% | Flow Score (1-10, scaled to 100) | |
+| D: Fortification | 20% | Weighted from D.1-D.5 (1-10, scaled to 100) | |
+| E: Consistency | 15% | Cross-section coherence (do findings align?) | |
+
+**Overall Design Health Score: X/100**
+
+Score interpretation:
+- **90-100**: Ship-ready. Exceptional design with minor polish opportunities
+- **75-89**: Strong. Ready to ship with targeted improvements
+- **60-74**: Competent. Needs work on specific weak areas before shipping
+- **40-59**: Needs significant work. Multiple critical issues across sections
+- **0-39**: Redesign recommended. Fundamental problems in most areas
+
+### E.2 — Priority Roadmap
+
+Consolidate ALL findings from sections A-D into three tiers:
+
+**Must-Fix (before ship)**:
+- Severity 3-4 heuristic violations
+- Critical cognitive load issues
+- Dark patterns classified as Illegal or Deceptive
+- Valley of Death steps with no recovery
+- Missing error states on critical flows
+- WCAG AA failures (redirect to `/a11y` for detailed fixes)
+
+**Should-Fix (current sprint)**:
+- Severity 2 heuristic violations
+- Moderate cognitive load spikes
+- Manipulative or Questionable dark patterns
+- High drop-off risk steps
+- Tone inconsistencies in critical flows
+- Responsive breakpoint degradations
+
+**Could-Improve (backlog)**:
+- Severity 0-1 heuristic findings
+- Cognitive optimization opportunities
+- Content clarity improvements
+- i18n readiness gaps
+- Delight opportunities (Peak-End Rule improvements)
+- Polish-level responsive adjustments
+
+For EACH item in the roadmap:
+- Finding summary (one line)
+- Section source (A/B/C/D)
+- Severity level
+- Location in the interface
+- Specific fix recommendation
+- UX principle cited
+- Effort estimate (quick win / half-day / multi-day / strategic)
+
+### E.3 — Cross-Section Pattern Analysis
+
+Identify themes that appear across multiple sections:
+- If the same component fails in heuristic audit AND cognitive audit AND flow audit, it is a systemic problem
+- If dark patterns and tone issues overlap, there may be an organizational culture issue
+- If responsive and flow issues overlap, the mobile experience likely needs dedicated attention
+
+Call out the top 3 systemic patterns with recommendations.
+
+---
+
+## Output Format
+
+```
+## Design Audit: [Target Name]
+
+### Context
+- **Target**: [component/screen/flow name]
+- **Design intent**: [what the designer was trying to achieve]
+- **Target users**: [who, sophistication, context]
+- **Sector**: [industry and relevant conventions]
+- **Platform**: [web/iOS/Android/cross-platform]
+- **Constraints noted**: [trade-offs]
+- **Prior Sumi context consumed**: [list or "none"]
+
+---
+
+### Overall Design Health Score: [X/100] — [Tier Label]
+
+| Section | Score | Critical Findings | Total Findings |
+|---------|-------|-------------------|----------------|
+| A: Heuristic | [X/100] | [N] | [N] |
+| B: Cognitive | [X/10 -> X/100] | [N] | [N] |
+| C: Flow | [X/10 -> X/100] | [N] | [N] |
+| D: Fortification | [X/10 -> X/100] | [N] | [N] |
+| E: Consistency | [X/100] | — | — |
+
+---
+
+### Section A: Heuristic Audit
+
+#### Findings (sorted by severity)
+
+| # | Heuristic | Severity | Location | Issue | Cognitive Principle | Fix |
+|---|-----------|----------|----------|-------|--------------------|----|
+| 1 | H[N] | [0-4] | [where] | [what] | [principle] | [fix] |
+
+#### Mental Model Assessment
+- **Conceptual model**: [Clear/Unclear — explanation]
+- **Navigational model**: [Predictable/Unpredictable — explanation]
+- **Interaction model**: [Consistent/Inconsistent — explanation]
+- **Model gaps**: [list mismatches — these are HIGH SEVERITY]
+
+---
+
+### Section B: Cognitive Audit
+
+#### Domain Scores
+| Domain | Score | Key Finding |
+|--------|-------|-------------|
+| Decision Architecture | X/10 | [one-line] |
+| Visual Cognition | X/10 | [one-line] |
+| Memory Load | X/10 | [one-line] |
+| Attention Management | X/10 | [one-line] |
+| Bias Ethics | X/10 | [one-line] |
+
+**Cognitive Health Score**: [X/10]
+
+#### Laws of UX Findings
+[Each violated law with location, evidence, and fix]
+
+#### Gestalt Findings
+[Principle violations with visual description and correction]
+
+#### Cognitive Load Analysis
+[Intrinsic, extraneous, germane load breakdown with reduction strategies]
+
+#### Bias Audit
+[Biases exploited or at risk, with ethical alternatives]
+
+---
+
+### Section C: Flow Audit
+
+#### Flow Overview
+- **Type**: [flow type]
+- **Criticality**: [revenue/retention/trust/utility]
+- **Total Steps**: [X] (recommended: [Y])
+- **Estimated Time**: [X minutes]
+
+#### Flow Diagram
+[Entry] -> [Step 1] -> [Step 2] -> ... -> [Success State]
+
+#### Per-Step Analysis
+| Step | Screen | Cognitive Load (1-5) | Drop-off Risk (1-5) | Emotion | Issues |
+|------|--------|---------------------|---------------------|---------|--------|
+
+#### Emotional Arc
+[Visual bar chart of emotional valence per step]
+
+#### Flow Scores
+| Dimension | Score | Observation |
+|-----------|-------|------------|
+| Flow Efficiency | X/10 | ... |
+| Cognitive Progression | X/10 | ... |
+| Emotional Arc | X/10 | ... |
+| Error Recovery | X/10 | ... |
+| Completion Likelihood | X/10 | ... |
+
+**Overall Flow Score**: [X/10]
+
+#### Optimization Recommendations
+- **Steps to cut**: [eliminate zero-value steps]
+- **Steps to merge**: [combine without overloading]
+- **Steps to add**: [missing reassurance, trust, or progress moments]
+- **Friction fixes**: [specific before/after for high-friction steps]
+
+---
+
+### Section D: Fortification
+
+#### Dark Pattern Scan
+[Findings or "Clean — no dark patterns detected across 20+ categories scanned."]
+
+#### AI Trust Audit
+[Findings or "N/A — no AI features detected."]
+
+#### Content & Tone
+[Findings with specific rewrites: "Current: [X] -> Recommended: [Y]"]
+
+#### Responsive Edge Cases
+[Per-breakpoint findings]
+
+#### Microcopy & Error Recovery
+[Findings with specific rewrites]
+
+#### Fortification Score
+| Dimension | Weight | Score | Justification |
+|-----------|--------|-------|---------------|
+| Ethics | 30% | X/10 | [why] |
+| Trust | 20% | X/10 or N/A | [why] |
+| Content | 25% | X/10 | [why] |
+| Devices | 25% | X/10 | [why] |
+
+**Fortification Score**: [X/10]
+
+---
+
+### Section E: Priority Roadmap
+
+#### Must-Fix (before ship)
+| # | Finding | Section | Severity | Location | Fix | Principle | Effort |
+|---|---------|---------|----------|----------|-----|-----------|--------|
+
+#### Should-Fix (current sprint)
+| # | Finding | Section | Severity | Location | Fix | Principle | Effort |
+|---|---------|---------|----------|----------|-----|-----------|--------|
+
+#### Could-Improve (backlog)
+| # | Finding | Section | Severity | Location | Fix | Principle | Effort |
+|---|---------|---------|----------|----------|-----|-----------|--------|
+
+#### Systemic Patterns
+1. [Pattern]: Appears in sections [X, Y, Z]. Root cause: [hypothesis]. Fix: [systemic recommendation]
+2. [Pattern]: ...
+3. [Pattern]: ...
+
+---
+
+### Next Steps
+1. **Fix** must-fix items before shipping
+2. **Run** `/a11y` for detailed accessibility audit with code fixes
+3. **Run** `/roast` for quick opinionated critique
+4. **Run** `/qa` to verify fixes match spec
+5. **Run** `/grade` for visual quality scoring
+```
+
+---
+
+## Quality Gates
+
+The output MUST include:
+- [ ] All 5 sections completed (or targeted section if user specified)
+- [ ] Every finding has severity, location, fix recommendation, and UX principle cited
+- [ ] Heuristic findings grounded in cognitive principles (not just "violates H4")
+- [ ] Cognitive scores justified with specific observations
+- [ ] Flow diagram with per-step cognitive load and drop-off risk
+- [ ] Emotional arc visualization
+- [ ] Dark pattern scan covering 20+ categories
+- [ ] Content review with specific rewrites for every failing text
+- [ ] Responsive check at 5 breakpoints
+- [ ] Composite score computed with visible weights
+- [ ] Priority roadmap with three tiers and effort estimates
+- [ ] Systemic pattern analysis across sections
+- [ ] Code fixes included when code input is provided
+
+The output MUST NOT include:
+- Vague findings ("could be better", "needs work") — every issue must be specific and actionable
+- Scores without justification — every score must explain what earned or lost points
+- Recommendations without grounding — every fix must cite a UX principle
+- Dark pattern scan checking fewer than 20 categories
+- AI trust audit on products without AI features (skip cleanly)
+- Responsive findings without specific breakpoint data
+- Missing roadmap — every finding must route to a tier with a fix
+
+---
+
+## Cross-References
+
+When running the audit, draw knowledge from these skills:
+
+- `nng-ux-heuristics` — Heuristic evaluation methodology, severity rating framework
+- `cognitive-psychology-ux` — Laws of UX, Gestalt, cognitive load, mental models, biases
+- `ux-ethics-content-strategy` — Dark pattern taxonomy, ethical design, content strategy, tone
+- `ai-spatial-voice-ux` — AI transparency, trust patterns
+- `agentic-ai-generative-ux` — AI safety guardrails, generative UI ethics
+- `platform-visual-standards` — Responsive standards per device type, platform conventions
+- `accessibility-inclusive-design` — Inclusive language, WCAG compliance, universal design
+- `cross-cultural-i18n-ux` — i18n readiness, cultural sensitivity
+- `ui-pattern-intelligence` -> `anti-pattern-encyclopedia.md` — Dark pattern reference
+- `ux-metrics-measurement` — Funnel metrics, drop-off benchmarks, conversion optimization
+- `performance-states-patterns` — Loading states, skeleton screens, progress indicators
+- `sector-style-intelligence` — Sector-specific conventions
+- `micro-copy-intelligence` — Microcopy best practices for rewrites
+- `design-critique-case-studies` — Critique methodology grounding
+
+---
+
+## Next Steps
+
+After `/audit`, recommended paths:
+
+- `/a11y` — Deep accessibility audit with WCAG 2.2 AA checklist and code fixes
+- `/roast` — Quick opinionated design critique (10 dimensions, letter grade)
+- `/grade` — Visual quality scoring (Awwwards-calibrated)
+- `/qa` — Design QA (spec vs. implementation verification)
+- `/remix` — Fix the issues found immediately
+- `/ship` — Rebuild flagged components
