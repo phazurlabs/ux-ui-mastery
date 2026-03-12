@@ -68,6 +68,22 @@ Chef Sumi is a design intelligence plugin for [Claude Code](https://github.com/a
 
 ---
 
+### Compare before and after
+
+```
+/before-after
+```
+*(paste your original code — see the transformation)*
+
+**What you get:**
+- Side-by-side scoring across 10 design dimensions
+- AI Slop Score comparison (before vs after)
+- Exact code changes per category (typography, color, spacing, layout, accessibility)
+- Complete transformed code — ready to copy-paste
+- Shareable verdict: "Transformed from D-grade slop to A- production cuisine"
+
+---
+
 ### Build a production screen
 
 ```
@@ -234,6 +250,7 @@ Chef Sumi is a design intelligence plugin for [Claude Code](https://github.com/a
 | `/grade` | Visual score — Awwwards-calibrated, designer DNA match |
 | `/qa` | Design QA — token compliance, state coverage, responsive check |
 | `/a11y` | Accessibility — WCAG 2.2 AA, ARIA, keyboard, contrast, code fixes |
+| `/before-after` | Before/after comparison — visual proof of design transformation |
 
 ### Plan — research and strategy
 
@@ -253,6 +270,48 @@ Chef Sumi is a design intelligence plugin for [Claude Code](https://github.com/a
 | `/sumi` | Show all commands and quick-start guide |
 | `/next` | Suggest what to do next based on context |
 | `/status` | Show what you've built so far |
+
+<br />
+
+## Starter recipes
+
+Run `/style` with just a sector name. Zero config needed.
+
+```
+/style saas          → Professional dashboard system (Linear DNA)
+/style fintech       → Trust-first banking aesthetic (Stripe DNA)
+/style ecommerce     → Conversion-optimized store (Shopify DNA)
+/style healthcare    → Calm clinical interface (One Medical DNA)
+/style creative      → Bold editorial portfolio (Awwwards DNA)
+/style education     → Friendly learning platform (Duolingo DNA)
+/style social        → Content-first community (Discord DNA)
+/style devtools      → Dark-native developer tool (GitHub DNA)
+/style landing       → Show-stopping marketing page (Vercel DNA)
+/style mobile        → Platform-native app (iOS/Android adaptive)
+```
+
+Each recipe generates a complete design system — palette, typography, spacing, motion, radius, shadows, tokens — tuned to that sector's conventions. No questions asked.
+
+<br />
+
+## Design Quality Score
+
+Run `/grade` on any UI and get a single 0-100 score — like Lighthouse, but for design.
+
+```
+/grade
+```
+
+**Scoring across 7 dimensions:**
+- Visual Hierarchy (20%) — information priority and scanning patterns
+- Typography System (15%) — type scale, pairing, fluid sizing
+- Color System (15%) — palette harmony, semantic usage, contrast
+- Spacing & Layout (15%) — grid consistency, responsive behavior
+- Component Quality (15%) — state coverage, interaction feedback
+- Accessibility (10%) — WCAG 2.2 AA compliance
+- Design System Coherence (10%) — token usage and consistency
+
+**Score 80+?** Get a "Designed with Chef Sumi" badge for your README.
 
 <br />
 
@@ -302,6 +361,6 @@ Restart Claude Code. Run `/sumi` to see all commands.
 ---
 
 <p align="center">
-  <sub>v8.1.0 &middot; 33 commands &middot; 42 skills &middot; 165 reference docs</sub><br />
+  <sub>v9.0.0 &middot; 34 commands &middot; 42 skills &middot; 165 reference docs</sub><br />
   <sub>Built by <a href="https://github.com/phazurlabs">Phazur Labs</a> &middot; Powered by Claude</sub>
 </p>

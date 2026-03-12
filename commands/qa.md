@@ -374,3 +374,129 @@ After `/qa`:
 - `/audit` — Comprehensive design audit if systemic issues found
 - `/component [name]` — Rebuild flagged components from scratch
 - `/tokens` — Revisit token system if consumption issues are systemic
+
+---
+
+## Project-Wide Consistency Audit
+
+When the user runs `/qa project` or `/qa codebase` or `/qa all`, scan the entire project for design consistency issues across all components and screens.
+
+### Scan Protocol
+
+**Step 1: Discover UI Files**
+Scan the project for all UI-related files:
+- `**/*.tsx`, `**/*.jsx` — React components
+- `**/*.vue` — Vue components
+- `**/*.svelte` — Svelte components
+- `**/*.css`, `**/*.scss` — Stylesheets
+- `**/*.swift` — SwiftUI views
+- `**/tailwind.config.*` — Tailwind configuration
+- `.sumi/style.json` — Chef Sumi design memory
+
+**Step 2: Extract Design Values**
+
+From every UI file, extract and catalog:
+
+| Category | What to Extract | How to Detect |
+|----------|----------------|---------------|
+| Colors | Every color value used | Hex (#xxx), rgb(), oklch(), Tailwind color classes (text-blue-500, bg-gray-100), CSS variables (var(--color-*)) |
+| Font sizes | Every font size | text-xs through text-9xl, font-size values, clamp() values |
+| Font families | Every font used | font-family declarations, Tailwind font-* classes |
+| Font weights | Every weight used | font-light through font-black, font-weight values |
+| Spacing | Every spacing value | p-*, m-*, gap-*, space-*, padding/margin CSS values |
+| Border radius | Every radius value | rounded-*, border-radius values |
+| Shadows | Every shadow value | shadow-*, box-shadow values |
+| Z-index | Every z-index value | z-*, z-index values |
+| Breakpoints | Every responsive breakpoint | sm:, md:, lg:, xl:, @media queries |
+| Transitions | Every transition/animation | transition-*, animation-*, @keyframes |
+
+**Step 3: Consistency Analysis**
+
+For each category, analyze:
+
+**Color Consistency:**
+- Total unique colors used across the project
+- Colors that appear only once (orphans — likely errors)
+- Colors that are very similar but not identical (e.g., #333 and #343434 — should be same token)
+- Semantic usage: Is the same blue used for links AND errors? (violation)
+- Dark mode coverage: Do all colors have dark mode equivalents?
+- Token compliance: What percentage of colors reference tokens vs hardcoded values?
+
+**Typography Consistency:**
+- Total unique font sizes — should follow a scale (not random values)
+- Font families used — should be 2-3 max
+- Weight distribution — should be intentional (400 body, 600 heading, etc.)
+- Line height consistency — should correspond to font size
+- Orphan sizes — sizes used only once (likely arbitrary)
+
+**Spacing Consistency:**
+- Values used — do they follow a scale (4, 8, 12, 16, 24, 32, 48, 64)?
+- Off-grid values — spacing values that don't fit the base grid
+- Inconsistent padding patterns — same component type with different padding
+- Section gap consistency — are page section gaps uniform?
+
+**Component Pattern Consistency:**
+- Button styles — how many button variants exist? Are they consistent?
+- Card patterns — same shadow/radius/padding across all cards?
+- Input styles — consistent border, focus ring, error state across all inputs?
+- Modal/dialog patterns — consistent overlay, animation, close behavior?
+
+**Step 4: Drift Report**
+
+Output a structured drift report:
+
+```
+## Design Consistency Report — [Project Name]
+
+### Overview
+| Metric | Value | Health |
+|--------|-------|--------|
+| Total UI files scanned | [N] | — |
+| Unique colors | [N] | 🟢 Good (<20) / 🟡 Warning (20-40) / 🔴 Critical (40+) |
+| Unique font sizes | [N] | 🟢 Good (<10) / 🟡 Warning (10-15) / 🔴 Critical (15+) |
+| Unique spacing values | [N] | 🟢 Good (<12) / 🟡 Warning (12-20) / 🔴 Critical (20+) |
+| Token compliance | [N]% | 🟢 Good (>80%) / 🟡 Warning (50-80%) / 🔴 Critical (<50%) |
+| Design system coverage | [N]% | — |
+
+### Color Drift
+| Color Value | Occurrences | Likely Intent | Suggested Token |
+|-------------|-------------|---------------|-----------------|
+| #2563eb | 23 | Primary action | var(--color-primary) |
+| #2461e8 | 3 | Primary action (drift!) | var(--color-primary) — merge with #2563eb |
+| #ef4444 | 12 | Error/destructive | var(--color-error) |
+| #ff0000 | 1 | Error (orphan!) | var(--color-error) — merge with #ef4444 |
+
+### Typography Drift
+| Size | Occurrences | Likely Role | On Scale? |
+|------|-------------|-------------|-----------|
+| text-2xl (1.5rem) | 15 | Section heading | ✅ |
+| text-[22px] | 2 | Section heading (drift!) | ❌ → use text-2xl |
+
+### Spacing Drift
+[Similar table for spacing values]
+
+### Component Pattern Drift
+| Pattern | Variants Found | Should Be | Files |
+|---------|---------------|-----------|-------|
+| Button padding | px-4 py-2, px-3 py-1.5, px-6 py-3 | 3 sizes (sm/md/lg) | [list] |
+| Card radius | rounded-lg (12), rounded-xl (3), rounded-2xl (1) | Pick one: rounded-lg | [list] |
+| Input border | border-gray-300 (8), border-gray-200 (3), border-slate-300 (2) | Standardize to one | [list] |
+
+### Priority Fixes
+Top 10 consistency issues ranked by frequency × severity:
+1. [Most impactful fix]
+2. [Second most impactful]
+...
+
+### Token Generation
+If design tokens don't exist, generate a token file that standardizes all the values found:
+- Map the most-used color values to semantic tokens
+- Map font sizes to a type scale
+- Map spacing to a grid scale
+- Output as CSS custom properties and/or tailwind.config.js theme extension
+```
+
+### Integration with Other Commands
+- `/qa project` can recommend running `/fix` on specific files with the most drift
+- `/qa project` should reference `.sumi/style.json` if it exists and check compliance against those tokens
+- After `/qa project`, suggest running `/tokens` to generate a standardized token file

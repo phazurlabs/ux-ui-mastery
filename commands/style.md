@@ -40,6 +40,124 @@ This command absorbs and replaces the former `/taste` and `/inspo` commands, uni
 
 ---
 
+## Starter Recipes — Zero-Config Presets
+
+When the user provides ONLY a sector name with no additional parameters, apply the corresponding starter recipe immediately. No questions. No prompts for more info. Just generate.
+
+Each recipe defines the complete set of design decisions: color palette, typography, spacing, motion, and mood — optimized for the sector's conventions and audience expectations.
+
+### Recipe 1: SaaS Dashboard
+**Trigger**: `/style saas` or `/style saas-dashboard` or `/style productivity`
+- **Palette**: Cool slate neutrals, blue primary (#2563EB → oklch), green success, amber warning
+- **Typography**: Inter (headings 600-700) + Inter (body 400-500). Tabular nums for metrics.
+- **Spacing**: 4px base, dense (16px default padding), compact data tables
+- **Motion**: Subtle — 150ms ease-out transitions, no bouncy animations
+- **Mood**: Professional, efficient, data-forward
+- **Radius**: sm=4px, md=6px, lg=8px (tight, professional)
+- **Shadows**: Minimal — sm only for cards, elevation for dropdowns/modals
+- **Reference DNA**: Linear, Notion, Vercel Dashboard
+
+### Recipe 2: Fintech / Banking
+**Trigger**: `/style fintech` or `/style banking` or `/style finance`
+- **Palette**: Deep navy primary (#1E3A5F → oklch), teal accents, warm neutrals
+- **Typography**: DM Sans (headings 600-700) + Inter (body 400). Tabular nums mandatory for amounts.
+- **Spacing**: 4px base, generous (24px default padding), breathing room for trust
+- **Motion**: Conservative — 200ms ease transitions, no playful animations
+- **Mood**: Trust-first, precise, secure
+- **Radius**: sm=4px, md=8px, lg=12px (slightly rounded, approachable but serious)
+- **Shadows**: Soft, layered — trust through depth without heaviness
+- **Reference DNA**: Stripe, Mercury, Wise
+
+### Recipe 3: E-Commerce
+**Trigger**: `/style ecommerce` or `/style shop` or `/style store`
+- **Palette**: Warm neutrals, coral/orange CTA (#FF6B35 → oklch), green for savings/success
+- **Typography**: Plus Jakarta Sans (headings 700-800) + Inter (body 400). Display for prices.
+- **Spacing**: 4px base, product card grid with 16-24px gaps
+- **Motion**: Engaging — 200ms spring for cart, 300ms for page transitions
+- **Mood**: Inviting, conversion-optimized, product-first
+- **Radius**: sm=8px, md=12px, lg=16px (friendly, approachable)
+- **Shadows**: Medium — product cards elevated, hover lift effect
+- **Reference DNA**: Shopify Polaris, Gumroad, Apple Store
+
+### Recipe 4: Healthcare / Medical
+**Trigger**: `/style healthcare` or `/style medical` or `/style health`
+- **Palette**: Calm teal primary (#0D9488 → oklch), light blue accents, warm white surfaces
+- **Typography**: Source Sans 3 (headings 600) + Source Sans 3 (body 400). Clear, clinical.
+- **Spacing**: 4px base, generous (24-32px padding), breathing room reduces anxiety
+- **Motion**: Gentle — 250ms ease, calming transitions, no jarring movements
+- **Mood**: Clinical trust, calm, reassuring
+- **Radius**: sm=8px, md=12px, lg=16px (soft, non-threatening)
+- **Shadows**: Very soft, low contrast — calm elevation
+- **Reference DNA**: One Medical, Calm, Headspace
+
+### Recipe 5: Creative / Portfolio
+**Trigger**: `/style creative` or `/style portfolio` or `/style agency`
+- **Palette**: Near-black (#0A0A0A) + warm white (#FAFAF5), bold accent (your choice — vermillion, electric blue, or acid green)
+- **Typography**: Instrument Serif or Playfair Display (headings 400-700) + Inter (body 400). Dramatic contrast.
+- **Spacing**: 4px base, dramatic (48-80px section gaps), generous white space
+- **Motion**: Expressive — 400ms spring, scroll-driven, parallax, stagger reveals
+- **Mood**: Bold, editorial, gallery-like
+- **Radius**: sm=0px, md=0px, lg=0px (sharp edges, editorial feel) OR all round (playful)
+- **Shadows**: None or dramatic — no middle ground
+- **Reference DNA**: Awwwards winners, Linear website, Vercel website
+
+### Recipe 6: Education / EdTech
+**Trigger**: `/style education` or `/style edtech` or `/style learning`
+- **Palette**: Friendly blue primary (#3B82F6 → oklch), warm yellow accents, soft green progress
+- **Typography**: Nunito (headings 700-800) + Inter (body 400). Rounded, friendly, readable.
+- **Spacing**: 4px base, generous (20-24px padding), comfortable reading
+- **Motion**: Playful — 250ms spring, progress animations, celebration confetti
+- **Mood**: Encouraging, friendly, clear
+- **Radius**: sm=8px, md=12px, lg=20px (very rounded, approachable)
+- **Shadows**: Soft, warm — friendly elevation
+- **Reference DNA**: Duolingo, Khan Academy, Notion
+
+### Recipe 7: Social / Community
+**Trigger**: `/style social` or `/style community` or `/style social-media`
+- **Palette**: Vibrant blue primary (#1DA1F2 → oklch), gradient accents, dark mode native
+- **Typography**: SF Pro Display / Inter (headings 700) + Inter (body 400). Dense, scannable.
+- **Spacing**: 4px base, compact (12-16px padding), content-dense feeds
+- **Motion**: Snappy — 120ms ease, pull-to-refresh, swipe gestures, heart burst
+- **Mood**: Expressive, fast, content-first
+- **Radius**: sm=8px, md=16px, lg=9999px (pill shapes for badges/tags)
+- **Shadows**: Minimal — flat design, borders over shadows
+- **Reference DNA**: Twitter/X, Discord, Reddit
+
+### Recipe 8: Developer Tools
+**Trigger**: `/style devtools` or `/style developer` or `/style cli`
+- **Palette**: Dark-first (#0D1117 surface), green/cyan accents (#22D3EE → oklch), syntax-highlight inspired
+- **Typography**: JetBrains Mono (code/headings 500-700) + Inter (body 400). Monospace-forward.
+- **Spacing**: 4px base, dense (12-16px padding), information-rich
+- **Motion**: Minimal — 100ms ease, instant feedback, no decorative animation
+- **Mood**: Technical, precise, dark-native
+- **Radius**: sm=4px, md=6px, lg=8px (tight, technical)
+- **Shadows**: Subtle glow on dark backgrounds, no traditional shadows
+- **Reference DNA**: GitHub, Vercel, Linear, Raycast
+
+### Recipe 9: Landing Page / Marketing
+**Trigger**: `/style landing` or `/style marketing` or `/style startup`
+- **Palette**: Bold primary (brand color), high contrast CTAs, gradient accents
+- **Typography**: Cabinet Grotesk or Satoshi (hero 800-900) + Inter (body 400). Large, confident headlines.
+- **Spacing**: 4px base, dramatic (64-120px section gaps), hero sections with massive padding
+- **Motion**: Show-stopping — 500ms spring, scroll-triggered, stagger reveals, counter animations
+- **Mood**: Confident, conversion-focused, impressive
+- **Radius**: sm=8px, md=12px, lg=24px (modern, friendly)
+- **Shadows**: Hero shadows, frosted glass effects, layered depth
+- **Reference DNA**: Stripe, Vercel, Linear, Framer
+
+### Recipe 10: Mobile App
+**Trigger**: `/style mobile` or `/style ios` or `/style android`
+- **Palette**: Platform-adaptive — iOS: system blues/vibrant. Android: M3 tonal palettes. Both: semantic colors.
+- **Typography**: SF Pro (iOS) / Google Sans (Android) / Inter (cross-platform). System-native feel.
+- **Spacing**: 4px base, touch-optimized (44px min tap targets, 16px edge padding)
+- **Motion**: Platform-native — iOS: spring(response: 0.3). Android: M3 emphasized easing.
+- **Mood**: Native, fluid, thumb-friendly
+- **Radius**: iOS: 10-16px (continuous corners). Android: 12-28px (M3 shapes).
+- **Shadows**: iOS: subtle drop shadows. Android: M3 elevation (tonal, not shadow).
+- **Reference DNA**: Apple HIG, Material 3 Expressive, system apps
+
+---
+
 ## Input Protocol
 
 Accept the following parameters. Infer sensible defaults for anything not provided.

@@ -40,6 +40,127 @@ Generate a production-ready, RUNNABLE UI component with complete state coverage,
 - Prior Sumi outputs: Check `/taste`, `/inspo`, `/benchmark`. Consume if available; note what is missing
 - Sector conventions: Apply `sector-style-intelligence` if sector specified
 
+---
+
+## Platform-Aware Component Generation
+
+Components must respect platform conventions. A button on iOS feels different from a button on web or Android. This section ensures every component generated matches the platform's native interaction model, visual language, and accessibility API.
+
+### Platform Detection
+
+Check project context to determine platform. If ambiguous, ask the user.
+
+### Web Components (React + Tailwind)
+
+For web, generate React + TypeScript + Tailwind with:
+
+**Structure:**
+- Functional component with TypeScript interface for props
+- `forwardRef` for composability
+- `className` prop merged with `cn()` utility for customization
+- Slot pattern for compound components (e.g., `Card.Header`, `Card.Body`, `Card.Footer`)
+
+**States (all 10 required):**
+```tsx
+interface ButtonProps {
+  variant: 'primary' | 'secondary' | 'ghost' | 'destructive'
+  size: 'sm' | 'md' | 'lg'
+  loading?: boolean    // shows spinner, disables click
+  disabled?: boolean   // reduced opacity, no pointer events
+  // ... rest of props
+}
+```
+- Default, Hover, Focus (focus-visible ring), Active/Pressed, Disabled, Loading (spinner + text), Error, Success, Empty (for data components), Skeleton (for async components)
+
+**Interaction:**
+- `transition-colors duration-150` for color changes
+- `active:scale-[0.98]` for press feedback
+- `focus-visible:ring-2 focus-visible:ring-offset-2` for keyboard focus
+- `cursor-not-allowed opacity-50` for disabled
+
+**Accessibility:**
+- `role` attribute where semantic HTML isn't sufficient
+- `aria-label`, `aria-describedby`, `aria-expanded`, `aria-pressed` as appropriate
+- `aria-busy={loading}` during loading states
+- Keyboard handlers: Enter/Space for buttons, Escape for dismissibles
+
+**Test skeleton:**
+```tsx
+describe('ComponentName', () => {
+  it('renders default state', () => {})
+  it('renders loading state', () => {})
+  it('renders disabled state', () => {})
+  it('handles click', () => {})
+  it('handles keyboard interaction', () => {})
+  it('meets accessibility requirements', () => {})
+})
+```
+
+### iOS Components (SwiftUI)
+
+For iOS, generate SwiftUI views with:
+
+**Structure:**
+- Swift struct conforming to View
+- `@Binding` for two-way data flow
+- `@Environment` for system values (colorScheme, dynamicTypeSize)
+- ViewModifier pattern for reusable styling
+- `PreviewProvider` with multiple preview configurations
+
+**Platform conventions:**
+- 44pt minimum tap target (Apple HIG)
+- SF Symbols for icons (specify symbol name)
+- System colors: `.primary`, `.secondary`, `.accentColor`
+- Haptic feedback: `UIImpactFeedbackGenerator(style: .medium)`
+- Liquid Glass (iOS 26): `.glassEffect()` for translucent surfaces
+- Continuous corner radius: `RoundedRectangle(cornerRadius: 12, style: .continuous)`
+- Dynamic Type: `@ScaledMetric` for size values
+
+**Accessibility:**
+- `.accessibilityLabel("descriptive text")`
+- `.accessibilityHint("what happens")`
+- `.accessibilityAddTraits(.isButton)` for custom tap targets
+- `.accessibilityValue()` for sliders/steppers
+- Group related elements: `.accessibilityElement(children: .combine)`
+
+### Android Components (Jetpack Compose)
+
+For Android, generate Compose with:
+
+**Structure:**
+- `@Composable` function with parameter defaults
+- Material 3 theming: `MaterialTheme.colorScheme`, `MaterialTheme.typography`
+- State hoisting pattern: events up, state down
+- `@Preview` annotations with multiple configurations
+
+**Platform conventions:**
+- 48dp minimum touch target
+- Ripple indication on touch (default in Material 3)
+- M3 Expressive shapes: `RoundedCornerShape(12.dp)` for containers, `CircleShape` for FABs
+- Tonal elevation: `tonalElevation = 2.dp` instead of shadow
+- Dynamic color: respect `dynamicDarkColorScheme(context)`
+
+**Accessibility:**
+- `Modifier.semantics { contentDescription = "..." }`
+- `Modifier.clickable(onClickLabel = "action description")`
+- `Role.Button`, `Role.Checkbox`, etc.
+- Live region: `Modifier.semantics { liveRegion = LiveRegionMode.Polite }`
+
+### Component Comparison Table
+
+For components that exist across platforms, ensure consistent behavior:
+
+| Aspect | Web (React) | iOS (SwiftUI) | Android (Compose) |
+|--------|-------------|---------------|-------------------|
+| Min tap target | 44px (WCAG) | 44pt (HIG) | 48dp (M3) |
+| Focus indicator | ring-2 ring-offset-2 | System default | Ripple |
+| Loading | Spinner component | ProgressView | CircularProgressIndicator |
+| Haptic | N/A | UIImpactFeedback | HapticFeedbackConstants |
+| Motion easing | cubic-bezier | .spring(response:) | M3 EmphasizedEasing |
+| Dark mode | dark: prefix / CSS | @Environment colorScheme | isSystemInDarkTheme() |
+
+---
+
 ### Step 2 — Generate State Matrix
 
 Every component MUST handle all 10 states (where applicable):

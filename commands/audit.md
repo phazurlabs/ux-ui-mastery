@@ -1,22 +1,23 @@
 ---
-description: "Comprehensive design audit — heuristic, cognitive, flow, fortification, and summary scoring in one command. Run all lenses or pick specific sections."
+description: "Comprehensive design audit — heuristic, cognitive, flow, fortification, cognitive load analysis, and summary scoring in one command. Run all lenses or pick specific sections."
 tier: "review"
 ---
 
 # Audit — Comprehensive Design Audit
 
-Run every diagnostic lens against a design in a single pass. This is the master audit command — it evaluates heuristics, cognitive load, user flows, dark patterns, responsive edge cases, content quality, and produces a unified score with a priority roadmap.
+Run every diagnostic lens against a design in a single pass. This is the master audit command — it evaluates heuristics, cognitive load, user flows, dark patterns, responsive edge cases, content quality, cognitive load analysis (Laws of UX, Gestalt, attention mapping, decision architecture), and produces a unified score with a priority roadmap.
 
 **Accepts**: Code (file paths or pasted), screenshot description, URL description, or Figma reference.
 
 **Section targeting**: Run the full audit or request specific sections:
-- `/audit` — Full audit (all 5 sections)
+- `/audit` — Full audit (all 6 sections)
 - `/audit heuristic` or `/audit section-a` — Heuristic only
 - `/audit cognitive` or `/audit section-b` — Cognitive only
 - `/audit flow` or `/audit section-c` — Flow only
 - `/audit fortify` or `/audit section-d` — Fortification only
 - `/audit slop` or `/audit section-d6` — AI Slop Analysis only
-- `/audit score` or `/audit section-e` — Summary score only (requires prior sections)
+- `/audit cogload` or `/audit section-e` — Cognitive Load Analysis only
+- `/audit score` or `/audit section-f` — Summary score only (requires prior sections)
 - `/audit a11y` — Redirects to `/a11y` (standalone accessibility audit)
 
 ---
@@ -468,19 +469,117 @@ For the assigned rating, provide:
 
 ---
 
-## Section E: Summary Score & Priority Roadmap
+## Section E: Cognitive Load Analysis
 
-### E.1 — Composite Score Calculation
+Evaluate the design through the lens of cognitive psychology. Score how well the interface respects human cognitive limitations and leverages perceptual principles.
+
+### E.1 — Laws of UX Evaluation
+
+Evaluate compliance with key Laws of UX:
+
+| Law | What to Check | Violation Example |
+|-----|--------------|-------------------|
+| **Hick's Law** | Decision time increases logarithmically with number of choices. Count choices per viewport. | Navigation with 15+ top-level items. Settings page with 30 uncategorized toggles. Dropdown with 50+ unsearchable options. |
+| **Miller's Law** | Working memory holds 7±2 items. Count information chunks per section. | Dashboard showing 12 ungrouped metrics. Form with 15 fields on one step. Tab bar with 8 items. |
+| **Fitts's Law** | Time to target depends on distance and size. Check CTA sizes and positions. | Tiny "Submit" button far from form. Close button as small X in corner. Important action requires precision click. |
+| **Jakob's Law** | Users spend most time on other sites — they expect yours to work like those. Check convention compliance. | Logo in the center instead of top-left. Cart icon on the left side. Search that doesn't use a magnifying glass icon. |
+| **Law of Proximity** | Elements close together are perceived as related. Check grouping logic. | Unrelated elements grouped tightly. Related elements separated by whitespace. Form labels far from their inputs. |
+| **Law of Similarity** | Similar-looking elements are perceived as related. Check visual consistency. | Different button styles for the same action type. Inconsistent card treatments for same-category items. |
+| **Law of Common Region** | Elements within a boundary are perceived as grouped. Check container usage. | No visual boundaries between content sections. Borders/backgrounds that group unrelated items. |
+| **Aesthetic-Usability Effect** | Users perceive attractive designs as more usable. Rate overall aesthetic quality. | Functional but visually unpolished interface creates perception of poor usability. |
+| **Doherty Threshold** | System response must be <400ms for flow state. Check perceived performance. | No loading indicators. Slow transitions. No optimistic UI for common actions. |
+| **Peak-End Rule** | Users judge experience by its peak moment and end. Check critical and final moments. | No success celebration on completion. Error states that feel harsh. Abrupt endings. |
+| **Von Restorff Effect** | Distinctive items are more memorable. Check if CTAs stand out. | Primary CTA doesn't visually differentiate from secondary actions. Everything is the same visual weight. |
+| **Zeigarnik Effect** | People remember uncompleted tasks. Check progress indication. | Multi-step form with no progress bar. Task list with no completion states. Onboarding with no progress indicator. |
+
+For each law, rate:
+- **Compliant** (actively applied)
+- **Neutral** (not applicable or no violation)
+- **Violation** (law is violated with negative UX impact)
+
+### E.2 — Gestalt Principles Audit
+
+Evaluate how the layout uses (or violates) Gestalt principles:
+
+| Principle | What to Check |
+|-----------|--------------|
+| **Figure/Ground** | Is it clear what is foreground content vs. background? Do overlapping elements have sufficient contrast? |
+| **Closure** | Are incomplete shapes/patterns interpretable? Do icon metaphors rely on user completing the visual? |
+| **Continuity** | Do elements create clear visual lines the eye can follow? Is the reading flow smooth? |
+| **Symmetry** | Are layouts balanced? Does asymmetry feel intentional or accidental? |
+| **Common Fate** | Do elements that belong together move/animate together? |
+| **Focal Point** | Is there a single clear entry point per viewport? Where does the eye land first? |
+
+### E.3 — Attention Mapping
+
+Analyze where user attention flows:
+
+1. **Entry Point**: Where does the eye land first on each screen? Is this the most important element?
+2. **Scanning Pattern**: Does the layout support natural scanning (F-pattern for text, Z-pattern for marketing)?
+3. **Visual Hierarchy Score**: Rank elements by visual weight (size, color, contrast, position). Does this ranking match the information priority?
+4. **Distraction Audit**: Identify elements that compete for attention when they shouldn't (animations, bright colors on non-priority elements, decorative elements that distract from content)
+5. **Progressive Disclosure**: Is information revealed at the right time, or is everything shown at once?
+
+### E.4 — Decision Architecture
+
+Evaluate how the interface structures user decisions:
+
+- **Choice Architecture**: Are default options set appropriately? Are destructive actions guarded?
+- **Cognitive Friction**: Where does the interface create unnecessary mental effort? (Unclear labels, ambiguous icons, missing context)
+- **Error Prevention**: Does the design prevent errors before they happen? (Disabled invalid options, confirmation for destructive actions, undo capability)
+- **Mental Model Alignment**: Does the interface's conceptual model match how users think about the task?
+- **Information Scent**: Can users predict what they'll find behind links/buttons from the label alone?
+
+### E.5 — Cognitive Load Score
+
+Calculate a composite cognitive load score:
+
+| Dimension | Weight | Score (0-10) | Criteria |
+|-----------|--------|-------------|----------|
+| Information Density | 20% | — | 10: Right amount of info per viewport. 1: Overwhelming or barren |
+| Decision Complexity | 20% | — | 10: Guided decisions, clear defaults. 1: Too many choices, no guidance |
+| Visual Noise | 15% | — | 10: Clean, focused. 1: Cluttered, competing elements |
+| Consistency | 15% | — | 10: Predictable patterns. 1: Every screen is different |
+| Memory Load | 15% | — | 10: Recognition over recall, persistent context. 1: Must remember previous steps |
+| Learning Curve | 15% | — | 10: Immediately intuitive. 1: Requires instruction manual |
+
+**Cognitive Load Rating:**
+- 8-10: Effortless — interface disappears, users focus on tasks
+- 6-7: Manageable — minor cognitive friction in specific areas
+- 4-5: Taxing — users must think about the interface, not their task
+- 1-3: Overwhelming — interface creates anxiety, confusion, or decision paralysis
+
+### E.6 — Findings Format
+
+For each cognitive issue found:
+
+```
+#### [CogN]: [Issue Title]
+**Law/Principle**: [Which cognitive principle is violated]
+**Severity**: Critical / Major / Minor
+**Location**: [Where in the UI]
+**Current**: [What the design does now]
+**Impact**: [How this affects users cognitively]
+**Fix**: [Specific design recommendation]
+**Code**: [If applicable, show the code change]
+```
+
+---
+
+## Section F: Summary Score & Priority Roadmap
+
+### F.1 — Composite Score Calculation
 
 Compute the overall audit score (0-100):
 
 | Section | Weight | Score Source | Raw Score |
 |---------|--------|-------------|-----------|
-| A: Heuristic | 25% | Usability score from A (1-100) | |
-| B: Cognitive | 20% | Cognitive Health Score (1-10, scaled to 100) | |
-| C: Flow | 20% | Flow Score (1-10, scaled to 100) | |
-| D: Fortification | 20% | Weighted from D.1-D.5 (1-10, scaled to 100) | |
-| E: Consistency | 15% | Cross-section coherence (do findings align?) | |
+| A: Heuristic | 20% | Usability score from A (1-100) | |
+| B: Cognitive | 15% | Cognitive Health Score (1-10, scaled to 100) | |
+| C: Flow | 15% | Flow Score (1-10, scaled to 100) | |
+| D: Fortification | 15% | Weighted from D.1-D.5 (1-10, scaled to 100) | |
+| E: Cognitive Load | 20% | Cognitive Load Score (0-10, scaled to 100) | |
+| F: Consistency | 15% | Cross-section coherence (do findings align?) | |
 
 **Overall Design Health Score: X/100**
 
@@ -491,9 +590,9 @@ Score interpretation:
 - **40-59**: Needs significant work. Multiple critical issues across sections
 - **0-39**: Redesign recommended. Fundamental problems in most areas
 
-### E.2 — Priority Roadmap
+### F.2 — Priority Roadmap
 
-Consolidate ALL findings from sections A-D into three tiers:
+Consolidate ALL findings from sections A-E into three tiers:
 
 **Must-Fix (before ship)**:
 - Severity 3-4 heuristic violations
@@ -521,14 +620,14 @@ Consolidate ALL findings from sections A-D into three tiers:
 
 For EACH item in the roadmap:
 - Finding summary (one line)
-- Section source (A/B/C/D)
+- Section source (A/B/C/D/E)
 - Severity level
 - Location in the interface
 - Specific fix recommendation
 - UX principle cited
 - Effort estimate (quick win / half-day / multi-day / strategic)
 
-### E.3 — Cross-Section Pattern Analysis
+### F.3 — Cross-Section Pattern Analysis
 
 Identify themes that appear across multiple sections:
 - If the same component fails in heuristic audit AND cognitive audit AND flow audit, it is a systemic problem
@@ -563,7 +662,8 @@ Call out the top 3 systemic patterns with recommendations.
 | B: Cognitive | [X/10 -> X/100] | [N] | [N] |
 | C: Flow | [X/10 -> X/100] | [N] | [N] |
 | D: Fortification | [X/10 -> X/100] | [N] | [N] |
-| E: Consistency | [X/100] | — | — |
+| E: Cognitive Load | [X/10 -> X/100] | [N] | [N] |
+| F: Consistency | [X/100] | — | — |
 
 ---
 
@@ -712,7 +812,50 @@ Call out the top 3 systemic patterns with recommendations.
 
 ---
 
-### Section E: Priority Roadmap
+### Section E: Cognitive Load Analysis
+
+#### Laws of UX Evaluation
+| Law | Rating | Location | Evidence |
+|-----|--------|----------|----------|
+| [Law Name] | Compliant/Neutral/Violation | [where] | [evidence] |
+
+#### Gestalt Principles Audit
+| Principle | Rating | Evidence |
+|-----------|--------|----------|
+| [Principle] | Strong/Adequate/Weak | [evidence] |
+
+#### Attention Mapping
+- **Entry Point**: [analysis]
+- **Scanning Pattern**: [F-pattern/Z-pattern compliance]
+- **Visual Hierarchy Score**: [alignment assessment]
+- **Distraction Audit**: [findings]
+- **Progressive Disclosure**: [assessment]
+
+#### Decision Architecture
+- **Choice Architecture**: [assessment]
+- **Cognitive Friction**: [findings]
+- **Error Prevention**: [assessment]
+- **Mental Model Alignment**: [assessment]
+- **Information Scent**: [assessment]
+
+#### Cognitive Load Score
+| Dimension | Weight | Score | Justification |
+|-----------|--------|-------|---------------|
+| Information Density | 20% | X/10 | [why] |
+| Decision Complexity | 20% | X/10 | [why] |
+| Visual Noise | 15% | X/10 | [why] |
+| Consistency | 15% | X/10 | [why] |
+| Memory Load | 15% | X/10 | [why] |
+| Learning Curve | 15% | X/10 | [why] |
+
+**Cognitive Load Rating**: [X/10] — [Effortless/Manageable/Taxing/Overwhelming]
+
+#### Cognitive Findings
+[Each finding using CogN format with law/principle, severity, location, impact, fix]
+
+---
+
+### Section F: Priority Roadmap
 
 #### Must-Fix (before ship)
 | # | Finding | Section | Severity | Location | Fix | Principle | Effort |
@@ -746,7 +889,7 @@ Call out the top 3 systemic patterns with recommendations.
 ## Quality Gates
 
 The output MUST include:
-- [ ] All 5 sections completed (or targeted section if user specified)
+- [ ] All 6 sections completed (or targeted section if user specified)
 - [ ] Every finding has severity, location, fix recommendation, and UX principle cited
 - [ ] Heuristic findings grounded in cognitive principles (not just "violates H4")
 - [ ] Cognitive scores justified with specific observations
@@ -760,6 +903,7 @@ The output MUST include:
 - [ ] Systemic pattern analysis across sections
 - [ ] Code fixes included when code input is provided
 - [ ] AI Slop Analysis completed (D.6) with visual homogeneity scan, design system gap analysis, state coverage audit, and severity rating
+- [ ] Cognitive Load Analysis completed (E) with Laws of UX evaluation, Gestalt audit, attention mapping, decision architecture, and composite cognitive load score
 
 The output MUST NOT include:
 - Vague findings ("could be better", "needs work") — every issue must be specific and actionable

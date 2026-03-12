@@ -334,6 +334,83 @@ const MOTION = {
 } as const;
 ```
 
+---
+
+## Platform-Aware Generation
+
+When generating any screen, detect or ask for the target platform. Adapt every aspect of the output — layout patterns, component APIs, interaction models, navigation paradigms, and visual standards — to the platform's native conventions.
+
+### Platform Detection
+
+Auto-detect from project signals:
+| Signal | Platform | Action |
+|--------|----------|--------|
+| `next.config`, `vite.config`, `index.html` | Web (React/Vue/Svelte) | Generate responsive web components with Tailwind |
+| `Package.swift`, `.xcodeproj`, `ContentView.swift` | iOS (SwiftUI) | Generate SwiftUI views with iOS 26 Liquid Glass conventions |
+| `build.gradle`, `AndroidManifest.xml`, `@Composable` | Android (Compose) | Generate Jetpack Compose with Material 3 Expressive |
+| `pubspec.yaml`, `lib/main.dart` | Flutter | Generate Flutter widgets with Material/Cupertino adaptive |
+| `expo`, `react-native` in package.json | React Native | Generate RN components with platform-adaptive styling |
+
+If no signal is detected, ask: "What platform? (web / ios / android / cross-platform)"
+
+### Web Platform Rules
+
+When generating for web (React + Tailwind):
+- **Layout**: CSS Grid + Flexbox, container queries for component-level responsiveness
+- **Breakpoints**: sm:640px, md:768px, lg:1024px, xl:1280px, 2xl:1536px
+- **Typography**: Fluid type with `clamp()`, `font-display: swap`
+- **Interaction**: hover states, focus-visible, keyboard nav, pointer-events
+- **Navigation**: Top bar (marketing), sidebar (dashboard), bottom tabs (mobile web)
+- **Scrolling**: Smooth scroll, scroll-snap for carousels, IntersectionObserver for lazy load
+- **States**: Skeleton loading, error boundaries, empty states, Suspense fallbacks
+- **Dark mode**: `dark:` Tailwind prefix or CSS custom properties with `prefers-color-scheme`
+
+### iOS Platform Rules (iOS 26 / SwiftUI)
+
+When generating for iOS:
+- **Layout**: VStack/HStack/ZStack, GeometryReader for adaptive layouts
+- **Typography**: System fonts (SF Pro), Dynamic Type support mandatory (`@ScaledMetric`)
+- **Navigation**: NavigationStack, TabView, sheet/fullScreenCover for modals
+- **Interaction**: 44pt minimum tap targets, swipe gestures, haptic feedback (UIImpactFeedbackGenerator)
+- **Components**: Use native components first (List, Form, Toggle, Picker, DatePicker)
+- **Liquid Glass (iOS 26)**: Apply `.glassEffect()` modifier for translucent surfaces. Use `.ultraThinMaterial` for overlays. Respect `UIVibrancyEffect` for text on glass.
+- **Safe areas**: Always respect safe area insets (`.safeAreaInset`, `.ignoresSafeArea` only when intentional)
+- **Dark mode**: Support `@Environment(\.colorScheme)`, use semantic colors (`.primary`, `.secondary`, `.background`)
+- **Motion**: Use `withAnimation(.spring(response: 0.3, dampingFraction: 0.7))` for iOS-native feel
+- **Accessibility**: VoiceOver labels on all interactive elements, `accessibilityLabel`, `accessibilityHint`, `accessibilityAction`
+
+### Android Platform Rules (Material 3 Expressive)
+
+When generating for Android:
+- **Layout**: Column/Row/Box composables, ConstraintLayout for complex arrangements
+- **Typography**: MaterialTheme.typography scale (displayLarge → bodySmall)
+- **Navigation**: NavigationBar (bottom), NavigationRail (tablet), NavigationDrawer (expanded)
+- **Components**: Use Material 3 components (Card, Button, TextField, TopAppBar, BottomSheet)
+- **M3 Expressive (2025+)**: Apply expressive shapes (`RoundedCornerShape(28.dp)` for FABs), tonal elevation, dynamic color from wallpaper
+- **Interaction**: Ripple effects (default in M3), 48dp minimum touch targets
+- **Theming**: Dynamic color with `dynamicDarkColorScheme()` / `dynamicLightColorScheme()`
+- **Motion**: SharedTransitionScope for shared element transitions, `animateContentSize()`
+- **Accessibility**: Compose semantics (`Modifier.semantics`), content descriptions, minimum touch targets
+
+### Cross-Platform Rules
+
+When generating for cross-platform (React Native / Flutter):
+- **Adaptive components**: Use `Platform.OS` (RN) or `Theme.of(context).platform` (Flutter) to switch behavior
+- **Navigation**: Platform-adaptive — bottom tabs on iOS, drawer on Android (or follow user preference)
+- **Typography**: Use system fonts by default, custom fonts loaded per-platform
+- **Spacing**: Use density-independent pixels (dp/pt), not raw pixels
+- **Interaction**: Respect platform haptic conventions (stronger on iOS, subtle on Android)
+
+### Platform Output Format
+
+For each platform, output:
+1. **The full component/screen code** in the platform's native language
+2. **Platform-specific tokens** (CSS custom properties for web, Color/Font extensions for SwiftUI, MaterialTheme for Compose)
+3. **Accessibility implementation** in the platform's native API
+4. **Platform-specific states** (Suspense for React, ProgressView for SwiftUI, CircularProgressIndicator for Compose)
+
+---
+
 ## Output Format
 
 When invoked, produce the following structure:

@@ -349,3 +349,161 @@ After `/grade`:
 - `/component [name]` — Rebuild lowest-scoring components
 - `/audit` — Full comprehensive audit (heuristic + cognitive + flow + fortification)
 - `/roast` — Quick opinionated critique
+
+---
+
+## Design Quality Score (DQS) — 0-100
+
+Like Lighthouse for performance, DQS gives a single number that represents the overall design quality of any UI. This score complements the existing 10-dimension 1-10 scoring system by providing a normalized 0-100 scale that is easier to communicate, track over time, and compare across products.
+
+**Relationship to 10-Dimension Score**: The 10-dimension score (Step 2-3 above) provides granular craft assessment. DQS reframes the evaluation into 7 functional categories optimized for actionability. Both scores should be reported together — the 10-dimension score for design craft analysis, DQS for the universal quality benchmark.
+
+### Scoring Formula
+
+DQS = weighted average of 7 category scores:
+
+| Category | Weight | What It Measures |
+|----------|--------|-----------------|
+| Visual Hierarchy | 20% | Information architecture, visual prioritization, scanning patterns |
+| Typography System | 15% | Type scale, pairing, readability, fluid sizing, hierarchy |
+| Color System | 15% | Palette harmony, semantic usage, contrast, dark mode |
+| Spacing & Layout | 15% | Grid consistency, rhythm, responsive behavior, breathing room |
+| Component Quality | 15% | State coverage, interaction feedback, consistency across components |
+| Accessibility | 10% | WCAG 2.2 AA compliance, keyboard nav, screen reader, ARIA |
+| Design System Coherence | 10% | Token usage, consistency, scalability, maintainability |
+
+### Score Ranges
+
+| Score | Grade | Badge Color | Meaning |
+|-------|-------|-------------|---------|
+| 90-100 | A+ | Green (#22C55E) | Production excellence — ships at top-tier quality |
+| 80-89 | A | Green (#22C55E) | Strong design — minor polish items only |
+| 70-79 | B | Yellow (#EAB308) | Good foundation — some consistency/accessibility gaps |
+| 60-69 | C | Orange (#F97316) | Functional but needs design attention |
+| 50-59 | D | Red (#EF4444) | Significant quality issues — run /fix |
+| 0-49 | F | Red (#EF4444) | AI slop — needs complete transformation |
+
+### Category Scoring Rubric
+
+For each category, score 0-100 based on specific criteria:
+
+**Visual Hierarchy (0-100)**:
+- 90+: Crystal clear what matters most. F-pattern or Z-pattern scanning. One primary CTA per viewport. Progressive disclosure.
+- 70-89: Clear primary/secondary distinction. Minor competing elements.
+- 50-69: Some hierarchy exists but multiple elements compete for attention.
+- 30-49: Flat hierarchy — everything at same visual weight.
+- 0-29: Chaotic — no discernible reading order.
+
+**Typography System (0-100)**:
+- 90+: Professional type scale (mathematical ratio), fluid sizing with clamp(), intentional font pairing, proper line heights per size, letter-spacing adjusted per size.
+- 70-89: Good scale with minor inconsistencies. Reasonable font choice.
+- 50-69: Basic sizing hierarchy but no systematic scale. Generic fonts.
+- 30-49: Random font sizes, no pairing logic, poor readability.
+- 0-29: Single font/size/weight throughout, or chaotic sizing.
+
+**Color System (0-100)**:
+- 90+: Custom palette with 10-step scales, semantic tokens, APCA-compliant contrast, thoughtful dark mode, consistent application.
+- 70-89: Good palette with minor gaps. Mostly semantic usage.
+- 50-69: Functional colors but default/generic palette (Tailwind defaults).
+- 30-49: Random color values, no semantic meaning, contrast issues.
+- 0-29: Default purple/indigo on white. Color used inconsistently.
+
+**Spacing & Layout (0-100)**:
+- 90+: Consistent grid system, mathematical spacing scale, responsive breakpoints, container queries, proper section rhythm.
+- 70-89: Good spacing with minor inconsistencies. Responsive works.
+- 50-69: Basic spacing but not systematic. Some responsive issues.
+- 30-49: Inconsistent spacing, cramped or wasteful. Poor mobile layout.
+- 0-29: No spacing system. Layout breaks across viewports.
+
+**Component Quality (0-100)**:
+- 90+: All states covered (default, hover, focus, active, disabled, loading, error, empty, success). Smooth transitions. Consistent patterns.
+- 70-89: Most states covered. Transitions present. Minor gaps.
+- 50-69: Basic hover states. Some missing states (loading, empty, error).
+- 30-49: Minimal interaction feedback. Many missing states.
+- 0-29: No interactive states beyond default. Dead clicks.
+
+**Accessibility (0-100)**:
+- 90+: WCAG 2.2 AA compliant. Full keyboard nav. ARIA implemented correctly. Skip links. Focus management. Reduced motion support.
+- 70-89: Good accessibility with minor gaps. Most ARIA correct.
+- 50-69: Basic accessibility. Some labels, some contrast compliance.
+- 30-49: Significant accessibility issues. Missing labels, poor contrast.
+- 0-29: Inaccessible. No ARIA, no keyboard support, contrast failures.
+
+**Design System Coherence (0-100)**:
+- 90+: Full token system. Every value references a token. Consistent naming. Scalable architecture.
+- 70-89: Good token usage with some hardcoded values.
+- 50-69: Partial tokens. Mix of tokens and hardcoded values.
+- 30-49: Mostly hardcoded. Inconsistent patterns.
+- 0-29: No tokens. Every value is arbitrary.
+
+### DQS Output Format
+
+Include the following block in the grade output, after the 10-Dimension Scores:
+
+```
+### Design Quality Score (DQS)
+
+| Category | Weight | Score | Weighted |
+|----------|--------|-------|----------|
+| Visual Hierarchy | 20% | [X]/100 | [X * 0.20] |
+| Typography System | 15% | [X]/100 | [X * 0.15] |
+| Color System | 15% | [X]/100 | [X * 0.15] |
+| Spacing & Layout | 15% | [X]/100 | [X * 0.15] |
+| Component Quality | 15% | [X]/100 | [X * 0.15] |
+| Accessibility | 10% | [X]/100 | [X * 0.10] |
+| Design System Coherence | 10% | [X]/100 | [X * 0.10] |
+
+**DQS: [SCORE]/100 — Grade [LETTER] [BADGE_COLOR]**
+```
+
+---
+
+### Badge Generation
+
+If the design scores 80+ (Grade A or A+), generate a "Designed with Chef Sumi" badge.
+
+**Markdown badge** (for README):
+```markdown
+![Design Quality Score](https://img.shields.io/badge/DQS-[SCORE]-[COLOR]?style=flat-square&label=Chef%20Sumi)
+```
+
+Where `[COLOR]` maps to: `22C55E` for green (80+), `EAB308` for yellow (70-79), `F97316` for orange (60-69), `EF4444` for red (below 60).
+
+**Badge tiers**:
+- Score 90+: `DQS 95 — A+` on green — output the badge markdown
+- Score 80-89: `DQS 84 — A` on green — output the badge markdown
+- Score 70-79: `DQS 73 — B` on yellow — no badge recommended, suggest `/fix` first
+- Below 70: No badge generated — suggest running `/fix`
+
+**Output the badge markdown** that the user can paste directly into their README when the score qualifies.
+
+---
+
+### Comparison Mode
+
+When run with a reference (`/grade vs stripe` or `/grade vs linear`), score the user's design against a reference product:
+
+| Dimension | Your App | [Reference] | Gap |
+|-----------|----------|-------------|-----|
+| Visual Hierarchy | [X] | [X] | [+/-N] |
+| Typography System | [X] | [X] | [+/-N] |
+| Color System | [X] | [X] | [+/-N] |
+| Spacing & Layout | [X] | [X] | [+/-N] |
+| Component Quality | [X] | [X] | [+/-N] |
+| Accessibility | [X] | [X] | [+/-N] |
+| Design System Coherence | [X] | [X] | [+/-N] |
+| **DQS** | **[X]** | **[X]** | **[+/-N]** |
+
+Then generate specific recommendations to close the gap, prioritized by impact:
+
+1. **Largest gap first**: Address the dimension with the biggest negative gap
+2. **Quick wins**: Identify gaps that can be closed with minimal effort
+3. **Strategic investments**: Identify gaps that require significant work but yield the highest quality improvement
+4. **Irrelevant gaps**: Note dimensions where the gap is expected due to different product contexts (e.g., a B2B tool vs a consumer marketing site)
+
+**Available reference products**: Stripe, Linear, Vercel, Notion, Figma, Apple, Airbnb, Shopify, GitHub, Raycast, Arc, Craft, Things 3, Bear, Mercury, Ramp, Loom, Pitch. Reference scores are based on public product analysis and the `designer-pattern-library.md` benchmarks.
+
+**Usage**:
+- `/grade vs stripe` — Compare against Stripe's design quality
+- `/grade vs linear` — Compare against Linear's design quality
+- `/grade vs [product]` — Compare against any well-known product
