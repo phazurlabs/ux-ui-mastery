@@ -4,113 +4,262 @@
 
 <p align="center">
   <strong>The design system you don't have to build.</strong><br />
-  32 commands · 42 skills · 165 reference docs
+  A Claude Code plugin that turns plain English into production-grade UI.
 </p>
 
 <p align="center">
-  <a href="#install">Install</a> ·
-  <a href="#commands">Commands</a> ·
-  <a href="#skills">Skills</a> ·
-  <a href="#how-it-works">How it works</a>
+  <a href="#what-it-does">What it does</a> ·
+  <a href="#examples">Examples</a> ·
+  <a href="#all-commands">All commands</a> ·
+  <a href="#install">Install</a>
 </p>
 
 ---
 
-Type what you're building. Get production code with the design quality of a funded startup. Colors, type, spacing, components, screens — all consistent, all accessible, all yours. Works inside Claude Code.
+## What it does
 
-```
-/style fintech          → complete visual identity + tokens
-/screen dashboard       → production React + Tailwind, all states
-/component modal        → full ARIA, keyboard nav, animations
-/roast                  → 10-dimension critique, must-fix list
-```
+Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthropics/claude-code). You describe what you're building. Sumi generates production-ready code — colors, typography, components, full screens — with the visual quality and consistency of a professional design system.
+
+**Three things make it different:**
+
+1. **It produces code, not theory.** Every command outputs copy-paste-ready React, Tailwind CSS, SwiftUI, or vanilla CSS. Not wireframes in Figma. Not methodology docs. Actual code.
+
+2. **It knows your industry.** Say "fintech" and you get trust-first blues, tabular number fonts, and conservative motion. Say "gaming" and you get high-energy palettes, bold type, and dramatic animations. 20+ sectors built in.
+
+3. **It remembers your decisions.** Run `/style` once. Every command after that — `/screen`, `/component`, `/form` — automatically uses your palette, type scale, and tokens. No copy-pasting tokens between prompts. No drift.
 
 <br />
 
-## Commands
+## Examples
 
-### Make
+### Generate a complete visual identity
+
+```
+/style fintech
+```
+
+**What you get:**
+- Color palette — 10-step brand scale + neutrals in oklch, with hex values and dark mode
+- Typography — font pairing (Inter + DM Sans), fluid type scale with `clamp()` values
+- Spacing — 4px base grid, scale from 4px to 128px
+- Motion — duration scale, easing curves, spring physics values
+- Radius + shadows — consistent scale across components
+- Tone of voice — microcopy guidelines for the sector
+- 5 reference apps — what to study and what to steal from each
+- **Complete CSS custom properties** — copy the `:root {}` block into your project
+- **W3C Design Tokens JSON** — import into Style Dictionary, Figma, or Tailwind
+- Saves to `.sumi/style.json` so every future command inherits these decisions
+
+---
+
+### Build a production screen
+
+```
+/screen dashboard for a fintech app
+```
+
+**What you get:**
+- Full React + TypeScript + Tailwind component
+- All states: loading (skeleton), empty, error, populated
+- Responsive: mobile → tablet → desktop with actual breakpoint CSS
+- Accessible: ARIA roles, keyboard navigation, skip links
+- Uses your tokens from `/style` automatically
+- Component hierarchy documented
+
+---
+
+### Ship a component
+
+```
+/component modal for confirming wire transfers, trust-first
+```
+
+**What you get:**
+- React component with TypeScript props
+- 10 states: default, loading, success, error, disabled, etc.
+- Full ARIA: `role="dialog"`, `aria-modal`, focus trap, Escape to close
+- Keyboard handling: Tab cycle, focus restoration on close
+- Framer Motion entrance/exit animations
+- Dark mode support
+- Test skeleton (vitest + testing-library)
+
+---
+
+### Get a full page layout
+
+```
+/page saas landing
+```
+
+**What you get:**
+- Complete page with ordered blocks: Nav → Hero → Social Proof → Features → Pricing → FAQ → CTA → Footer
+- Each block is a full React component
+- Section spacing rhythm system
+- Scroll behavior: sticky nav, scroll-driven animations
+- SEO meta tags + Open Graph
+- Lazy loading + performance optimized
+
+---
+
+### Create a form
+
+```
+/form checkout for e-commerce
+```
+
+**What you get:**
+- Multi-step wizard: Shipping → Payment → Review
+- Zod validation schema
+- Inline error messages with accessible announcements
+- Credit card detection (Visa/Mastercard/Amex)
+- Mobile-optimized: `inputmode="numeric"`, autofill attributes
+- Loading + success + error states
+
+---
+
+### Build a navigation system
+
+```
+/nav sidebar for a SaaS dashboard
+```
+
+**What you get:**
+- Collapsible sidebar with icon-only rail mode
+- Nested menu groups with expand/collapse
+- Active state with `aria-current="page"`
+- Keyboard navigation
+- Mobile: transforms into hamburger overlay
+- Dark mode variant
+
+---
+
+### Generate a color system
+
+```
+/palette mood:calm sector:healthcare
+```
+
+**What you get:**
+- 10-step neutral scale (oklch)
+- 10-step brand color scale
+- Semantic colors: surface, text, primary, error, warning, success
+- APCA contrast scores for every text/background pair
+- Dark mode palette (proper luminance mapping, not inversion)
+- Colorblind-safe data visualization palette
+- CSS custom properties block
+
+---
+
+### Critique any design
+
+```
+/roast
+```
+*(paste your code or describe your screen)*
+
+**What you get:**
+- 10 dimensions scored 1–10: clarity, hierarchy, consistency, spacing, color, typography, interaction, accessibility, innovation, polish
+- Letter grade (A–F)
+- Top 3 must-fix issues with code fixes
+- Top 3 strengths to keep
+- One-line verdict
+
+---
+
+### Run a full accessibility audit
+
+```
+/a11y
+```
+
+**What you get:**
+- WCAG 2.2 AA compliance check
+- ARIA attribute audit
+- Keyboard navigation analysis
+- Color contrast scores (APCA)
+- Screen reader compatibility
+- Cognitive accessibility (ADHD, dyslexia considerations)
+- **Code fix for every finding**
+
+<br />
+
+## All commands
+
+### Make — design and build
 
 | Command | What you get |
 |---------|-------------|
-| `/style` | Full visual identity — palette, type scale, spacing, tokens, references |
-| `/tokens` | W3C design tokens — 3-tier, multi-theme, light/dark, export-ready |
-| `/screen` | Production screen — 30+ types, all states, responsive, accessible |
-| `/component` | Shipped component — React/SwiftUI/CSS, ARIA, keyboard nav, animations |
-| `/wireframe` | Low-fi layouts with rationale — fast exploration before pixels |
-| `/map` | Information architecture — sitemap, nav hierarchy, URL structure |
-| `/layout` | Page composition — block stacking, visual rhythm, responsive grid |
-| `/copy` | Microcopy for every state — buttons, errors, empty states, tooltips |
-| `/form` | Complete form — validation, multi-step, error handling, accessibility |
-| `/chart` | Data visualization — chart selection, dashboard composition, Recharts code |
-| `/nav` | Navigation system — pattern selection, IA integration, responsive |
-| `/icon` | Icon and illustration system — style guide, SVG implementation |
-| `/animate` | Motion recipes — entrance, micro-interaction, page transition, scroll |
-| `/palette` | Color system — oklch values, APCA scores, dark mode, industry palettes |
+| `/style` | Complete visual identity — palette, type, spacing, tokens, references |
+| `/palette` | Color system — oklch scales, APCA scores, dark mode mapping |
 | `/type` | Typography — font pairing, type scale, fluid sizing, platform stacks |
-| `/generate` | AI image generation — Stitch MCP, Fal.ai, Recraft V3, Veo 3.1 |
-| `/assets` | Asset pipeline — icons, illustrations, photos with quality control |
-| `/welcome` | Onboarding flow — progressive disclosure, activation metrics |
+| `/tokens` | W3C design tokens — 3-tier, multi-theme, CSS + Tailwind + JSON |
+| `/screen` | Production screen — 30+ types, all states, responsive, accessible |
+| `/component` | Production component — React/SwiftUI/CSS, 10 states, ARIA, tests |
+| `/page` | Full page — block composition, spacing rhythm, SEO, lazy loading |
+| `/wireframe` | ASCII wireframes — 2-3 layout options with rationale |
+| `/layout` | Page grid — CSS Grid/Flexbox, container queries, responsive |
+| `/form` | Complete form — validation, multi-step, Zod schema, accessibility |
+| `/nav` | Navigation — sidebar, top bar, bottom tabs, command palette |
+| `/animate` | Motion recipes — CSS + Framer Motion, reduced-motion fallbacks |
+| `/icon` | Icon system — library selection, sizing scale, React wrapper |
+| `/dark` | Dark mode — oklch luminance mapping, elevation, toggle component |
+| `/responsive` | Responsive — breakpoints, fluid scaling, block transformations |
+| `/onboard` | Onboarding — step sequence, permissions, activation metrics |
+| `/generate` | AI generation — mockups, icons, illustrations via MCP |
+| `/remix` | Redesign — fix top 5 problems with UX reasoning for each change |
 
-### Review
+### Review — evaluate and improve
 
 | Command | What you get |
 |---------|-------------|
-| `/roast` | 10-dimension design critique — scored, with must-fix and should-fix |
-| `/audit` | Heuristic audit — severity rated, prioritized fixes |
-| `/access` | Accessibility audit — WCAG 2.2 AA, code fixes included |
-| `/flow` | Journey audit — multi-screen, drop-off risk, emotional arc |
-| `/qa` | Design QA — spec vs implementation, pixel audit, token compliance |
+| `/audit` | Full design audit — heuristics, cognitive, flow, dark patterns, score |
+| `/roast` | Quick critique — 10 dimensions, letter grade, must-fix list |
+| `/grade` | Visual score — Awwwards-calibrated, designer DNA match |
+| `/qa` | Design QA — token compliance, state coverage, responsive check |
+| `/a11y` | Accessibility — WCAG 2.2 AA, ARIA, keyboard, contrast, code fixes |
 
-### Plan
+### Plan — research and strategy
 
 | Command | What you get |
 |---------|-------------|
 | `/brief` | Problem definition — persona, constraints, success criteria |
-| `/research` | Research plan — interview scripts, survey design, recruitment |
-| `/benchmark` | Competitive analysis — 10-dimension scorecard vs top 5 |
+| `/research` | Research plan — interview scripts, surveys, usability tests |
+| `/benchmark` | Competitive analysis — scorecard vs top 5, gap analysis |
+| `/map` | Information architecture — sitemap, nav hierarchy, URL structure |
 | `/measure` | Metrics plan — HEART framework, experimentation strategy |
-| `/preflight` | Pre-launch checklist — SEO, performance, analytics, legal |
-| `/iterate` | Post-launch plan — monitoring, review cadence, feedback loops |
+| `/preflight` | Launch checklist — SEO, performance, analytics, legal, monitoring |
 
 ### Utility
 
-`/sumi` · `/next` · `/status`
-
-<br />
-
-## Design Memory
-
-Run `/style` once. Sumi saves your decisions to `.sumi/` — palette, type scale, tokens, voice. Every command after that inherits your design system automatically. No repetition, no drift.
-
-<br />
-
-## Skills
-
-42 knowledge domains that activate automatically based on context.
-
-| Domain | Skills |
-|--------|--------|
-| **Visual** | Visual design mastery, color palettes, typography pairing, shadow & elevation, animation recipes |
-| **Patterns** | 200+ UI patterns, screen & flow catalog, layout blocks, page composition, navigation, forms |
-| **Content** | Microcopy intelligence, conversion optimization, data visualization |
-| **Systems** | Design systems architecture, design tokens, responsive blocks, component patterns & code |
-| **Platforms** | Mobile (iOS 26 / M3), desktop, platform standards, cross-cultural i18n, performance states |
-| **Experience** | Accessibility, interaction & motion, ethics & content strategy, design critique |
-| **Intelligence** | Sector style (20+ industries), image & media, icon & illustration, business templates |
-| **AI & Emerging** | AI generation, agentic AI, spatial & voice, ambient & calm technology |
-| **Foundations** | Cognitive psychology, usability heuristics, research methods, metrics |
+| Command | What it does |
+|---------|-------------|
+| `/sumi` | Show all commands and quick-start guide |
+| `/next` | Suggest what to do next based on context |
+| `/status` | Show what you've built so far |
 
 <br />
 
 ## How it works
 
-You type a command. Sumi loads the matching skill files — patterns, code, and research. Only the relevant slice activates. More context in, better output out.
+Sumi is pure markdown — 42 skill files totaling 23,000+ lines of design intelligence, backed by 165 reference documents. When you run a command, Claude loads the relevant skills automatically. No API keys. No external services. No dependencies.
+
+**The more context you give, the better the output:**
 
 ```
-/component button                          → good
-/component button for fintech iOS app,     → great
-  primary CTA, trust-first, 35-55 audience
+/component button                                → works
+/component button for fintech iOS app,            → much better
+  primary CTA for wire transfers,
+  trust-first, audience 35-55 professionals
+```
+
+**Design memory** makes everything consistent:
+
+```
+/style fintech              ← establishes your design system
+/screen dashboard           ← automatically uses fintech palette, type, tokens
+/component card             ← same tokens, same visual language
+/form settings              ← consistent spacing, colors, radii
+/roast                      ← evaluates against YOUR system, not generic rules
 ```
 
 <br />
@@ -122,12 +271,20 @@ mkdir -p ~/.claude/plugins && cd ~/.claude/plugins
 git clone https://github.com/phazurlabs/sumi.git
 ```
 
-Pure markdown. Zero dependencies. Works offline.
+Restart Claude Code. Run `/sumi` to see all commands.
+
+<br />
+
+## Requirements
+
+- [Claude Code](https://github.com/anthropics/claude-code) CLI
+- That's it. Pure markdown. Zero dependencies. Works offline.
 
 <br />
 
 ---
 
 <p align="center">
-  <sub>v8.0.0 · Built by <a href="https://github.com/phazurlabs">Phazur Labs</a> · Powered by Claude</sub>
+  <sub>v8.0.0 · 32 commands · 42 skills · 165 reference docs</sub><br />
+  <sub>Built by <a href="https://github.com/phazurlabs">Phazur Labs</a> · Powered by Claude</sub>
 </p>
