@@ -9,13 +9,13 @@ A visual progress tracker showing what Sumi commands have been run in this sessi
 
 ## Command Registry
 
-All 27 commands organized by tier:
+All 34 commands organized by tier:
 
-**MAKE (18 commands)**:
-`/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
+**MAKE (19 commands)**:
+`/fix`, `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
 
-**REVIEW (5 commands)**:
-`/audit`, `/roast`, `/grade`, `/qa`, `/a11y`
+**REVIEW (6 commands)**:
+`/audit`, `/roast`, `/grade`, `/qa`, `/a11y`, `/before-after`
 
 **PLAN (6 commands)**:
 `/brief`, `/research`, `/benchmark`, `/map`, `/measure`, `/preflight`
@@ -47,58 +47,63 @@ Render the progress map with completion status.
 ## Output Format
 
 ```
-## Sumi Progress
+## Chef Sumi Progress
 
-### MAKE -- Design and Build
-  [x] /style          Sector visual direction
-  [ ] /palette        Deep color system
-  [ ] /type           Typography system
-  [ ] /layout         Layout block patterns
-  [x] /wireframe      Low-fidelity wireframes
-  [x] /screen         Production screens
-  [ ] /component      Production components
-  [ ] /page           Full page compositions
-  [ ] /tokens         Design token system
-  [ ] /form           Form design
-  [ ] /nav            Navigation system
-  [ ] /animate        Motion design
-  [ ] /icon           Icon system
-  [ ] /dark           Dark mode
-  [ ] /responsive     Responsive design
-  [ ] /onboard        Onboarding flow
-  [ ] /generate       AI screen generation
-  [ ] /remix          Evidence-based redesign
-  MAKE: 3/18
+### MAKE — Design and Build
+  [ ] /fix           Anti-slop transformation
+  [ ] /style         Visual identity
+  [ ] /palette       Color system
+  [ ] /type          Typography system
+  [ ] /layout        Layout patterns
+  [ ] /wireframe     Low-fidelity wireframes
+  [ ] /screen        Production screens
+  [ ] /component     Production components
+  [ ] /page          Full page compositions
+  [ ] /tokens        Design token system
+  [ ] /form          Form design
+  [ ] /nav           Navigation system
+  [ ] /animate       Motion design
+  [ ] /icon          Icon system
+  [ ] /dark          Dark mode
+  [ ] /responsive    Responsive design
+  [ ] /onboard       Onboarding flow
+  [ ] /generate      AI generation
+  [ ] /remix         Evidence-based redesign
+  MAKE: 0/19
 
-### REVIEW -- Evaluate and Improve
-  [x] /audit          Heuristic evaluation
-  [ ] /roast          Design critique            <-- NEXT
-  [ ] /grade          Visual quality score
-  [ ] /qa             Design QA
-  [ ] /a11y           Accessibility audit
-  REVIEW: 1/5
+### REVIEW — Evaluate and Improve
+  [ ] /audit         Full design audit
+  [ ] /roast         Quick critique + slop detection
+  [ ] /grade         Design Quality Score (0-100)
+  [ ] /qa            Design QA + codebase consistency
+  [ ] /a11y          Accessibility audit + auto-fix
+  [ ] /before-after  Transformation comparison
+  REVIEW: 0/6
 
-### PLAN -- Research and Strategy
-  [x] /brief          Problem definition
-  [ ] /research       User research & testing
-  [ ] /benchmark      Competitive analysis
-  [ ] /map            Information architecture
-  [ ] /measure        Metrics plan
-  [ ] /preflight      Launch readiness
-  PLAN: 1/6
+### PLAN — Research and Strategy
+  [ ] /brief         Problem definition
+  [ ] /research      User research & testing
+  [ ] /benchmark     Competitive analysis
+  [ ] /map           Information architecture
+  [ ] /measure       Metrics plan
+  [ ] /preflight     Launch readiness
+  PLAN: 0/6
 
-----------------------------------------------
-Overall: 5/27 commands  |  Next --> /roast
-----------------------------------------------
+──────────────────────────────────────
+Overall: 0/34 commands  |  Next → /style
+──────────────────────────────────────
 
 Run /next for guidance  |  /sumi for full map
 ```
 
 ### Adaptation Rules
 
-- **NEXT marker**: Place `<-- NEXT` on the recommended next command (use priority logic from `/next` protocol)
+- **NEXT marker**: Place `<-- NEXT` on the recommended next command (use priority logic from `/next` protocol: `/fix` first if slop detected, then `/style` for new projects, then uncompleted commands in tier order)
+- **`/fix` completed**: Show checkmark with slop score note, e.g. `[x] /fix  Anti-slop transformation  (slop: 7→2)`
+- **`/grade` completed**: Show DQS score next to checkmark, e.g. `[x] /grade  Design Quality Score  (DQS: 74/100)`
+- **`/before-after` completed**: Show grade change, e.g. `[x] /before-after  Transformation comparison  (42→78 DQS)`
 - **All commands run**: Replace footer with congratulatory message
-- **No commands run**: Show full empty map with: "Ready to start? Try `/style [your sector]` or `/brief` to begin."
+- **No commands run**: Show full empty map with: "Ready to start? Try `/style [your sector]` or `/fix` to clean up existing UI."
 - **Partial completion**: Show counts per tier and overall
 
 The output should fit on one screen. No commentary beyond the dashboard -- the visual format communicates progress clearly.

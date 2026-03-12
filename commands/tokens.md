@@ -785,3 +785,116 @@ When generating tokens, draw from:
 - `/responsive` — Add responsive behavior to your token-based layouts
 - `/style` — Go back to DISCOVER for style direction if tokens feel generic
 - `/guide` — See the full journey
+
+---
+
+## Team Design System Sync
+
+Share design tokens across a team so every developer's Chef Sumi output is consistent. One person establishes the design system, everyone inherits it.
+
+### Setup Protocol
+
+**Step 1: Establish the Source of Truth**
+
+One team member runs `/style` and `/tokens` to generate the design system. This creates:
+- `.sumi/style.json` — visual identity decisions
+- `.sumi/context.json` — project context
+
+**Step 2: Commit to Repository**
+
+Add `.sumi/` to version control:
+```bash
+git add .sumi/
+git commit -m "Add Chef Sumi design system tokens"
+```
+
+Every team member who clones or pulls the repo now has the same design tokens.
+
+**Step 3: Automatic Inheritance**
+
+When any team member runs a Chef Sumi command (`/screen`, `/component`, `/form`, `/fix`, etc.), the command automatically:
+1. Checks for `.sumi/style.json` in the project root
+2. Loads all tokens (colors, typography, spacing, motion, radii, shadows)
+3. Uses those tokens in all generated code
+4. Ensures consistency without manual token copying
+
+### Updating Tokens
+
+When the design system evolves:
+1. One person runs `/style` or `/tokens` with updated parameters
+2. `.sumi/style.json` is regenerated
+3. Commit and push the updated file
+4. All team members pull and get the updated system
+5. Future commands automatically use the new tokens
+
+### Conflict Resolution
+
+If multiple team members modify `.sumi/style.json`:
+- Treat it as a JSON file — standard git merge applies
+- If conflicts occur, the design lead should resolve and re-run `/tokens` to ensure consistency
+- Recommend designating one person as the "design system owner" who manages `.sumi/`
+
+### Multi-Brand / Multi-Theme Support
+
+For projects with multiple brands or themes:
+```
+.sumi/
+  style.json           ← default/primary brand
+  style.dark.json      ← dark theme overrides
+  style.brand-b.json   ← second brand tokens
+  context.json         ← shared project context
+```
+
+Commands accept a theme parameter:
+- `/screen dashboard --theme dark` → uses `style.dark.json`
+- `/component card --brand brand-b` → uses `style.brand-b.json`
+
+If no theme is specified, use `style.json` (the default).
+
+### CI/CD Integration
+
+Use Chef Sumi's Design Quality Score in CI/CD pipelines:
+
+**GitHub Action** (add to `.github/workflows/design-qa.yml`):
+```yaml
+name: Design QA
+on: [pull_request]
+
+jobs:
+  design-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Run Design QA
+        run: |
+          claude -p "Run /qa project on this codebase. Output the Design Quality Score. If any file scores below 60, list it."
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
+**Pre-commit Hook** (add to `.husky/pre-commit` or `.git/hooks/pre-commit`):
+```bash
+#!/bin/sh
+# Run Chef Sumi design QA on changed UI files
+changed_ui_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(tsx|jsx|vue|svelte|css)$')
+if [ -n "$changed_ui_files" ]; then
+  echo "Running Chef Sumi design check on changed UI files..."
+  claude -p "Run /qa on these files: $changed_ui_files. Report any design quality issues."
+fi
+```
+
+### Token Export Formats
+
+`/tokens` can export to multiple formats for integration with existing tooling:
+
+| Format | Command | Output |
+|--------|---------|--------|
+| CSS Custom Properties | `/tokens css` | `:root { --color-primary: ... }` |
+| Tailwind Config | `/tokens tailwind` | `theme: { extend: { colors: ... } }` |
+| W3C DTCG JSON | `/tokens json` | Standard design token JSON |
+| Style Dictionary | `/tokens style-dictionary` | Style Dictionary config + tokens |
+| Figma Variables | `/tokens figma` | Figma-importable variable structure |
+| SwiftUI Extensions | `/tokens swift` | Color/Font Swift extensions |
+| Compose Theme | `/tokens compose` | MaterialTheme Kotlin objects |

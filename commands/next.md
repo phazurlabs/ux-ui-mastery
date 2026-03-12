@@ -9,27 +9,29 @@ A compact navigation aid that suggests the best next command based on context. N
 
 ## Command Reference
 
-The 27 commands organized by tier:
+The 34 commands organized by tier:
 
-**MAKE**: `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
+**MAKE** (19): `/fix`, `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
 
-**REVIEW**: `/audit`, `/roast`, `/grade`, `/qa`, `/a11y`
+**REVIEW** (6): `/audit`, `/roast`, `/grade`, `/qa`, `/a11y`, `/before-after`
 
-**PLAN**: `/brief`, `/research`, `/benchmark`, `/map`, `/measure`, `/preflight`
+**PLAN** (6): `/brief`, `/research`, `/benchmark`, `/map`, `/measure`, `/preflight`
 
-**Utility**: `/sumi`, `/next`, `/status`
+**Utility** (3): `/sumi`, `/next`, `/status`
 
 ## Common Progressions
 
 These are typical sequences, not mandatory order:
 
 ```
-/brief --> /style --> /screen            (fast track)
-/brief --> /research --> /style           (research-first)
-/style --> /tokens --> /screen            (system-first)
-/screen --> /roast --> /remix             (iterate loop)
-/audit --> /a11y --> /roast --> /grade    (full review)
-/style --> /screen --> /qa --> /preflight (ship track)
+/fix → /before-after → /grade            (slop → cuisine fast track)
+/style → /screen → /fix → /grade         (build and polish)
+/brief → /style → /screen                (fast track)
+/style → /tokens → /screen               (system-first)
+/screen → /roast → /remix                (iterate loop)
+/audit → /a11y → /roast → /grade         (full review)
+/style → /screen → /qa → /preflight      (ship track)
+/qa project → /fix                        (codebase cleanup)
 ```
 
 ## Protocol
@@ -38,7 +40,7 @@ These are typical sequences, not mandatory order:
 
 - Scan conversation for the most recent Sumi command(s) run
 - Identify what outputs exist (style decisions, screens, audits, etc.)
-- If no commands have been run, recommend `/style` or `/brief`
+- If no commands have been run, recommend `/fix` (if AI code visible) or `/style`
 - Utility commands (`/next`, `/status`, `/sumi`) don't count as steps
 
 ### Step 2: Recommend Next Command
@@ -46,18 +48,22 @@ These are typical sequences, not mandatory order:
 Based on what exists and what's missing, suggest the highest-value next command.
 
 **Priority logic**:
-1. If no style direction exists --> `/style [sector]`
-2. If style exists but no screens --> `/screen [type]`
-3. If screens exist but no review --> `/roast`
-4. If review done with issues --> `/remix`
-5. If ready to ship --> `/preflight`
-6. If nothing exists and user is exploring --> `/brief`
+1. If user just pasted AI-generated code → `/fix`
+2. If `/fix` was just run → `/before-after` (show the transformation)
+3. If `/before-after` was run → `/grade` (get the score)
+4. If no style direction exists → `/style [sector]`
+5. If style exists but no screens → `/screen [type]`
+6. If screens exist but no review → `/roast`
+7. If review done with issues → `/fix` or `/remix`
+8. If quality is good → `/grade` (get the score)
+9. If ready to ship → `/preflight`
+10. If nothing exists and user is exploring → `/brief`
 
 ### Step 3: Handle Edge Cases
 
 - **Everything looks done**: Suggest `/preflight` or celebrate. Recommend `/status` for full review.
 - **User jumped around**: Note what's missing without judgment. Just mention it as available.
-- **No context at all**: Recommend `/style [sector]` for builders or `/brief` for planners.
+- **No context at all**: Recommend `/fix` if AI-generated code is visible, `/style [sector]` for builders, or `/brief` for planners.
 
 ## Output Format
 

@@ -35,7 +35,7 @@ After generation is approved, write to `.sumi/`:
 
 ## Sub-Modes
 
-This command operates in 6 sub-modes. The user specifies which mode, or describe what they need and the command auto-detects:
+This command operates in 7 sub-modes. The user specifies which mode, or describe what they need and the command auto-detects:
 
 | Mode | Trigger | Output |
 |------|---------|--------|
@@ -45,6 +45,120 @@ This command operates in 6 sub-modes. The user specifies which mode, or describe
 | **Hero Image** | "hero image for landing page", "product shot" | Photographic or stylized hero image |
 | **Product Photo** | "product photo for...", "lifestyle shot" | Photorealistic product photography |
 | **Video** | "generate a video for...", "motion asset" | Short video clip (2-8 seconds) |
+| **Figma Import** | "import from Figma", "Figma to code", "convert Figma" | Production code from Figma designs via MCP |
+
+---
+
+## Sub-Mode 7: Figma Import (MCP Bridge)
+
+Import designs from Figma via MCP, audit them with Chef Sumi's design intelligence, and export production-ready code.
+
+**Trigger**: "import from Figma", "Figma to code", "convert this Figma design"
+
+### Prerequisites
+
+Requires one of the following MCP servers configured:
+- `figma-mcp` — Official Figma MCP server
+- `figma-developer` — Community Figma Developer MCP
+- Direct Figma API access via personal access token
+
+If no Figma MCP is configured, instruct the user:
+```
+To connect Figma, add to your Claude Code MCP config:
+
+{
+  "mcpServers": {
+    "figma": {
+      "command": "npx",
+      "args": ["-y", "figma-developer-mcp"],
+      "env": {
+        "FIGMA_PERSONAL_ACCESS_TOKEN": "your-token-here"
+      }
+    }
+  }
+}
+```
+
+### Import Protocol
+
+**Step 1: Extract from Figma**
+- Accept a Figma file URL, frame URL, or node ID
+- Use the MCP server to fetch:
+  - Component tree structure
+  - Colors (fill, stroke, effects)
+  - Typography (font family, size, weight, line height, letter spacing)
+  - Spacing (padding, gaps, auto layout properties)
+  - Border radius values
+  - Shadow/effect values
+  - Asset references (images, icons)
+  - Component variants and properties
+
+**Step 2: Map to Chef Sumi Tokens**
+- Convert Figma colors to oklch values with hex fallbacks
+- Map Figma text styles to type scale tokens
+- Convert Figma auto layout spacing to spacing scale values
+- Map Figma effects to shadow tokens
+- Map Figma corner radius to radius tokens
+- Identify the closest Chef Sumi sector match based on visual patterns
+- If `.sumi/style.json` exists, map Figma values to existing tokens (flag mismatches)
+
+**Step 3: Audit the Figma Design**
+Before generating code, run a silent design quality check:
+- Color contrast: Do text/background pairs meet WCAG AA?
+- Typography: Is there a consistent type scale or random sizes?
+- Spacing: Does it follow a grid or use arbitrary values?
+- Consistency: Are similar components styled consistently?
+- Accessibility: Are interactive elements properly sized (44px+ tap targets)?
+- Output any issues found as warnings before generating code
+
+**Step 4: Generate Production Code**
+Generate code using the same protocol as `/screen` or `/component`:
+- React + TypeScript + Tailwind (default for web)
+- SwiftUI (if iOS signals detected)
+- Jetpack Compose (if Android signals detected)
+- Apply all Chef Sumi quality standards:
+  - Semantic color tokens (not raw hex values)
+  - Type scale tokens (not arbitrary font sizes)
+  - Spacing scale tokens (not random padding)
+  - All interactive states (hover, focus, active, disabled, loading)
+  - Full accessibility (ARIA, keyboard nav, focus management)
+  - Responsive breakpoints
+  - Dark mode support
+
+**Step 5: Save Extracted Tokens**
+If no `.sumi/style.json` exists, generate one from the Figma design:
+- Extract the color palette into token format
+- Extract typography into type scale
+- Extract spacing into grid scale
+- Save to `.sumi/style.json` for use by all other commands
+
+### Output Format
+
+```
+## Figma Import — [Frame/Component Name]
+
+### Extracted Design Values
+| Category | Figma Value | Chef Sumi Token | Status |
+|----------|-------------|-----------------|--------|
+| Primary Color | #2563EB | oklch(0.55 0.18 255) → --color-primary | ✅ Mapped |
+| Body Font | Inter 16/24 | --font-body, --text-base | ✅ Mapped |
+| Card Radius | 12px | --radius-lg | ✅ Mapped |
+| Spacing | 17px | ⚠️ Off-grid (nearest: 16px → --space-4) | ⚠️ Adjusted |
+
+### Design Quality Warnings
+[Any issues found in Step 3]
+
+### Generated Code
+[Full production code]
+
+### Saved Tokens
+[If .sumi/style.json was generated]
+```
+
+### Integration Notes
+- After Figma import, suggest running `/grade` to score the output
+- If Figma design has quality issues, suggest `/fix` after import
+- Figma token extraction feeds directly into `/tokens` for W3C DTCG export
 
 ---
 

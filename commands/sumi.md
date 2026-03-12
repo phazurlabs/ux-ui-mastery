@@ -1,75 +1,94 @@
 ---
-description: "Command map and quick start — see all 27 commands, tips for best results, and what's new in v8."
+description: "Command map and quick start — see all 34 commands, starter recipes, Design Quality Score, anti-slop engine, and tips for best results."
 tier: "utility"
 ---
 
-# Sumi — Your UX/UI Design System
+# Chef Sumi — Your Design Intelligence System
 
-Welcome to Sumi v8. 27 commands. 42 skills. One design system that turns Claude into your senior design partner.
+Welcome to Chef Sumi v9. 34 commands. 42 skills. Vibe coded slop into visual cuisine.
 
 ## Quick Start
 
 ```
-/style [sector]  -->  /screen [type]  -->  /roast  -->  ship
-```
+# The fast track — style it, build it, ship it
+/style [sector]  →  /screen [type]  →  /fix  →  ship
 
-That's the minimum viable workflow. Style sets the visual direction, screen builds it, roast catches problems. Everything else makes the output better.
+# The quality track — fix slop, prove it, ship it
+/fix  →  /before-after  →  /grade  →  ship
+
+# The full track — plan, design, review, ship
+/brief  →  /style  →  /screen  →  /roast  →  /fix  →  /preflight
+```
 
 ---
 
-## All 27 Commands
+## Hero Commands
 
-### MAKE -- Design and Build
+| Command | What It Does |
+|---------|-------------|
+| `/fix` | Anti-slop engine — transforms AI-generated UI into production quality |
+| `/style` | Complete visual identity with 10 zero-config starter recipes |
+| `/grade` | Design Quality Score (0-100) like Lighthouse for design |
+| `/before-after` | Visual proof of design transformation |
+| `/screen` + `/component` | Platform-aware code (web/iOS/Android) |
+
+---
+
+## All 34 Commands
+
+### MAKE — Design and Build (19)
 
 Generate visual design systems, screens, components, and production-ready code.
 
 | Command | What It Does |
 |---------|-------------|
-| `/style` | Sector-aware visual direction -- palette, typography, spacing, mood |
+| `/fix` | Anti-slop engine — 60+ detection patterns, full code transformation |
+| `/style` | Sector-aware visual direction — palette, typography, spacing, mood |
 | `/palette` | Deep color system with oklch, APCA contrast, dark mode mapping |
-| `/type` | Typography system -- font pairing, scale, fluid sizing |
-| `/layout` | Layout section/block patterns -- hero, features, pricing, CTA, dashboard |
+| `/type` | Typography system — font pairing, scale, fluid sizing |
+| `/layout` | Layout section/block patterns — hero, features, pricing, CTA, dashboard |
 | `/wireframe` | Low-fidelity wireframes and layout exploration |
 | `/screen` | Full production screens with all states (empty, loading, error, success) |
 | `/component` | Production components with accessibility baked in |
 | `/page` | Full page compositions with block stacking and visual rhythm |
 | `/tokens` | Complete design token system (color, type, spacing, motion, elevation) |
-| `/form` | Form design -- inputs, validation, multi-step, accessibility |
-| `/nav` | Navigation system -- top bar, sidebar, tabs, command palette, mega menu |
-| `/animate` | Motion design -- entrance, micro-interaction, page transition, scroll |
+| `/form` | Form design — inputs, validation, multi-step, accessibility |
+| `/nav` | Navigation system — top bar, sidebar, tabs, command palette, mega menu |
+| `/animate` | Motion design — entrance, micro-interaction, page transition, scroll |
 | `/icon` | Icon and illustration systems with SVG implementation |
-| `/dark` | Dark mode -- color mapping, contrast verification, seamless toggle |
-| `/responsive` | Cross-breakpoint design -- container queries, fluid scaling, grids |
+| `/dark` | Dark mode — color mapping, contrast verification, seamless toggle |
+| `/responsive` | Cross-breakpoint design — container queries, fluid scaling, grids |
 | `/onboard` | Onboarding flow with activation metrics and progressive disclosure |
 | `/generate` | AI-powered screen generation (Stitch MCP, Fal.ai) |
 | `/remix` | Evidence-based redesign of weak areas |
 
-### REVIEW -- Evaluate and Improve
+### REVIEW — Evaluate and Improve (6)
 
 Audit existing designs for quality, accessibility, and usability problems.
 
 | Command | What It Does |
 |---------|-------------|
-| `/audit` | Nielsen's 10 heuristics evaluation with severity ratings |
-| `/roast` | Liz Lerman critique with dimensional scoring -- the honest review |
-| `/grade` | 10-dimension visual quality score (Awwwards-calibrated) |
-| `/qa` | Design QA -- spec vs. implementation comparison |
-| `/a11y` | WCAG 2.2 accessibility audit with fix recommendations |
+| `/audit` | Nielsen's 10 heuristics + Laws of UX + Gestalt + cognitive load analysis |
+| `/roast` | Liz Lerman critique with dimensional scoring + AI slop detection |
+| `/grade` | Design Quality Score (0-100) — Lighthouse-style scoring with badge generation |
+| `/qa` | Design QA — spec vs. implementation comparison. `/qa project` scans full codebase |
+| `/a11y` | WCAG 2.2 accessibility audit. `/a11y fix` generates corrected code |
+| `/before-after` | Visual proof of design transformation — side-by-side comparison |
 
-### PLAN -- Research and Strategy
+### PLAN — Research and Strategy (6)
 
 Research users, analyze competitors, plan metrics, and prepare for launch.
 
 | Command | What It Does |
 |---------|-------------|
-| `/brief` | Problem definition -- persona, HMW questions, constraints, success criteria |
-| `/research` | User research AND usability testing -- interviews, surveys, test plans |
-| `/benchmark` | Competitive analysis -- 10-dimension scorecard, gap analysis, roadmap |
-| `/map` | Information architecture -- sitemap, navigation, content hierarchy |
-| `/measure` | Metrics plan -- HEART framework, OKRs, experimentation, dashboards |
-| `/preflight` | Pre-launch checklist AND post-launch plan -- the full launch playbook |
+| `/brief` | Problem definition — persona, HMW questions, constraints, success criteria |
+| `/research` | User research AND usability testing — interviews, surveys, test plans |
+| `/benchmark` | Competitive analysis — 10-dimension scorecard, gap analysis, roadmap |
+| `/map` | Information architecture — sitemap, navigation, content hierarchy |
+| `/measure` | Metrics plan — HEART framework, OKRs, experimentation, dashboards |
+| `/preflight` | Pre-launch checklist AND post-launch plan — the full launch playbook |
 
-### Utility
+### Utility (3)
 
 | Command | What It Does |
 |---------|-------------|
@@ -79,69 +98,78 @@ Research users, analyze competitors, plan metrics, and prepare for launch.
 
 ---
 
-## Workflows by Goal
+## Starter Recipes
 
-**"I need to build a screen fast"**
-```
-/style [sector] --> /screen [type]
-```
+One word. Zero config. Complete visual identity.
 
-**"I want a complete design system"**
 ```
-/style --> /tokens --> /palette --> /type --> /component --> /screen
-```
-
-**"I need to review an existing design"**
-```
-/audit --> /roast --> /a11y --> /grade
-```
-
-**"I'm starting a new product from scratch"**
-```
-/brief --> /research --> /benchmark --> /map --> /style --> /screen
-```
-
-**"I need to ship by Friday"**
-```
-/style [sector] --> /screen [type] --> /qa --> /preflight
-```
-
-**"I want to improve my conversion rate"**
-```
-/benchmark --> /onboard --> /form --> /roast
+/style saas         →  Linear DNA
+/style fintech      →  Stripe DNA
+/style ecommerce    →  Shopify DNA
+/style healthcare   →  One Medical DNA
+/style creative     →  Awwwards DNA
+/style education    →  Duolingo DNA
+/style social       →  Discord DNA
+/style devtools     →  GitHub DNA
+/style landing      →  Vercel DNA
+/style mobile       →  iOS/Android adaptive
 ```
 
 ---
 
-## What's New in v8
+## Workflows by Goal
 
-**Action-first commands**: No more numbered steps. Every command is a verb. Type `/style`, not `/04-taste`. Type `/roast`, not `/23-roast`.
+**"Fix my AI-generated code"**
+`/fix` → `/before-after`
 
-**Three tiers, not seven phases**: Commands organized by what they do (MAKE / REVIEW / PLAN), not when to use them. Use any command at any time.
+**"Build a screen fast"**
+`/style [sector]` → `/screen [type]`
 
-**Merged commands**: `/research` now covers both user research AND usability testing. `/preflight` covers both pre-launch checklist AND post-launch iteration plan. Fewer commands, same coverage.
+**"Get a design quality score"**
+`/grade` (or `/grade vs stripe`)
 
-**42 skills**: 16 new specialist skills added -- layout blocks, page composition, conversion optimization, microcopy, form design, navigation patterns, color palettes, typography pairing, shadow/elevation, animation recipes, image/media patterns, icon systems, data visualization, responsive patterns, design token presets, and business templates.
+**"Complete design system"**
+`/style` → `/tokens` → `/screen` → `/component`
 
-**Design memory**: `.sumi/` directory stores your style decisions (palette, typography, tokens) so they carry across commands automatically.
+**"Review existing design"**
+`/audit` → `/roast` → `/a11y` → `/grade`
+
+**"Start from scratch"**
+`/brief` → `/research` → `/style` → `/screen`
+
+**"Ship by Friday"**
+`/style` → `/screen` → `/fix` → `/qa` → `/preflight`
+
+**"Scan my whole codebase"**
+`/qa project`
+
+---
+
+## What's New in v9
+
+- **Anti-Slop Engine** (`/fix`) — 60+ detection patterns, full code transformation. Turns AI-generated UI into production quality.
+- **Design Quality Score** (`/grade`) — 0-100 Lighthouse-style scoring with badge generation. Benchmark against any product.
+- **Before/After** (`/before-after`) — Visual proof of design transformation with side-by-side comparison.
+- **Platform-Aware Generation** — `/screen` and `/component` auto-detect iOS/Android/web and generate platform-native code.
+- **Starter Recipes** — 10 zero-config design systems. One word each. Instant visual identity.
+- **Project-Wide QA** — `/qa project` scans entire codebase for design drift and inconsistency.
+- **Cognitive Load Analysis** — `/audit` now includes Laws of UX and Gestalt evaluation alongside Nielsen's heuristics.
+- **Design Memory v2** — Auto-detects existing Tailwind config and CSS custom properties. `.sumi/` carries context across all commands.
+- **WCAG Auto-Fix** — `/a11y fix` generates corrected code for every accessibility finding.
+- **AI Slop Detection** — `/roast` and `/audit` now flag AI-generated UI patterns (default spacing, placeholder copy, generic icons).
 
 ---
 
 ## Tips for Best Results
 
-1. **Start with `/style`**. It takes 2 minutes and makes every subsequent command 10x more precise.
-
-2. **Paste your Constraint Stack**. If you ran `/brief`, paste the Constraint Stack into every command. It's the difference between generic and specific output.
-
-3. **Be specific about screen types**. `/screen dashboard` beats `/screen`. `/screen settings mobile iOS` beats `/screen settings`.
-
-4. **Use sector names with `/style`**. `/style fintech` or `/style healthcare` or `/style luxury-ecommerce` -- sector context dramatically changes the output.
-
-5. **Run `/roast` before you ship**. It's the honest review your design needs. Catches problems you can't see because you've been staring at it too long.
-
-6. **Commands compose**. `/style` feeds `/tokens` feeds `/screen` feeds `/component`. Each one builds on the last. The more context Sumi has, the better the output.
-
-7. **REVIEW commands work on anything**. Paste a screenshot, a URL, a code snippet, a Figma export. `/audit`, `/roast`, `/grade`, and `/a11y` will evaluate whatever you give them.
+1. **Start with `/style`**. Takes 2 minutes, makes everything 10x better.
+2. **Run `/fix` on any AI-generated code**. It's the fastest path to production quality.
+3. **Use `/grade` before every PR**. If it scores below 70, run `/fix`.
+4. **The more context you give, the better the output**. Paste screenshots, code, URLs, Figma exports.
+5. **Commands compose**. `/style` → `/screen` → `/fix` → `/grade` builds on each step.
+6. **Design memory carries across commands**. Run `/style` once, benefit everywhere.
+7. **Be specific about screen types**. `/screen dashboard` beats `/screen`. `/screen settings mobile iOS` beats `/screen settings`.
+8. **REVIEW commands work on anything**. Paste a screenshot, a URL, a code snippet, a Figma export.
 
 ---
 
@@ -167,10 +195,4 @@ Skills activate automatically when relevant. You never need to call them directl
 
 ---
 
-## Getting Help
-
-- `/next` -- Not sure what to do? Get a context-aware suggestion.
-- `/status` -- See what you've generated so far.
-- `/sumi` -- Come back here anytime for the full map.
-
-Start building. `/style [your sector]` is a good first move.
+Start building. `/style [your sector]` is a good first move. Or paste your code and run `/fix`.
