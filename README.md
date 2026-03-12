@@ -1,16 +1,16 @@
 <p align="center">
-  <img src="assets/sumi.svg" alt="Sumi" width="320" />
+  <img src="assets/sumi.svg" alt="Chef Sumi" width="400" />
 </p>
 
 <p align="center">
-  <strong>The design system you don't have to build.</strong><br />
+  <strong>Vibe coded slop &rarr; visual cuisine.</strong><br />
   A Claude Code plugin that turns plain English into production-grade UI.
 </p>
 
 <p align="center">
-  <a href="#what-it-does">What it does</a> ·
-  <a href="#examples">Examples</a> ·
-  <a href="#all-commands">All commands</a> ·
+  <a href="#what-it-does">What it does</a> &middot;
+  <a href="#examples">Examples</a> &middot;
+  <a href="#all-commands">All commands</a> &middot;
   <a href="#install">Install</a>
 </p>
 
@@ -18,7 +18,7 @@
 
 ## What it does
 
-Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthropics/claude-code). You describe what you're building. Sumi generates production-ready code — colors, typography, components, full screens — with the visual quality and consistency of a professional design system.
+Chef Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthropics/claude-code). You describe what you're building. Chef Sumi turns it into production-ready code — colors, typography, components, full screens — with the visual quality and consistency of a professional design system.
 
 **Three things make it different:**
 
@@ -61,7 +61,7 @@ Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthro
 **What you get:**
 - Full React + TypeScript + Tailwind component
 - All states: loading (skeleton), empty, error, populated
-- Responsive: mobile → tablet → desktop with actual breakpoint CSS
+- Responsive: mobile &rarr; tablet &rarr; desktop with actual breakpoint CSS
 - Accessible: ARIA roles, keyboard navigation, skip links
 - Uses your tokens from `/style` automatically
 - Component hierarchy documented
@@ -92,7 +92,7 @@ Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthro
 ```
 
 **What you get:**
-- Complete page with ordered blocks: Nav → Hero → Social Proof → Features → Pricing → FAQ → CTA → Footer
+- Complete page with ordered blocks: Nav &rarr; Hero &rarr; Social Proof &rarr; Features &rarr; Pricing &rarr; FAQ &rarr; CTA &rarr; Footer
 - Each block is a full React component
 - Section spacing rhythm system
 - Scroll behavior: sticky nav, scroll-driven animations
@@ -108,7 +108,7 @@ Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthro
 ```
 
 **What you get:**
-- Multi-step wizard: Shipping → Payment → Review
+- Multi-step wizard: Shipping &rarr; Payment &rarr; Review
 - Zod validation schema
 - Inline error messages with accessible announcements
 - Credit card detection (Visa/Mastercard/Amex)
@@ -158,8 +158,8 @@ Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthro
 *(paste your code or describe your screen)*
 
 **What you get:**
-- 10 dimensions scored 1–10: clarity, hierarchy, consistency, spacing, color, typography, interaction, accessibility, innovation, polish
-- Letter grade (A–F)
+- 10 dimensions scored 1-10: clarity, hierarchy, consistency, spacing, color, typography, interaction, accessibility, innovation, polish
+- Letter grade (A-F)
 - Top 3 must-fix issues with code fixes
 - Top 3 strengths to keep
 - One-line verdict
@@ -241,7 +241,7 @@ Sumi is a design intelligence plugin for [Claude Code](https://github.com/anthro
 
 ## How it works
 
-Sumi is pure markdown — 42 skill files totaling 23,000+ lines of design intelligence, backed by 165 reference documents. When you run a command, Claude loads the relevant skills automatically. No API keys. No external services. No dependencies.
+Chef Sumi is pure markdown — 42 skill files totaling 23,000+ lines of design intelligence, backed by 165 reference documents. When you run a command, Claude loads the relevant skills automatically. No API keys. No external services. No dependencies.
 
 **The more context you give, the better the output:**
 
@@ -285,6 +285,6 @@ Restart Claude Code. Run `/sumi` to see all commands.
 ---
 
 <p align="center">
-  <sub>v8.0.0 · 32 commands · 42 skills · 165 reference docs</sub><br />
-  <sub>Built by <a href="https://github.com/phazurlabs">Phazur Labs</a> · Powered by Claude</sub>
+  <sub>v8.0.0 &middot; 32 commands &middot; 42 skills &middot; 165 reference docs</sub><br />
+  <sub>Built by <a href="https://github.com/phazurlabs">Phazur Labs</a> &middot; Powered by Claude</sub>
 </p>

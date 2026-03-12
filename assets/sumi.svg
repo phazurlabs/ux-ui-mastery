@@ -1,15 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" width="560" height="180">
   <defs>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF6B4A"/>
-      <stop offset="100%" stop-color="#FF3D1F"/>
+    <!-- Fire gradient — the kitchen heat -->
+    <linearGradient id="fire" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FF3D1F"/>
+      <stop offset="40%" stop-color="#FF6B4A"/>
+      <stop offset="100%" stop-color="#FFAA33"/>
     </linearGradient>
+    <!-- Ember glow for accents -->
+    <linearGradient id="ember" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF6B4A"/>
+      <stop offset="100%" stop-color="#FFAA33"/>
+    </linearGradient>
+    <!-- Clean white text fill -->
     <linearGradient id="textFill" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="100%" stop-color="#E0E0E0"/>
+      <stop offset="100%" stop-color="#E8E8E8"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+    <!-- Glow filter for flame -->
+    <filter id="fireGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Subtle outer glow for the logotype -->
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -17,34 +34,56 @@
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="480" height="160" rx="20" fill="#0A0A0F"/>
+  <!-- Background — deep kitchen black -->
+  <rect width="560" height="180" rx="20" fill="#08080D"/>
 
-  <!-- Accent dot — the modern twist -->
-  <circle cx="432" cy="108" r="8" fill="url(#accent)" filter="url(#glow)"/>
+  <!-- Stylized flame — the chef's fire (left accent) -->
+  <g transform="translate(56, 42)" filter="url(#fireGlow)">
+    <!-- Main flame -->
+    <path d="M16 58 C16 58, 8 40, 12 28 C14 22, 18 18, 18 12 C18 8, 16 4, 16 0 C20 6, 24 10, 24 16 C24 20, 22 24, 24 28 C28 18, 32 12, 30 4 C34 12, 36 22, 34 32 C38 24, 40 16, 38 8 C42 16, 44 28, 42 38 C40 48, 34 54, 28 58 Z" fill="url(#fire)" opacity="0.95"/>
+    <!-- Inner flame core -->
+    <path d="M20 58 C20 58, 16 46, 18 38 C19 34, 22 30, 22 26 C24 30, 26 34, 26 38 C28 32, 30 28, 28 22 C32 28, 34 36, 32 42 C30 50, 26 56, 24 58 Z" fill="#FFCC44" opacity="0.7"/>
+  </g>
 
-  <!-- SUMI logotype — geometric, weighted, tracked -->
+  <!-- CHEF — lighter weight, tracked -->
   <text
-    x="240" y="105"
+    x="200" y="78"
+    text-anchor="middle"
+    font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="300"
+    font-size="28"
+    letter-spacing="14"
+    fill="url(#ember)"
+  >CHEF</text>
+
+  <!-- SUMI — bold logotype, the main event -->
+  <text
+    x="350" y="108"
     text-anchor="middle"
     font-family="'SF Pro Display', 'Inter', 'Helvetica Neue', Arial, sans-serif"
     font-weight="800"
-    font-size="82"
-    letter-spacing="18"
+    font-size="76"
+    letter-spacing="16"
     fill="url(#textFill)"
+    filter="url(#textGlow)"
   >SUMI</text>
 
-  <!-- Thin rule — separates type from descriptor -->
-  <line x1="120" y1="122" x2="360" y2="122" stroke="#FF6B4A" stroke-width="1.5" opacity="0.6"/>
+  <!-- Horizontal ember line -->
+  <line x1="100" y1="126" x2="500" y2="126" stroke="url(#ember)" stroke-width="1.5" opacity="0.4"/>
 
-  <!-- Descriptor -->
+  <!-- Descriptor — the mission -->
   <text
-    x="240" y="142"
+    x="300" y="150"
     text-anchor="middle"
     font-family="'SF Mono', 'JetBrains Mono', 'Fira Code', monospace"
     font-weight="400"
     font-size="11"
-    letter-spacing="5"
+    letter-spacing="4"
     fill="#666677"
-  >DESIGN INTELLIGENCE</text>
+  >SLOP &rarr; CUISINE</text>
+
+  <!-- Three small ember dots — plating accent (right side) -->
+  <circle cx="488" cy="150" r="2.5" fill="#FF6B4A" opacity="0.6"/>
+  <circle cx="498" cy="146" r="1.8" fill="#FFAA33" opacity="0.4"/>
+  <circle cx="506" cy="150" r="1.2" fill="#FF6B4A" opacity="0.3"/>
 </svg>
