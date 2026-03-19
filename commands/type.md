@@ -69,21 +69,77 @@ Select specific fonts based on style, sector, and platform. Provide:
 | Headings | [Alt font] | [Brief rationale] |
 | Body | [Alt font] | [Brief rationale] |
 
-**Google Fonts Integration:**
+**Framework-Aware Font Loading:**
 
-```html
-<!-- Preconnect for performance -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+Detect the project framework and output the correct loading strategy.
 
-<!-- Font loading — display=swap for FOUT over FOIT -->
-<link href="https://fonts.googleapis.com/css2?family=[Heading+Font]:wght@600;700&family=[Body+Font]:wght@400;500&family=[Mono+Font]&display=swap" rel="stylesheet">
+**If Next.js detected** (next.config.js/ts exists):
+```typescript
+// app/layout.tsx — next/font self-hosts, eliminates CLS, zero external requests
+import { Inter, [Heading_Font], [Mono_Font] } from 'next/font/google';
+
+const heading = [Heading_Font]({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const body = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const mono = [Mono_Font]({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+// Apply CSS variables to <html>
+<html className={`${heading.variable} ${body.variable} ${mono.variable}`}>
 ```
 
+**If Next.js + Tailwind v4** (detected via `@import "tailwindcss"` in CSS):
 ```css
-/* @import alternative (for CSS-only projects) */
-@import url('https://fonts.googleapis.com/css2?family=[Heading+Font]:wght@600;700&family=[Body+Font]:wght@400;500&family=[Mono+Font]&display=swap');
+/* app/globals.css */
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+}
 ```
+
+**If Remix / Vite / Astro** (no next/font available):
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=[Heading+Font]:wght@600;700&family=[Body+Font]:wght@400;500&family=[Mono+Font]&display=swap" rel="stylesheet" />
+```
+
+**Fallback (static HTML, any framework):**
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=[Heading+Font]:wght@600;700&family=[Body+Font]:wght@400;500&family=[Mono+Font]&display=swap" rel="stylesheet" />
+```
+
+**Detection Priority:**
+1. `next.config.js/ts` → `next/font/google` (always preferred)
+2. `@fontsource/*` in `package.json` → `@fontsource` imports
+3. Remix/Vite/Astro config → `<link>` with preconnect
+4. Fallback → `<link>` with `font-display: swap`
+
+**Performance Rules:**
+- `next/font` self-hosts fonts and applies `size-adjust` to match fallback metrics — zero layout shift
+- Always `font-display: swap` — FOUT is better than FOIT
+- Subset to `latin` unless CJK/Cyrillic/Arabic needed
+- Load only used weights (never `100..900` range)
 
 ### Step 3 — Font Family Stacks
 
@@ -474,6 +530,52 @@ module.exports = {
   ],
 }
 ```
+
+**Tailwind v4 (`@theme` — CSS-first configuration):**
+
+If the project uses Tailwind v4 (detected by `@import "tailwindcss"` in CSS instead of `tailwind.config.js`), output CSS-native theme configuration instead of the JS config above:
+
+```css
+/* app/globals.css — Tailwind v4 */
+@import "tailwindcss";
+
+@theme {
+  /* Font Families */
+  --font-heading: '[Heading Font]', system-ui, sans-serif;
+  --font-body: '[Body Font]', system-ui, sans-serif;
+  --font-mono: '[Mono Font]', ui-monospace, monospace;
+
+  /* Font Sizes (fluid) */
+  --text-2xs: clamp(0.625rem, 0.6rem + 0.1vw, 0.75rem);
+  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem);
+  --text-sm: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+  --text-base: clamp(0.875rem, 0.85rem + 0.2vw, 1rem);
+  --text-lg: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.45vw, 1.5625rem);
+  --text-2xl: clamp(1.5rem, 1.35rem + 0.6vw, 1.9375rem);
+  --text-3xl: clamp(1.875rem, 1.65rem + 0.8vw, 2.4375rem);
+  --text-4xl: clamp(2.25rem, 1.95rem + 1vw, 3.0625rem);
+  --text-5xl: clamp(2.75rem, 2.3rem + 1.3vw, 3.8125rem);
+  --text-6xl: clamp(3.25rem, 2.7rem + 1.6vw, 4.75rem);
+
+  /* Line Heights */
+  --leading-tight: 1.15;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 1.75;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.10em;
+}
+```
+
+**Detection Logic:** If `tailwind.config.js` exists → output Tailwind v3 JS config. If `@import "tailwindcss"` found in CSS → output Tailwind v4 `@theme` block. If both → output v4 (newer wins).
 
 ### Step 12 — Font Loading Performance
 

@@ -1,2507 +1,1539 @@
-# React Component Cookbook: Production-Ready Patterns
+# React Component Cookbook: CVA + Tailwind + Radix UI
 
-This reference provides complete, production-quality React/TypeScript component implementations. Every component handles the full state matrix, integrates design tokens via CSS custom properties, implements ARIA semantics, manages keyboard interactions, and respects `prefers-reduced-motion`. Code is ready to copy into a production codebase with minimal adaptation.
+20 production-ready React/TypeScript components using the modern stack: **CVA** (class-variance-authority) for variants, **Tailwind CSS** for styling, **Radix UI** primitives for accessibility, and utility libraries (Sonner, cmdk, Vaul, TanStack Table, React Hook Form + Zod). Every component uses `forwardRef`, includes `dark:` classes, `motion-safe:`/`motion-reduce:` where applicable, and complete ARIA semantics.
 
-## Conventions Used Throughout
+## Shared Utility: `cn()`
 
-All components follow these conventions:
+```tsx
+// lib/utils.ts — Used by every component
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-- **CSS Custom Properties** for all visual values. No hardcoded colors, spacing, or font sizes.
-- **TypeScript interfaces** for all props with JSDoc descriptions.
-- **Forwarded refs** via `React.forwardRef` where the component wraps a native element.
-- **`data-state` attributes** for styling state-driven visual changes via CSS attribute selectors.
-- **ARIA attributes** matching WAI-ARIA Authoring Practices.
-- **`prefers-reduced-motion`** media query respected in all animated components.
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+**Dependencies for all components:** `npm install clsx tailwind-merge class-variance-authority`
 
 ---
 
 ## 1. Button
 
-A polymorphic button supporting multiple variants, sizes, loading state, and icon positioning.
+**Dependencies:** `npm install @radix-ui/react-slot`
 
 ```tsx
-import React from "react";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Visual variant */
-  variant?: "primary" | "secondary" | "ghost" | "danger";
-  /** Size */
-  size?: "sm" | "md" | "lg";
-  /** Show loading spinner and disable interaction */
-  isLoading?: boolean;
-  /** Icon element placed before children */
-  iconLeft?: React.ReactNode;
-  /** Icon element placed after children */
-  iconRight?: React.ReactNode;
-  /** Full width */
-  fullWidth?: boolean;
-}
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant = "primary",
-      size = "md",
-      isLoading = false,
-      iconLeft,
-      iconRight,
-      fullWidth = false,
-      disabled,
-      children,
-      className,
-      ...props
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300 motion-safe:transition-colors motion-reduce:transition-none",
+  {
+    variants: {
+      variant: {
+        primary: "bg-gray-900 text-gray-50 hover:bg-gray-900/90 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90",
+        secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-700",
+        ghost: "hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50",
+        danger: "bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700",
+        outline: "border border-gray-200 bg-white hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800",
+      },
+      size: {
+        sm: "h-8 px-3 text-xs rounded-md",
+        md: "h-10 px-4 py-2",
+        lg: "h-12 px-6 text-base rounded-lg",
+        icon: "h-10 w-10",
+      },
+      fullWidth: {
+        true: "w-full",
+      },
     },
-    ref
-  ) => {
-    const isDisabled = disabled || isLoading;
-
-    return (
-      <button
-        ref={ref}
-        className={`btn btn--${variant} btn--${size} ${fullWidth ? "btn--full" : ""} ${className ?? ""}`}
-        disabled={isDisabled}
-        aria-disabled={isDisabled}
-        aria-busy={isLoading}
-        data-state={isLoading ? "loading" : isDisabled ? "disabled" : "default"}
-        {...props}
-      >
-        {isLoading && (
-          <span className="btn__spinner" aria-hidden="true">
-            <svg
-              className="btn__spinner-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              width="1em"
-              height="1em"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeDasharray="31.4 31.4"
-              />
-            </svg>
-          </span>
-        )}
-        {!isLoading && iconLeft && (
-          <span className="btn__icon btn__icon--left" aria-hidden="true">
-            {iconLeft}
-          </span>
-        )}
-        <span className="btn__label">{children}</span>
-        {!isLoading && iconRight && (
-          <span className="btn__icon btn__icon--right" aria-hidden="true">
-            {iconRight}
-          </span>
-        )}
-      </button>
-    );
+    defaultVariants: {
+      variant: "primary",
+      size: "md",
+    },
   }
 );
 
-Button.displayName = "Button";
-export { Button };
-export type { ButtonProps };
-```
-
-**CSS (design tokens):**
-
-```css
-.btn {
-  --btn-font: var(--font-family-body);
-  --btn-radius: var(--radius-md);
-  --btn-transition: var(--duration-fast) var(--easing-standard);
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  font-family: var(--btn-font);
-  font-weight: var(--font-weight-medium);
-  border: 2px solid transparent;
-  border-radius: var(--btn-radius);
-  cursor: pointer;
-  transition: background var(--btn-transition), color var(--btn-transition),
-    border-color var(--btn-transition), box-shadow var(--btn-transition);
-  user-select: none;
-  line-height: 1;
-  white-space: nowrap;
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  loading?: boolean;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
 }
 
-.btn--sm { padding: var(--space-xs) var(--space-sm); font-size: var(--font-size-sm); }
-.btn--md { padding: var(--space-sm) var(--space-md); font-size: var(--font-size-base); }
-.btn--lg { padding: var(--space-md) var(--space-lg); font-size: var(--font-size-lg); }
-.btn--full { width: 100%; }
-
-.btn--primary {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-}
-.btn--primary:hover:not(:disabled) { background: var(--color-primary-hover); }
-.btn--primary:active:not(:disabled) { background: var(--color-primary-active); }
-
-.btn--secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-.btn--secondary:hover:not(:disabled) { background: var(--color-primary-subtle); }
-
-.btn--ghost {
-  background: transparent;
-  color: var(--color-on-surface);
-}
-.btn--ghost:hover:not(:disabled) { background: var(--color-surface-hover); }
-
-.btn--danger {
-  background: var(--color-error);
-  color: var(--color-on-error);
-}
-.btn--danger:hover:not(:disabled) { background: var(--color-error-hover); }
-
-.btn:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.btn__spinner-icon {
-  animation: spin 0.8s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .btn__spinner-icon {
-    animation: none;
-    opacity: 0.7;
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, fullWidth, asChild = false, loading, iconLeft, iconRight, children, disabled, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, fullWidth, className }))}
+        ref={ref}
+        disabled={disabled || loading}
+        aria-disabled={disabled || loading}
+        aria-busy={loading}
+        {...props}
+      >
+        {loading && (
+          <svg className="h-4 w-4 animate-spin motion-reduce:hidden" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+        )}
+        {!loading && iconLeft}
+        {children}
+        {!loading && iconRight}
+      </Comp>
+    );
   }
-}
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
 ```
 
-**Usage:**
+### Usage
 
 ```tsx
-<Button variant="primary" isLoading={isSaving} onClick={handleSave}>
-  Save Changes
-</Button>
-<Button variant="danger" iconLeft={<TrashIcon />}>Delete</Button>
-<Button variant="ghost" size="sm">Cancel</Button>
+<Button variant="primary" size="md">Save changes</Button>
+<Button variant="ghost" size="icon"><SearchIcon className="h-4 w-4" /></Button>
+<Button variant="danger" loading>Deleting...</Button>
+<Button asChild><a href="/docs">Documentation</a></Button>
 ```
+
+### Accessibility
+- Uses native `<button>` element (keyboard focusable, Enter/Space activation)
+- `aria-disabled` and `aria-busy` for loading state
+- Focus ring visible via `focus-visible:ring-2`
+- `asChild` pattern passes semantics to child element via Radix `Slot`
 
 ---
 
 ## 2. TextInput
 
-A text input with floating label, validation states, helper text, character count, and password visibility toggle.
-
 ```tsx
-import React, { useState, useId } from "react";
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface TextInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
-  /** Visible label text */
-  label: string;
-  /** Helper text shown below the input */
+const inputVariants = cva(
+  "flex w-full rounded-md border bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-950 dark:ring-offset-gray-950 dark:placeholder:text-gray-500",
+  {
+    variants: {
+      state: {
+        default: "border-gray-200 focus-visible:ring-gray-950 dark:border-gray-800 dark:focus-visible:ring-gray-300",
+        error: "border-red-500 focus-visible:ring-red-500 dark:border-red-400",
+        success: "border-green-500 focus-visible:ring-green-500 dark:border-green-400",
+      },
+      inputSize: {
+        sm: "h-8 text-xs px-2",
+        md: "h-10",
+        lg: "h-12 text-base px-4",
+      },
+    },
+    defaultVariants: {
+      state: "default",
+      inputSize: "md",
+    },
+  }
+);
+
+export interface TextInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+    VariantProps<typeof inputVariants> {
+  label?: string;
   helperText?: string;
-  /** Error message — overrides helperText when present */
   errorMessage?: string;
-  /** Success message — overrides helperText when present */
-  successMessage?: string;
-  /** Maximum character count to display */
-  maxCharacters?: number;
-  /** Visual size */
-  size?: "sm" | "md" | "lg";
-  /** Show password toggle for type="password" */
-  showPasswordToggle?: boolean;
+  addonLeft?: React.ReactNode;
+  addonRight?: React.ReactNode;
+  charCount?: boolean;
+  maxChars?: number;
 }
 
 const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
-  (
-    {
-      label,
-      helperText,
-      errorMessage,
-      successMessage,
-      maxCharacters,
-      size = "md",
-      showPasswordToggle = false,
-      type = "text",
-      value,
-      defaultValue,
-      onChange,
-      disabled,
-      readOnly,
-      className,
-      id: externalId,
-      ...props
-    },
-    ref
-  ) => {
-    const generatedId = useId();
-    const inputId = externalId ?? generatedId;
+  ({ className, state, inputSize, label, helperText, errorMessage, addonLeft, addonRight, charCount, maxChars, id, ...props }, ref) => {
+    const inputId = id || React.useId();
     const helperId = `${inputId}-helper`;
     const errorId = `${inputId}-error`;
-
-    const [internalValue, setInternalValue] = useState(defaultValue ?? "");
-    const [showPassword, setShowPassword] = useState(false);
-
-    const currentValue = value !== undefined ? String(value) : String(internalValue);
-    const charCount = currentValue.length;
-    const hasError = Boolean(errorMessage);
-    const hasSuccess = Boolean(successMessage) && !hasError;
-    const isPassword = type === "password";
-
-    const validationState = hasError
-      ? "error"
-      : hasSuccess
-        ? "success"
-        : "default";
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (value === undefined) {
-        setInternalValue(e.target.value);
-      }
-      onChange?.(e);
-    };
-
-    const resolvedType =
-      isPassword && showPassword ? "text" : type;
-
-    const descriptionId = hasError ? errorId : helperText ? helperId : undefined;
+    const [count, setCount] = React.useState(0);
 
     return (
-      <div
-        className={`text-input text-input--${size} text-input--${validationState} ${className ?? ""}`}
-        data-state={validationState}
-        data-disabled={disabled || undefined}
-        data-readonly={readOnly || undefined}
-      >
-        <div className="text-input__field-wrapper">
-          <input
-            ref={ref}
-            id={inputId}
-            type={resolvedType}
-            className="text-input__field"
-            value={value}
-            defaultValue={value === undefined ? defaultValue : undefined}
-            onChange={handleChange}
-            disabled={disabled}
-            readOnly={readOnly}
-            aria-invalid={hasError}
-            aria-describedby={descriptionId}
-            placeholder=" "
-            {...props}
-          />
-          <label htmlFor={inputId} className="text-input__label">
+      <div className="space-y-1.5">
+        {label && (
+          <label htmlFor={inputId} className="text-sm font-medium text-gray-900 dark:text-gray-100">
             {label}
           </label>
-          {isPassword && showPasswordToggle && (
-            <button
-              type="button"
-              className="text-input__toggle"
-              onClick={() => setShowPassword((prev) => !prev)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
-              tabIndex={-1}
-            >
-              {showPassword ? (
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
-                  <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
-                  <line x1="1" y1="1" x2="23" y2="23" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-              )}
-            </button>
-          )}
+        )}
+        <div className="relative flex items-center">
+          {addonLeft && <div className="absolute left-3 text-gray-400">{addonLeft}</div>}
+          <input
+            id={inputId}
+            ref={ref}
+            className={cn(
+              inputVariants({ state: errorMessage ? "error" : state, inputSize }),
+              addonLeft && "pl-10",
+              addonRight && "pr-10",
+              className
+            )}
+            aria-invalid={!!errorMessage}
+            aria-describedby={errorMessage ? errorId : helperText ? helperId : undefined}
+            maxLength={maxChars}
+            onChange={(e) => { setCount(e.target.value.length); props.onChange?.(e); }}
+            {...props}
+          />
+          {addonRight && <div className="absolute right-3 text-gray-400">{addonRight}</div>}
         </div>
-        <div className="text-input__footer">
-          {hasError && (
-            <span id={errorId} className="text-input__error" role="alert">
-              {errorMessage}
-            </span>
-          )}
-          {!hasError && hasSuccess && (
-            <span className="text-input__success">{successMessage}</span>
-          )}
-          {!hasError && !hasSuccess && helperText && (
-            <span id={helperId} className="text-input__helper">
-              {helperText}
-            </span>
-          )}
-          {maxCharacters !== undefined && (
-            <span
-              className="text-input__count"
-              aria-live="polite"
-              aria-label={`${charCount} of ${maxCharacters} characters`}
-            >
-              {charCount}/{maxCharacters}
-            </span>
+        <div className="flex justify-between">
+          {errorMessage ? (
+            <p id={errorId} className="text-sm text-red-500 dark:text-red-400" role="alert">{errorMessage}</p>
+          ) : helperText ? (
+            <p id={helperId} className="text-sm text-gray-500 dark:text-gray-400">{helperText}</p>
+          ) : <span />}
+          {charCount && maxChars && (
+            <span className="text-xs text-gray-400 tabular-nums">{count}/{maxChars}</span>
           )}
         </div>
       </div>
     );
   }
 );
-
 TextInput.displayName = "TextInput";
+
 export { TextInput };
-export type { TextInputProps };
-```
-
-**CSS:**
-
-```css
-.text-input__field-wrapper {
-  position: relative;
-}
-
-.text-input__field {
-  width: 100%;
-  padding: var(--space-md) var(--space-sm);
-  padding-top: calc(var(--space-md) + 6px);
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
-  color: var(--color-on-surface);
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-md);
-  outline: none;
-  transition: border-color var(--duration-fast) var(--easing-standard);
-}
-
-.text-input__field:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-subtle);
-}
-
-.text-input__label {
-  position: absolute;
-  left: var(--space-sm);
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-  pointer-events: none;
-  transition: all var(--duration-fast) var(--easing-standard);
-  transform-origin: left center;
-}
-
-.text-input__field:focus + .text-input__label,
-.text-input__field:not(:placeholder-shown) + .text-input__label {
-  top: 8px;
-  transform: translateY(0) scale(0.75);
-  color: var(--color-primary);
-}
-
-.text-input--error .text-input__field {
-  border-color: var(--color-error);
-}
-.text-input--error .text-input__field:focus {
-  box-shadow: 0 0 0 3px var(--color-error-subtle);
-}
-
-.text-input--success .text-input__field {
-  border-color: var(--color-success);
-}
-
-.text-input__footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--space-xxs);
-  font-size: var(--font-size-sm);
-}
-
-.text-input__error { color: var(--color-error); }
-.text-input__success { color: var(--color-success); }
-.text-input__helper { color: var(--color-text-secondary); }
-
-.text-input__toggle {
-  position: absolute;
-  right: var(--space-sm);
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-text-secondary);
-  padding: var(--space-xxs);
-}
-```
-
-**Usage:**
-
-```tsx
-<TextInput
-  label="Email Address"
-  type="email"
-  helperText="We will never share your email"
-  errorMessage={errors.email}
-  maxCharacters={100}
-/>
-<TextInput
-  label="Password"
-  type="password"
-  showPasswordToggle
-  errorMessage={errors.password}
-/>
 ```
 
 ---
 
-## 3. Select / Combobox
+## 3. Select (Radix)
 
-A searchable select with keyboard navigation, option groups, multi-select, and ARIA combobox semantics.
+**Dependencies:** `npm install @radix-ui/react-select`
 
 ```tsx
-import React, { useState, useRef, useEffect, useId, useCallback } from "react";
+import * as React from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { ChevronDownIcon, CheckIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-interface Option {
-  value: string;
-  label: string;
-  group?: string;
-  disabled?: boolean;
-}
+const Select = SelectPrimitive.Root;
+const SelectGroup = SelectPrimitive.Group;
+const SelectValue = SelectPrimitive.Value;
 
-interface ComboboxProps {
-  /** Visible label */
-  label: string;
-  /** List of options */
-  options: Option[];
-  /** Controlled value (single-select) */
-  value?: string;
-  /** Controlled values (multi-select) */
-  values?: string[];
-  /** Enable multi-select mode */
-  multiple?: boolean;
-  /** Callback when value changes */
-  onChange?: (value: string) => void;
-  /** Callback when values change (multi) */
-  onMultiChange?: (values: string[]) => void;
-  /** Allow typing to filter options */
-  searchable?: boolean;
-  /** Placeholder text */
-  placeholder?: string;
-  /** Disabled state */
-  disabled?: boolean;
-  /** Error message */
-  errorMessage?: string;
-}
+const SelectTrigger = React.forwardRef<
+  React.ComponentRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      "flex h-10 w-full items-center justify-between rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:ring-offset-gray-950 dark:focus:ring-gray-300",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <SelectPrimitive.Icon asChild>
+      <ChevronDownIcon className="h-4 w-4 opacity-50" />
+    </SelectPrimitive.Icon>
+  </SelectPrimitive.Trigger>
+));
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
-function Combobox({
-  label,
-  options,
-  value,
-  values = [],
-  multiple = false,
-  onChange,
-  onMultiChange,
-  searchable = true,
-  placeholder = "Select an option",
-  disabled = false,
-  errorMessage,
-}: ComboboxProps) {
-  const id = useId();
-  const listboxId = `${id}-listbox`;
-  const inputId = `${id}-input`;
-  const labelId = `${id}-label`;
-  const errorId = `${id}-error`;
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const [activeIndex, setActiveIndex] = useState(-1);
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
-
-  const filtered = options.filter((opt) =>
-    opt.label.toLowerCase().includes(query.toLowerCase())
-  );
-
-  const grouped = filtered.reduce<Record<string, Option[]>>((acc, opt) => {
-    const group = opt.group ?? "__ungrouped__";
-    if (!acc[group]) acc[group] = [];
-    acc[group].push(opt);
-    return acc;
-  }, {});
-
-  const flatFiltered = filtered.filter((o) => !o.disabled);
-
-  const selectedLabel = multiple
-    ? values
-        .map((v) => options.find((o) => o.value === v)?.label)
-        .filter(Boolean)
-        .join(", ")
-    : options.find((o) => o.value === value)?.label ?? "";
-
-  const open = () => {
-    if (disabled) return;
-    setIsOpen(true);
-    setActiveIndex(-1);
-    setQuery("");
-  };
-
-  const close = () => {
-    setIsOpen(false);
-    setQuery("");
-    setActiveIndex(-1);
-  };
-
-  const selectOption = useCallback(
-    (opt: Option) => {
-      if (opt.disabled) return;
-      if (multiple) {
-        const next = values.includes(opt.value)
-          ? values.filter((v) => v !== opt.value)
-          : [...values, opt.value];
-        onMultiChange?.(next);
-      } else {
-        onChange?.(opt.value);
-        close();
-      }
-    },
-    [multiple, values, onChange, onMultiChange]
-  );
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (disabled) return;
-
-    switch (e.key) {
-      case "ArrowDown":
-        e.preventDefault();
-        if (!isOpen) {
-          open();
-        } else {
-          setActiveIndex((prev) =>
-            prev < flatFiltered.length - 1 ? prev + 1 : 0
-          );
-        }
-        break;
-      case "ArrowUp":
-        e.preventDefault();
-        if (isOpen) {
-          setActiveIndex((prev) =>
-            prev > 0 ? prev - 1 : flatFiltered.length - 1
-          );
-        }
-        break;
-      case "Enter":
-        e.preventDefault();
-        if (isOpen && activeIndex >= 0 && flatFiltered[activeIndex]) {
-          selectOption(flatFiltered[activeIndex]);
-        } else if (!isOpen) {
-          open();
-        }
-        break;
-      case "Escape":
-        e.preventDefault();
-        close();
-        inputRef.current?.focus();
-        break;
-      case "Home":
-        if (isOpen) {
-          e.preventDefault();
-          setActiveIndex(0);
-        }
-        break;
-      case "End":
-        if (isOpen) {
-          e.preventDefault();
-          setActiveIndex(flatFiltered.length - 1);
-        }
-        break;
-    }
-  };
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        close();
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (activeIndex >= 0 && listRef.current) {
-      const item = listRef.current.querySelector(
-        `[data-index="${activeIndex}"]`
-      ) as HTMLElement | null;
-      item?.scrollIntoView({ block: "nearest" });
-    }
-  }, [activeIndex]);
-
-  const activeOptionId =
-    activeIndex >= 0 ? `${id}-option-${activeIndex}` : undefined;
-
-  return (
-    <div
-      ref={containerRef}
-      className={`combobox ${errorMessage ? "combobox--error" : ""}`}
+const SelectContent = React.forwardRef<
+  React.ComponentRef<typeof SelectPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+>(({ className, children, position = "popper", ...props }, ref) => (
+  <SelectPrimitive.Portal>
+    <SelectPrimitive.Content
+      ref={ref}
+      className={cn(
+        "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white text-gray-900 shadow-md dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50",
+        "motion-safe:data-[state=open]:animate-in motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=open]:fade-in-0 motion-safe:data-[state=closed]:zoom-out-95 motion-safe:data-[state=open]:zoom-in-95",
+        position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
+        className
+      )}
+      position={position}
+      {...props}
     >
-      <label id={labelId} className="combobox__label">
-        {label}
-      </label>
-      <div className="combobox__control" onKeyDown={handleKeyDown}>
-        <input
-          ref={inputRef}
-          id={inputId}
-          role="combobox"
-          aria-expanded={isOpen}
-          aria-controls={listboxId}
-          aria-labelledby={labelId}
-          aria-activedescendant={activeOptionId}
-          aria-autocomplete={searchable ? "list" : "none"}
-          aria-invalid={Boolean(errorMessage)}
-          aria-describedby={errorMessage ? errorId : undefined}
-          className="combobox__input"
-          value={isOpen && searchable ? query : selectedLabel}
-          placeholder={placeholder}
-          disabled={disabled}
-          readOnly={!searchable}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setActiveIndex(-1);
-          }}
-          onClick={() => (isOpen ? close() : open())}
-        />
-        <span className="combobox__arrow" aria-hidden="true">
-          <svg width="12" height="12" viewBox="0 0 12 12">
-            <path
-              d="M3 5l3 3 3-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </span>
-      </div>
-      {isOpen && (
-        <ul
-          ref={listRef}
-          id={listboxId}
-          role="listbox"
-          aria-labelledby={labelId}
-          aria-multiselectable={multiple}
-          className="combobox__listbox"
-        >
-          {Object.entries(grouped).map(([groupName, groupOptions]) => {
-            const isGrouped = groupName !== "__ungrouped__";
-            return (
-              <React.Fragment key={groupName}>
-                {isGrouped && (
-                  <li role="presentation" className="combobox__group-label">
-                    {groupName}
-                  </li>
-                )}
-                {groupOptions.map((opt) => {
-                  const flatIndex = flatFiltered.indexOf(opt);
-                  const isActive = flatIndex === activeIndex;
-                  const isSelected = multiple
-                    ? values.includes(opt.value)
-                    : opt.value === value;
-
-                  return (
-                    <li
-                      key={opt.value}
-                      id={`${id}-option-${flatIndex}`}
-                      role="option"
-                      aria-selected={isSelected}
-                      aria-disabled={opt.disabled}
-                      data-index={flatIndex}
-                      className={`combobox__option ${isActive ? "combobox__option--active" : ""} ${isSelected ? "combobox__option--selected" : ""} ${opt.disabled ? "combobox__option--disabled" : ""}`}
-                      onClick={() => selectOption(opt)}
-                    >
-                      {multiple && (
-                        <span
-                          className="combobox__check"
-                          aria-hidden="true"
-                        >
-                          {isSelected ? "\u2713" : ""}
-                        </span>
-                      )}
-                      {opt.label}
-                    </li>
-                  );
-                })}
-              </React.Fragment>
-            );
-          })}
-          {filtered.length === 0 && (
-            <li className="combobox__empty" role="presentation">
-              No results found
-            </li>
-          )}
-        </ul>
-      )}
-      {errorMessage && (
-        <span id={errorId} className="combobox__error" role="alert">
-          {errorMessage}
-        </span>
-      )}
-    </div>
-  );
-}
-
-export { Combobox };
-export type { ComboboxProps, Option };
-```
-
-**Usage:**
-
-```tsx
-<Combobox
-  label="Country"
-  options={[
-    { value: "us", label: "United States", group: "Americas" },
-    { value: "ca", label: "Canada", group: "Americas" },
-    { value: "gb", label: "United Kingdom", group: "Europe" },
-    { value: "de", label: "Germany", group: "Europe" },
-  ]}
-  value={country}
-  onChange={setCountry}
-  searchable
-/>
-```
-
----
-
-## 4. Modal / Dialog
-
-A focus-trapping dialog with scroll lock, Escape dismissal, overlay click close, and responsive bottom-sheet behavior on mobile.
-
-```tsx
-import React, { useEffect, useRef, useCallback } from "react";
-import { createPortal } from "react-dom";
-
-interface ModalProps {
-  /** Whether the modal is open */
-  isOpen: boolean;
-  /** Called when the modal should close */
-  onClose: () => void;
-  /** Accessible title */
-  title: string;
-  /** Optional description */
-  description?: string;
-  /** Content */
-  children: React.ReactNode;
-  /** Footer actions */
-  footer?: React.ReactNode;
-  /** Size */
-  size?: "sm" | "md" | "lg" | "full";
-  /** Prevent closing on overlay click */
-  preventOverlayClose?: boolean;
-  /** Show close button */
-  showCloseButton?: boolean;
-}
-
-function Modal({
-  isOpen,
-  onClose,
-  title,
-  description,
-  children,
-  footer,
-  size = "md",
-  preventOverlayClose = false,
-  showCloseButton = true,
-}: ModalProps) {
-  const dialogRef = useRef<HTMLDivElement>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
-
-  const getFocusableElements = useCallback(() => {
-    if (!dialogRef.current) return [];
-    return Array.from(
-      dialogRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      )
-    ).filter((el) => !el.hasAttribute("disabled"));
-  }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      previousFocusRef.current = document.activeElement as HTMLElement;
-      document.body.style.overflow = "hidden";
-
-      requestAnimationFrame(() => {
-        const focusable = getFocusableElements();
-        if (focusable.length > 0) {
-          focusable[0].focus();
-        } else {
-          dialogRef.current?.focus();
-        }
-      });
-    } else {
-      document.body.style.overflow = "";
-      previousFocusRef.current?.focus();
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen, getFocusableElements]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.stopPropagation();
-        onClose();
-        return;
-      }
-
-      if (e.key === "Tab") {
-        const focusable = getFocusableElements();
-        if (focusable.length === 0) {
-          e.preventDefault();
-          return;
-        }
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-
-        if (e.shiftKey) {
-          if (document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          }
-        } else {
-          if (document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose, getFocusableElements]);
-
-  if (!isOpen) return null;
-
-  return createPortal(
-    <div className="modal-overlay" onClick={preventOverlayClose ? undefined : onClose}>
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-        aria-describedby={description ? "modal-description" : undefined}
-        className={`modal modal--${size}`}
-        tabIndex={-1}
-        onClick={(e) => e.stopPropagation()}
+      <SelectPrimitive.Viewport
+        className={cn("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]")}
       >
-        <header className="modal__header">
-          <h2 id="modal-title" className="modal__title">
-            {title}
-          </h2>
-          {showCloseButton && (
-            <button
-              className="modal__close"
-              onClick={onClose}
-              aria-label="Close dialog"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          )}
-        </header>
-        {description && (
-          <p id="modal-description" className="modal__description">
-            {description}
-          </p>
-        )}
-        <div className="modal__body">{children}</div>
-        {footer && <footer className="modal__footer">{footer}</footer>}
-      </div>
-    </div>,
-    document.body
-  );
-}
+        {children}
+      </SelectPrimitive.Viewport>
+    </SelectPrimitive.Content>
+  </SelectPrimitive.Portal>
+));
+SelectContent.displayName = SelectPrimitive.Content.displayName;
 
-export { Modal };
-export type { ModalProps };
+const SelectItem = React.forwardRef<
+  React.ComponentRef<typeof SelectPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-gray-100 focus:text-gray-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-gray-800 dark:focus:text-gray-50",
+      className
+    )}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <SelectPrimitive.ItemIndicator>
+        <CheckIcon className="h-4 w-4" />
+      </SelectPrimitive.ItemIndicator>
+    </span>
+    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+  </SelectPrimitive.Item>
+));
+SelectItem.displayName = SelectPrimitive.Item.displayName;
+
+const SelectLabel = React.forwardRef<
+  React.ComponentRef<typeof SelectPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Label ref={ref} className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)} {...props} />
+));
+SelectLabel.displayName = SelectPrimitive.Label.displayName;
+
+const SelectSeparator = React.forwardRef<
+  React.ComponentRef<typeof SelectPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-gray-100 dark:bg-gray-800", className)} {...props} />
+));
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
+
+export { Select, SelectGroup, SelectValue, SelectTrigger, SelectContent, SelectItem, SelectLabel, SelectSeparator };
 ```
 
-**CSS:**
-
-```css
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: grid;
-  place-items: center;
-  z-index: var(--z-modal);
-  padding: var(--space-md);
-  animation: fadeIn var(--duration-fast) var(--easing-decelerate);
-}
-
-.modal {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  max-height: calc(100vh - var(--space-xl) * 2);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  animation: slideUp var(--duration-normal) var(--easing-decelerate);
-}
-
-.modal--sm { width: min(400px, 100%); }
-.modal--md { width: min(560px, 100%); }
-.modal--lg { width: min(720px, 100%); }
-.modal--full { width: 100%; height: 100%; border-radius: 0; }
-
-.modal__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-lg) var(--space-lg) 0;
-}
-
-.modal__title { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); margin: 0; }
-.modal__description { padding: var(--space-sm) var(--space-lg) 0; color: var(--color-text-secondary); margin: 0; }
-.modal__body { padding: var(--space-lg); flex: 1; overflow-y: auto; }
-.modal__footer { padding: 0 var(--space-lg) var(--space-lg); display: flex; gap: var(--space-sm); justify-content: flex-end; }
-
-.modal__close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-text-secondary);
-  padding: var(--space-xs);
-  border-radius: var(--radius-sm);
-}
-.modal__close:hover { background: var(--color-surface-hover); }
-.modal__close:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
-
-@container (max-width: 480px) {
-  .modal {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    max-height: 90vh;
-    width: 100%;
-    animation: slideUpSheet var(--duration-normal) var(--easing-decelerate);
-  }
-}
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes slideUpSheet { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-@media (prefers-reduced-motion: reduce) {
-  .modal-overlay, .modal { animation: none; }
-}
-```
-
-**Usage:**
+### Usage
 
 ```tsx
-<Modal
-  isOpen={showModal}
-  onClose={() => setShowModal(false)}
-  title="Confirm Deletion"
-  description="This action cannot be undone."
-  footer={
-    <>
-      <Button variant="ghost" onClick={() => setShowModal(false)}>Cancel</Button>
-      <Button variant="danger" onClick={handleDelete}>Delete</Button>
-    </>
-  }
->
-  <p>Are you sure you want to delete this project and all of its data?</p>
-</Modal>
+<Select>
+  <SelectTrigger className="w-[200px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="orange">Orange</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
 ```
 
 ---
 
-## 5. Toast / Notification
+## 4. Dialog (Radix)
 
-A toast notification system with a queue, auto-dismiss, screen reader live region, and dismiss animation.
+**Dependencies:** `npm install @radix-ui/react-dialog`
 
 ```tsx
-import React, { useState, useCallback, useEffect, useRef, createContext, useContext } from "react";
-import { createPortal } from "react-dom";
+import * as React from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { XIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-type ToastVariant = "info" | "success" | "warning" | "error";
+const Dialog = DialogPrimitive.Root;
+const DialogTrigger = DialogPrimitive.Trigger;
+const DialogPortal = DialogPrimitive.Portal;
+const DialogClose = DialogPrimitive.Close;
 
-interface Toast {
-  id: string;
-  message: string;
-  variant: ToastVariant;
-  duration?: number;
-  action?: { label: string; onClick: () => void };
-}
+const DialogOverlay = React.forwardRef<
+  React.ComponentRef<typeof DialogPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Overlay
+    ref={ref}
+    className={cn(
+      "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm",
+      "motion-safe:data-[state=open]:animate-in motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=open]:fade-in-0",
+      "motion-reduce:data-[state=open]:opacity-100 motion-reduce:data-[state=closed]:opacity-0",
+      className
+    )}
+    {...props}
+  />
+));
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-interface ToastContextValue {
-  addToast: (toast: Omit<Toast, "id">) => void;
-  removeToast: (id: string) => void;
-}
-
-const ToastContext = createContext<ToastContextValue | null>(null);
-
-function useToast(): ToastContextValue {
-  const ctx = useContext(ToastContext);
-  if (!ctx) throw new Error("useToast must be used within ToastProvider");
-  return ctx;
-}
-
-let toastCounter = 0;
-
-function ToastProvider({ children }: { children: React.ReactNode }) {
-  const [toasts, setToasts] = useState<Toast[]>([]);
-
-  const addToast = useCallback((toast: Omit<Toast, "id">) => {
-    const id = `toast-${++toastCounter}`;
-    setToasts((prev) => [...prev, { ...toast, id }]);
-  }, []);
-
-  const removeToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  }, []);
-
-  return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
-      {children}
-      {createPortal(
-        <div className="toast-container" aria-live="polite" aria-relevant="additions">
-          {toasts.map((toast) => (
-            <ToastItem key={toast.id} toast={toast} onDismiss={removeToast} />
-          ))}
-        </div>,
-        document.body
+const DialogContent = React.forwardRef<
+  React.ComponentRef<typeof DialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DialogPortal>
+    <DialogOverlay />
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border border-gray-200 bg-white p-6 shadow-lg sm:rounded-lg dark:border-gray-800 dark:bg-gray-950",
+        "motion-safe:data-[state=open]:animate-in motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=open]:fade-in-0 motion-safe:data-[state=closed]:zoom-out-95 motion-safe:data-[state=open]:zoom-in-95 motion-safe:data-[state=closed]:slide-out-to-left-1/2 motion-safe:data-[state=closed]:slide-out-to-top-[48%] motion-safe:data-[state=open]:slide-in-from-left-1/2 motion-safe:data-[state=open]:slide-in-from-top-[48%]",
+        "motion-safe:duration-200",
+        className
       )}
-    </ToastContext.Provider>
+      {...props}
+    >
+      {children}
+      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:ring-offset-gray-950 dark:focus:ring-gray-300">
+        <XIcon className="h-4 w-4" />
+        <span className="sr-only">Close</span>
+      </DialogPrimitive.Close>
+    </DialogPrimitive.Content>
+  </DialogPortal>
+));
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+
+const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)} {...props} />
+);
+
+const DialogTitle = React.forwardRef<
+  React.ComponentRef<typeof DialogPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Title ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...props} />
+));
+DialogTitle.displayName = DialogPrimitive.Title.displayName;
+
+const DialogDescription = React.forwardRef<
+  React.ComponentRef<typeof DialogPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Description ref={ref} className={cn("text-sm text-gray-500 dark:text-gray-400", className)} {...props} />
+));
+DialogDescription.displayName = DialogPrimitive.Description.displayName;
+
+const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)} {...props} />
+);
+
+export { Dialog, DialogPortal, DialogOverlay, DialogTrigger, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription };
+```
+
+---
+
+## 5. Toast (Sonner)
+
+**Dependencies:** `npm install sonner`
+
+```tsx
+// components/ui/sonner.tsx
+import { Toaster as SonnerToaster } from "sonner";
+
+export function Toaster() {
+  return (
+    <SonnerToaster
+      className="toaster group"
+      position="bottom-right"
+      toastOptions={{
+        classNames: {
+          toast: "group toast group-[.toaster]:bg-white group-[.toaster]:text-gray-900 group-[.toaster]:border-gray-200 group-[.toaster]:shadow-lg dark:group-[.toaster]:bg-gray-950 dark:group-[.toaster]:text-gray-50 dark:group-[.toaster]:border-gray-800",
+          description: "group-[.toast]:text-gray-500 dark:group-[.toast]:text-gray-400",
+          actionButton: "group-[.toast]:bg-gray-900 group-[.toast]:text-gray-50 dark:group-[.toast]:bg-gray-50 dark:group-[.toast]:text-gray-900",
+          cancelButton: "group-[.toast]:bg-gray-100 group-[.toast]:text-gray-500 dark:group-[.toast]:bg-gray-800 dark:group-[.toast]:text-gray-400",
+        },
+      }}
+    />
   );
 }
+```
 
-function ToastItem({
-  toast,
-  onDismiss,
-}: {
-  toast: Toast;
-  onDismiss: (id: string) => void;
-}) {
-  const [isExiting, setIsExiting] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+### Usage
 
-  const dismiss = useCallback(() => {
-    setIsExiting(true);
-    setTimeout(() => onDismiss(toast.id), 300);
-  }, [toast.id, onDismiss]);
+```tsx
+import { toast } from "sonner";
 
-  useEffect(() => {
-    const duration = toast.duration ?? 5000;
-    if (duration > 0) {
-      timerRef.current = setTimeout(dismiss, duration);
-    }
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [toast.duration, dismiss]);
+// In your component:
+toast.success("Changes saved");
+toast.error("Something went wrong");
+toast.loading("Uploading...");
+toast("Event created", {
+  description: "Monday, January 3rd at 6:00 PM",
+  action: { label: "Undo", onClick: () => console.log("Undo") },
+});
+```
 
-  const handleMouseEnter = () => {
-    if (timerRef.current) clearTimeout(timerRef.current);
-  };
+---
 
-  const handleMouseLeave = () => {
-    const duration = toast.duration ?? 5000;
-    if (duration > 0) {
-      timerRef.current = setTimeout(dismiss, duration);
-    }
-  };
+## 6. Card (Compound Pattern)
 
-  const iconMap: Record<ToastVariant, string> = {
-    info: "\u2139\uFE0F",
-    success: "\u2714",
-    warning: "\u26A0",
-    error: "\u2718",
-  };
+```tsx
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
+const cardVariants = cva("rounded-lg border text-gray-900 dark:text-gray-50", {
+  variants: {
+    variant: {
+      default: "bg-white border-gray-200 shadow-sm dark:bg-gray-950 dark:border-gray-800",
+      outline: "bg-transparent border-gray-200 dark:border-gray-800",
+      ghost: "bg-transparent border-transparent shadow-none",
+      elevated: "bg-white border-transparent shadow-md dark:bg-gray-900",
+    },
+    interactive: {
+      true: "cursor-pointer motion-safe:transition-shadow hover:shadow-md dark:hover:shadow-gray-800/50",
+    },
+    padding: {
+      sm: "",
+      md: "",
+      lg: "",
+    },
+  },
+  defaultVariants: { variant: "default", padding: "md" },
+});
+
+const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof cardVariants>>(
+  ({ className, variant, interactive, padding, ...props }, ref) => (
+    <div ref={ref} className={cn(cardVariants({ variant, interactive, padding }), className)} {...props} />
+  )
+);
+Card.displayName = "Card";
+
+const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
+  )
+);
+CardHeader.displayName = "CardHeader";
+
+const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => (
+    <h3 ref={ref} className={cn("text-xl font-semibold leading-none tracking-tight", className)} {...props} />
+  )
+);
+CardTitle.displayName = "CardTitle";
+
+const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...props }, ref) => (
+    <p ref={ref} className={cn("text-sm text-gray-500 dark:text-gray-400", className)} {...props} />
+  )
+);
+CardDescription.displayName = "CardDescription";
+
+const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  )
+);
+CardContent.displayName = "CardContent";
+
+const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("flex items-center p-6 pt-0", className)} {...props} />
+  )
+);
+CardFooter.displayName = "CardFooter";
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+```
+
+---
+
+## 7. Badge
+
+```tsx
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { XIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const badgeVariants = cva(
+  "inline-flex items-center rounded-full border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:focus:ring-gray-300",
+  {
+    variants: {
+      variant: {
+        default: "border-transparent bg-gray-900 text-gray-50 dark:bg-gray-50 dark:text-gray-900",
+        secondary: "border-transparent bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50",
+        outline: "text-gray-900 dark:text-gray-50",
+        destructive: "border-transparent bg-red-500 text-white dark:bg-red-600",
+        success: "border-transparent bg-green-500 text-white dark:bg-green-600",
+        warning: "border-transparent bg-amber-500 text-white dark:bg-amber-600",
+      },
+      size: {
+        sm: "px-2 py-0.5 text-xs",
+        md: "px-2.5 py-0.5 text-xs",
+        lg: "px-3 py-1 text-sm",
+      },
+    },
+    defaultVariants: { variant: "default", size: "md" },
+  }
+);
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {
+  removable?: boolean;
+  onRemove?: () => void;
+  icon?: React.ReactNode;
+}
+
+function Badge({ className, variant, size, removable, onRemove, icon, children, ...props }: BadgeProps) {
   return (
-    <div
-      role="status"
-      className={`toast toast--${toast.variant} ${isExiting ? "toast--exiting" : ""}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <span className="toast__icon" aria-hidden="true">
-        {iconMap[toast.variant]}
-      </span>
-      <span className="toast__message">{toast.message}</span>
-      {toast.action && (
-        <button
-          className="toast__action"
-          onClick={() => {
-            toast.action?.onClick();
-            dismiss();
-          }}
-        >
-          {toast.action.label}
+    <div className={cn(badgeVariants({ variant, size }), "gap-1", className)} {...props}>
+      {icon}
+      {children}
+      {removable && (
+        <button onClick={onRemove} className="ml-0.5 rounded-full hover:bg-black/10 dark:hover:bg-white/10 p-0.5" aria-label="Remove">
+          <XIcon className="h-3 w-3" />
         </button>
       )}
-      <button
-        className="toast__dismiss"
-        onClick={dismiss}
-        aria-label="Dismiss notification"
-      >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-          <line x1="12" y1="4" x2="4" y2="12" />
-          <line x1="4" y1="4" x2="12" y2="12" />
-        </svg>
-      </button>
     </div>
   );
 }
 
-export { ToastProvider, useToast };
-export type { Toast, ToastVariant };
+export { Badge, badgeVariants };
 ```
 
-**CSS:**
+---
 
-```css
-.toast-container {
-  position: fixed;
-  bottom: var(--space-lg);
-  right: var(--space-lg);
-  z-index: var(--z-toast);
-  display: flex;
-  flex-direction: column-reverse;
-  gap: var(--space-sm);
-  max-width: 420px;
-}
+## 8. Avatar (Radix)
 
-.toast {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-elevated);
-  box-shadow: var(--shadow-lg);
-  border-left: 4px solid;
-  animation: toastIn var(--duration-normal) var(--easing-decelerate);
-}
-
-.toast--info { border-color: var(--color-info); }
-.toast--success { border-color: var(--color-success); }
-.toast--warning { border-color: var(--color-warning); }
-.toast--error { border-color: var(--color-error); }
-
-.toast--exiting { animation: toastOut 0.3s var(--easing-accelerate) forwards; }
-
-.toast__message { flex: 1; font-size: var(--font-size-sm); color: var(--color-on-surface); }
-.toast__action {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-primary);
-  font-size: var(--font-size-sm);
-  padding: var(--space-xxs) var(--space-xs);
-  border-radius: var(--radius-sm);
-}
-.toast__action:hover { background: var(--color-primary-subtle); }
-.toast__dismiss {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-text-secondary);
-  padding: var(--space-xxs);
-}
-
-@keyframes toastIn {
-  from { opacity: 0; transform: translateX(100%); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes toastOut {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(100%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .toast, .toast--exiting { animation-duration: 0.01ms; }
-}
-```
-
-**Usage:**
+**Dependencies:** `npm install @radix-ui/react-avatar`
 
 ```tsx
-function SaveButton() {
-  const { addToast } = useToast();
-  return (
-    <Button
-      onClick={() =>
-        addToast({
-          message: "Document saved successfully.",
-          variant: "success",
-          duration: 4000,
-          action: { label: "Undo", onClick: () => undoSave() },
-        })
-      }
+import * as React from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const avatarVariants = cva("relative flex shrink-0 overflow-hidden rounded-full", {
+  variants: {
+    size: {
+      xs: "h-6 w-6 text-xs",
+      sm: "h-8 w-8 text-xs",
+      md: "h-10 w-10 text-sm",
+      lg: "h-12 w-12 text-base",
+      xl: "h-16 w-16 text-lg",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+const Avatar = React.forwardRef<
+  React.ComponentRef<typeof AvatarPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & VariantProps<typeof avatarVariants>
+>(({ className, size, ...props }, ref) => (
+  <AvatarPrimitive.Root ref={ref} className={cn(avatarVariants({ size }), className)} {...props} />
+));
+Avatar.displayName = AvatarPrimitive.Root.displayName;
+
+const AvatarImage = React.forwardRef<
+  React.ComponentRef<typeof AvatarPrimitive.Image>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Image ref={ref} className={cn("aspect-square h-full w-full", className)} {...props} />
+));
+AvatarImage.displayName = AvatarPrimitive.Image.displayName;
+
+const AvatarFallback = React.forwardRef<
+  React.ComponentRef<typeof AvatarPrimitive.Fallback>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Fallback
+    ref={ref}
+    className={cn("flex h-full w-full items-center justify-center rounded-full bg-gray-100 font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300", className)}
+    {...props}
+  />
+));
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
+
+export { Avatar, AvatarImage, AvatarFallback };
+```
+
+### Usage
+
+```tsx
+<Avatar size="lg">
+  <AvatarImage src="/avatar.jpg" alt="John Doe" />
+  <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+```
+
+---
+
+## 9. Tooltip (Radix)
+
+**Dependencies:** `npm install @radix-ui/react-tooltip`
+
+```tsx
+import * as React from "react";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { cn } from "@/lib/utils";
+
+const TooltipProvider = TooltipPrimitive.Provider;
+const Tooltip = TooltipPrimitive.Root;
+const TooltipTrigger = TooltipPrimitive.Trigger;
+
+const TooltipContent = React.forwardRef<
+  React.ComponentRef<typeof TooltipPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+  <TooltipPrimitive.Content
+    ref={ref}
+    sideOffset={sideOffset}
+    className={cn(
+      "z-50 overflow-hidden rounded-md border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-900 shadow-md dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50",
+      "motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95",
+      "motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=closed]:zoom-out-95",
+      className
+    )}
+    {...props}
+  >
+    {props.children}
+    <TooltipPrimitive.Arrow className="fill-white dark:fill-gray-950" />
+  </TooltipPrimitive.Content>
+));
+TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
+```
+
+---
+
+## 10. Accordion (Radix)
+
+**Dependencies:** `npm install @radix-ui/react-accordion`
+
+```tsx
+import * as React from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const Accordion = AccordionPrimitive.Root;
+
+const AccordionItem = React.forwardRef<
+  React.ComponentRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item ref={ref} className={cn("border-b border-gray-200 dark:border-gray-800", className)} {...props} />
+));
+AccordionItem.displayName = "AccordionItem";
+
+const AccordionTrigger = React.forwardRef<
+  React.ComponentRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        className
+      )}
+      {...props}
     >
-      Save
-    </Button>
-  );
-}
+      {children}
+      <ChevronDownIcon className="h-4 w-4 shrink-0 motion-safe:transition-transform motion-safe:duration-200" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+));
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
+
+const AccordionContent = React.forwardRef<
+  React.ComponentRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm motion-safe:transition-all motion-safe:data-[state=closed]:animate-accordion-up motion-safe:data-[state=open]:animate-accordion-down"
+    {...props}
+  >
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+));
+AccordionContent.displayName = AccordionPrimitive.Content.displayName;
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
 ```
 
 ---
 
-## 6. Form
+## 11. Tabs (Radix)
 
-A form component with inline validation, field-level errors, form-level summary, and submission state management.
-
-```tsx
-import React, { useState, useCallback, FormEvent } from "react";
-
-interface FieldError {
-  field: string;
-  message: string;
-}
-
-type FormStatus = "idle" | "validating" | "submitting" | "success" | "error";
-
-interface FormProps {
-  /** Called with form data on valid submission */
-  onSubmit: (data: FormData) => Promise<void>;
-  /** Validation function returning array of errors */
-  validate?: (data: FormData) => FieldError[];
-  /** Content */
-  children: (context: FormContext) => React.ReactNode;
-  /** Reset after successful submission */
-  resetOnSuccess?: boolean;
-}
-
-interface FormContext {
-  status: FormStatus;
-  errors: FieldError[];
-  getFieldError: (fieldName: string) => string | undefined;
-  formError: string | null;
-}
-
-function Form({ onSubmit, validate, children, resetOnSuccess = false }: FormProps) {
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [errors, setErrors] = useState<FieldError[]>([]);
-  const [formError, setFormError] = useState<string | null>(null);
-
-  const getFieldError = useCallback(
-    (fieldName: string) => errors.find((e) => e.field === fieldName)?.message,
-    [errors]
-  );
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormError(null);
-
-    const formData = new FormData(e.currentTarget);
-    const formElement = e.currentTarget;
-
-    if (validate) {
-      setStatus("validating");
-      const validationErrors = validate(formData);
-      if (validationErrors.length > 0) {
-        setErrors(validationErrors);
-        setStatus("error");
-        const firstErrorField = formElement.querySelector(
-          `[name="${validationErrors[0].field}"]`
-        ) as HTMLElement | null;
-        firstErrorField?.focus();
-        return;
-      }
-    }
-
-    setErrors([]);
-    setStatus("submitting");
-
-    try {
-      await onSubmit(formData);
-      setStatus("success");
-      if (resetOnSuccess) {
-        formElement.reset();
-      }
-    } catch (err) {
-      setStatus("error");
-      setFormError(
-        err instanceof Error ? err.message : "An unexpected error occurred."
-      );
-    }
-  };
-
-  const context: FormContext = { status, errors, getFieldError, formError };
-
-  return (
-    <form onSubmit={handleSubmit} noValidate className="form">
-      {errors.length > 0 && (
-        <div
-          className="form__error-summary"
-          role="alert"
-          aria-label="Form errors"
-        >
-          <p className="form__error-summary-title">
-            Please fix the following {errors.length} error{errors.length > 1 ? "s" : ""}:
-          </p>
-          <ul className="form__error-list">
-            {errors.map((err) => (
-              <li key={err.field}>
-                <a href={`#${err.field}`} className="form__error-link">
-                  {err.message}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {formError && (
-        <div className="form__error-banner" role="alert">
-          {formError}
-        </div>
-      )}
-      {status === "success" && (
-        <div className="form__success-banner" role="status">
-          Form submitted successfully.
-        </div>
-      )}
-      <fieldset disabled={status === "submitting"} className="form__fieldset">
-        {children(context)}
-      </fieldset>
-    </form>
-  );
-}
-
-export { Form };
-export type { FormProps, FormContext, FieldError, FormStatus };
-```
-
-**Usage:**
+**Dependencies:** `npm install @radix-ui/react-tabs`
 
 ```tsx
-<Form
-  onSubmit={async (data) => {
-    await api.createUser({
-      name: data.get("name") as string,
-      email: data.get("email") as string,
-    });
-  }}
-  validate={(data) => {
-    const errors: FieldError[] = [];
-    if (!data.get("name")) errors.push({ field: "name", message: "Name is required" });
-    const email = data.get("email") as string;
-    if (!email) errors.push({ field: "email", message: "Email is required" });
-    else if (!email.includes("@")) errors.push({ field: "email", message: "Enter a valid email" });
-    return errors;
-  }}
->
-  {({ status, getFieldError }) => (
-    <>
-      <TextInput name="name" label="Full Name" errorMessage={getFieldError("name")} />
-      <TextInput name="email" label="Email" type="email" errorMessage={getFieldError("email")} />
-      <Button type="submit" isLoading={status === "submitting"}>
-        Create Account
-      </Button>
-    </>
-  )}
-</Form>
+import * as React from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cn } from "@/lib/utils";
+
+const Tabs = TabsPrimitive.Root;
+
+const TabsList = React.forwardRef<
+  React.ComponentRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    className={cn(
+      "inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500 dark:bg-gray-800 dark:text-gray-400",
+      className
+    )}
+    {...props}
+  />
+));
+TabsList.displayName = TabsPrimitive.List.displayName;
+
+const TabsTrigger = React.forwardRef<
+  React.ComponentRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-white data-[state=active]:text-gray-900 data-[state=active]:shadow-sm dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300 dark:data-[state=active]:bg-gray-950 dark:data-[state=active]:text-gray-50",
+      className
+    )}
+    {...props}
+  />
+));
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+
+const TabsContent = React.forwardRef<
+  React.ComponentRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Content
+    ref={ref}
+    className={cn(
+      "mt-2 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300",
+      className
+    )}
+    {...props}
+  />
+));
+TabsContent.displayName = TabsPrimitive.Content.displayName;
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };
 ```
 
 ---
 
-## 7. EmptyState
-
-A flexible empty state with illustration slot, primary/secondary actions, and type presets.
+## 12. Skeleton
 
 ```tsx
-import React from "react";
+import { cn } from "@/lib/utils";
 
-type EmptyStateType = "no-data" | "no-results" | "error" | "first-use";
-
-interface EmptyStateProps {
-  /** Type determines default icon and messaging tone */
-  type?: EmptyStateType;
-  /** Custom illustration or icon */
-  illustration?: React.ReactNode;
-  /** Heading text */
-  title: string;
-  /** Descriptive body text */
-  description?: string;
-  /** Primary CTA */
-  primaryAction?: { label: string; onClick: () => void };
-  /** Secondary CTA */
-  secondaryAction?: { label: string; onClick: () => void };
-}
-
-const defaultIllustrations: Record<EmptyStateType, React.ReactNode> = {
-  "no-data": (
-    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <rect x="20" y="30" width="80" height="60" rx="8" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-      <circle cx="60" cy="60" r="12" stroke="currentColor" strokeWidth="2" />
-      <line x1="54" y1="60" x2="66" y2="60" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  ),
-  "no-results": (
-    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <circle cx="52" cy="52" r="24" stroke="currentColor" strokeWidth="2" />
-      <line x1="70" y1="70" x2="92" y2="92" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <line x1="44" y1="52" x2="60" y2="52" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  ),
-  error: (
-    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <circle cx="60" cy="60" r="32" stroke="currentColor" strokeWidth="2" />
-      <line x1="60" y1="44" x2="60" y2="64" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="60" cy="74" r="2" fill="currentColor" />
-    </svg>
-  ),
-  "first-use": (
-    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <rect x="30" y="20" width="60" height="80" rx="8" stroke="currentColor" strokeWidth="2" />
-      <line x1="44" y1="44" x2="76" y2="44" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <line x1="44" y1="56" x2="68" y2="56" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="60" cy="78" r="8" stroke="currentColor" strokeWidth="2" />
-      <line x1="60" y1="74" x2="60" y2="82" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <line x1="56" y1="78" x2="64" y2="78" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  ),
-};
-
-function EmptyState({
-  type = "no-data",
-  illustration,
-  title,
-  description,
-  primaryAction,
-  secondaryAction,
-}: EmptyStateProps) {
-  return (
-    <div className="empty-state" role="status">
-      <div className="empty-state__illustration">
-        {illustration ?? defaultIllustrations[type]}
-      </div>
-      <h3 className="empty-state__title">{title}</h3>
-      {description && (
-        <p className="empty-state__description">{description}</p>
-      )}
-      {(primaryAction || secondaryAction) && (
-        <div className="empty-state__actions">
-          {primaryAction && (
-            <button
-              className="btn btn--primary btn--md"
-              onClick={primaryAction.onClick}
-            >
-              {primaryAction.label}
-            </button>
-          )}
-          {secondaryAction && (
-            <button
-              className="btn btn--ghost btn--md"
-              onClick={secondaryAction.onClick}
-            >
-              {secondaryAction.label}
-            </button>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-export { EmptyState };
-export type { EmptyStateProps, EmptyStateType };
-```
-
-**CSS:**
-
-```css
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-2xl) var(--space-lg);
-  color: var(--color-text-secondary);
-}
-
-.empty-state__illustration { margin-bottom: var(--space-lg); opacity: 0.5; }
-.empty-state__title { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); color: var(--color-on-surface); margin: 0 0 var(--space-xs); }
-.empty-state__description { font-size: var(--font-size-base); max-width: 360px; margin: 0 0 var(--space-lg); line-height: var(--line-height-relaxed); }
-.empty-state__actions { display: flex; gap: var(--space-sm); }
-```
-
-**Usage:**
-
-```tsx
-<EmptyState
-  type="no-results"
-  title="No matching results"
-  description="Try adjusting your search terms or clearing filters."
-  primaryAction={{ label: "Clear Filters", onClick: clearFilters }}
-  secondaryAction={{ label: "New Search", onClick: openSearch }}
-/>
-```
-
----
-
-## 8. Skeleton
-
-Composable skeleton primitives with pulse and shimmer variants for building loading screens.
-
-```tsx
-import React from "react";
-
-interface SkeletonProps {
-  /** Width (CSS value) */
-  width?: string;
-  /** Height (CSS value) */
-  height?: string;
-  /** Border radius variant */
-  variant?: "text" | "circular" | "rectangular" | "rounded";
-  /** Animation style */
-  animation?: "pulse" | "shimmer" | "none";
-  /** Additional class */
-  className?: string;
-}
-
-function Skeleton({
-  width,
-  height,
-  variant = "text",
-  animation = "pulse",
-  className,
-}: SkeletonProps) {
-  const variantStyles: Record<string, React.CSSProperties> = {
-    text: { borderRadius: "var(--radius-sm)", height: height ?? "1em", width: width ?? "100%" },
-    circular: { borderRadius: "50%", width: width ?? "40px", height: height ?? width ?? "40px" },
-    rectangular: { borderRadius: "0", width: width ?? "100%", height: height ?? "120px" },
-    rounded: { borderRadius: "var(--radius-md)", width: width ?? "100%", height: height ?? "120px" },
-  };
-
+function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`skeleton skeleton--${animation} ${className ?? ""}`}
-      style={variantStyles[variant]}
-      role="presentation"
+      className={cn("animate-pulse rounded-md bg-gray-200 dark:bg-gray-800 motion-reduce:animate-none motion-reduce:opacity-70", className)}
       aria-hidden="true"
+      {...props}
     />
   );
 }
 
-function SkeletonGroup({
-  children,
-  isLoading,
-  fallback,
-}: {
-  children: React.ReactNode;
-  isLoading: boolean;
-  fallback: React.ReactNode;
-}) {
-  if (isLoading) {
-    return (
-      <div aria-busy="true" aria-label="Loading content">
-        {fallback}
-      </div>
-    );
-  }
-  return <>{children}</>;
-}
-
-export { Skeleton, SkeletonGroup };
-export type { SkeletonProps };
-```
-
-**CSS:**
-
-```css
-.skeleton {
-  background: var(--color-surface-hover);
-  position: relative;
-  overflow: hidden;
-}
-
-.skeleton--pulse {
-  animation: skeletonPulse 1.8s ease-in-out infinite;
-}
-
-.skeleton--shimmer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-surface-elevated) 50%,
-    transparent 100%
-  );
-  animation: skeletonShimmer 1.8s ease-in-out infinite;
-}
-
-@keyframes skeletonPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes skeletonShimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skeleton--pulse { animation: none; opacity: 0.6; }
-  .skeleton--shimmer::after { animation: none; display: none; }
-}
-```
-
-**Usage:**
-
-```tsx
-<SkeletonGroup isLoading={isLoading} fallback={
-  <div style={{ display: "flex", gap: "var(--space-md)", alignItems: "center" }}>
-    <Skeleton variant="circular" width="48px" />
-    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "var(--space-xs)" }}>
-      <Skeleton variant="text" width="60%" />
-      <Skeleton variant="text" width="80%" />
+function SkeletonText({ lines = 3, className }: { lines?: number; className?: string }) {
+  return (
+    <div className={cn("space-y-2", className)}>
+      {Array.from({ length: lines }).map((_, i) => (
+        <Skeleton key={i} className={cn("h-4", i === lines - 1 ? "w-3/4" : "w-full")} />
+      ))}
     </div>
-  </div>
-}>
-  <UserProfile user={user} />
-</SkeletonGroup>
+  );
+}
+
+function SkeletonAvatar({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const sizes = { sm: "h-8 w-8", md: "h-10 w-10", lg: "h-12 w-12" };
+  return <Skeleton className={cn("rounded-full", sizes[size])} />;
+}
+
+function SkeletonCard() {
+  return (
+    <div className="rounded-lg border border-gray-200 dark:border-gray-800 p-6 space-y-4">
+      <div className="flex items-center gap-3">
+        <SkeletonAvatar />
+        <div className="space-y-2 flex-1">
+          <Skeleton className="h-4 w-1/3" />
+          <Skeleton className="h-3 w-1/4" />
+        </div>
+      </div>
+      <SkeletonText lines={2} />
+      <Skeleton className="h-8 w-24" />
+    </div>
+  );
+}
+
+export { Skeleton, SkeletonText, SkeletonAvatar, SkeletonCard };
 ```
 
 ---
 
-## 9. DataTable
-
-A sortable, paginated data table with row selection, responsive collapse, and loading/empty states.
+## 13. EmptyState
 
 ```tsx
-import React, { useState, useMemo, useId } from "react";
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { Button } from "./button";
 
-interface Column<T> {
-  key: string;
-  header: string;
-  render?: (row: T) => React.ReactNode;
-  sortable?: boolean;
-  width?: string;
+const emptyStateVariants = cva("flex flex-col items-center justify-center text-center", {
+  variants: {
+    size: {
+      sm: "py-8 gap-2",
+      md: "py-16 gap-3",
+      lg: "py-24 gap-4",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+interface EmptyStateProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof emptyStateVariants> {
+  icon?: React.ReactNode;
+  title: string;
+  description?: string;
+  action?: { label: string; onClick: () => void };
 }
 
-type SortDirection = "asc" | "desc" | null;
-
-interface DataTableProps<T> {
-  columns: Column<T>[];
-  data: T[];
-  /** Unique key extractor for each row */
-  rowKey: (row: T) => string;
-  /** Enable row selection */
-  selectable?: boolean;
-  /** Controlled selected row keys */
-  selectedKeys?: Set<string>;
-  /** Selection change handler */
-  onSelectionChange?: (keys: Set<string>) => void;
-  /** Rows per page (0 = no pagination) */
-  pageSize?: number;
-  /** Loading state */
-  isLoading?: boolean;
-  /** Custom empty state */
-  emptyContent?: React.ReactNode;
-  /** Accessible table caption */
-  caption?: string;
-}
-
-function DataTable<T extends Record<string, unknown>>({
-  columns,
-  data,
-  rowKey,
-  selectable = false,
-  selectedKeys = new Set(),
-  onSelectionChange,
-  pageSize = 10,
-  isLoading = false,
-  emptyContent,
-  caption,
-}: DataTableProps<T>) {
-  const id = useId();
-  const [sortKey, setSortKey] = useState<string | null>(null);
-  const [sortDir, setSortDir] = useState<SortDirection>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const sorted = useMemo(() => {
-    if (!sortKey || !sortDir) return data;
-    return [...data].sort((a, b) => {
-      const aVal = a[sortKey];
-      const bVal = b[sortKey];
-      if (aVal == null) return 1;
-      if (bVal == null) return -1;
-      const cmp = String(aVal).localeCompare(String(bVal), undefined, { numeric: true });
-      return sortDir === "asc" ? cmp : -cmp;
-    });
-  }, [data, sortKey, sortDir]);
-
-  const totalPages = pageSize > 0 ? Math.max(1, Math.ceil(sorted.length / pageSize)) : 1;
-  const paginated = pageSize > 0 ? sorted.slice((currentPage - 1) * pageSize, currentPage * pageSize) : sorted;
-
-  const handleSort = (key: string) => {
-    if (sortKey === key) {
-      setSortDir((prev) => (prev === "asc" ? "desc" : prev === "desc" ? null : "asc"));
-      if (sortDir === "desc") setSortKey(null);
-    } else {
-      setSortKey(key);
-      setSortDir("asc");
-    }
-    setCurrentPage(1);
-  };
-
-  const allSelected = paginated.length > 0 && paginated.every((row) => selectedKeys.has(rowKey(row)));
-
-  const toggleAll = () => {
-    if (!onSelectionChange) return;
-    if (allSelected) {
-      const next = new Set(selectedKeys);
-      paginated.forEach((row) => next.delete(rowKey(row)));
-      onSelectionChange(next);
-    } else {
-      const next = new Set(selectedKeys);
-      paginated.forEach((row) => next.add(rowKey(row)));
-      onSelectionChange(next);
-    }
-  };
-
-  const toggleRow = (key: string) => {
-    if (!onSelectionChange) return;
-    const next = new Set(selectedKeys);
-    if (next.has(key)) next.delete(key);
-    else next.add(key);
-    onSelectionChange(next);
-  };
-
-  const getSortLabel = (key: string) => {
-    if (sortKey !== key || !sortDir) return "Sort";
-    return sortDir === "asc" ? "Sorted ascending" : "Sorted descending";
-  };
-
+export function EmptyState({ icon, title, description, action, size, className, ...props }: EmptyStateProps) {
   return (
-    <div className="data-table-wrapper" aria-busy={isLoading}>
-      <table className="data-table" role="table">
-        {caption && <caption className="data-table__caption">{caption}</caption>}
-        <thead>
-          <tr>
-            {selectable && (
-              <th className="data-table__th data-table__th--checkbox" scope="col">
-                <input
-                  type="checkbox"
-                  checked={allSelected}
-                  onChange={toggleAll}
-                  aria-label="Select all rows"
-                />
-              </th>
-            )}
-            {columns.map((col) => (
-              <th
-                key={col.key}
-                className={`data-table__th ${col.sortable ? "data-table__th--sortable" : ""}`}
-                scope="col"
-                style={col.width ? { width: col.width } : undefined}
-                aria-sort={
-                  sortKey === col.key && sortDir
-                    ? sortDir === "asc"
-                      ? "ascending"
-                      : "descending"
-                    : undefined
-                }
-              >
-                {col.sortable ? (
-                  <button
-                    className="data-table__sort-btn"
-                    onClick={() => handleSort(col.key)}
-                    aria-label={`${col.header}, ${getSortLabel(col.key)}`}
-                  >
-                    {col.header}
-                    <span className="data-table__sort-icon" aria-hidden="true">
-                      {sortKey === col.key && sortDir === "asc" && "\u25B2"}
-                      {sortKey === col.key && sortDir === "desc" && "\u25BC"}
-                      {(sortKey !== col.key || !sortDir) && "\u25B4\u25BE"}
-                    </span>
-                  </button>
-                ) : (
-                  col.header
-                )}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {isLoading &&
-            Array.from({ length: pageSize || 5 }).map((_, i) => (
-              <tr key={`skel-${i}`} className="data-table__row data-table__row--skeleton">
-                {selectable && (
-                  <td className="data-table__td">
-                    <div className="skeleton skeleton--pulse" style={{ width: 16, height: 16 }} />
-                  </td>
-                )}
-                {columns.map((col) => (
-                  <td key={col.key} className="data-table__td">
-                    <div className="skeleton skeleton--pulse" style={{ width: "80%", height: "1em" }} />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          {!isLoading && paginated.length === 0 && (
-            <tr>
-              <td colSpan={columns.length + (selectable ? 1 : 0)} className="data-table__empty">
-                {emptyContent ?? "No data to display."}
-              </td>
-            </tr>
-          )}
-          {!isLoading &&
-            paginated.map((row) => {
-              const key = rowKey(row);
-              const isSelected = selectedKeys.has(key);
-              return (
-                <tr
-                  key={key}
-                  className={`data-table__row ${isSelected ? "data-table__row--selected" : ""}`}
-                  aria-selected={selectable ? isSelected : undefined}
-                >
-                  {selectable && (
-                    <td className="data-table__td data-table__td--checkbox">
-                      <input
-                        type="checkbox"
-                        checked={isSelected}
-                        onChange={() => toggleRow(key)}
-                        aria-label={`Select row ${key}`}
-                      />
-                    </td>
-                  )}
-                  {columns.map((col) => (
-                    <td key={col.key} className="data-table__td" data-label={col.header}>
-                      {col.render ? col.render(row) : String(row[col.key] ?? "")}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
-      {pageSize > 0 && totalPages > 1 && (
-        <nav className="data-table__pagination" aria-label="Table pagination">
-          <button
-            className="data-table__page-btn"
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((p) => p - 1)}
-            aria-label="Previous page"
-          >
-            Previous
-          </button>
-          <span className="data-table__page-info">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="data-table__page-btn"
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((p) => p + 1)}
-            aria-label="Next page"
-          >
-            Next
-          </button>
-        </nav>
+    <div className={cn(emptyStateVariants({ size }), className)} {...props}>
+      {icon && <div className="text-gray-400 dark:text-gray-500 mb-2">{icon}</div>}
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
+      {description && <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm">{description}</p>}
+      {action && (
+        <Button variant="primary" size="sm" onClick={action.onClick} className="mt-2">
+          {action.label}
+        </Button>
       )}
     </div>
   );
 }
-
-export { DataTable };
-export type { DataTableProps, Column };
-```
-
-**Usage:**
-
-```tsx
-<DataTable
-  caption="Team members"
-  columns={[
-    { key: "name", header: "Name", sortable: true },
-    { key: "email", header: "Email", sortable: true },
-    { key: "role", header: "Role", sortable: true, render: (row) => <Badge>{row.role}</Badge> },
-  ]}
-  data={users}
-  rowKey={(row) => row.id}
-  selectable
-  selectedKeys={selected}
-  onSelectionChange={setSelected}
-  pageSize={20}
-  isLoading={isLoading}
-/>
 ```
 
 ---
 
-## 10. Accordion
+## 14. DropdownMenu (Radix)
 
-An accordion with single/multi expand modes, keyboard navigation, and animated height transitions.
+**Dependencies:** `npm install @radix-ui/react-dropdown-menu`
 
 ```tsx
-import React, { useState, useRef, useEffect, useId } from "react";
+import * as React from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-interface AccordionItem {
-  id: string;
-  title: string;
-  content: React.ReactNode;
-  disabled?: boolean;
-}
+const DropdownMenu = DropdownMenuPrimitive.Root;
+const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
-interface AccordionProps {
-  items: AccordionItem[];
-  /** Allow multiple panels open simultaneously */
-  multiple?: boolean;
-  /** Controlled open item IDs */
-  openIds?: string[];
-  /** Change handler */
-  onToggle?: (openIds: string[]) => void;
-}
+const DropdownMenuContent = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-md dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50",
+        "motion-safe:data-[state=open]:animate-in motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=open]:fade-in-0 motion-safe:data-[state=closed]:zoom-out-95 motion-safe:data-[state=open]:zoom-in-95",
+        className
+      )}
+      {...props}
+    />
+  </DropdownMenuPrimitive.Portal>
+));
+DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
-function Accordion({ items, multiple = false, openIds: controlledIds, onToggle }: AccordionProps) {
-  const [internalIds, setInternalIds] = useState<string[]>([]);
-  const openIds = controlledIds ?? internalIds;
-  const baseId = useId();
+const DropdownMenuItem = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & { shortcut?: string }
+>(({ className, shortcut, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-gray-100 focus:text-gray-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-gray-800 dark:focus:text-gray-50",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    {shortcut && <span className="ml-auto text-xs tracking-widest text-gray-400">{shortcut}</span>}
+  </DropdownMenuPrimitive.Item>
+));
+DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
-  const toggle = (id: string) => {
-    let next: string[];
-    if (openIds.includes(id)) {
-      next = openIds.filter((i) => i !== id);
-    } else {
-      next = multiple ? [...openIds, id] : [id];
-    }
-    if (onToggle) onToggle(next);
-    else setInternalIds(next);
-  };
+const DropdownMenuCheckboxItem = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.CheckboxItem>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
+>(({ className, children, checked, ...props }, ref) => (
+  <DropdownMenuPrimitive.CheckboxItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-gray-100 dark:focus:bg-gray-800",
+      className
+    )}
+    checked={checked}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <DropdownMenuPrimitive.ItemIndicator><CheckIcon className="h-4 w-4" /></DropdownMenuPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </DropdownMenuPrimitive.CheckboxItem>
+));
+DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
-    const enabledItems = items.filter((i) => !i.disabled);
-    const currentEnabledIndex = enabledItems.findIndex((i) => i.id === items[index].id);
+const DropdownMenuSeparator = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-gray-100 dark:bg-gray-800", className)} {...props} />
+));
+DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 
-    let targetIndex = -1;
-    switch (e.key) {
-      case "ArrowDown":
-        e.preventDefault();
-        targetIndex = (currentEnabledIndex + 1) % enabledItems.length;
-        break;
-      case "ArrowUp":
-        e.preventDefault();
-        targetIndex = (currentEnabledIndex - 1 + enabledItems.length) % enabledItems.length;
-        break;
-      case "Home":
-        e.preventDefault();
-        targetIndex = 0;
-        break;
-      case "End":
-        e.preventDefault();
-        targetIndex = enabledItems.length - 1;
-        break;
-      default:
-        return;
-    }
+const DropdownMenuLabel = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Label ref={ref} className={cn("px-2 py-1.5 text-sm font-semibold", className)} {...props} />
+));
+DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
 
-    const targetId = enabledItems[targetIndex]?.id;
-    if (targetId) {
-      const btn = document.getElementById(`${baseId}-trigger-${targetId}`);
-      btn?.focus();
-    }
-  };
+const DropdownMenuSubTrigger = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.SubTrigger>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger>
+>(({ className, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubTrigger
+    ref={ref}
+    className={cn("flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-gray-100 dark:focus:bg-gray-800", className)}
+    {...props}
+  >
+    {children}
+    <ChevronRightIcon className="ml-auto h-4 w-4" />
+  </DropdownMenuPrimitive.SubTrigger>
+));
+DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
 
-  return (
-    <div className="accordion" role="presentation">
-      {items.map((item, index) => {
-        const isOpen = openIds.includes(item.id);
-        const triggerId = `${baseId}-trigger-${item.id}`;
-        const panelId = `${baseId}-panel-${item.id}`;
+const DropdownMenuSubContent = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.SubContent>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubContent
+    ref={ref}
+    className={cn(
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white p-1 text-gray-900 shadow-lg dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50",
+      className
+    )}
+    {...props}
+  />
+));
+DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName;
 
-        return (
-          <div
-            key={item.id}
-            className={`accordion__item ${isOpen ? "accordion__item--open" : ""} ${item.disabled ? "accordion__item--disabled" : ""}`}
-          >
-            <h3 className="accordion__heading">
-              <button
-                id={triggerId}
-                className="accordion__trigger"
-                onClick={() => !item.disabled && toggle(item.id)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-                aria-expanded={isOpen}
-                aria-controls={panelId}
-                aria-disabled={item.disabled}
-                disabled={item.disabled}
-              >
-                <span className="accordion__title">{item.title}</span>
-                <span className="accordion__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <polyline points="4,6 8,10 12,6" />
-                  </svg>
-                </span>
-              </button>
-            </h3>
-            <AccordionPanel id={panelId} labelledBy={triggerId} isOpen={isOpen}>
-              {item.content}
-            </AccordionPanel>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+export {
+  DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem,
+  DropdownMenuCheckboxItem, DropdownMenuSeparator, DropdownMenuLabel,
+  DropdownMenuGroup, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent,
+};
+```
 
-function AccordionPanel({
-  id,
-  labelledBy,
-  isOpen,
-  children,
-}: {
-  id: string;
-  labelledBy: string;
-  isOpen: boolean;
-  children: React.ReactNode;
-}) {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number | "auto">(isOpen ? "auto" : 0);
+---
 
-  useEffect(() => {
-    if (!contentRef.current) return;
-    if (isOpen) {
-      const measuredHeight = contentRef.current.scrollHeight;
-      setHeight(measuredHeight);
-      const timer = setTimeout(() => setHeight("auto"), 300);
-      return () => clearTimeout(timer);
-    } else {
-      const measuredHeight = contentRef.current.scrollHeight;
-      setHeight(measuredHeight);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setHeight(0));
-      });
-    }
-  }, [isOpen]);
+## 15. Switch (Radix)
 
-  return (
-    <div
-      id={id}
-      role="region"
-      aria-labelledby={labelledBy}
-      className="accordion__panel"
-      style={{
-        height: typeof height === "number" ? `${height}px` : height,
-        overflow: "hidden",
-        transition: "height var(--duration-normal) var(--easing-standard)",
-      }}
-      hidden={!isOpen && height === 0}
+**Dependencies:** `npm install @radix-ui/react-switch`
+
+```tsx
+import * as React from "react";
+import * as SwitchPrimitives from "@radix-ui/react-switch";
+import { cn } from "@/lib/utils";
+
+const Switch = React.forwardRef<
+  React.ComponentRef<typeof SwitchPrimitives.Root>,
+  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
+>(({ className, ...props }, ref) => (
+  <SwitchPrimitives.Root
+    className={cn(
+      "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-gray-900 data-[state=unchecked]:bg-gray-200 dark:focus-visible:ring-gray-300 dark:focus-visible:ring-offset-gray-950 dark:data-[state=checked]:bg-gray-50 dark:data-[state=unchecked]:bg-gray-800",
+      className
+    )}
+    {...props}
+    ref={ref}
+  >
+    <SwitchPrimitives.Thumb
+      className={cn(
+        "pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 motion-safe:transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0 dark:bg-gray-950 dark:data-[state=checked]:bg-gray-900"
+      )}
+    />
+  </SwitchPrimitives.Root>
+));
+Switch.displayName = SwitchPrimitives.Root.displayName;
+
+export { Switch };
+```
+
+### Usage
+
+```tsx
+<div className="flex items-center gap-2">
+  <Switch id="notifications" />
+  <label htmlFor="notifications" className="text-sm">Enable notifications</label>
+</div>
+```
+
+---
+
+## 16. Popover (Radix)
+
+**Dependencies:** `npm install @radix-ui/react-popover`
+
+```tsx
+import * as React from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { cn } from "@/lib/utils";
+
+const Popover = PopoverPrimitive.Root;
+const PopoverTrigger = PopoverPrimitive.Trigger;
+
+const PopoverContent = React.forwardRef<
+  React.ComponentRef<typeof PopoverPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+>(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+  <PopoverPrimitive.Portal>
+    <PopoverPrimitive.Content
+      ref={ref}
+      align={align}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 w-72 rounded-md border border-gray-200 bg-white p-4 text-gray-900 shadow-md outline-none dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50",
+        "motion-safe:data-[state=open]:animate-in motion-safe:data-[state=closed]:animate-out motion-safe:data-[state=closed]:fade-out-0 motion-safe:data-[state=open]:fade-in-0 motion-safe:data-[state=closed]:zoom-out-95 motion-safe:data-[state=open]:zoom-in-95",
+        className
+      )}
+      {...props}
     >
-      <div ref={contentRef} className="accordion__content">
-        {children}
-      </div>
-    </div>
-  );
-}
+      {props.children}
+      <PopoverPrimitive.Arrow className="fill-white dark:fill-gray-950" />
+    </PopoverPrimitive.Content>
+  </PopoverPrimitive.Portal>
+));
+PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
-export { Accordion };
-export type { AccordionProps, AccordionItem };
-```
-
-**Usage:**
-
-```tsx
-<Accordion
-  multiple
-  items={[
-    { id: "shipping", title: "Shipping Information", content: <ShippingDetails /> },
-    { id: "payment", title: "Payment Methods", content: <PaymentOptions /> },
-    { id: "returns", title: "Returns & Exchanges", content: <ReturnsPolicy /> },
-  ]}
-/>
+export { Popover, PopoverTrigger, PopoverContent };
 ```
 
 ---
 
-## 11. Tabs
+## 17. Command Palette (cmdk)
 
-Keyboard-navigable tabs with arrow key movement, lazy panel rendering, and overflow scroll.
+**Dependencies:** `npm install cmdk`
 
 ```tsx
-import React, { useState, useRef, useId } from "react";
+import * as React from "react";
+import { Command as CommandPrimitive } from "cmdk";
+import { SearchIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Dialog, DialogContent } from "./dialog";
 
-interface TabItem {
-  id: string;
-  label: string;
-  content: React.ReactNode;
-  disabled?: boolean;
-  icon?: React.ReactNode;
+const Command = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive
+    ref={ref}
+    className={cn(
+      "flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-50",
+      className
+    )}
+    {...props}
+  />
+));
+Command.displayName = "Command";
+
+function CommandDialog({ children, ...props }: React.ComponentProps<typeof Dialog>) {
+  return (
+    <Dialog {...props}>
+      <DialogContent className="overflow-hidden p-0 shadow-lg">
+        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-gray-500 dark:[&_[cmdk-group-heading]]:text-gray-400 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3">
+          {children}
+        </Command>
+      </DialogContent>
+    </Dialog>
+  );
 }
 
-interface TabsProps {
-  tabs: TabItem[];
-  /** Controlled active tab */
-  activeId?: string;
-  /** Change handler */
-  onChange?: (id: string) => void;
-  /** Only render active panel content */
-  lazy?: boolean;
-  /** Visual variant */
-  variant?: "underline" | "pills" | "enclosed";
+const CommandInput = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.Input>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
+>(({ className, ...props }, ref) => (
+  <div className="flex items-center border-b border-gray-200 px-3 dark:border-gray-800" cmdk-input-wrapper="">
+    <SearchIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+    <CommandPrimitive.Input
+      ref={ref}
+      className={cn(
+        "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 dark:placeholder:text-gray-500",
+        className
+      )}
+      {...props}
+    />
+  </div>
+));
+CommandInput.displayName = CommandPrimitive.Input.displayName;
+
+const CommandList = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.List ref={ref} className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)} {...props} />
+));
+CommandList.displayName = CommandPrimitive.List.displayName;
+
+const CommandEmpty = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.Empty>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
+>((props, ref) => (
+  <CommandPrimitive.Empty ref={ref} className="py-6 text-center text-sm text-gray-500" {...props} />
+));
+CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
+
+const CommandGroup = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.Group>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Group
+    ref={ref}
+    className={cn("overflow-hidden p-1 text-gray-900 dark:text-gray-50 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-gray-500", className)}
+    {...props}
+  />
+));
+CommandGroup.displayName = CommandPrimitive.Group.displayName;
+
+const CommandItem = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[selected=true]:bg-gray-100 data-[selected=true]:text-gray-900 dark:data-[selected=true]:bg-gray-800 dark:data-[selected=true]:text-gray-50",
+      className
+    )}
+    {...props}
+  />
+));
+CommandItem.displayName = CommandPrimitive.Item.displayName;
+
+const CommandSeparator = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <CommandPrimitive.Separator ref={ref} className={cn("-mx-1 h-px bg-gray-200 dark:bg-gray-800", className)} {...props} />
+));
+CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
+
+export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator };
+```
+
+---
+
+## 18. Sheet/Drawer (Vaul)
+
+**Dependencies:** `npm install vaul`
+
+```tsx
+import * as React from "react";
+import { Drawer as DrawerPrimitive } from "vaul";
+import { cn } from "@/lib/utils";
+
+const Drawer = ({ shouldScaleBackground = true, ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
+  <DrawerPrimitive.Root shouldScaleBackground={shouldScaleBackground} {...props} />
+);
+Drawer.displayName = "Drawer";
+
+const DrawerTrigger = DrawerPrimitive.Trigger;
+const DrawerPortal = DrawerPrimitive.Portal;
+const DrawerClose = DrawerPrimitive.Close;
+
+const DrawerOverlay = React.forwardRef<
+  React.ComponentRef<typeof DrawerPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <DrawerPrimitive.Overlay ref={ref} className={cn("fixed inset-0 z-50 bg-black/50", className)} {...props} />
+));
+DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
+
+const DrawerContent = React.forwardRef<
+  React.ComponentRef<typeof DrawerPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DrawerPortal>
+    <DrawerOverlay />
+    <DrawerPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950",
+        className
+      )}
+      {...props}
+    >
+      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-gray-200 dark:bg-gray-700" />
+      {children}
+    </DrawerPrimitive.Content>
+  </DrawerPortal>
+));
+DrawerContent.displayName = "DrawerContent";
+
+const DrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)} {...props} />
+);
+
+const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("mt-auto flex flex-col gap-2 p-4", className)} {...props} />
+);
+
+const DrawerTitle = React.forwardRef<
+  React.ComponentRef<typeof DrawerPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <DrawerPrimitive.Title ref={ref} className={cn("text-lg font-semibold leading-none tracking-tight", className)} {...props} />
+));
+DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
+
+const DrawerDescription = React.forwardRef<
+  React.ComponentRef<typeof DrawerPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <DrawerPrimitive.Description ref={ref} className={cn("text-sm text-gray-500 dark:text-gray-400", className)} {...props} />
+));
+DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
+
+export { Drawer, DrawerPortal, DrawerOverlay, DrawerTrigger, DrawerClose, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription };
+```
+
+---
+
+## 19. Form (React Hook Form + Zod)
+
+**Dependencies:** `npm install react-hook-form @hookform/resolvers zod`
+
+```tsx
+import * as React from "react";
+import { useForm, type UseFormReturn, type FieldValues, type FieldPath, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { cn } from "@/lib/utils";
+
+// Form context
+type FormFieldContextValue<TFieldValues extends FieldValues = FieldValues> = {
+  name: FieldPath<TFieldValues>;
+};
+
+const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue);
+const FormItemContext = React.createContext<{ id: string }>({} as { id: string });
+
+function FormField<TFieldValues extends FieldValues>({
+  ...props
+}: React.ComponentProps<typeof Controller<TFieldValues>>) {
+  return (
+    <FormFieldContext.Provider value={{ name: props.name }}>
+      <Controller {...props} />
+    </FormFieldContext.Provider>
+  );
 }
 
-function Tabs({
-  tabs,
-  activeId: controlledId,
-  onChange,
-  lazy = false,
-  variant = "underline",
-}: TabsProps) {
-  const baseId = useId();
-  const [internalId, setInternalId] = useState(tabs[0]?.id ?? "");
-  const activeId = controlledId ?? internalId;
-  const tablistRef = useRef<HTMLDivElement>(null);
-  const [renderedIds] = useState<Set<string>>(() => new Set([activeId]));
+const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    const id = React.useId();
+    return (
+      <FormItemContext.Provider value={{ id }}>
+        <div ref={ref} className={cn("space-y-2", className)} {...props} />
+      </FormItemContext.Provider>
+    );
+  }
+);
+FormItem.displayName = "FormItem";
 
-  const setActive = (id: string) => {
-    if (onChange) onChange(id);
-    else setInternalId(id);
-    renderedIds.add(id);
-  };
+const FormLabel = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLLabelElement>>(
+  ({ className, ...props }, ref) => {
+    const { id } = React.useContext(FormItemContext);
+    return <label ref={ref} className={cn("text-sm font-medium", className)} htmlFor={id} {...props} />;
+  }
+);
+FormLabel.displayName = "FormLabel";
 
-  const enabledTabs = tabs.filter((t) => !t.disabled);
+const FormControl = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ ...props }, ref) => {
+    const { id } = React.useContext(FormItemContext);
+    return <div ref={ref} id={id} {...props} />;
+  }
+);
+FormControl.displayName = "FormControl";
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    const currentIndex = enabledTabs.findIndex((t) => t.id === activeId);
-    let targetIndex = -1;
+const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, children, ...props }, ref) => {
+    if (!children) return null;
+    return (
+      <p ref={ref} className={cn("text-sm text-red-500 dark:text-red-400", className)} role="alert" {...props}>
+        {children}
+      </p>
+    );
+  }
+);
+FormMessage.displayName = "FormMessage";
 
-    switch (e.key) {
-      case "ArrowRight":
-        e.preventDefault();
-        targetIndex = (currentIndex + 1) % enabledTabs.length;
-        break;
-      case "ArrowLeft":
-        e.preventDefault();
-        targetIndex = (currentIndex - 1 + enabledTabs.length) % enabledTabs.length;
-        break;
-      case "Home":
-        e.preventDefault();
-        targetIndex = 0;
-        break;
-      case "End":
-        e.preventDefault();
-        targetIndex = enabledTabs.length - 1;
-        break;
-      default:
-        return;
-    }
+export { FormField, FormItem, FormLabel, FormControl, FormMessage };
+```
 
-    const target = enabledTabs[targetIndex];
-    if (target) {
-      setActive(target.id);
-      const btn = document.getElementById(`${baseId}-tab-${target.id}`);
-      btn?.focus();
-    }
-  };
+### Usage Example
+
+```tsx
+const schema = z.object({
+  email: z.string().email("Invalid email"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+});
+
+function ContactForm() {
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: { email: "", name: "" },
+  });
+
+  const onSubmit = (data: z.infer<typeof schema>) => console.log(data);
 
   return (
-    <div className={`tabs tabs--${variant}`}>
-      <div
-        ref={tablistRef}
-        role="tablist"
-        className="tabs__list"
-        aria-orientation="horizontal"
-        onKeyDown={handleKeyDown}
-      >
-        {tabs.map((tab) => {
-          const isActive = tab.id === activeId;
-          return (
-            <button
-              key={tab.id}
-              id={`${baseId}-tab-${tab.id}`}
-              role="tab"
-              className={`tabs__tab ${isActive ? "tabs__tab--active" : ""}`}
-              aria-selected={isActive}
-              aria-controls={`${baseId}-panel-${tab.id}`}
-              tabIndex={isActive ? 0 : -1}
-              disabled={tab.disabled}
-              onClick={() => setActive(tab.id)}
-            >
-              {tab.icon && (
-                <span className="tabs__icon" aria-hidden="true">
-                  {tab.icon}
-                </span>
-              )}
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
-      {tabs.map((tab) => {
-        const isActive = tab.id === activeId;
-        const shouldRender = lazy ? renderedIds.has(tab.id) : true;
-
-        return (
-          <div
-            key={tab.id}
-            id={`${baseId}-panel-${tab.id}`}
-            role="tabpanel"
-            aria-labelledby={`${baseId}-tab-${tab.id}`}
-            className="tabs__panel"
-            hidden={!isActive}
-            tabIndex={0}
-          >
-            {shouldRender && tab.content}
-          </div>
-        );
-      })}
-    </div>
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field, fieldState }) => (
+          <FormItem>
+            <FormLabel>Name</FormLabel>
+            <FormControl>
+              <TextInput {...field} errorMessage={fieldState.error?.message} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <FormItem>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <TextInput type="email" {...field} errorMessage={fieldState.error?.message} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+      <Button type="submit">Submit</Button>
+    </form>
   );
 }
-
-export { Tabs };
-export type { TabsProps, TabItem };
-```
-
-**CSS:**
-
-```css
-.tabs__list {
-  display: flex;
-  gap: var(--space-xxs);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  border-bottom: 1px solid var(--color-border);
-}
-.tabs__list::-webkit-scrollbar { display: none; }
-
-.tabs__tab {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
-  background: none;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: color var(--duration-fast), border-color var(--duration-fast);
-  margin-bottom: -1px;
-}
-
-.tabs__tab:hover:not(:disabled) { color: var(--color-on-surface); }
-.tabs__tab--active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
-.tabs__tab:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; border-radius: var(--radius-sm); }
-.tabs__tab:disabled { opacity: 0.4; cursor: not-allowed; }
-
-.tabs--pills .tabs__list { border-bottom: none; }
-.tabs--pills .tabs__tab { border-bottom: none; border-radius: var(--radius-full); }
-.tabs--pills .tabs__tab--active { background: var(--color-primary); color: var(--color-on-primary); }
-
-.tabs__panel { padding: var(--space-lg) 0; }
-.tabs__panel:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; border-radius: var(--radius-sm); }
-```
-
-**Usage:**
-
-```tsx
-<Tabs
-  lazy
-  tabs={[
-    { id: "overview", label: "Overview", content: <OverviewPanel /> },
-    { id: "analytics", label: "Analytics", icon: <ChartIcon />, content: <AnalyticsPanel /> },
-    { id: "settings", label: "Settings", content: <SettingsPanel /> },
-  ]}
-/>
 ```
 
 ---
 
-## 12. Tooltip
+## 20. DataTable (TanStack Table)
 
-A keyboard-accessible tooltip with configurable placement, delay, and portal rendering.
+**Dependencies:** `npm install @tanstack/react-table`
 
 ```tsx
-import React, { useState, useRef, useEffect, useCallback, useId } from "react";
-import { createPortal } from "react-dom";
+import * as React from "react";
+import {
+  type ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  getPaginationRowModel,
+  type SortingState,
+  useReactTable,
+} from "@tanstack/react-table";
+import { ArrowUpDownIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "./button";
 
-type Placement = "top" | "right" | "bottom" | "left";
-
-interface TooltipProps {
-  /** Tooltip text content */
-  content: string;
-  /** Preferred placement */
-  placement?: Placement;
-  /** Delay in ms before showing */
-  delay?: number;
-  /** Trigger element (must accept ref and event handlers) */
-  children: React.ReactElement;
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  className?: string;
 }
 
-function Tooltip({ content, placement = "top", delay = 300, children }: TooltipProps) {
-  const id = useId();
-  const tooltipId = `${id}-tooltip`;
-  const [isVisible, setIsVisible] = useState(false);
-  const [position, setPosition] = useState({ top: 0, left: 0 });
-  const triggerRef = useRef<HTMLElement>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+export function DataTable<TData, TValue>({ columns, data, className }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  const show = useCallback(() => {
-    timeoutRef.current = setTimeout(() => setIsVisible(true), delay);
-  }, [delay]);
-
-  const hide = useCallback(() => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setIsVisible(false);
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible || !triggerRef.current || !tooltipRef.current) return;
-
-    const triggerRect = triggerRef.current.getBoundingClientRect();
-    const tooltipRect = tooltipRef.current.getBoundingClientRect();
-    const gap = 8;
-
-    const positions: Record<Placement, { top: number; left: number }> = {
-      top: {
-        top: triggerRect.top - tooltipRect.height - gap + window.scrollY,
-        left: triggerRect.left + (triggerRect.width - tooltipRect.width) / 2 + window.scrollX,
-      },
-      bottom: {
-        top: triggerRect.bottom + gap + window.scrollY,
-        left: triggerRect.left + (triggerRect.width - tooltipRect.width) / 2 + window.scrollX,
-      },
-      left: {
-        top: triggerRect.top + (triggerRect.height - tooltipRect.height) / 2 + window.scrollY,
-        left: triggerRect.left - tooltipRect.width - gap + window.scrollX,
-      },
-      right: {
-        top: triggerRect.top + (triggerRect.height - tooltipRect.height) / 2 + window.scrollY,
-        left: triggerRect.right + gap + window.scrollX,
-      },
-    };
-
-    let chosen = positions[placement];
-
-    if (chosen.top < window.scrollY) chosen = positions.bottom;
-    if (chosen.left < 0) chosen = positions.right;
-    if (chosen.left + tooltipRect.width > window.innerWidth) chosen = positions.left;
-
-    setPosition(chosen);
-  }, [isVisible, placement]);
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
-  const child = React.cloneElement(children, {
-    ref: triggerRef,
-    onMouseEnter: (e: React.MouseEvent) => {
-      show();
-      children.props.onMouseEnter?.(e);
-    },
-    onMouseLeave: (e: React.MouseEvent) => {
-      hide();
-      children.props.onMouseLeave?.(e);
-    },
-    onFocus: (e: React.FocusEvent) => {
-      show();
-      children.props.onFocus?.(e);
-    },
-    onBlur: (e: React.FocusEvent) => {
-      hide();
-      children.props.onBlur?.(e);
-    },
-    "aria-describedby": isVisible ? tooltipId : undefined,
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    onSortingChange: setSorting,
+    state: { sorting },
   });
 
   return (
-    <>
-      {child}
-      {isVisible &&
-        createPortal(
-          <div
-            ref={tooltipRef}
-            id={tooltipId}
-            role="tooltip"
-            className={`tooltip tooltip--${placement}`}
-            style={{
-              position: "absolute",
-              top: `${position.top}px`,
-              left: `${position.left}px`,
-            }}
-          >
-            {content}
-          </div>,
-          document.body
-        )}
-    </>
+    <div className={cn("space-y-4", className)}>
+      <div className="rounded-md border border-gray-200 dark:border-gray-800">
+        <table className="w-full caption-bottom text-sm">
+          <thead className="[&_tr]:border-b">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id} className="border-b border-gray-200 dark:border-gray-800">
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    className="h-12 px-4 text-left align-middle font-medium text-gray-500 dark:text-gray-400"
+                  >
+                    {header.isPlaceholder ? null : (
+                      <button
+                        className={cn("flex items-center gap-1", header.column.getCanSort() && "cursor-pointer select-none")}
+                        onClick={header.column.getToggleSortingHandler()}
+                      >
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {header.column.getCanSort() && <ArrowUpDownIcon className="h-4 w-4" />}
+                      </button>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody className="[&_tr:last-child]:border-0">
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <tr key={row.id} className="border-b border-gray-200 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-900/50">
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id} className="p-4 align-middle">
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={columns.length} className="h-24 text-center text-gray-500">
+                  No results.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      <div className="flex items-center justify-end gap-2">
+        <Button variant="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+          Previous
+        </Button>
+        <Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+          Next
+        </Button>
+      </div>
+    </div>
   );
 }
-
-export { Tooltip };
-export type { TooltipProps, Placement };
 ```
 
-**CSS:**
-
-```css
-.tooltip {
-  padding: var(--space-xs) var(--space-sm);
-  background: var(--color-surface-inverted);
-  color: var(--color-on-surface-inverted);
-  font-size: var(--font-size-xs);
-  border-radius: var(--radius-sm);
-  pointer-events: none;
-  z-index: var(--z-tooltip);
-  max-width: 240px;
-  line-height: var(--line-height-normal);
-  animation: tooltipIn var(--duration-fast) var(--easing-decelerate);
-}
-
-@keyframes tooltipIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tooltip { animation: none; }
-}
-```
-
-**Usage:**
+### Usage
 
 ```tsx
-<Tooltip content="Save your changes (Ctrl+S)" placement="bottom">
-  <button className="btn btn--primary btn--md">Save</button>
-</Tooltip>
+const columns: ColumnDef<User>[] = [
+  { accessorKey: "name", header: "Name" },
+  { accessorKey: "email", header: "Email" },
+  { accessorKey: "role", header: "Role" },
+];
+
+<DataTable columns={columns} data={users} />
 ```

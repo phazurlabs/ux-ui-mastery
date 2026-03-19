@@ -303,7 +303,91 @@ Include APCA Lc values alongside WCAG 2.2 ratios. Flag any pairs below AA thresh
 | Body | [Specific font] | 400, 500 | `https://fonts.google.com/...` | `'[Font]', [fallback stack]` |
 | Mono | [Specific font] | 400 | `https://fonts.google.com/...` | `'[Font]', [fallback stack]` |
 
-Include the full `<link>` tag or `@import` for immediate use.
+**Framework-Aware Font Loading:**
+
+Detect the project framework and output the correct font loading strategy. Never output a generic `<link>` tag when a framework-native solution exists.
+
+**Next.js (App Router):**
+```typescript
+// app/layout.tsx
+import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+
+const heading = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const body = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${heading.variable} ${body.variable} ${mono.variable}`}>
+      <body className="font-body antialiased">{children}</body>
+    </html>
+  );
+}
+```
+
+**Next.js + Tailwind v4 (`@theme` integration):**
+```css
+/* app/globals.css */
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+}
+```
+
+**Remix / Vite / Astro (no `next/font`):**
+```html
+<!-- In root layout head -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=[Heading+Font]:wght@600;700&family=[Body+Font]:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+```
+
+**Fallback (static HTML, any framework):**
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=[Heading+Font]:wght@600;700&family=[Body+Font]:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+```
+
+**Font Loading Performance Rules:**
+- Always use `font-display: swap` (FOUT > FOIT — visible text with fallback is better than invisible text)
+- Preconnect to `fonts.googleapis.com` AND `fonts.gstatic.com` (separate domains)
+- In Next.js, `next/font` is ALWAYS preferred — it self-hosts, eliminates layout shift via `size-adjust`, and has zero external requests
+- Subset to `latin` unless the project serves CJK, Cyrillic, or other scripts
+- Load only the weights you actually use (e.g., `400,500,600,700` not `100..900`)
+
+**Detection Logic:**
+1. If `next.config.js` or `next.config.ts` exists → use `next/font/google`
+2. If `remix.config.js` or `vite.config.ts` with Remix → use `<link>` with preconnect
+3. If `astro.config.mjs` → use `<link>` with preconnect
+4. If `package.json` has `@fontsource/*` → use `@fontsource` imports
+5. Fallback → `<link>` with preconnect and `font-display: swap`
 
 Explain WHY this pairing works for the sector (personality, x-height compatibility, character set coverage).
 

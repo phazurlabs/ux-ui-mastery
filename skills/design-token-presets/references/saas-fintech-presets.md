@@ -175,6 +175,85 @@ Precision tool aesthetic. Monochromatic neutrals with a single violet accent. Co
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Linear-Style — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — map to Tailwind utilities: bg-primary, text-primary, etc. */
+  --color-primary: oklch(0.55 0.20 290);
+  --color-primary-hover: oklch(0.48 0.20 290);
+  --color-primary-subtle: oklch(0.93 0.04 290);
+  --color-bg: oklch(0.98 0.005 280);
+  --color-bg-subtle: oklch(0.96 0.003 280);
+  --color-surface: white;
+  --color-text-primary: oklch(0.18 0.008 280);
+  --color-text-secondary: oklch(0.55 0.015 280);
+  --color-text-tertiary: oklch(0.70 0.012 280);
+  --color-border: oklch(0.90 0.008 280);
+  --color-border-subtle: oklch(0.95 0.005 280);
+  --color-success: oklch(0.60 0.17 145);
+  --color-error: oklch(0.55 0.20 25);
+  --color-warning: oklch(0.75 0.15 75);
+  --color-info: oklch(0.55 0.18 250);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.8125rem; --text-base: 0.875rem;
+  --text-lg: 1rem; --text-xl: 1.125rem; --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem; --text-4xl: 2rem; --text-5xl: 2.5rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 6px;
+  --radius-lg: 8px; --radius-xl: 12px; --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-md: 0 4px 6px oklch(0 0 0 / 0.07), 0 2px 4px oklch(0 0 0 / 0.04);
+  --shadow-lg: 0 10px 15px oklch(0 0 0 / 0.08), 0 4px 6px oklch(0 0 0 / 0.04);
+  --shadow-xl: 0 20px 25px oklch(0 0 0 / 0.10), 0 8px 10px oklch(0 0 0 / 0.04);
+  --shadow-2xl: 0 25px 50px oklch(0 0 0 / 0.15);
+
+  /* Motion */
+  --duration-fast: 100ms; --duration-normal: 150ms;
+  --duration-moderate: 250ms; --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.12 0.008 280);
+  --color-bg-subtle: oklch(0.14 0.008 280);
+  --color-surface: oklch(0.18 0.008 280);
+  --color-text-primary: oklch(0.98 0.005 280);
+  --color-text-secondary: oklch(0.70 0.012 280);
+  --color-border: oklch(0.35 0.012 280);
+}
+```
+
 ---
 
 ## 2. Stripe-Style (Developer SaaS)
@@ -367,6 +446,86 @@ Premium developer-facing aesthetic. Blue-to-purple gradient accents, generous wh
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Stripe-Style — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — map to Tailwind utilities: bg-primary, text-primary, etc. */
+  --color-primary: oklch(0.53 0.22 265);
+  --color-primary-hover: oklch(0.46 0.22 265);
+  --color-primary-subtle: oklch(0.97 0.02 265);
+  --color-secondary: oklch(0.55 0.15 200);
+  --color-bg: oklch(0.99 0.002 260);
+  --color-bg-subtle: oklch(0.98 0.004 260);
+  --color-surface: white;
+  --color-text-primary: oklch(0.19 0.007 260);
+  --color-text-secondary: oklch(0.46 0.013 260);
+  --color-text-tertiary: oklch(0.71 0.011 260);
+  --color-border: oklch(0.91 0.007 260);
+  --color-border-subtle: oklch(0.95 0.005 260);
+  --color-success: oklch(0.62 0.17 150);
+  --color-error: oklch(0.55 0.22 25);
+  --color-warning: oklch(0.78 0.16 75);
+  --color-info: oklch(0.56 0.18 250);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro Display', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 4px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 8px;
+  --radius-lg: 12px; --radius-xl: 16px; --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.05);
+  --shadow-sm: 0 2px 4px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-md: 0 4px 8px oklch(0 0 0 / 0.08), 0 2px 4px oklch(0 0 0 / 0.04);
+  --shadow-lg: 0 12px 24px oklch(0 0 0 / 0.10), 0 4px 8px oklch(0 0 0 / 0.04);
+  --shadow-xl: 0 24px 48px oklch(0 0 0 / 0.12), 0 8px 16px oklch(0 0 0 / 0.04);
+  --shadow-2xl: 0 32px 64px oklch(0 0 0 / 0.16);
+
+  /* Motion */
+  --duration-fast: 100ms; --duration-normal: 200ms;
+  --duration-moderate: 300ms; --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.10 0.008 260);
+  --color-bg-subtle: oklch(0.13 0.008 260);
+  --color-surface: oklch(0.16 0.009 260);
+  --color-text-primary: oklch(0.95 0.005 260);
+  --color-text-secondary: oklch(0.70 0.010 260);
+  --color-border: oklch(0.25 0.010 260);
+}
+```
+
 ---
 
 ## 3. Notion-Style (Productivity SaaS)
@@ -531,6 +690,85 @@ Warm, readable, content-first. Muted accents let the user's content be the hero.
   --opacity-muted:    0.6;
   --opacity-subtle:   0.8;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Notion-Style — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — map to Tailwind utilities: bg-primary, text-primary, etc. */
+  --color-primary: oklch(0.57 0.12 245);
+  --color-primary-hover: oklch(0.50 0.14 245);
+  --color-primary-subtle: oklch(0.94 0.03 245);
+  --color-bg: oklch(0.99 0.006 55);
+  --color-bg-subtle: oklch(0.98 0.008 55);
+  --color-surface: white;
+  --color-text-primary: oklch(0.20 0.006 55);
+  --color-text-secondary: oklch(0.57 0.010 55);
+  --color-text-tertiary: oklch(0.72 0.010 55);
+  --color-border: oklch(0.91 0.010 55);
+  --color-border-subtle: oklch(0.95 0.008 55);
+  --color-success: oklch(0.60 0.12 155);
+  --color-error: oklch(0.58 0.15 25);
+  --color-warning: oklch(0.65 0.14 55);
+  --color-info: oklch(0.57 0.12 245);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro Text', system-ui, sans-serif;
+  --font-mono: 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 0;
+  --spacing-1: 4px; --spacing-1-5: 4px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 3px; --radius-md: 6px;
+  --radius-lg: 8px; --radius-xl: 12px; --radius-2xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.05);
+  --shadow-md: 0 3px 8px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.10);
+  --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.12);
+  --shadow-2xl: 0 16px 32px oklch(0 0 0 / 0.12);
+
+  /* Motion */
+  --duration-fast: 100ms; --duration-normal: 200ms;
+  --duration-moderate: 200ms; --duration-slow: 350ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.13 0.006 55);
+  --color-bg-subtle: oklch(0.16 0.006 55);
+  --color-surface: oklch(0.18 0.006 55);
+  --color-text-primary: oklch(0.93 0.008 55);
+  --color-text-secondary: oklch(0.65 0.008 55);
+  --color-border: oklch(0.28 0.006 55);
 }
 ```
 
@@ -715,6 +953,86 @@ Conservative, high-trust, institution-grade. Navy palette with serif/sans pairin
   --opacity-muted:    0.55;
   --opacity-subtle:   0.75;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Banking / Fintech — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — map to Tailwind utilities: bg-primary, text-primary, etc. */
+  --color-primary: oklch(0.34 0.12 240);
+  --color-primary-hover: oklch(0.26 0.10 240);
+  --color-primary-subtle: oklch(0.96 0.02 240);
+  --color-secondary: oklch(0.55 0.12 180);
+  --color-bg: white;
+  --color-bg-subtle: oklch(0.98 0.006 230);
+  --color-surface: white;
+  --color-text-primary: oklch(0.12 0.07 240);
+  --color-text-secondary: oklch(0.48 0.012 230);
+  --color-text-tertiary: oklch(0.73 0.011 230);
+  --color-border: oklch(0.92 0.009 230);
+  --color-border-subtle: oklch(0.96 0.007 230);
+  --color-success: oklch(0.58 0.14 150);
+  --color-error: oklch(0.52 0.18 25);
+  --color-warning: oklch(0.75 0.14 75);
+  --color-info: oklch(0.54 0.14 245);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 2rem; --text-4xl: 2.5rem; --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 0;
+  --spacing-1: 4px; --spacing-1-5: 4px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 6px;
+  --radius-lg: 8px; --radius-xl: 12px; --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.03);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.04), 0 1px 2px oklch(0 0 0 / 0.03);
+  --shadow-md: 0 4px 8px oklch(0 0 0 / 0.06), 0 2px 4px oklch(0 0 0 / 0.03);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.08), 0 4px 8px oklch(0 0 0 / 0.03);
+  --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.10);
+  --shadow-2xl: 0 16px 32px oklch(0 0 0 / 0.10);
+
+  /* Motion */
+  --duration-fast: 120ms; --duration-normal: 200ms;
+  --duration-moderate: 300ms; --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.11 0.010 230);
+  --color-bg-subtle: oklch(0.14 0.010 230);
+  --color-surface: oklch(0.17 0.010 230);
+  --color-text-primary: oklch(0.95 0.006 230);
+  --color-text-secondary: oklch(0.68 0.008 230);
+  --color-border: oklch(0.26 0.010 230);
 }
 ```
 
@@ -922,6 +1240,87 @@ Dark-first, data-dense, action-oriented. Green/red for up/down. Monospace number
   --chart-volume:      var(--color-gray-700);
   --chart-candle-up:   var(--color-gain-500);
   --chart-candle-down: var(--color-loss-500);
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Trading / Crypto — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — map to Tailwind utilities: bg-primary, text-primary, etc. */
+  --color-primary: oklch(0.58 0.20 250);
+  --color-primary-hover: oklch(0.65 0.18 250);
+  --color-primary-subtle: oklch(0.58 0.20 250 / 0.12);
+  --color-bg: oklch(0.07 0.000 0);
+  --color-bg-subtle: oklch(0.10 0.000 0);
+  --color-surface: oklch(0.14 0.000 0);
+  --color-text-primary: oklch(0.95 0.000 0);
+  --color-text-secondary: oklch(0.58 0.000 0);
+  --color-text-tertiary: oklch(0.48 0.000 0);
+  --color-border: oklch(0.20 0.000 0);
+  --color-border-subtle: oklch(0.17 0.000 0);
+  --color-success: oklch(0.60 0.20 150);
+  --color-error: oklch(0.55 0.22 25);
+  --color-warning: oklch(0.72 0.15 80);
+  --color-info: oklch(0.58 0.20 250);
+  --color-up: oklch(0.60 0.20 150);
+  --color-down: oklch(0.55 0.22 25);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.8125rem; --text-base: 0.875rem;
+  --text-lg: 1rem; --text-xl: 1.125rem; --text-2xl: 1.375rem;
+  --text-3xl: 1.75rem; --text-4xl: 2.25rem; --text-5xl: 2.25rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 80px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 2px; --radius-md: 4px;
+  --radius-lg: 6px; --radius-xl: 8px; --radius-2xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.20);
+  --shadow-sm: 0 2px 4px oklch(0 0 0 / 0.25);
+  --shadow-md: 0 4px 8px oklch(0 0 0 / 0.30);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.35);
+  --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.40);
+  --shadow-2xl: 0 16px 32px oklch(0 0 0 / 0.40);
+
+  /* Motion */
+  --duration-fast: 80ms; --duration-normal: 120ms;
+  --duration-moderate: 200ms; --duration-slow: 350ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-spring: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+}
+
+/* Dark mode override (Trading is dark-first; this is the light alt) */
+@theme dark {
+  --color-bg: white;
+  --color-bg-subtle: oklch(0.95 0.000 0);
+  --color-surface: oklch(0.95 0.000 0);
+  --color-text-primary: oklch(0.14 0.000 0);
+  --color-text-secondary: oklch(0.38 0.000 0);
+  --color-border: oklch(0.82 0.000 0);
 }
 ```
 

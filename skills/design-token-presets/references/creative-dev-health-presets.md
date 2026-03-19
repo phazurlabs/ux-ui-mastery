@@ -211,6 +211,85 @@ Expressive, editorial, dramatic. Large type, bold contrasts, gallery-ready spaci
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Creative Portfolio — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — oklch() values from the :root block above */
+  --color-primary: oklch(0.55 0.25 340);
+  --color-primary-hover: oklch(0.62 0.22 340);
+  --color-primary-subtle: oklch(0.55 0.25 340 / 0.10);
+  --color-bg: oklch(0.05 0.003 270);
+  --color-bg-subtle: oklch(0.10 0.004 270);
+  --color-surface: oklch(0.16 0.004 270);
+  --color-text-primary: oklch(0.98 0.003 270);
+  --color-text-secondary: oklch(0.68 0.006 270);
+  --color-text-tertiary: oklch(0.54 0.006 270);
+  --color-border: oklch(0.24 0.005 270);
+  --color-border-subtle: oklch(0.16 0.004 270);
+  --color-success: oklch(0.58 0.15 150);
+  --color-error: oklch(0.55 0.22 25);
+  --color-warning: oklch(0.75 0.15 80);
+  --color-info: oklch(0.55 0.22 255);
+
+  /* Typography */
+  --font-sans: 'Inter', 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 2rem; --text-4xl: 2.75rem; --text-5xl: 3.5rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 8px;
+  --radius-lg: 12px; --radius-xl: 16px; --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 3px oklch(0 0 0 / 0.20);
+  --shadow-sm: 0 2px 6px oklch(0 0 0 / 0.25);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.30);
+  --shadow-lg: 0 8px 24px oklch(0 0 0 / 0.35);
+  --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.40);
+  --shadow-2xl: 0 0 30px oklch(0.55 0.25 340 / 0.15);
+
+  /* Motion */
+  --duration-fast: 150ms; --duration-normal: 300ms;
+  --duration-moderate: 500ms; --duration-slow: 800ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.05 0.003 270);
+  --color-bg-subtle: oklch(0.10 0.004 270);
+  --color-surface: oklch(0.16 0.004 270);
+  --color-text-primary: oklch(0.98 0.003 270);
+  --color-text-secondary: oklch(0.68 0.006 270);
+  --color-border: oklch(0.24 0.005 270);
+}
+```
+
 ---
 
 ## 2. Developer Tools (VS Code / GitHub Style)
@@ -416,6 +495,85 @@ Monospace-heavy, dark-first, syntax highlighting tokens. Information-dense, keyb
   --opacity-muted:    0.5;
   --opacity-subtle:   0.7;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Developer Tools — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — oklch() values from the :root block above */
+  --color-primary: oklch(0.56 0.20 240);
+  --color-primary-hover: oklch(0.64 0.18 240);
+  --color-primary-subtle: oklch(0.56 0.20 240 / 0.12);
+  --color-bg: oklch(0.12 0.012 225);
+  --color-bg-subtle: oklch(0.14 0.012 225);
+  --color-surface: oklch(0.16 0.012 225);
+  --color-text-primary: oklch(0.95 0.006 225);
+  --color-text-secondary: oklch(0.68 0.010 225);
+  --color-text-tertiary: oklch(0.55 0.010 225);
+  --color-border: oklch(0.24 0.012 225);
+  --color-border-subtle: oklch(0.20 0.012 225);
+  --color-success: oklch(0.60 0.16 150);
+  --color-error: oklch(0.58 0.20 25);
+  --color-warning: oklch(0.78 0.15 80);
+  --color-info: oklch(0.65 0.12 200);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', monospace;
+  --text-xs: 0.6875rem; --text-sm: 0.8125rem; --text-base: 0.875rem;
+  --text-lg: 1rem; --text-xl: 1.125rem; --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem; --text-4xl: 2rem; --text-5xl: 2rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 3px; --radius-md: 6px;
+  --radius-lg: 8px; --radius-xl: 12px; --radius-2xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.15);
+  --shadow-sm: 0 2px 4px oklch(0 0 0 / 0.20);
+  --shadow-md: 0 4px 8px oklch(0 0 0 / 0.25);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.30);
+  --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.35);
+  --shadow-2xl: 0 16px 48px oklch(0 0 0 / 0.40);
+
+  /* Motion */
+  --duration-fast: 80ms; --duration-normal: 120ms;
+  --duration-moderate: 200ms; --duration-slow: 350ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-spring: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.12 0.012 225);
+  --color-bg-subtle: oklch(0.14 0.012 225);
+  --color-surface: oklch(0.16 0.012 225);
+  --color-text-primary: oklch(0.95 0.006 225);
+  --color-text-secondary: oklch(0.68 0.010 225);
+  --color-border: oklch(0.24 0.012 225);
 }
 ```
 
@@ -625,6 +783,85 @@ Calming, accessible, high contrast, professional. Blues and greens for trust and
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Healthcare (HIPAA-Friendly) — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — oklch() values from the :root block above */
+  --color-primary: oklch(0.48 0.16 225);
+  --color-primary-hover: oklch(0.40 0.14 225);
+  --color-primary-subtle: oklch(0.97 0.02 225);
+  --color-bg: white;
+  --color-bg-subtle: oklch(0.98 0.005 215);
+  --color-surface: white;
+  --color-text-primary: oklch(0.19 0.006 215);
+  --color-text-secondary: oklch(0.47 0.008 215);
+  --color-text-tertiary: oklch(0.57 0.008 215);
+  --color-border: oklch(0.92 0.007 215);
+  --color-border-subtle: oklch(0.96 0.006 215);
+  --color-success: oklch(0.52 0.14 150);
+  --color-error: oklch(0.50 0.20 25);
+  --color-warning: oklch(0.72 0.14 80);
+  --color-info: oklch(0.56 0.16 225);
+
+  /* Typography */
+  --font-sans: 'Inter', 'SF Pro', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 8px;
+  --radius-lg: 12px; --radius-xl: 16px; --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.03);
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.05);
+  --shadow-md: 0 3px 8px oklch(0 0 0 / 0.07);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.09);
+  --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.11);
+  --shadow-2xl: 0 1px 4px oklch(0 0 0 / 0.04), 0 0 0 1px oklch(0 0 0 / 0.02);
+
+  /* Motion */
+  --duration-fast: 120ms; --duration-normal: 200ms;
+  --duration-moderate: 350ms; --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.12 0.006 215);
+  --color-bg-subtle: oklch(0.15 0.006 215);
+  --color-surface: oklch(0.18 0.006 215);
+  --color-text-primary: oklch(0.95 0.005 215);
+  --color-text-secondary: oklch(0.68 0.006 215);
+  --color-border: oklch(0.27 0.006 215);
+}
+```
+
 ---
 
 ## 4. Education / EdTech (Friendly & Organized)
@@ -826,6 +1063,85 @@ Friendly, colorful but organized. Large touch targets, clear hierarchy, joyful b
   --opacity-muted:    0.6;
   --opacity-subtle:   0.8;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Education / EdTech — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — oklch() values from the :root block above */
+  --color-primary: oklch(0.55 0.18 240);
+  --color-primary-hover: oklch(0.48 0.18 240);
+  --color-primary-subtle: oklch(0.96 0.03 240);
+  --color-bg: oklch(0.99 0.004 45);
+  --color-bg-subtle: oklch(0.98 0.006 45);
+  --color-surface: white;
+  --color-text-primary: oklch(0.19 0.005 45);
+  --color-text-secondary: oklch(0.47 0.007 45);
+  --color-text-tertiary: oklch(0.72 0.008 45);
+  --color-border: oklch(0.92 0.008 45);
+  --color-border-subtle: oklch(0.96 0.007 45);
+  --color-success: oklch(0.58 0.16 150);
+  --color-error: oklch(0.55 0.18 25);
+  --color-warning: oklch(0.78 0.14 80);
+  --color-info: oklch(0.55 0.18 240);
+
+  /* Typography */
+  --font-sans: 'Nunito', 'Nunito Sans', system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 6px; --radius-md: 10px;
+  --radius-lg: 14px; --radius-xl: 20px; --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-sm: 0 2px 4px oklch(0 0 0 / 0.06);
+  --shadow-md: 0 4px 8px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.10);
+  --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.12);
+  --shadow-2xl: 0 2px 8px oklch(0 0 0 / 0.06), 0 0 0 1px oklch(0 0 0 / 0.02);
+
+  /* Motion */
+  --duration-fast: 100ms; --duration-normal: 200ms;
+  --duration-moderate: 300ms; --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.13 0.005 45);
+  --color-bg-subtle: oklch(0.16 0.005 45);
+  --color-surface: oklch(0.19 0.005 45);
+  --color-text-primary: oklch(0.95 0.006 45);
+  --color-text-secondary: oklch(0.68 0.006 45);
+  --color-border: oklch(0.27 0.005 45);
 }
 ```
 
@@ -1036,6 +1352,85 @@ Earth tones, organic feel, warm neutrals. Nature-inspired palette, soft textures
   --opacity-muted:    0.6;
   --opacity-subtle:   0.8;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Sustainability / Green — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — oklch() values from the :root block above */
+  --color-primary: oklch(0.44 0.13 145);
+  --color-primary-hover: oklch(0.36 0.11 145);
+  --color-primary-subtle: oklch(0.96 0.02 145);
+  --color-bg: oklch(0.97 0.010 60);
+  --color-bg-subtle: oklch(0.96 0.012 80);
+  --color-surface: white;
+  --color-text-primary: oklch(0.19 0.008 50);
+  --color-text-secondary: oklch(0.47 0.012 65);
+  --color-text-tertiary: oklch(0.72 0.014 70);
+  --color-border: oklch(0.92 0.012 80);
+  --color-border-subtle: oklch(0.96 0.010 85);
+  --color-success: oklch(0.55 0.14 150);
+  --color-error: oklch(0.52 0.16 25);
+  --color-warning: oklch(0.72 0.12 75);
+  --color-info: oklch(0.55 0.12 235);
+
+  /* Typography */
+  --font-sans: 'DM Sans', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 2rem; --text-4xl: 2.5rem; --text-5xl: 3.25rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 6px; --radius-md: 10px;
+  --radius-lg: 16px; --radius-xl: 24px; --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0.30 0.02 55 / 0.06);
+  --shadow-sm: 0 2px 4px oklch(0.30 0.02 55 / 0.08);
+  --shadow-md: 0 4px 10px oklch(0.30 0.02 55 / 0.10);
+  --shadow-lg: 0 8px 20px oklch(0.30 0.02 55 / 0.12);
+  --shadow-xl: 0 16px 40px oklch(0.30 0.02 55 / 0.14);
+  --shadow-2xl: 0 2px 8px oklch(0.30 0.02 55 / 0.06);
+
+  /* Motion */
+  --duration-fast: 120ms; --duration-normal: 250ms;
+  --duration-moderate: 400ms; --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.12 0.008 50);
+  --color-bg-subtle: oklch(0.15 0.008 55);
+  --color-surface: oklch(0.18 0.008 55);
+  --color-text-primary: oklch(0.94 0.010 80);
+  --color-text-secondary: oklch(0.68 0.010 70);
+  --color-border: oklch(0.27 0.010 55);
 }
 ```
 

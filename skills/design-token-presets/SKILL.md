@@ -1,6 +1,6 @@
 ---
 name: design-token-presets
-description: "20+ complete, ready-to-deploy design token systems for every major industry vertical. Each preset includes color scales (primitive + semantic), typography scales, spacing systems, border radius, shadows, motion tokens, breakpoints, and z-index — all in W3C DTCG JSON format with CSS custom property output. Use when the user mentions: design tokens preset, token system, ready-made tokens, industry tokens, startup tokens, SaaS tokens, fintech tokens, healthcare tokens, ecommerce tokens, token set, token template, quick tokens, token starter, design tokens ready."
+description: "20+ complete, ready-to-deploy design token systems for every major industry vertical. Each preset includes color scales (primitive + semantic), typography scales, spacing systems, border radius, shadows, motion tokens, breakpoints, and z-index — in W3C DTCG JSON format, CSS custom property output, AND Tailwind v4 @theme configuration. Style Dictionary 4.x config included. Figma Variables mapping. Use when the user mentions: design tokens preset, token system, ready-made tokens, industry tokens, startup tokens, SaaS tokens, fintech tokens, healthcare tokens, ecommerce tokens, token set, token template, quick tokens, token starter, design tokens ready, Tailwind v4 tokens, @theme tokens, DTCG JSON, W3C design tokens, Style Dictionary, Figma Variables, token JSON."
 ---
 
 # Design Token Presets — 20+ Ready-to-Deploy Token Systems
@@ -171,6 +171,14 @@ All colors use **oklch** color space for perceptual uniformity:
 - Set default mode to dark
 - Reduce surface lightness
 - Increase text lightness for contrast
+
+## Reference Files
+
+Detailed presets are available in the `references/` directory:
+- `saas-fintech-presets.md` — Linear, Stripe, Notion, Slack, Figma, Mercury, Robinhood presets (CSS `:root` + Tailwind v4 `@theme`)
+- `ecommerce-social-presets.md` — Shopify, Premium Commerce, Social Warm, Community presets (CSS `:root` + Tailwind v4 `@theme`)
+- `creative-dev-health-presets.md` — Studio, Luxury, Playful, Developer, Calm Health, Clinical presets (CSS `:root` + Tailwind v4 `@theme`)
+- `dtcg-json-presets.md` — W3C DTCG JSON format for 6 flagship presets (Linear SaaS, Stripe Fintech, Shopify E-commerce, Discord Social, Creative Agency, Healthcare). 3-tier structure (primitive/semantic/component). Style Dictionary 4.x config. Figma Variables mapping.
 
 ## Cross-References
 

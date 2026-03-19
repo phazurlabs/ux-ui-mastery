@@ -981,6 +981,35 @@ Before delivering any screen, verify:
 - [ ] No render-blocking resources
 - [ ] Proper error boundaries for partial failures
 
+## Multi-Pass Generation Strategy
+
+Complex screens (dashboard, checkout, chat, analytics) can exceed a single response. Use the multi-pass strategy for complete output.
+
+### Pass Architecture
+
+| Pass | Focus | Output |
+|------|-------|--------|
+| **Pass 1: Foundation** | Types, hooks, state machine, screen wrapper | `types.ts`, `use[Screen]Data.ts`, skeleton component, error component, empty state component |
+| **Pass 2: Main Screen** | Primary populated state with full layout | Main screen component with all sections, responsive breakpoints, dark mode |
+| **Pass 3: Polish** | Interactions, animations, tokens, final assembly | Motion recipes, design token CSS, accessibility audit, quality checklist |
+
+### Generation Rules
+
+1. **Always complete Pass 1 + Pass 2 minimum** — the user gets a working screen in the first response
+2. **If approaching token limit**, stop at a clean component boundary and output:
+   > **Sumi checkpoint** — Foundation + main screen complete. Run `/screen --continue` for interactions, animation, and polish.
+3. **Each pass is additive and non-destructive** — later passes add files but never rewrite earlier ones
+4. **Simple screens fit in one pass**: Error (404/500), Empty State, Loading, Offline, Welcome
+
+### `/screen --continue` Behavior
+
+When the user runs `/screen --continue`:
+1. Review previously generated components
+2. Generate the next unfinished pass
+3. If all passes are done, output the final quality checklist and design token summary
+
+---
+
 ## Cross-References
 
 When building screens, draw patterns and best practices from:

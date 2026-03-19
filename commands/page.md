@@ -667,6 +667,47 @@ When invoked, produce the following structure:
 - **Missing context**: [what would improve this]
 ```
 
+## Multi-Pass Generation Strategy
+
+Full pages often exceed what a single Claude response can produce. Use the multi-pass strategy to guarantee complete, runnable output with zero truncation.
+
+### Pass Architecture
+
+| Pass | Focus | Blocks Generated |
+|------|-------|-----------------|
+| **Pass 1: Scaffold** | Page shell, meta, imports, types, layout wrapper | `page.tsx` shell with metadata, layout component with section slots, shared types, utility imports |
+| **Pass 2: Above the Fold** | Everything visible without scrolling | `AnnouncementBar`, `NavBar`, `Hero`, `LogoCloud` — the first impression |
+| **Pass 3: Mid-Page** | Value communication sections | `Features`, `FeatureShowcase`, `HowItWorks`, `Benefits`, `SocialProof`, `Stats` |
+| **Pass 4: Conversion** | Decision and action sections | `Pricing`, `PricingComparison`, `FAQ`, `Comparison`, `CTA`, `Newsletter` |
+| **Pass 5: Footer + Assembly** | Footer, final assembly, scroll behavior | `Footer`, scroll-to-top, smooth scroll init, final page assembly |
+
+### Generation Rules
+
+1. **Always attempt Pass 1 + Pass 2 in the first response** — the user should see a runnable page immediately
+2. **If approaching the token limit mid-section**, stop cleanly at the end of the current block component and output:
+   > **Sumi checkpoint** — Passes 1-2 complete (scaffold + above-fold). Run `/page --continue` to generate mid-page and conversion sections.
+3. **Each pass produces self-contained, runnable code** — the page works after every pass, just with fewer sections
+4. **Pass imports are additive** — later passes add `import` statements but never modify earlier components
+5. **The final pass wires everything together** — assembles all section components into the page layout in the correct stacking order
+
+### `/page --continue` Behavior
+
+When the user runs `/page --continue`:
+1. Review what was generated in previous passes
+2. Identify the next ungenerated pass
+3. Generate that pass's blocks as complete components
+4. If all passes are complete, output the final assembly and quality checklist
+
+### Single-Response Optimization
+
+For simpler pages (< 8 blocks), attempt all passes in a single response:
+- Coming Soon, Waitlist, Link-in-Bio: 1 pass (always fits)
+- Blog/Article, Documentation: 2 passes
+- SaaS Landing, Pricing: 3-4 passes
+- Enterprise B2B, Agency Portfolio: 4-5 passes
+
+---
+
 ## Cross-References
 
 When building pages, draw patterns and best practices from:

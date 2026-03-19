@@ -185,6 +185,79 @@ Editorial typography, restrained palette, generous whitespace. Every pixel commu
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Luxury E-Commerce — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — exact oklch() values from :root block above */
+  --color-primary: oklch(0.08 0.003 45);
+  --color-primary-hover: oklch(0.28 0.006 45);
+  --color-primary-subtle: oklch(0.96 0.007 45);
+  --color-bg: oklch(0.98 0.008 80);
+  --color-bg-subtle: oklch(0.97 0.010 70);
+  --color-surface: white;
+  --color-text-primary: oklch(0.08 0.003 45);
+  --color-text-secondary: oklch(0.48 0.008 45);
+  --color-text-tertiary: oklch(0.74 0.008 45);
+  --color-border: oklch(0.92 0.008 45);
+  --color-border-subtle: oklch(0.96 0.007 45);
+  --color-success: oklch(0.55 0.10 155);
+  --color-error: oklch(0.50 0.12 20);
+  --color-warning: oklch(0.70 0.10 75);
+  --color-info: oklch(0.65 0.10 75);
+
+  /* Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-mono: 'SF Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 2rem; --text-4xl: 2.5rem; --text-5xl: 3.25rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 2px; --radius-md: 4px;
+  --radius-lg: 6px; --radius-xl: 8px; --radius-2xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.03); --shadow-sm: 0 2px 4px oklch(0 0 0 / 0.04); --shadow-md: 0 4px 12px oklch(0 0 0 / 0.06);
+  --shadow-lg: 0 8px 24px oklch(0 0 0 / 0.08); --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.10); --shadow-2xl: 0 4px 16px oklch(0 0 0 / 0.06);
+
+  /* Motion */
+  --duration-fast: 150ms; --duration-normal: 300ms;
+  --duration-moderate: 500ms; --duration-slow: 700ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1); --ease-spring: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.08 0.003 45);
+  --color-bg-subtle: oklch(0.12 0.004 45);
+  --color-surface: oklch(0.14 0.004 45);
+  --color-text-primary: oklch(0.98 0.008 80);
+  --color-text-secondary: oklch(0.74 0.008 45);
+  --color-border: oklch(0.28 0.006 45);
+}
+```
+
 ---
 
 ## 2. Marketplace (Airbnb / Etsy Style)
@@ -375,6 +448,79 @@ Friendly, warm, accessible. High color contrast for trust. Rounded forms for app
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Marketplace — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — exact oklch() values from :root block above */
+  --color-primary: oklch(0.60 0.20 15);
+  --color-primary-hover: oklch(0.52 0.20 15);
+  --color-primary-subtle: oklch(0.96 0.02 20);
+  --color-bg: white;
+  --color-bg-subtle: oklch(0.98 0.007 35);
+  --color-surface: white;
+  --color-text-primary: oklch(0.19 0.005 35);
+  --color-text-secondary: oklch(0.47 0.008 35);
+  --color-text-tertiary: oklch(0.72 0.009 35);
+  --color-border: oklch(0.92 0.009 35);
+  --color-border-subtle: oklch(0.96 0.008 35);
+  --color-success: oklch(0.58 0.15 150);
+  --color-error: oklch(0.52 0.20 25);
+  --color-warning: oklch(0.82 0.14 90);
+  --color-info: oklch(0.55 0.14 245);
+
+  /* Typography */
+  --font-sans: 'Nunito Sans', 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem; --text-4xl: 2.25rem; --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 6px; --radius-md: 10px;
+  --radius-lg: 14px; --radius-xl: 20px; --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04); --shadow-sm: 0 2px 4px oklch(0 0 0 / 0.06); --shadow-md: 0 4px 8px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 20px oklch(0 0 0 / 0.10); --shadow-xl: 0 16px 40px oklch(0 0 0 / 0.12); --shadow-2xl: 0 2px 8px oklch(0 0 0 / 0.06), 0 0 0 1px oklch(0 0 0 / 0.02);
+
+  /* Motion */
+  --duration-fast: 100ms; --duration-normal: 200ms;
+  --duration-moderate: 300ms; --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1); --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.12 0.005 35);
+  --color-bg-subtle: oklch(0.15 0.005 35);
+  --color-surface: oklch(0.18 0.005 35);
+  --color-text-primary: oklch(0.95 0.007 35);
+  --color-text-secondary: oklch(0.68 0.007 35);
+  --color-border: oklch(0.27 0.005 35);
+}
+```
+
 ---
 
 ## 3. Fashion / Streetwear (Bold & Editorial)
@@ -555,6 +701,79 @@ High contrast, bold typography, editorial layout energy. Oversized type, dramati
   --opacity-muted:    0.5;
   --opacity-subtle:   0.75;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Fashion / Streetwear — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — exact oklch() values from :root block above */
+  --color-primary: oklch(0.00 0 0);
+  --color-primary-hover: oklch(0.22 0 0);
+  --color-primary-subtle: oklch(0.94 0 0);
+  --color-bg: oklch(1.00 0 0);
+  --color-bg-subtle: oklch(0.97 0 0);
+  --color-surface: oklch(1.00 0 0);
+  --color-text-primary: oklch(0.00 0 0);
+  --color-text-secondary: oklch(0.42 0 0);
+  --color-text-tertiary: oklch(0.68 0 0);
+  --color-border: oklch(0.00 0 0);
+  --color-border-subtle: oklch(0.88 0 0);
+  --color-success: oklch(0.58 0.15 150);
+  --color-error: oklch(0.55 0.25 25);
+  --color-warning: oklch(0.78 0.15 80);
+  --color-info: oklch(0.60 0.22 255);
+
+  /* Typography */
+  --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+  --text-3xl: 2rem; --text-4xl: 2.75rem; --text-5xl: 3.75rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 2px; --radius-md: 4px;
+  --radius-lg: 6px; --radius-xl: 8px; --radius-2xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.08); --shadow-sm: 0 2px 6px oklch(0 0 0 / 0.12); --shadow-md: 0 4px 12px oklch(0 0 0 / 0.16);
+  --shadow-lg: 0 8px 24px oklch(0 0 0 / 0.20); --shadow-xl: 0 16px 48px oklch(0 0 0 / 0.25); --shadow-2xl: 4px 4px 0 oklch(0.00 0 0);
+
+  /* Motion */
+  --duration-fast: 80ms; --duration-normal: 150ms;
+  --duration-moderate: 250ms; --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1); --ease-spring: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.00 0 0);
+  --color-bg-subtle: oklch(0.08 0 0);
+  --color-surface: oklch(0.14 0 0);
+  --color-text-primary: oklch(1.00 0 0);
+  --color-text-secondary: oklch(0.68 0 0);
+  --color-border: oklch(0.32 0 0);
 }
 ```
 
@@ -741,6 +960,79 @@ Content-forward, minimal chrome. The UI disappears so user content shines. Thin 
 }
 ```
 
+**Tailwind v4 variant:**
+
+```css
+/* Social Media (Feed-Based) — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — exact oklch() values from :root block above */
+  --color-primary: oklch(0.55 0.20 240);
+  --color-primary-hover: oklch(0.48 0.20 240);
+  --color-primary-subtle: oklch(0.96 0.02 240);
+  --color-bg: white;
+  --color-bg-subtle: oklch(0.98 0.002 250);
+  --color-surface: white;
+  --color-text-primary: oklch(0.12 0.003 250);
+  --color-text-secondary: oklch(0.58 0.004 250);
+  --color-text-tertiary: oklch(0.73 0.004 250);
+  --color-border: oklch(0.92 0.004 250);
+  --color-border-subtle: oklch(0.96 0.003 250);
+  --color-success: oklch(0.58 0.14 150);
+  --color-error: oklch(0.55 0.22 25);
+  --color-warning: oklch(0.78 0.14 80);
+  --color-info: oklch(0.55 0.20 240);
+
+  /* Typography */
+  --font-sans: 'SF Pro', 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 0.9375rem;
+  --text-lg: 1rem; --text-xl: 1.125rem; --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem; --text-4xl: 2rem; --text-5xl: 2.5rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 8px;
+  --radius-lg: 12px; --radius-xl: 16px; --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.03); --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.05); --shadow-md: 0 3px 8px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 20px oklch(0 0 0 / 0.10); --shadow-xl: 0 16px 40px oklch(0 0 0 / 0.14); --shadow-2xl: 0 24px 56px oklch(0 0 0 / 0.18);
+
+  /* Motion */
+  --duration-fast: 80ms; --duration-normal: 150ms;
+  --duration-moderate: 250ms; --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1); --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.00 0 0);
+  --color-bg-subtle: oklch(0.10 0.003 250);
+  --color-surface: oklch(0.14 0.003 250);
+  --color-text-primary: oklch(0.97 0.002 250);
+  --color-text-secondary: oklch(0.62 0.004 250);
+  --color-border: oklch(0.22 0.003 250);
+}
+```
+
 ---
 
 ## 5. Community / Forum (Readable & Compact)
@@ -923,6 +1215,79 @@ Readability-first, compact density, scalable information hierarchy. Long-form co
   --opacity-muted:    0.6;
   --opacity-subtle:   0.8;
   --opacity-full:     1;
+}
+```
+
+**Tailwind v4 variant:**
+
+```css
+/* Community / Forum — Tailwind v4 @theme configuration
+   Use instead of tailwind.config.js. Import in your main CSS file. */
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+
+@theme {
+  /* Colors — exact oklch() values from :root block above */
+  --color-primary: oklch(0.53 0.19 270);
+  --color-primary-hover: oklch(0.46 0.19 270);
+  --color-primary-subtle: oklch(0.96 0.02 270);
+  --color-bg: oklch(0.96 0.005 220);
+  --color-bg-subtle: oklch(0.98 0.004 220);
+  --color-surface: white;
+  --color-text-primary: oklch(0.17 0.007 220);
+  --color-text-secondary: oklch(0.47 0.007 220);
+  --color-text-tertiary: oklch(0.72 0.007 220);
+  --color-border: oklch(0.92 0.006 220);
+  --color-border-subtle: oklch(0.96 0.005 220);
+  --color-success: oklch(0.58 0.14 150);
+  --color-error: oklch(0.55 0.20 25);
+  --color-warning: oklch(0.78 0.14 80);
+  --color-info: oklch(0.55 0.16 245);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --text-xs: 0.75rem; --text-sm: 0.8125rem; --text-base: 0.875rem;
+  --text-lg: 1rem; --text-xl: 1.125rem; --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem; --text-4xl: 2rem; --text-5xl: 2.5rem;
+
+  /* Spacing */
+  --spacing-0: 0; --spacing-px: 1px; --spacing-0-5: 2px;
+  --spacing-1: 4px; --spacing-1-5: 6px; --spacing-2: 8px;
+  --spacing-3: 12px; --spacing-4: 16px; --spacing-5: 20px;
+  --spacing-6: 24px; --spacing-8: 32px; --spacing-10: 40px;
+  --spacing-12: 48px; --spacing-16: 64px; --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radius */
+  --radius-none: 0; --radius-sm: 4px; --radius-md: 8px;
+  --radius-lg: 12px; --radius-xl: 16px; --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04); --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.06); --shadow-md: 0 3px 8px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 16px oklch(0 0 0 / 0.10); --shadow-xl: 0 16px 32px oklch(0 0 0 / 0.14); --shadow-2xl: 0 24px 48px oklch(0 0 0 / 0.18);
+
+  /* Motion */
+  --duration-fast: 80ms; --duration-normal: 150ms;
+  --duration-moderate: 250ms; --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1); --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1); --ease-spring: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px; --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px; --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+/* Dark mode override */
+@theme dark {
+  --color-bg: oklch(0.10 0.007 220);
+  --color-bg-subtle: oklch(0.12 0.007 220);
+  --color-surface: oklch(0.15 0.007 220);
+  --color-text-primary: oklch(0.93 0.004 220);
+  --color-text-secondary: oklch(0.65 0.005 220);
+  --color-border: oklch(0.22 0.007 220);
 }
 ```
 
