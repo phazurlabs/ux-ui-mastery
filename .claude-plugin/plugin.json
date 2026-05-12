@@ -1,38 +1,5 @@
 {
   "name": "ux-ui-mastery",
   "version": "3.0.0",
-  "description": "The definitive UX/UI design mastery plugin — 19 skills, 55 references, 10 commands, 300K+ words. Covers cognitive psychology, component code (React/SwiftUI/CSS), heuristic evaluation, design critique with case studies, Figma workflows with MCP design-to-code, research methods, mobile/desktop/web design (iOS 26 Liquid Glass, Material 3 Expressive), visual systems, accessibility (WCAG 2.2 + 3.0), motion and haptics, AI/spatial/voice UX, agentic AI and generative UI, performance states, cross-cultural i18n, ambient/calm technology, UX metrics, design systems architecture, and ethics/content strategy. Built on NNG Group methodology, 50+ cognitive biases, 25+ Laws of UX, and research from arXiv, ACM CHI 2025, W3C, Smashing Magazine 2026, and industry sources.",
-  "skills": [
-    "skills/nng-ux-heuristics/SKILL.md",
-    "skills/ux-research-methods/SKILL.md",
-    "skills/mobile-ux-design/SKILL.md",
-    "skills/desktop-app-design/SKILL.md",
-    "skills/ui-visual-design-system/SKILL.md",
-    "skills/accessibility-inclusive-design/SKILL.md",
-    "skills/interaction-motion-design/SKILL.md",
-    "skills/ai-spatial-voice-ux/SKILL.md",
-    "skills/design-systems-architecture/SKILL.md",
-    "skills/ux-ethics-content-strategy/SKILL.md",
-    "skills/agentic-ai-generative-ux/SKILL.md",
-    "skills/ux-metrics-measurement/SKILL.md",
-    "skills/cognitive-psychology-ux/SKILL.md",
-    "skills/component-patterns-code/SKILL.md",
-    "skills/design-critique-case-studies/SKILL.md",
-    "skills/figma-design-tool-workflows/SKILL.md",
-    "skills/performance-states-patterns/SKILL.md",
-    "skills/cross-cultural-i18n-ux/SKILL.md",
-    "skills/ambient-calm-zero-ui/SKILL.md"
-  ],
-  "commands": [
-    "commands/ux-audit.md",
-    "commands/design-review.md",
-    "commands/accessibility-check.md",
-    "commands/generate-design-tokens.md",
-    "commands/ai-ux-audit.md",
-    "commands/ux-metrics-plan.md",
-    "commands/component-build.md",
-    "commands/design-critique.md",
-    "commands/figma-to-code.md",
-    "commands/cognitive-check.md"
-  ]
+  "description": "The definitive UX/UI design mastery plugin — 19 skills, 55 references, 10 commands, 300K+ words. Covers cognitive psychology, component code (React/SwiftUI/CSS), heuristic evaluation, design critique with case studies, Figma workflows with MCP design-to-code, research methods, mobile/desktop/web design (iOS 26 Liquid Glass, Material 3 Expressive), visual systems, accessibility (WCAG 2.2 + 3.0), motion and haptics, AI/spatial/voice UX, agentic AI and generative UI, performance states, cross-cultural i18n, ambient/calm technology, UX metrics, design systems architecture, and ethics/content strategy. Built on NNG Group methodology, 50+ cognitive biases, 25+ Laws of UX, and research from arXiv, ACM CHI 2025, W3C, Smashing Magazine 2026, and industry sources."
 }
