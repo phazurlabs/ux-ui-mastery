@@ -27,8 +27,20 @@ however you like.
 
 ### How to sign
 
-Open your pull request. An automated check will post a link if you have not signed. Sign
-once and it applies to all your future contributions to Phazur Labs projects.
+Open your pull request. A CLA check runs automatically and, if you have not signed yet,
+posts a comment on the PR with the document and instructions. To sign, reply on the pull
+request with exactly:
+
+```
+I have read the CLA Document and I hereby sign the CLA
+```
+
+Your signature is recorded in this repository on the `cla-signatures` branch and applies
+to all your future contributions to this project. The check then goes green and the pull
+request becomes mergeable.
+
+If you would rather sign out of band, email a completed [CLA.md](CLA.md) to
+**legal@phazurlabs.com** and we will record it for you.
 
 ## Developer Certificate of Origin
 
