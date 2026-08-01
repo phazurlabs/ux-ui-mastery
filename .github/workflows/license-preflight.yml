@@ -33,12 +33,19 @@ jobs:
             || { echo "FAIL LICENSE is not Apache-2.0"; exit 1; }
           grep -q "Copyright 2026 Phazur Labs LLC" LICENSE \
             || { echo "FAIL copyright line missing or altered"; exit 1; }
-          # The licensed body must stay byte-identical upstream or GitHub's
-          # licensee gem stops detecting it and compliance scanners miss it.
-          curl -fsSL https://www.apache.org/licenses/LICENSE-2.0.txt -o /tmp/upstream.txt
-          if ! diff <(sed -n '1,178p' LICENSE | tr -s '[:space:]' ' ') \
-                    <(sed -n '1,178p' /tmp/upstream.txt | tr -s '[:space:]' ' ') >/dev/null; then
-            echo "FAIL Apache body was modified — breaks license detection"; exit 1
+          # The licensed body must stay verbatim or GitHub's licensee gem stops
+          # detecting it and downstream compliance scanners miss it. The only
+          # permitted edit is the appendix copyright line, so substitute that into
+          # upstream and require everything else to match.
+          #   -B/-w: apache.org ships a leading blank line and a different trailing
+          #   newline than the canonical text, and neither is a real modification.
+          curl -fsSL https://www.apache.org/licenses/LICENSE-2.0.txt \
+            | sed 's/Copyright \[yyyy\] \[name of copyright owner\]/Copyright 2026 Phazur Labs LLC/' \
+            > /tmp/expected.txt
+          if ! diff -qBw /tmp/expected.txt LICENSE >/dev/null; then
+            echo "FAIL Apache body was modified — breaks license detection"
+            diff -Bw /tmp/expected.txt LICENSE | head -20
+            exit 1
           fi
           echo "ok   Apache-2.0 body verbatim"
 
