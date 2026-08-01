@@ -34,5 +34,6 @@
     "commands/design-critique.md",
     "commands/figma-to-code.md",
     "commands/cognitive-check.md"
-  ]
+  ],
+  "license": "Apache-2.0"
 }
