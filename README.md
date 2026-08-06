@@ -190,7 +190,7 @@ The relevant skill and deep references load automatically based on your query.
 | Skill | What Claude Knows |
 |-------|------------------|
 | **Interaction & Motion Design** | Animation timing curves. Micro-interactions. M3 Expressive spring physics (stiffness/damping/mass). iOS Core Haptics + Android haptics. Brand haptic vocabulary. Emotional design (Norman's 3 levels). |
-| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 April 2026 preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. AI-adaptive patterns. |
+| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 Working Draft preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. AI-adaptive patterns. |
 | **Design Critique & Case Studies** | Liz Lerman Critical Response Process. 10 product deep-dives: Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord. 10 redesign failures: Snapchat, Windows 8, Digg v4, Sonos 2024, Healthcare.gov. |
 | **UX Ethics & Content Strategy** | Dark pattern detection and avoidance. 2025-2026 regulatory landscape. Privacy UX. Sustainable/green UX. Microcopy pattern library: 30+ action verbs, 20+ error templates, empty/loading/confirmation/permission copy. |
 
@@ -336,7 +336,7 @@ Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Wo
 arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction, LLM Hallucination Detection | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI Coding, Multi-Agent GenAI, AI Literacy
 
 **Industry Standards**
-W3C: WCAG 3.0 April 2026 Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates, iOS 26 Usability Critique
+W3C: WCAG 3.0 Working Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates, iOS 26 Usability Critique
 
 **Platform Sources**
 Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
