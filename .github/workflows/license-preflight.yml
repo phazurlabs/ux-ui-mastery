@@ -58,6 +58,25 @@ jobs:
             if [ "$got" = "Apache-2.0" ]; then echo "ok   $meta license=$got"
             else echo "FAIL $meta license=$got, expected Apache-2.0"; fail=1; fi
           done
+          # marketplace.json declares a license at the top level and once per
+          # plugin entry. A per-entry value drifting to MIT is invisible to the
+          # loop above, which is exactly how the 3.0.0 mismatch survived.
+          if [ -f .claude-plugin/marketplace.json ]; then
+            python3 - <<'PY' || fail=1
+import json, sys
+d = json.load(open(".claude-plugin/marketplace.json"))
+seen = [("(top-level)", d.get("license", "<none>"))]
+seen += [(f"[{p.get('name')}]", p.get("license", "<none>")) for p in d.get("plugins", [])]
+bad = 0
+for where, got in seen:
+    if got == "Apache-2.0":
+        print(f"ok   marketplace.json {where} license={got}")
+    else:
+        print(f"FAIL marketplace.json {where} license={got}, expected Apache-2.0")
+        bad = 1
+sys.exit(bad)
+PY
+          fi
           exit $fail
 
       - name: CONTRIBUTING states CLA or DCO
@@ -79,3 +98,11 @@ jobs:
             echo "FAIL copyleft dependency conflicts with Apache-2.0:"; echo "$hits"; exit 1
           fi
           echo "ok   no GPL/AGPL/SSPL dependencies"
+
+      - name: Plugin structure valid
+        # Catches the failure modes that load a broken plugin silently:
+        # non-kebab skill names (which become invalid command names),
+        # frontmatter outside the Agent Skills spec, and malformed manifest
+        # paths. Mirrors `claude plugin validate . --strict`, which is
+        # authoritative but needs the Claude Code CLI.
+        run: python3 scripts/validate-plugin.py .

@@ -9,15 +9,15 @@ and marks below.
 
 ## Covered marks
 
-"Phazur," "Phazur Labs," the Phazur Labs logo, UX/UI Mastery, and all other product names,
+"Phazur," "Phazur Labs," the Phazur Labs logo, Sumi, and all other product names,
 service names, logos, wordmarks, and trade dress of Phazur Labs LLC (the "Marks") are
 the exclusive property of Phazur Labs LLC.
 
 ## What you may do without asking
 
 - **Nominative reference.** Use the Marks in plain text to accurately refer to this
-  project — "built with UX/UI Mastery," "compatible with UX/UI Mastery," "a fork of
-  UX/UI Mastery." Reference must be truthful and must not imply sponsorship, affiliation,
+  project — "built with Sumi," "compatible with Sumi," "a fork of
+  Sumi." Reference must be truthful and must not imply sponsorship, affiliation,
   or endorsement by Phazur Labs LLC.
 - **Unmodified redistribution.** Redistribute the software unmodified, with the Marks
   intact, under the terms of the Apache License, Version 2.0.
@@ -30,8 +30,8 @@ the exclusive property of Phazur Labs LLC.
   or supports your offering.
 - Using the Phazur Labs logo or any confusingly similar mark or logo.
 - Applying the Marks to a **modified** version of this software. If you fork and modify,
-  you must rename. You may state that your work is "derived from UX/UI Mastery"; you may
-  not call it UX/UI Mastery.
+  you must rename. You may state that your work is "derived from Sumi"; you may
+  not call it Sumi.
 - Merchandise, event names, or printed material bearing the Marks.
 
 ## Requests

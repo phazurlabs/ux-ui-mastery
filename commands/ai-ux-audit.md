@@ -1,7 +1,6 @@
 ---
 name: ai-ux-audit
 description: Audit AI-powered features against agentic, trust, safety, and interaction best practices with scoring and specific fix recommendations.
-user_invocable: true
 ---
 
 # AI UX Audit Command

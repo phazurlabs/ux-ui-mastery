@@ -1,7 +1,6 @@
 ---
 name: generate-design-tokens
 description: Generate a complete design token system from brand requirements following the W3C Design Tokens specification.
-user_invocable: true
 ---
 
 # Generate Design Tokens Command

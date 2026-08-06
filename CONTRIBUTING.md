@@ -1,4 +1,4 @@
-# Contributing to UX/UI Mastery
+# Contributing to Sumi
 
 Thanks for your interest. Please read this before opening a pull request — the CLA
 requirement below is not optional and cannot be waived after the fact.

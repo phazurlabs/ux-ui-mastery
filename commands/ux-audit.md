@@ -1,7 +1,6 @@
 ---
 name: ux-audit
 description: Audit any UI component, screen, or codebase against NNG's 10 usability heuristics with severity ratings and actionable recommendations.
-user_invocable: true
 ---
 
 # UX Audit Command

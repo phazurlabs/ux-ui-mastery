@@ -1,7 +1,6 @@
 ---
 name: design-critique
 description: Conduct a structured design critique using the Liz Lerman Critical Response Process, scoring across 10 dimensions with heuristic-grounded feedback.
-user_invocable: true
 ---
 
 # Design Critique Command

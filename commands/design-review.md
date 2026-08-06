@@ -1,12 +1,11 @@
 ---
 name: design-review
-description: Comprehensive design review scoring a UI across all 10 skill domains with detailed feedback and improvement roadmap.
-user_invocable: true
+description: Comprehensive design review scoring a UI across all 19 skill domains with detailed feedback and improvement roadmap.
 ---
 
 # Design Review Command
 
-Perform a comprehensive design review evaluating the provided UI across all 10 UX/UI skill domains.
+Perform a comprehensive design review evaluating the provided UI across all 19 UX/UI skill domains.
 
 ## Review Protocol
 

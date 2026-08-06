@@ -1,7 +1,6 @@
 ---
 name: accessibility-check
 description: Deep WCAG 2.2 compliance audit on code with specific fixes for every violation found.
-user_invocable: true
 ---
 
 # Accessibility Check Command

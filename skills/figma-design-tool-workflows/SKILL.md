@@ -1,30 +1,6 @@
 ---
 name: figma-design-tool-workflows
-description: "Figma mastery and design-to-code workflows. Auto Layout, component architecture, variable modes, Dev Mode, Figma MCP integration, Code Connect, design token pipelines, visual regression testing, and AI-assisted design-to-code flywheel."
-triggers:
-  - Figma
-  - design tool
-  - auto layout
-  - Figma components
-  - Figma variables
-  - Figma MCP
-  - design to code
-  - Code Connect
-  - Storybook
-  - Dev Mode
-  - Figma tokens
-  - design handoff
-  - design system Figma
-  - Figma plugin
-  - Figma prototype
-  - design file
-  - Figma library
-  - design specs
-  - design-to-code pipeline
-  - visual regression
-  - Chromatic
-  - Style Dictionary
-  - Tokens Studio
+description: "Figma mastery and design-to-code: Auto Layout, component architecture, variable modes, Dev Mode handoff, Figma MCP server integration, Code Connect, and token pipelines. Use when working in Figma, converting designs to code, or setting up a design-to-code flywheel."
 ---
 
 # Figma Design Tool Workflows — From Canvas to Production Code

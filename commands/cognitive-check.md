@@ -1,7 +1,6 @@
 ---
 name: cognitive-check
 description: Audit an interface against Laws of UX, Gestalt principles, and cognitive bias analysis. Evaluates cognitive load, decision architecture, and attention management with scored findings.
-user_invocable: true
 ---
 
 # Cognitive Check Command

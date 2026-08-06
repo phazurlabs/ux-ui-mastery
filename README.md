@@ -1,8 +1,8 @@
-# UX/UI Mastery Plugin for Claude Code
+# Sumi — UX/UI Design Intelligence for Claude Code
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v3.0.0** | 19 Skills | 55 References | 10 Commands | 310,000+ Words | 87 Files
+**v3.1.0** | 19 Skills | 55 References | 10 Commands | 310,000+ Words | 89 Files
 
 ---
 
@@ -48,8 +48,8 @@ This plugin gives Claude Code the equivalent of a senior UX designer's entire ca
 This is the standard way to install Claude Code plugins. Run these commands **inside a Claude Code session**:
 
 ```
-/plugin marketplace add phazurlabs/ux-ui-mastery
-/plugin install ux-ui-mastery@ux-ui-mastery-marketplace
+/plugin marketplace add phazurlabs/sumi
+/plugin install sumi@sumi-marketplace
 ```
 
 That's it. The plugin is now permanently installed and available in every session.
@@ -66,8 +66,8 @@ To choose installation scope:
 Clone the repo anywhere, then load it with the `--plugin-dir` flag:
 
 ```bash
-git clone https://github.com/phazurlabs/ux-ui-mastery.git
-claude --plugin-dir ./ux-ui-mastery
+git clone https://github.com/phazurlabs/sumi.git
+claude --plugin-dir ./sumi
 ```
 
 This loads the plugin for that session only. Great for testing or development.
@@ -81,7 +81,7 @@ This loads the plugin for that session only. Great for testing or development.
 ```bash
 mkdir -p ~/.claude/plugins
 cd ~/.claude/plugins
-git clone https://github.com/phazurlabs/ux-ui-mastery.git
+git clone https://github.com/phazurlabs/sumi.git
 ```
 
 **Step 2:** Register the plugin in your Claude Code settings. Edit `~/.claude/settings.json`:
@@ -89,7 +89,7 @@ git clone https://github.com/phazurlabs/ux-ui-mastery.git
 ```json
 {
   "enabledPlugins": {
-    "ux-ui-mastery": true
+    "sumi": true
   }
 }
 ```
@@ -110,7 +110,7 @@ Start Claude Code and run any slash command:
 /figma-to-code
 ```
 
-Commands appear as `/ux-ui-mastery:command-name` (e.g., `/ux-ui-mastery:ux-audit`).
+Commands appear as `/sumi:command-name` (e.g., `/sumi:ux-audit`).
 
 You can also test skill activation by asking about any trigger topic:
 
@@ -130,7 +130,7 @@ The relevant skill and deep references load automatically based on your query.
 | Commands not showing up | Restart Claude Code after installation |
 | `/plugin` command not recognized | Update Claude Code to the latest version |
 | Skills not activating on topics | Verify `plugin.json` exists at `.claude-plugin/plugin.json` |
-| Want to uninstall | Run `/plugin uninstall ux-ui-mastery` or remove from `settings.json` |
+| Want to uninstall | Run `/plugin uninstall sumi` or remove from `settings.json` |
 
 ### Requirements
 
@@ -236,10 +236,10 @@ Built on the shoulders of giants:
 ## Architecture
 
 ```
-ux-ui-mastery/                          310K+ words across 87 files
+sumi/                                   310K+ words across 89 files
 ├── .claude-plugin/
-│   └── plugin.json                     v3.0.0 manifest
-├── marketplace.json                    Distribution metadata
+│   ├── plugin.json                     v3.1.0 manifest
+│   └── marketplace.json                Distribution metadata
 │
 ├── skills/                             19 skill domains
 │   ├── cognitive-psychology-ux/        Laws of UX, biases, neurodesign
@@ -351,8 +351,8 @@ Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Heal
 
 ## License
 
-MIT
+Apache-2.0. See `LICENSE`, `NOTICE`, and `TRADEMARKS.md`.
 
 ---
 
-*Built with obsessive attention to detail by Design Tribe Republic. Powered by Claude Opus 4.6.*
+*Built by Phazur Labs.*

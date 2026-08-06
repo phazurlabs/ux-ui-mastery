@@ -1,7 +1,6 @@
 ---
 name: figma-to-code
 description: Generate production code from a Figma design specification using the MCP-powered design-to-code flywheel. Extracts tokens, components, and layout to produce platform-ready code.
-user_invocable: true
 ---
 
 # Figma to Code Command

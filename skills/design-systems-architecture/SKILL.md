@@ -1,15 +1,6 @@
 ---
-name: Design Systems Architecture
-description: Design system architecture covering design token specification (W3C standard), component library patterns, theming architecture, multi-brand systems, governance models, versioning strategy, and design-to-code integration.
-triggers:
-  - design system
-  - design tokens
-  - component library
-  - theming
-  - multi-brand design
-  - design governance
-  - token architecture
-  - design system scale
+name: design-systems-architecture
+description: "Design system architecture: W3C design tokens, Style Dictionary pipelines, component library structure, theming, multi-brand token tiers, governance, versioning, and maturity models. Use when starting or scaling a design system, generating tokens, or setting up design-to-code distribution."
 ---
 
 # Design Systems Architecture — Systematic Design at Scale
@@ -273,6 +264,9 @@ See `references/maturity-model-multi-brand.md` for the comprehensive 5-level des
 
 **CSS @layer Integration with Token Architecture**
 See `component-patterns-code/references/css-modern-patterns.md` for modern CSS `@layer` usage in design system token architecture. Cascade layers (`@layer reset, tokens, components, utilities, overrides`) provide deterministic specificity management for design systems at scale — eliminating the specificity wars that plague large component libraries. This reference covers how design tokens map to CSS custom properties within a layered cascade, enabling clean component-level theming without `!important` hacks or excessive nesting.
+
+**Token Implementation Deep-Dive**
+See `references/design-token-implementation.md` for end-to-end token implementation: aliasing and referencing syntax, multi-theme architecture, the transformation pipeline, platform-specific outputs (web, iOS, Android), Figma integration, token documentation, versioning and migration strategy, governance, performance considerations, and token testing. Use it alongside `references/token-specification-guide.md`, which covers the W3C DTCG format and Style Dictionary configuration in spec detail.
 
 ## Key Sources
 

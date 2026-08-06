@@ -1,7 +1,6 @@
 ---
 name: component-build
 description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS).
-user_invocable: true
 ---
 
 # Component Build Command
