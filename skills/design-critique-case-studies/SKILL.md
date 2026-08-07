@@ -73,7 +73,7 @@ When the most senior person in the room speaks first or speaks with implied auth
 
 ### Personal Preference vs. Evidence
 
-"I prefer left-aligned navigation" is a personal preference. "Left-aligned navigation tests 15% faster for discovery in information-dense dashboards according to Baymard Institute research" is evidence. Critique must distinguish between these. When evidence is unavailable, the appropriate response is to flag the question for user testing rather than defaulting to the loudest opinion.
+"I prefer left-aligned navigation" is a personal preference. "Nielsen Norman Group's navigation study found hidden navigation cuts content discoverability by nearly half compared to visible navigation" is evidence. Critique must distinguish between these. When evidence is unavailable, the appropriate response is to flag the question for user testing rather than defaulting to the loudest opinion.
 
 ### Bike-Shedding
 

@@ -89,7 +89,7 @@ Systems with multiple specialized agents require coordination patterns that are 
 
 ## Generative UI Paradigm
 
-Generative UI (GenUI) dynamically creates interface elements based on context rather than rendering pre-designed layouts. Google's A2UI research shows 72% user preference for generative UI over purely conversational interfaces for complex tasks.
+Generative UI (GenUI) dynamically creates interface elements based on context rather than rendering pre-designed layouts. Research on generative interfaces for language models (arXiv:2508.19227) reports human evaluators preferring generative interfaces over conversational ones by margins reaching 72% on information-dense and exploratory tasks.
 
 ### Three UI Paradigms
 

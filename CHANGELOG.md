@@ -27,6 +27,29 @@ identity, manifests, and frontmatter so the plugin installs and loads correctly.
   previously declared MIT while `LICENSE`, `NOTICE`, and `plugin.json` declared
   Apache-2.0.
 
+### Fixed — citation accuracy
+
+Empirical claims were audited against primary sources (see `AUDIT.md`). Six
+defects corrected:
+
+- **Dark mode power saving** stated as "3-6x." A reduction cannot exceed 1x; the
+  real figure is 3-9% at typical brightness, ~42% at full (Dash & Hu, MobiSys
+  2021). Off by roughly two orders of magnitude.
+- **"Google's A2UI research shows 72% user preference"** (two locations). The
+  figure is real but comes from arXiv:2508.19227; A2UI is a separate Google spec.
+- **NNG hamburger-menu finding** described as reducing "engagement by 50% or
+  more." NNG measured discoverability, not engagement.
+- **Two Baymard Institute statistics** ("icon-only navigation reduces
+  discoverability by 50%+", "left-aligned navigation tests 15% faster") could not
+  be located in Baymard's published research. Guidance retained where
+  independently supported; figures removed. The second was being used as a
+  teaching example of what evidence looks like.
+- **WCAG 3.0 citation** flagged as superseded by the March 2026 draft.
+
+Added `AUDIT.md` and `scripts/extract-claims.py` so citation accuracy is an
+auditable, repeatable property rather than an assertion. Six claims from the
+first pass and ten from the wider extraction remain unverified and are listed.
+
 ### Removed
 
 - **`triggers:` frontmatter (243 entries across 19 skills).** Not a field in the

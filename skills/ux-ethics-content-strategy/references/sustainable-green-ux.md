@@ -129,7 +129,7 @@ Implement dark mode as both a user preference and an energy optimization. On OLE
 | Dark gray (#333333) | ~15-20% |
 | Pure black (#000000) | ~0% (pixels off) |
 
-Dark mode on OLED devices reduces screen power consumption by 3-6x depending on implementation. Design dark themes with proper surface hierarchy: use dark grays (#121212, #1E1E1E, #2C2C2C) for layered surfaces rather than pure black for all elements. Maintain WCAG contrast ratios in dark themes. Avoid pure white text on pure black backgrounds as this creates excessive contrast and halation.
+Dark mode on OLED devices reduces power consumption by roughly 3-9% at the 30-50% screen brightness most users actually sit at, rising to around 42% at full brightness (Dash & Hu, MobiSys 2021, Purdue). Brightness dominates the effect, so dark mode is a modest saving, not a transformative one -- design for it as a user preference first and an efficiency measure second. Design dark themes with proper surface hierarchy: use dark grays (#121212, #1E1E1E, #2C2C2C) for layered surfaces rather than pure black for all elements. Maintain WCAG contrast ratios in dark themes. Avoid pure white text on pure black backgrounds as this creates excessive contrast and halation.
 
 ### Lazy Loading
 
