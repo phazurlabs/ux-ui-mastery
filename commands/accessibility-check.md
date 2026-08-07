@@ -1,9 +1,18 @@
 ---
 name: accessibility-check
 description: Deep WCAG 2.2 compliance audit on code with specific fixes for every violation found.
+argument-hint: [file, component, or screen to audit]
 ---
 
 # Accessibility Check Command
+
+## Before running
+
+This command needs a file path, component, screen description, or pasted markup.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Perform a deep accessibility audit against WCAG 2.2 AA standards on the provided code or component.
 

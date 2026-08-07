@@ -62,6 +62,24 @@ first pass and ten from the wider extraction remain unverified and are listed.
   required `./` prefix and pointed at `SKILL.md` files rather than the
   directories containing them.
 
+### Added — orchestration and onboarding
+
+The plugin had 19 independent skills, no router, no agents, no entry point, and
+no argument handling on any command. A new user typing `/sumi:ux-audit` with
+nothing got an audit of an imaginary interface. Fixed:
+
+- **`sumi-orchestrator` skill.** Routes any request to a pipeline — Evaluate,
+  Create, Implement, Systematize, Handoff, Localize, AI Surface, Measure — each
+  with ordered stages, a gate that must pass before the next stage, and a named
+  output artifact. Platform skills (mobile, desktop, ambient) layer in.
+- **`/sumi:start` command.** Zero-knowledge entry point. Asks one plain-language
+  question, routes via the orchestrator, and matches the user's register rather
+  than requiring them to learn UX vocabulary.
+- **`argument-hint` on all 10 existing commands**, so `/` shows what each expects.
+- **Input guards on all 10.** With no target and none evident from context, a
+  command now asks and stops instead of analyzing something hypothetical.
+- **README quick start** with separate paths for first-time and expert users.
+
 ### Added
 
 - `plugin.json` now declares `$schema`, `displayName`, `author`, `homepage`,

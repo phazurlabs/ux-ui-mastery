@@ -8,7 +8,7 @@
     {
       "name": "sumi",
       "source": "./",
-      "description": "UX/UI design intelligence for Claude Code — 19 skills, 55 references, 10 commands. Cognitive psychology, production component code, Figma design-to-code, NNG heuristics, accessibility, and AI interface patterns.",
+      "description": "UX/UI design intelligence for Claude Code — 20 skills, 55 references, 11 commands. Start with /sumi:start. Cognitive psychology, production component code, Figma design-to-code, NNG heuristics, accessibility, and AI interface patterns.",
       "author": {
         "name": "Phazur Labs"
       },

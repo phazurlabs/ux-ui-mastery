@@ -2,11 +2,52 @@
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v3.1.0** | 19 Skills | 55 References | 10 Commands | 310,000+ Words | 89 Files
+**v3.1.0** | 20 Skills | 55 References | 11 Commands | 310,000+ Words | 89 Files
 
 ---
 
 > *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
+
+---
+
+## Quick start
+
+**If you've never used this before**, type one thing:
+
+```
+/sumi:start
+```
+
+It asks what you're working on in plain language, picks the right process, and
+runs it. No knowledge of the 19 skill domains required — you never have to choose
+from a list.
+
+**If you know what you want**, go straight at it:
+
+```
+/sumi:ux-audit src/checkout/
+/sumi:component-build a date picker, React, with error and disabled states
+/sumi:accessibility-check LoginForm.tsx
+```
+
+Every command shows what it expects when you type `/`. If you run one without a
+target, it asks rather than inventing something to analyze.
+
+**If your request spans several areas** — a redesign, a launch, a new product —
+the orchestrator picks the pipeline and sequences the skills for you:
+
+| You want to… | Sumi runs |
+|---|---|
+| Check something that exists | Heuristics → cognitive load → accessibility → ethics |
+| Design something new | Research → constraints → visual → motion → states → a11y |
+| Build a component | Tokens → visual spec → code → a11y → performance |
+| Start a design system | Architecture → visual language → components → Figma sync |
+| Ship internationally | i18n → layout → accessibility |
+| Design an AI feature | Agent patterns → conversational → ethics → trust |
+| Prove it worked | Metrics → research design |
+
+Each stage has a gate it must pass before the next begins, so you find out at
+stage 3 that findings are unrated — not at the end.
 
 ---
 
@@ -241,7 +282,7 @@ sumi/                                   310K+ words across 89 files
 │   ├── plugin.json                     v3.1.0 manifest
 │   └── marketplace.json                Distribution metadata
 │
-├── skills/                             19 skill domains
+├── skills/                             20 skill domains (19 + orchestrator)
 │   ├── cognitive-psychology-ux/        Laws of UX, biases, neurodesign
 │   │   ├── SKILL.md                    2K words — overview + cross-refs
 │   │   └── references/
