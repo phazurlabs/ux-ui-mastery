@@ -58,26 +58,11 @@ jobs:
             if [ "$got" = "Apache-2.0" ]; then echo "ok   $meta license=$got"
             else echo "FAIL $meta license=$got, expected Apache-2.0"; fail=1; fi
           done
-          # marketplace.json declares a license at the top level and once per
-          # plugin entry. A per-entry value drifting to MIT is invisible to the
-          # loop above, which is exactly how the 3.0.0 mismatch survived.
-          if [ -f .claude-plugin/marketplace.json ]; then
-            python3 - <<'PY' || fail=1
-import json, sys
-d = json.load(open(".claude-plugin/marketplace.json"))
-seen = [("(top-level)", d.get("license", "<none>"))]
-seen += [(f"[{p.get('name')}]", p.get("license", "<none>")) for p in d.get("plugins", [])]
-bad = 0
-for where, got in seen:
-    if got == "Apache-2.0":
-        print(f"ok   marketplace.json {where} license={got}")
-    else:
-        print(f"FAIL marketplace.json {where} license={got}, expected Apache-2.0")
-        bad = 1
-sys.exit(bad)
-PY
-          fi
           exit $fail
+          # Per-plugin licenses inside marketplace.json are checked by
+          # scripts/validate-plugin.py, which compares every declared license
+          # across manifests. A per-entry value drifting to MIT was invisible to
+          # the loop above, which is how the 3.0.0 mismatch survived.
 
       - name: CONTRIBUTING states CLA or DCO
         run: |
@@ -100,9 +85,23 @@ PY
           echo "ok   no GPL/AGPL/SSPL dependencies"
 
       - name: Plugin structure valid
-        # Catches the failure modes that load a broken plugin silently:
-        # non-kebab skill names (which become invalid command names),
-        # frontmatter outside the Agent Skills spec, and malformed manifest
-        # paths. Mirrors `claude plugin validate . --strict`, which is
-        # authoritative but needs the Claude Code CLI.
-        run: python3 scripts/validate-plugin.py .
+        # Cross-file concerns the CLI does not check: license agreement across
+        # manifests, kebab-case skill names (a skill's name becomes its command),
+        # frontmatter outside the Agent Skills spec, duplicate reference filenames.
+        run: |
+          pip install pyyaml --quiet
+          python3 scripts/validate-plugin.py .
+
+      - name: Plugin manifests valid (authoritative)
+        # `claude plugin validate --strict` is the real checker and gates the
+        # release. It caught a YAML frontmatter parse failure that a line-based
+        # parser missed; Claude Code drops ALL frontmatter for such a file, so the
+        # command would have loaded with no name and no description.
+        # marketplace.json is moved aside so the plugin manifest is validated too:
+        # when both exist, only the marketplace one is checked.
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate . --strict
+          mv .claude-plugin/marketplace.json /tmp/marketplace.json
+          claude plugin validate . --strict
+          mv /tmp/marketplace.json .claude-plugin/marketplace.json

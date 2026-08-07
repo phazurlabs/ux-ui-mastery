@@ -1,7 +1,7 @@
 ---
 name: accessibility-check
 description: Deep WCAG 2.2 compliance audit on code with specific fixes for every violation found.
-argument-hint: [file, component, or screen to audit]
+argument-hint: "[file, component, or screen to audit]"
 ---
 
 # Accessibility Check Command

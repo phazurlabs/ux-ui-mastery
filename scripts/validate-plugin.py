@@ -5,8 +5,11 @@ Checks the things that silently break a plugin at load or package time:
 manifest shape, kebab-case skill names matching their directory, and
 frontmatter fields outside the Agent Skills spec.
 
-Complements `claude plugin validate . --strict`, which is the authoritative
-check but requires the Claude Code CLI. This script needs only Python 3.
+Complements `claude plugin validate . --strict`, which is authoritative and
+should gate every release. This script needs only Python 3, runs in CI without
+the CLI, and additionally checks cross-file concerns the CLI does not: license
+agreement across manifests, kebab-case skill names, and duplicate reference
+filenames.
 
 Usage:  python3 scripts/validate-plugin.py [plugin_root]
 Exit:   0 clean, 1 on any error.
@@ -15,6 +18,11 @@ import json
 import pathlib
 import re
 import sys
+
+try:
+    import yaml
+except ImportError:  # fall back to line parsing; type errors go undetected
+    yaml = None
 
 # Fields allowed by the Agent Skills spec. Anything else is a hard error when
 # packaging with package_skill.py or uploading to claude.ai.
@@ -35,8 +43,14 @@ errors: list[str] = []
 warnings: list[str] = []
 
 
-def parse_frontmatter(path: pathlib.Path) -> dict[str, str] | None:
-    """Minimal top-level YAML frontmatter parser. Nested keys are ignored."""
+def parse_frontmatter(path: pathlib.Path) -> dict[str, object] | None:
+    """Parse YAML frontmatter, preferring a real YAML parser.
+
+    The naive line-splitting fallback cannot detect a value that is valid YAML
+    but the wrong type -- `argument-hint: [a, b]` parses as a list, not a string,
+    and `[a] [b]` fails outright. Claude Code drops ALL frontmatter for a file
+    whose YAML fails to parse, so this must be caught here.
+    """
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---\n"):
         return None
@@ -44,8 +58,32 @@ def parse_frontmatter(path: pathlib.Path) -> dict[str, str] | None:
         end = text.index("\n---", 4)
     except ValueError:
         return None
-    fields: dict[str, str] = {}
-    for line in text[4:end].split("\n"):
+    block = text[4:end]
+
+    if yaml is not None:
+        try:
+            parsed = yaml.safe_load(block)
+        except yaml.YAMLError as exc:
+            errors.append(
+                f"{path}: YAML frontmatter fails to parse ({exc.__class__.__name__}); "
+                "Claude Code loads this file with ALL frontmatter silently dropped"
+            )
+            return {}
+        if parsed is None:
+            return {}
+        if not isinstance(parsed, dict):
+            errors.append(f"{path}: frontmatter is not a mapping")
+            return {}
+        for key, value in parsed.items():
+            if not isinstance(value, (str, bool, int, float)):
+                errors.append(
+                    f"{path}: '{key}' parses as {type(value).__name__}, not a string "
+                    f"-- quote the value (unquoted [brackets] become a YAML list)"
+                )
+        return parsed
+
+    fields: dict[str, object] = {}
+    for line in block.split("\n"):
         if not line.strip() or line.startswith((" ", "\t", "#", "-")):
             continue
         if ":" not in line:
@@ -116,7 +154,7 @@ def check_skills(root: pathlib.Path) -> None:
             errors.append(f"{child.name}/SKILL.md: missing or malformed frontmatter")
             continue
 
-        name = fields.get("name")
+        name = str(fields.get("name") or "")
         if not name:
             warnings.append(f"{child.name}/SKILL.md: no 'name'; falls back to directory")
         else:
@@ -130,7 +168,7 @@ def check_skills(root: pathlib.Path) -> None:
                     f"{child.name}/SKILL.md: name '{name}' differs from directory"
                 )
 
-        desc = fields.get("description", "")
+        desc = str(fields.get("description") or "")
         if not desc:
             errors.append(f"{child.name}/SKILL.md: no 'description'")
         elif len(desc) > DESC_CAP:
@@ -159,7 +197,7 @@ def check_commands(root: pathlib.Path) -> None:
         if fields is None:
             errors.append(f"commands/{path.name}: missing or malformed frontmatter")
             continue
-        if not fields.get("description"):
+        if not str(fields.get("description") or ""):
             errors.append(f"commands/{path.name}: no 'description'")
         for key in set(fields) - SPEC_FIELDS - CLAUDE_CODE_ONLY:
             errors.append(f"commands/{path.name}: unrecognized field '{key}'")

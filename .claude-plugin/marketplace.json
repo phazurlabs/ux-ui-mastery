@@ -1,5 +1,6 @@
 {
   "name": "sumi-marketplace",
+  "description": "Design intelligence for Claude Code from Phazur Labs. UX research, cognitive psychology, accessibility, design systems, and production component code.",
   "owner": {
     "name": "Phazur Labs",
     "url": "https://phazurlabs.com"
@@ -8,12 +9,11 @@
     {
       "name": "sumi",
       "source": "./",
-      "description": "UX/UI design intelligence for Claude Code — 20 skills, 55 references, 11 commands. Start with /sumi:start. Cognitive psychology, production component code, Figma design-to-code, NNG heuristics, accessibility, and AI interface patterns.",
+      "description": "UX/UI design intelligence for Claude Code \u2014 20 skills, 55 references, 11 commands. Start with /sumi:start. Cognitive psychology, production component code, Figma design-to-code, NNG heuristics, accessibility, and AI interface patterns.",
       "author": {
         "name": "Phazur Labs"
       },
       "license": "Apache-2.0"
     }
-  ],
-  "license": "Apache-2.0"
+  ]
 }

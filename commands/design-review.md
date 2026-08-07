@@ -1,7 +1,7 @@
 ---
 name: design-review
 description: Comprehensive design review scoring a UI across all 19 skill domains with detailed feedback and improvement roadmap.
-argument-hint: [product, screen, or codebase to review]
+argument-hint: "[product, screen, or codebase to review]"
 ---
 
 # Design Review Command

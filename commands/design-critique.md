@@ -1,7 +1,7 @@
 ---
 name: design-critique
 description: Conduct a structured design critique using the Liz Lerman Critical Response Process, scoring across 10 dimensions with heuristic-grounded feedback.
-argument-hint: [design, screenshot, or file to critique]
+argument-hint: "[design, screenshot, or file to critique]"
 ---
 
 # Design Critique Command

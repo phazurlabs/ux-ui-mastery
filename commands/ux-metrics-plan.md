@@ -1,7 +1,7 @@
 ---
 name: ux-metrics-plan
 description: Generate a complete UX metrics plan for any product using the HEART framework with goals, signals, metrics, measurement tools, and dashboard specification.
-argument-hint: [product or feature to measure]
+argument-hint: "[product or feature to measure]"
 ---
 
 # UX Metrics Plan Command

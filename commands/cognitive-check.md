@@ -1,7 +1,7 @@
 ---
 name: cognitive-check
 description: Audit an interface against Laws of UX, Gestalt principles, and cognitive bias analysis. Evaluates cognitive load, decision architecture, and attention management with scored findings.
-argument-hint: [screen, flow, or file to evaluate]
+argument-hint: "[screen, flow, or file to evaluate]"
 ---
 
 # Cognitive Check Command

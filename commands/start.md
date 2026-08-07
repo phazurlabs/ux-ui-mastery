@@ -1,7 +1,7 @@
 ---
 name: start
 description: Start here. Figures out what you need and routes you to the right Sumi skills — no prior knowledge of the plugin required.
-argument-hint: [optional: describe what you are working on]
+argument-hint: "[optional: describe what you are working on]"
 ---
 
 # Start

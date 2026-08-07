@@ -50,6 +50,27 @@ Added `AUDIT.md` and `scripts/extract-claims.py` so citation accuracy is an
 auditable, repeatable property rather than an assertion. Six claims from the
 first pass and ten from the wider extraction remain unverified and are listed.
 
+### Fixed — caught by `claude plugin validate --strict`
+
+Running the authoritative validator surfaced defects the repo's own Python
+checker missed. All fixed, and the CLI check is now a CI gate:
+
+- **`argument-hint` values were unquoted.** `[a] [b]` is invalid YAML outright;
+  even `[a, b]` parses as a list rather than a string. Claude Code drops **all**
+  frontmatter for a file whose YAML fails to parse, so `/sumi:figma-to-code`
+  would have loaded with no name and no description. All 11 now quoted.
+- **`license` at marketplace top level is not a recognized field** and is ignored
+  at load time. Removed; per-plugin licenses are authoritative and are still
+  checked for agreement by `scripts/validate-plugin.py`.
+- **marketplace.json had no `description`.** Added.
+- **`license-preflight.yml` was not valid YAML.** A heredoc inside a `run: |`
+  block had its body at column zero, which terminates the block scalar — the
+  workflow would not have parsed on GitHub. Rebuilt; both workflows now verified
+  to parse.
+- **`scripts/validate-plugin.py` now parses frontmatter with a real YAML parser**
+  and fails on values that parse to the wrong type. Regression-tested against
+  both reintroduced failure modes.
+
 ### Removed
 
 - **`triggers:` frontmatter (243 entries across 19 skills).** Not a field in the
