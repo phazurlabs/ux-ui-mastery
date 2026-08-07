@@ -1,10 +1,18 @@
 ---
 name: figma-to-code
 description: Generate production code from a Figma design specification using the MCP-powered design-to-code flywheel. Extracts tokens, components, and layout to produce platform-ready code.
-user_invocable: true
+argument-hint: [Figma URL or design spec] [target platform]
 ---
 
 # Figma to Code Command
+
+## Before running
+
+This command needs a Figma URL or design spec, and the target platform.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Transform a Figma design specification into production-ready code using the design-to-code flywheel. This command bridges the gap between design intent and engineering implementation.
 

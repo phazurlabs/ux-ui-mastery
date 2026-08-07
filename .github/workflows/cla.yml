@@ -31,12 +31,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path-to-signatures: signatures/v1/cla.json
-          path-to-document: https://github.com/phazurlabs/ux-ui-mastery/blob/main/CLA.md
+          path-to-document: https://github.com/phazurlabs/sumi/blob/main/CLA.md
           branch: cla-signatures
           allowlist: phazurlabs,dependabot[bot],github-actions[bot]
           custom-notsigned-prcomment: |
             Thanks for the contribution. Before this can be merged, we need you to
-            sign the [Contributor License Agreement](https://github.com/phazurlabs/ux-ui-mastery/blob/main/CLA.md).
+            sign the [Contributor License Agreement](https://github.com/phazurlabs/sumi/blob/main/CLA.md).
 
             **You keep full ownership and copyright of your contribution** — the CLA
             is a license grant to Phazur Labs, not an assignment away from you.

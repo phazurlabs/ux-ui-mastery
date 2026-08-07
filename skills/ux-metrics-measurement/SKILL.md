@@ -1,19 +1,6 @@
 ---
-name: UX Metrics & Measurement
-description: Comprehensive UX measurement frameworks covering HEART, SUS, UEQ, task-based metrics, behavioral analytics, A/B testing, AI-specific metrics, design system metrics, benchmarking, and ROI calculation for UX work.
-triggers:
-  - UX metrics
-  - HEART framework
-  - SUS score
-  - A/B testing
-  - usability metrics
-  - UX measurement
-  - design system metrics
-  - UX KPI
-  - UX ROI
-  - conversion rate
-  - task success rate
-  - NPS score
+name: ux-metrics-measurement
+description: "UX measurement: HEART framework, SUS, UEQ, SUPR-Q, task success and time-on-task metrics, A/B testing statistics, AI-specific metrics, and design system ROI. Use when defining UX KPIs, building a measurement plan, interpreting a usability score, or proving UX impact."
 ---
 
 # UX Metrics & Measurement — Quantifying User Experience

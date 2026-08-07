@@ -1,15 +1,6 @@
 ---
-name: UX Research Methods
-description: Comprehensive UX research methodology covering qualitative and quantitative methods, usability testing protocols, user interview techniques, survey design, analytics interpretation, and research synthesis frameworks.
-triggers:
-  - user research
-  - usability testing
-  - user interviews
-  - research methods
-  - UX research
-  - survey design
-  - user testing
-  - research plan
+name: ux-research-methods
+description: "UX research methodology: usability testing protocols, user interviews, contextual inquiry, surveys, card sorting, and diary studies, plus synthesis frameworks including JTBD, journey mapping, and affinity diagramming. Use when planning a study, writing a discussion guide, or analyzing research data."
 ---
 
 # UX Research Methods — Comprehensive Methodology Guide

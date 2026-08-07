@@ -1,22 +1,6 @@
 ---
-name: "Performance, States & Patterns"
-description: "Comprehensive patterns for perceived performance, loading states, skeleton screens, optimistic UI, notification systems, empty states, error states, onboarding flows, and offline-first patterns."
-triggers:
-  - performance
-  - loading
-  - skeleton screen
-  - optimistic UI
-  - notification
-  - empty state
-  - error state
-  - onboarding
-  - perceived speed
-  - toast
-  - alert
-  - push notification
-  - first-run
-  - offline
-  - progress indicator
+name: performance-states-patterns
+description: "Perceived performance and state design: skeleton screens, optimistic UI, progressive loading, notification architecture (toast, banner, badge, push), and empty, error, offline, and onboarding states. Use when a UI feels slow, or when specifying what a screen shows before, during, and after data arrives."
 ---
 
 # Performance, States & Patterns

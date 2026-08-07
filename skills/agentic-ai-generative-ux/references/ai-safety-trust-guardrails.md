@@ -608,7 +608,7 @@ Agents that execute multi-step plans require specialized oversight patterns that
 - For foundational AI interface patterns (chat, copilot, streaming), reference `ai-spatial-voice-ux/references/ai-native-interface-patterns.md`.
 - For dark pattern avoidance and ethical design foundations, reference `ux-ethics-content-strategy/references/dark-pattern-avoidance.md`.
 - For WCAG compliance and ARIA pattern details, reference `accessibility-inclusive-design/references/wcag-aria-patterns.md`.
-- For design token systems that support confidence color coding, reference `ui-visual-design-system/references/design-token-architecture.md`.
+- For design token systems that support confidence color coding, reference `design-systems-architecture/references/design-token-implementation.md`.
 - For agentic AI orchestration and generative UI context, reference the parent skill `agentic-ai-generative-ux/SKILL.md`.
 
 ## Key Sources

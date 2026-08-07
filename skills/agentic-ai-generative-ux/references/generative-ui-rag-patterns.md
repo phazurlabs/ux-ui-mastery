@@ -92,7 +92,7 @@ Instructed UI uses pre-designed, deterministic components that the AI triggers b
 
 ### Generative UI
 
-Generative UI means the AI produces the interface structure itself, assembling components, layouts, and data bindings on the fly. Google research indicates a **72% user preference** for generative UI over static conversational interfaces in task-completion scenarios, particularly when the task involved variable data structures or personalization requirements.
+Generative UI means the AI produces the interface structure itself, assembling components, layouts, and data bindings on the fly. Evaluations of generative interfaces for language models (arXiv:2508.19227) report **preference margins reaching 72%** for generative over conversational interfaces in task-completion scenarios, particularly when the task involved variable data structures or personalization requirements.
 
 **When to use:**
 - Variable tasks where the optimal display depends on runtime data shape

@@ -1,17 +1,6 @@
 ---
-name: AI, Spatial & Voice UX
-description: Design patterns for AI-native interfaces, conversational UX, spatial computing (AR/VR/MR), voice interfaces, multimodal interaction design, and emerging interaction paradigms for 2025-2030.
-triggers:
-  - AI interface
-  - voice UX
-  - spatial design
-  - AR/VR
-  - conversational UI
-  - chatbot design
-  - mixed reality
-  - multimodal
-  - AI UX
-  - spatial computing
+name: ai-spatial-voice-ux
+description: "AI-native interface patterns, conversational and voice UX, spatial computing (AR/VR/MR), and multimodal interaction. Use when designing a chatbot or assistant, a voice-first flow, headset or mixed-reality UI, or when combining speech, gaze, and gesture input."
 ---
 
 # AI, Spatial & Voice UX — Next-Generation Interface Design

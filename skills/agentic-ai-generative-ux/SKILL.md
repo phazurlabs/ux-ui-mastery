@@ -1,19 +1,6 @@
 ---
-name: Agentic AI & Generative UX
-description: Design patterns for agentic AI systems, multi-agent orchestration, generative UI, RAG interfaces, AI safety guardrails, trust calibration, and the paradigm shift from tool-based to agent-based interfaces. Covers AI copilot frameworks, prompt engineering UX, and AI anti-patterns.
-triggers:
-  - agentic AI
-  - AI agent
-  - multi-agent
-  - generative UI
-  - RAG interface
-  - AI guardrails
-  - AI safety UX
-  - AI copilot design
-  - AI trust
-  - AI fatigue
-  - prompt engineering UX
-  - LLM interface
+name: agentic-ai-generative-ux
+description: "Design patterns for agentic AI: multi-agent orchestration UX, generative UI, RAG interfaces, LLM hallucination guardrails, confidence indicators, and trust calibration. Use when designing AI copilots or autonomous agents, adding verification affordances, or auditing an AI feature for safety, control, and consent."
 ---
 
 # Agentic AI & Generative UX — The Agent Interface Paradigm
@@ -102,7 +89,7 @@ Systems with multiple specialized agents require coordination patterns that are 
 
 ## Generative UI Paradigm
 
-Generative UI (GenUI) dynamically creates interface elements based on context rather than rendering pre-designed layouts. Google's A2UI research shows 72% user preference for generative UI over purely conversational interfaces for complex tasks.
+Generative UI (GenUI) dynamically creates interface elements based on context rather than rendering pre-designed layouts. Research on generative interfaces for language models (arXiv:2508.19227) reports human evaluators preferring generative interfaces over conversational ones by margins reaching 72% on information-dense and exploratory tasks.
 
 ### Three UI Paradigms
 
@@ -208,6 +195,9 @@ See `references/llm-hallucination-design-guardrails.md` for the hallucination-sp
 
 **Proactive AI in Ambient Computing**
 See the `ambient-calm-zero-ui` skill for design patterns at the intersection of agentic AI and ambient computing — where AI agents operate proactively in the background without screen-based interfaces. This skill covers notification philosophy for agent-initiated ambient actions, peripheral awareness displays for background agent status, calm technology principles for non-intrusive AI suggestions, and the tension between proactive AI helpfulness and user attention respect.
+
+**AI Interface Archetypes**
+See `references/ai-interface-archetypes.md` for the foundational AI interface archetypes — chat, copilot, inline suggestion, generative UI, and autonomous agent — plus the post-UI paradigm shift. For the full pattern catalog with transparency, error, and trust-calibration patterns, see `ai-spatial-voice-ux/references/ai-native-interface-patterns.md`.
 
 ## Key Sources
 

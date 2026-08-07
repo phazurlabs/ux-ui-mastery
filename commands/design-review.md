@@ -1,12 +1,20 @@
 ---
 name: design-review
-description: Comprehensive design review scoring a UI across all 10 skill domains with detailed feedback and improvement roadmap.
-user_invocable: true
+description: Comprehensive design review scoring a UI across all 19 skill domains with detailed feedback and improvement roadmap.
+argument-hint: [product, screen, or codebase to review]
 ---
 
 # Design Review Command
 
-Perform a comprehensive design review evaluating the provided UI across all 10 UX/UI skill domains.
+## Before running
+
+This command needs what to review — a codebase path, a screen, or a product description.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
+Perform a comprehensive design review evaluating the provided UI across all 19 UX/UI skill domains.
 
 ## Review Protocol
 

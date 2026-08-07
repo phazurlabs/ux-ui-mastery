@@ -279,7 +279,7 @@ Specifying the correct input type is one of the highest-impact, lowest-effort op
 
 ### Icon and Label Requirements
 
-- Always pair icons with labels. Baymard Institute research demonstrates that icon-only navigation reduces discoverability by 50%+. Users do not agree on what abstract icons mean.
+- Always pair icons with labels. Both Nielsen Norman Group and Baymard Institute testing find that unlabeled icons are inconsistently interpreted: users do not agree on what abstract icons mean, and icon-only controls also degrade screen reader access. Text labels resolve both problems.
 - Use filled icons for the active state and outlined icons for inactive states (Material 3 convention). iOS uses filled/outline distinction within SF Symbols.
 - Labels should be a single word (two words maximum). Truncation with ellipsis is never acceptable for navigation labels.
 
@@ -302,7 +302,7 @@ Specifying the correct input type is one of the highest-impact, lowest-effort op
 
 ### Research Findings on Discoverability
 
-- NNG Group research consistently shows that hamburger menus reduce engagement with navigation items by 50% or more compared to visible navigation.
+- Nielsen Norman Group's quantitative study (179 participants, six sites) found that hiding navigation cuts content discoverability by nearly half, increases time on task, and raises perceived task difficulty, on both mobile and desktop.
 - The hamburger icon is recognized as a menu trigger, but users must make a conscious decision to open it — many do not.
 - Visible navigation (tab bar, bottom navigation) makes destinations discoverable at a glance. Users explore more sections and complete more tasks.
 

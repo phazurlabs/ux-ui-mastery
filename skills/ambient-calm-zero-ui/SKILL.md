@@ -1,18 +1,6 @@
 ---
-name: Ambient Computing & Calm Technology
-description: "Calm technology principles, zero-UI patterns, ambient computing interfaces, proactive intelligence UX, screenless interaction design, and background intelligence systems"
-triggers:
-  - ambient computing
-  - calm technology
-  - zero UI
-  - screenless
-  - proactive design
-  - invisible interface
-  - background intelligence
-  - ambient display
-  - calm design
-  - glanceable
-  - peripheral attention
+name: ambient-calm-zero-ui
+description: "Calm technology principles, zero-UI and screenless patterns, ambient displays, proactive intelligence, and peripheral attention design. Use when designing smart home, automotive, wearable, or background-intelligence experiences, or reducing notification and attention load."
 ---
 
 # Ambient Computing & Calm Technology — Designing the Invisible Interface

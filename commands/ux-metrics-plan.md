@@ -1,10 +1,18 @@
 ---
 name: ux-metrics-plan
 description: Generate a complete UX metrics plan for any product using the HEART framework with goals, signals, metrics, measurement tools, and dashboard specification.
-user_invocable: true
+argument-hint: [product or feature to measure]
 ---
 
 # UX Metrics Plan Command
+
+## Before running
+
+This command needs the product or feature to measure, and what decision the metrics inform.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Generate a comprehensive UX metrics plan for the specified product or feature, mapping product goals to measurable user experience metrics using the HEART framework.
 

@@ -1,12 +1,53 @@
-# UX/UI Mastery Plugin for Claude Code
+# Sumi — UX/UI Design Intelligence for Claude Code
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v3.0.0** | 19 Skills | 55 References | 10 Commands | 310,000+ Words | 87 Files
+**v3.1.0** | 20 Skills | 55 References | 11 Commands | 310,000+ Words | 89 Files
 
 ---
 
 > *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
+
+---
+
+## Quick start
+
+**If you've never used this before**, type one thing:
+
+```
+/sumi:start
+```
+
+It asks what you're working on in plain language, picks the right process, and
+runs it. No knowledge of the 19 skill domains required — you never have to choose
+from a list.
+
+**If you know what you want**, go straight at it:
+
+```
+/sumi:ux-audit src/checkout/
+/sumi:component-build a date picker, React, with error and disabled states
+/sumi:accessibility-check LoginForm.tsx
+```
+
+Every command shows what it expects when you type `/`. If you run one without a
+target, it asks rather than inventing something to analyze.
+
+**If your request spans several areas** — a redesign, a launch, a new product —
+the orchestrator picks the pipeline and sequences the skills for you:
+
+| You want to… | Sumi runs |
+|---|---|
+| Check something that exists | Heuristics → cognitive load → accessibility → ethics |
+| Design something new | Research → constraints → visual → motion → states → a11y |
+| Build a component | Tokens → visual spec → code → a11y → performance |
+| Start a design system | Architecture → visual language → components → Figma sync |
+| Ship internationally | i18n → layout → accessibility |
+| Design an AI feature | Agent patterns → conversational → ethics → trust |
+| Prove it worked | Metrics → research design |
+
+Each stage has a gate it must pass before the next begins, so you find out at
+stage 3 that findings are unrated — not at the end.
 
 ---
 
@@ -48,8 +89,8 @@ This plugin gives Claude Code the equivalent of a senior UX designer's entire ca
 This is the standard way to install Claude Code plugins. Run these commands **inside a Claude Code session**:
 
 ```
-/plugin marketplace add phazurlabs/ux-ui-mastery
-/plugin install ux-ui-mastery@ux-ui-mastery-marketplace
+/plugin marketplace add phazurlabs/sumi
+/plugin install sumi@sumi-marketplace
 ```
 
 That's it. The plugin is now permanently installed and available in every session.
@@ -66,8 +107,8 @@ To choose installation scope:
 Clone the repo anywhere, then load it with the `--plugin-dir` flag:
 
 ```bash
-git clone https://github.com/phazurlabs/ux-ui-mastery.git
-claude --plugin-dir ./ux-ui-mastery
+git clone https://github.com/phazurlabs/sumi.git
+claude --plugin-dir ./sumi
 ```
 
 This loads the plugin for that session only. Great for testing or development.
@@ -81,7 +122,7 @@ This loads the plugin for that session only. Great for testing or development.
 ```bash
 mkdir -p ~/.claude/plugins
 cd ~/.claude/plugins
-git clone https://github.com/phazurlabs/ux-ui-mastery.git
+git clone https://github.com/phazurlabs/sumi.git
 ```
 
 **Step 2:** Register the plugin in your Claude Code settings. Edit `~/.claude/settings.json`:
@@ -89,7 +130,7 @@ git clone https://github.com/phazurlabs/ux-ui-mastery.git
 ```json
 {
   "enabledPlugins": {
-    "ux-ui-mastery": true
+    "sumi": true
   }
 }
 ```
@@ -110,7 +151,7 @@ Start Claude Code and run any slash command:
 /figma-to-code
 ```
 
-Commands appear as `/ux-ui-mastery:command-name` (e.g., `/ux-ui-mastery:ux-audit`).
+Commands appear as `/sumi:command-name` (e.g., `/sumi:ux-audit`).
 
 You can also test skill activation by asking about any trigger topic:
 
@@ -130,7 +171,7 @@ The relevant skill and deep references load automatically based on your query.
 | Commands not showing up | Restart Claude Code after installation |
 | `/plugin` command not recognized | Update Claude Code to the latest version |
 | Skills not activating on topics | Verify `plugin.json` exists at `.claude-plugin/plugin.json` |
-| Want to uninstall | Run `/plugin uninstall ux-ui-mastery` or remove from `settings.json` |
+| Want to uninstall | Run `/plugin uninstall sumi` or remove from `settings.json` |
 
 ### Requirements
 
@@ -190,7 +231,7 @@ The relevant skill and deep references load automatically based on your query.
 | Skill | What Claude Knows |
 |-------|------------------|
 | **Interaction & Motion Design** | Animation timing curves. Micro-interactions. M3 Expressive spring physics (stiffness/damping/mass). iOS Core Haptics + Android haptics. Brand haptic vocabulary. Emotional design (Norman's 3 levels). |
-| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 April 2026 preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. AI-adaptive patterns. |
+| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 Working Draft preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. AI-adaptive patterns. |
 | **Design Critique & Case Studies** | Liz Lerman Critical Response Process. 10 product deep-dives: Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord. 10 redesign failures: Snapchat, Windows 8, Digg v4, Sonos 2024, Healthcare.gov. |
 | **UX Ethics & Content Strategy** | Dark pattern detection and avoidance. 2025-2026 regulatory landscape. Privacy UX. Sustainable/green UX. Microcopy pattern library: 30+ action verbs, 20+ error templates, empty/loading/confirmation/permission copy. |
 
@@ -236,12 +277,12 @@ Built on the shoulders of giants:
 ## Architecture
 
 ```
-ux-ui-mastery/                          310K+ words across 87 files
+sumi/                                   310K+ words across 89 files
 ├── .claude-plugin/
-│   └── plugin.json                     v3.0.0 manifest
-├── marketplace.json                    Distribution metadata
+│   ├── plugin.json                     v3.1.0 manifest
+│   └── marketplace.json                Distribution metadata
 │
-├── skills/                             19 skill domains
+├── skills/                             20 skill domains (19 + orchestrator)
 │   ├── cognitive-psychology-ux/        Laws of UX, biases, neurodesign
 │   │   ├── SKILL.md                    2K words — overview + cross-refs
 │   │   └── references/
@@ -336,7 +377,7 @@ Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Wo
 arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction, LLM Hallucination Detection | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI Coding, Multi-Agent GenAI, AI Literacy
 
 **Industry Standards**
-W3C: WCAG 3.0 April 2026 Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates, iOS 26 Usability Critique
+W3C: WCAG 3.0 Working Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates, iOS 26 Usability Critique
 
 **Platform Sources**
 Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
@@ -351,8 +392,8 @@ Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Heal
 
 ## License
 
-MIT
+Apache-2.0. See `LICENSE`, `NOTICE`, and `TRADEMARKS.md`.
 
 ---
 
-*Built with obsessive attention to detail by Design Tribe Republic. Powered by Claude Opus 4.6.*
+*Built by Phazur Labs.*

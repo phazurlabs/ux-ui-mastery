@@ -1,16 +1,6 @@
 ---
-name: Accessibility & Inclusive Design
-description: Comprehensive accessibility expertise covering WCAG 2.2 compliance, ARIA patterns, screen reader optimization, keyboard navigation, motor and cognitive accommodations, neurodiversity considerations, and inclusive design methodology.
-triggers:
-  - accessibility
-  - WCAG
-  - screen reader
-  - a11y
-  - keyboard navigation
-  - ARIA
-  - inclusive design
-  - color contrast
-  - assistive technology
+name: accessibility-inclusive-design
+description: "WCAG 2.2 compliance, ARIA authoring patterns, screen reader and keyboard navigation, color contrast, and cognitive/neurodiversity accommodations. Use when auditing accessibility, fixing a11y violations, choosing ARIA roles, checking contrast ratios, or designing for ADHD, dyslexia, autism, or motor impairment."
 ---
 
 # Accessibility & Inclusive Design — Universal Access Framework
@@ -251,7 +241,8 @@ The `cross-cultural-i18n-ux` skill covers accessibility considerations in intern
 ## Key Sources
 
 - W3C WCAG 2.2 Specification
-- W3C WCAG 3.0 September 2025 Working Draft
+- W3C WCAG 3.0 Working Draft (September 2025; superseded by the March 2026 draft -- verify current
+  status at w3.org/TR/wcag-3.0/ before citing specifics)
 - WAI-ARIA Authoring Practices Guide 1.2
 - WebAIM articles and testing tools
 - Microsoft Inclusive Design Toolkit

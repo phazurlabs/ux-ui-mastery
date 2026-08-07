@@ -1,10 +1,18 @@
 ---
 name: component-build
 description: Build a production-ready UI component with full state matrix, accessibility, design tokens, and platform code (React/SwiftUI/CSS).
-user_invocable: true
+argument-hint: [component name and requirements]
 ---
 
 # Component Build Command
+
+## Before running
+
+This command needs which component to build, the platform (React/SwiftUI/CSS), and any states it needs.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Generate a production-ready UI component with complete state coverage, accessibility, design tokens, and platform-specific code.
 

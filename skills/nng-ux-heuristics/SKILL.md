@@ -1,13 +1,6 @@
 ---
-name: NNG UX Heuristics
-description: Jakob Nielsen's 10 usability heuristics with modern 2025+ interpretations, evaluation methodology, and severity rating framework. Foundation for all UX evaluation work.
-triggers:
-  - heuristic evaluation
-  - usability review
-  - UX principles
-  - Nielsen heuristics
-  - usability heuristics
-  - UX audit
+name: nng-ux-heuristics
+description: "Jakob Nielsen's 10 usability heuristics with modern interpretation, evaluation protocol, and 0-4 severity rating scale. Use when running a heuristic evaluation or usability review, rating the severity of a finding, or grounding UX feedback in established principles."
 ---
 
 # NNG UX Heuristics — Modern Evaluation Framework

@@ -1,10 +1,18 @@
 ---
 name: ux-audit
 description: Audit any UI component, screen, or codebase against NNG's 10 usability heuristics with severity ratings and actionable recommendations.
-user_invocable: true
+argument-hint: [file, component, screen, or flow to audit]
 ---
 
 # UX Audit Command
+
+## Before running
+
+This command needs what to audit — a file path, component, screen, or user flow.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Perform a comprehensive UX audit using Nielsen's 10 usability heuristics against the provided code, component, or screen description.
 

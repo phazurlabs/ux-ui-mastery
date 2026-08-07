@@ -1,10 +1,18 @@
 ---
 name: design-critique
 description: Conduct a structured design critique using the Liz Lerman Critical Response Process, scoring across 10 dimensions with heuristic-grounded feedback.
-user_invocable: true
+argument-hint: [design, screenshot, or file to critique]
 ---
 
 # Design Critique Command
+
+## Before running
+
+This command needs the design to critique — a screenshot, file, or description.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Perform a structured design critique using proven critique methodology, scoring the design across multiple dimensions and generating actionable, evidence-based feedback.
 

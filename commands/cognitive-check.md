@@ -1,10 +1,18 @@
 ---
 name: cognitive-check
 description: Audit an interface against Laws of UX, Gestalt principles, and cognitive bias analysis. Evaluates cognitive load, decision architecture, and attention management with scored findings.
-user_invocable: true
+argument-hint: [screen, flow, or file to evaluate]
 ---
 
 # Cognitive Check Command
+
+## Before running
+
+This command needs the screen or flow to evaluate — a file, description, or screenshot.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target, do not audit a hypothetical interface, and do not produce generic advice in place of the real analysis — an audit of something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
 
 Audit an interface against cognitive psychology principles — Laws of UX, Gestalt principles, cognitive biases, attention science, and memory constraints. Identify where the design works against human cognition and provide evidence-based fixes.
 
