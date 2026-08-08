@@ -1,9 +1,19 @@
 ---
+name: nav
 description: "Generate responsive navigation systems — top bar, sidebar, bottom tabs, command palette, mega menu, with ARIA and dark mode."
-tier: "make"
+argument-hint: "[product and navigation type]"
 ---
 
 # Nav — Navigation System Builder
+
+## Before running
+
+This command needs a product and the kind of navigation it needs.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate complete, production-ready navigation components with responsive transformations, keyboard navigation, ARIA landmarks, and dark mode support. Output React + Tailwind code that is copy-paste ready.
 

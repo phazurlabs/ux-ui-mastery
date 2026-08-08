@@ -1,9 +1,19 @@
 ---
+name: layout
 description: "Generate responsive page layouts — CSS Grid, Flexbox, container queries, spacing rhythm, breakpoint transformations."
-tier: "make"
+argument-hint: "[page or section to lay out]"
 ---
 
 # Layout — Responsive Page Layout Generator
+
+## Before running
+
+This command needs a page or section to lay out.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate production-ready responsive page layouts using CSS Grid, Flexbox, and modern CSS techniques. Output complete Tailwind CSS code with container strategies, breakpoint transformations, and spacing rhythm systems.
 

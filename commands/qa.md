@@ -1,9 +1,19 @@
 ---
+name: qa
 description: "Design QA — verify implementation matches design spec. Token compliance, state coverage, responsive fidelity, accessibility, pixel-level issues."
-tier: "review"
+argument-hint: "[implementation and design spec to compare]"
 ---
 
 # QA — Design-to-Code Fidelity Verification
+
+## Before running
+
+This command needs an implementation and the design spec to compare it against.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Compare what was designed against what was built. Pixel-level design QA auditing implementation code against design tokens, visual specs, state coverage, responsive behavior, and accessibility requirements. The difference between "shipped" and "polished" lives in this command.
 

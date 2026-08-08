@@ -1,9 +1,19 @@
 ---
+name: generate
 description: "AI design generation — mockups, icons, illustrations, images via Stitch MCP, Fal.ai, Recraft V3, Veo 3.1"
-tier: "make"
+argument-hint: "[asset type and description]"
 ---
 
 # Generate — AI Design Generation Engine
+
+## Before running
+
+This command needs an asset type and a description of what to generate.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate UI screens, icons, illustrations, photographs, video, and brand assets using AI tools (MCP servers), informed by Sumi's full design intelligence stack. This command merges screen generation and asset generation into a single, unified pipeline.
 

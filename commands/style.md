@@ -1,9 +1,19 @@
 ---
+name: style
 description: "Generate a complete visual identity — colors, typography, spacing, motion, tone, tokens, and reference apps for any sector or mood."
-tier: "make"
+argument-hint: "[product, sector, or mood]"
 ---
 
 # Style — Complete Visual Identity Generator
+
+## Before running
+
+This command needs a product, sector, or mood to build a visual identity for.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 The flagship command. Given a sector, mood, or set of constraints, generate a **complete, opinionated, copy-paste-ready visual identity** that captures the taste and conventions of the best products in your category. Every value ships — no placeholders, no "choose your own adventure." You get a system.
 

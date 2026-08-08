@@ -1,9 +1,19 @@
 ---
+name: component
 description: "Production component builder — generate complete, runnable UI components (30+ types) with 10 states, full accessibility, design tokens, animation, tests, and platform code (React/SwiftUI/CSS)."
-tier: "make"
+argument-hint: "[component name and requirements]"
 ---
 
 # Component — Production Component Builder
+
+## Before running
+
+This command needs a component name and its requirements.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a production-ready, RUNNABLE UI component with complete state coverage, accessibility, design tokens, animation, and platform-specific code. Output is copy-paste ready — no placeholders, no TODOs.
 

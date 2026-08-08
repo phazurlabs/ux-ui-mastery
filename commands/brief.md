@@ -1,9 +1,19 @@
 ---
+name: brief
 description: "Problem definition — persona, How Might We questions, constraints, success criteria, and a ready-to-paste Constraint Stack."
-tier: "plan"
+argument-hint: "[product or feature to define]"
 ---
 
 # Brief — Problem Definition & Constraint Stack
+
+## Before running
+
+This command needs a product or feature to define.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 The most important 5 minutes of any build session. `/brief` transforms a vague idea into a structured design intent that makes every subsequent Sumi command dramatically more precise.
 

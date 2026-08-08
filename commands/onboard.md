@@ -1,9 +1,19 @@
 ---
+name: onboard
 description: "Generate a complete onboarding flow — step sequence, progressive disclosure, permission timing, empty states, activation metrics, and production React code."
-tier: "make"
+argument-hint: "[product and first-run goal]"
 ---
 
 # Onboard — Onboarding Flow Builder
+
+## Before running
+
+This command needs a product and what its first run should achieve.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a complete, research-backed onboarding flow for any product. From first launch to activation moment: step sequence with progressive disclosure, permission request timing, empty state design, activation metrics, and production React/TypeScript code with animations.
 

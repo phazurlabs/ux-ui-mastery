@@ -1,9 +1,19 @@
 ---
+name: animate
 description: "Generate production animations — CSS keyframes, Framer Motion, scroll-driven, micro-interactions, with reduced motion fallbacks."
-tier: "make"
+argument-hint: "[element or interaction to animate]"
 ---
 
 # Animate — Animation Recipe Generator
+
+## Before running
+
+This command needs an element or interaction to animate.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate production-ready animation code for UI interactions, page transitions, loading states, and scroll-driven effects. Output CSS @keyframes with Tailwind classes OR Framer Motion React components, always with reduced motion fallbacks and performance guardrails.
 

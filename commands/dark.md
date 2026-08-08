@@ -1,9 +1,19 @@
 ---
+name: dark
 description: "Generate a complete dark mode system — oklch luminance mapping, surface elevation, accent adjustments, shadows, toggle component, and dark tokens."
-tier: "make"
+argument-hint: "[existing palette or token file]"
 ---
 
 # Dark — Dark Mode System Generator
+
+## Before running
+
+This command needs an existing palette or token file to map.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a complete, perceptually correct dark mode system. Not a naive color inversion — a proper oklch luminance remapping with surface elevation, text weight compensation, accent chroma shifts, and shadow replacement.
 

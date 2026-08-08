@@ -1,9 +1,19 @@
 ---
+name: grade
 description: "Visual quality scoring — Awwwards-calibrated 10-dimension assessment, designer DNA match, canonical rule compliance, production quality verdict."
-tier: "review"
+argument-hint: "[design, screenshot, or file to score]"
 ---
 
 # Grade — Visual Design Quality Score
+
+## Before running
+
+This command needs a design, screenshot, or file to score.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Score any UI's visual design quality across 10 weighted dimensions, calibrated to Awwwards and international design award standards. Every score is justified with specific observations, benchmarked against world-class products, and paired with actionable prescriptions that include exact values.
 

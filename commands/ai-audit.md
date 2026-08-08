@@ -1,5 +1,5 @@
 ---
-name: ai-ux-audit
+name: ai-audit
 description: Audit AI-powered features against agentic, trust, safety, and interaction best practices with scoring and specific fix recommendations.
 argument-hint: "[AI feature, file, or description]"
 ---

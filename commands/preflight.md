@@ -1,9 +1,19 @@
 ---
+name: preflight
 description: "Pre-launch checklist and post-launch plan — SEO, performance, analytics, legal, security, monitoring, feedback loops, iteration strategy."
-tier: "plan"
+argument-hint: "[product or release to check]"
 ---
 
 # Preflight — Launch Readiness & Post-Launch Plan
+
+## Before running
+
+This command needs a product or release to check.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 The final gate between "the design is good" and "it's actually ready to ship." This command generates a comprehensive pre-launch checklist AND a post-launch monitoring and iteration plan. Launch is the middle of the product lifecycle, not the end.
 

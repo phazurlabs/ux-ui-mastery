@@ -1,9 +1,19 @@
 ---
+name: palette
 description: "Generate a deep color system — oklch palettes, APCA contrast scores, dark mode, data-viz colors, gradients, and CSS custom properties."
-tier: "make"
+argument-hint: "[brand, mood, or existing colors]"
 ---
 
 # Palette — Deep Color System Generator
+
+## Before running
+
+This command needs a brand, a mood, or existing colors to work from.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a production-grade color system from a mood, sector, brand color, or open exploration. Every color is in OKLCH for perceptual uniformity, every text/background pair has APCA contrast scores, and every value is copy-paste ready.
 

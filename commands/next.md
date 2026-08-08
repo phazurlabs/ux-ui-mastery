@@ -1,6 +1,7 @@
 ---
+name: next
 description: "Context-aware suggestion of what to do next based on what you've generated so far."
-tier: "utility"
+argument-hint: "[optional: current focus]"
 ---
 
 # Next — What Should I Do Now?

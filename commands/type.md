@@ -1,9 +1,19 @@
 ---
+name: type
 description: "Generate a complete typography system — font pairing, modular type scale with fluid clamp() values, line-height, letter-spacing, and platform stacks."
-tier: "make"
+argument-hint: "[brand voice or existing fonts]"
 ---
 
 # Type — Complete Typography System Generator
+
+## Before running
+
+This command needs a brand voice or the existing fonts to work from.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a production-grade typography system from a style direction, platform, or font preference. Outputs font pairing with rationale, a modular type scale with fluid `clamp()` values, per-size line-height and letter-spacing, responsive scaling strategy, platform font stacks, and complete CSS/Tailwind code.
 

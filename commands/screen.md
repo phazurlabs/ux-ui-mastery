@@ -1,9 +1,19 @@
 ---
+name: screen
 description: "Production screen builder — generate complete, runnable React/TypeScript + Tailwind screens for 30+ screen types with all states, accessibility, responsive breakpoints, dark mode, and token consumption."
-tier: "make"
+argument-hint: "[screen type and requirements]"
 ---
 
 # Screen — Production Screen Builder
+
+## Before running
+
+This command needs a screen type and its requirements.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a complete, production-ready, RUNNABLE screen for any standard screen type. Output is React/TypeScript + Tailwind CSS (shadcn/ui foundation) with every state handled, full ARIA, responsive breakpoints, dark mode, and design token consumption. No placeholders, no TODOs — copy-paste and run.
 

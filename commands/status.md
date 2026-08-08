@@ -1,6 +1,7 @@
 ---
+name: status
 description: "Progress dashboard — see what you've generated, what's available, and suggested next moves."
-tier: "utility"
+argument-hint: "[optional: project path]"
 ---
 
 # Status — Progress Dashboard

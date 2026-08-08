@@ -1,9 +1,19 @@
 ---
+name: measure
 description: "Metrics plan — HEART framework, OKRs, experimentation strategy, dashboards, and baseline measurement."
-tier: "plan"
+argument-hint: "[product or feature to measure]"
 ---
 
 # Measure — UX Metrics Plan
+
+## Before running
+
+This command needs a product or feature to measure.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a comprehensive UX metrics plan: map product goals to measurable user experience metrics using the HEART framework, design dashboards, establish baselines, and plan experiments.
 

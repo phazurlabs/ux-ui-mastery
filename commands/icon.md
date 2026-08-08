@@ -1,9 +1,19 @@
 ---
+name: icon
 description: "Generate an icon system — library selection, sizing tokens, React wrapper component, animated recipes, SVG optimization, and accessibility."
-tier: "make"
+argument-hint: "[icon set or product context]"
 ---
 
 # Icon — Icon System Builder
+
+## Before running
+
+This command needs the product context the icon system serves.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a complete icon implementation system: library selection with rationale, sizing scale tied to design tokens, a production React wrapper component, animated icon recipes, SVG optimization config, and accessibility patterns.
 

@@ -1,9 +1,19 @@
 ---
+name: wireframe
 description: "Generate low-fidelity ASCII wireframes with layout alternatives and interaction notes"
-tier: "make"
+argument-hint: "[screen or flow to wireframe]"
 ---
 
 # Wireframe — Low-Fidelity Layout Engine
+
+## Before running
+
+This command needs a screen or flow to wireframe.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate low-fidelity ASCII wireframes that explore layout structure, content placement, and interaction flow before committing to visual design. This is the step vibe coders skip most — jumping straight to high-fidelity code and locking in the first layout that comes to mind. Structure first, style later.
 

@@ -1,9 +1,19 @@
 ---
+name: roast
 description: "Quick brutal design critique — 10 dimensions scored, letter grade, top fixes, one-line verdict. Fast and opinionated."
-tier: "review"
+argument-hint: "[design, screenshot, or file to critique]"
 ---
 
 # Roast — Quick Design Critique
+
+## Before running
+
+This command needs a design, screenshot, or file to critique.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Fast, opinionated, actionable design critique. Not comprehensive (that is `/audit`). This is the "show me your design and I will tell you what is wrong in 60 seconds" command.
 
@@ -30,6 +40,19 @@ List 3-5 genuine strengths with specific reasoning:
 - What stands out positively and WHY
 - What design decisions show clear intentionality
 - What would be lost if this were redesigned carelessly
+
+### Step 1.5: Questions Before Opinions (CRP Steps 2-3)
+
+Liz Lerman's process does not go from strengths straight to judgment. Two question rounds sit in between, and they are the part that keeps a critique from becoming an opinion dump. Run both, briefly.
+
+**Designer's questions.** Ask what the designer wants examined. If no designer is present — the usual case when the target is code or a screenshot — infer the two or three decisions that were clearly deliberate and state what they appear to be optimising for. Naming an intention before judging it is what separates a critique from a reaction.
+
+**Neutral questions.** Ask about the design without smuggling an opinion into the question. A neutral question has no preferred answer.
+
+- Neutral: "What decides which of these two actions is primary?"
+- Not neutral: "Why is the primary action so hard to find?"
+
+The second sentence is an opinion wearing a question mark. If a question can only be answered by agreeing with you, rewrite it or move it to the findings where it belongs. Where a neutral question exposes a decision with no answer, that is a finding — usually a good one.
 
 ### Step 2: Score 10 Dimensions
 
@@ -212,6 +235,17 @@ For each must-fix, provide:
 4. **Code fix** (if code was provided): Exact corrected code snippet
 
 These are the three changes that will have the highest impact on the overall score. Prioritize by (severity * breadth of impact).
+
+**Classify every finding, not just the top three.** Three must-fixes is the right ceiling for what leads the output, but findings below that line still need a home, and the class you assign tells the reader what to do with each one:
+
+| Class | Meaning | What the reader does |
+|---|---|---|
+| **Must-fix** | Breaks the experience, blocks a task, or fails accessibility. Max 3. | Fix before shipping |
+| **Should-fix** | Real cost to quality or conversion, but the design works without it | Fix this cycle |
+| **Could-improve** | Craft and polish. Defensible to leave as-is | Fix when touching that area |
+| **Explore** | A genuine open question the critique cannot settle | Route to research, do not argue |
+
+**Explore** is the class most critiques lack. When a disagreement rests on an assumption about users rather than a design principle, saying so is more honest than picking a side with confidence you have not earned. Send it to `/research` and say what would resolve it.
 
 ### Step 5: Top 3 Strengths to Keep
 

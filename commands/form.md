@@ -1,9 +1,19 @@
 ---
+name: form
 description: "Generate production forms — validation, error states, multi-step wizards, accessibility, complete React + Zod code."
-tier: "make"
+argument-hint: "[form purpose and fields]"
 ---
 
 # Form — Production Form Builder
+
+## Before running
+
+This command needs the form's purpose and its fields.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate complete, production-ready forms with validation, error handling, loading states, and accessibility. Output runnable React code with react-hook-form and Zod, or native HTML forms with vanilla validation.
 

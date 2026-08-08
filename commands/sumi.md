@@ -1,6 +1,7 @@
 ---
+name: sumi
 description: "Command map and quick start — see all 34 commands, starter recipes, Design Quality Score, anti-slop engine, and tips for best results."
-tier: "utility"
+argument-hint: "[optional: command or topic]"
 ---
 
 # Chef Sumi — Your Design Intelligence System

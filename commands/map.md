@@ -1,9 +1,19 @@
 ---
+name: map
 description: "Information architecture — sitemap, navigation model, content hierarchy, cross-linking map, URL structure, and search strategy."
-tier: "plan"
+argument-hint: "[product or content to structure]"
 ---
 
 # Map — Information Architecture
+
+## Before running
+
+This command needs a product or body of content to structure.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate complete information architecture: content inventory, sitemap, navigation model, page-level content hierarchy, cross-linking map, and search strategy. This is the step that separates apps that feel organized from apps that feel like a pile of screens.
 

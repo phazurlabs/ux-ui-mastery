@@ -1,9 +1,19 @@
 ---
+name: fix
 description: "Anti-slop engine — takes AI-generated UI code and transforms it into production-quality design. Fixes typography, color, spacing, accessibility, and design consistency in one pass."
-tier: "make"
+argument-hint: "[file, component, or directory to fix]"
 ---
 
 # Fix — Anti-Slop Engine
+
+## Before running
+
+This command needs a file, component, or directory to fix.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 The antidote to AI-generated UI. Takes code that *works* but *looks like a robot made it* and transforms it into production-quality design in a single pass. Detects the telltale signs of LLM-generated UI — the purple gradients, the arbitrary spacing, the missing states, the generic font stacks — and systematically replaces every slop pattern with a principled design decision.
 

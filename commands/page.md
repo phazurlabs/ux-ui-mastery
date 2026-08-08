@@ -1,9 +1,19 @@
 ---
+name: page
 description: "Full page builder — generate complete, runnable marketing and product pages with ordered block stacking, SEO, Open Graph, scroll animations, lazy loading, and responsive composition."
-tier: "make"
+argument-hint: "[page type and purpose]"
 ---
 
 # Page — Full Page Composition Builder
+
+## Before running
+
+This command needs a page type and its purpose.
+
+If the user invoked it with nothing and no target is evident from the conversation or open files, ask for it in one plain-language question and stop. Do not invent a target and do not produce generic output in place of the real work — output about something imaginary reads as authoritative and is worthless.
+
+If a target is evident from context, use it and say which one you picked.
+
 
 Generate a complete, production-ready, RUNNABLE full page composed of ordered content blocks. Output is React/TypeScript + Tailwind CSS (shadcn/ui foundation) with SEO meta, Open Graph tags, scroll behavior, lazy loading, code splitting hints, and responsive composition. No placeholders, no TODOs — deploy-ready.
 
