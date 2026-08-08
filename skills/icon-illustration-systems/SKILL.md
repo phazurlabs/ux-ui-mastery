@@ -1,6 +1,6 @@
 ---
 name: icon-illustration-systems
-description: "Complete icon design systems, illustration style guides, and SVG implementation patterns. Covers icon grid systems, icon sizing, icon libraries (Lucide, Heroicons, Phosphor, SF Symbols, Material Symbols), illustration styles, SVG optimization, and accessible iconography. Use when the user mentions: icon, illustration, SVG, icon library, icon system, Lucide, Heroicons, Phosphor, SF Symbols, Material Icons, icon grid, icon size, icon design, illustration style, spot illustration, empty state illustration, svg optimization, icon accessibility, icon component."
+description: "Icon and illustration systems: grid and sizing scales, library selection (Lucide, Heroicons, Phosphor, SF Symbols, Material Symbols), illustration style guides, SVG optimization, and accessible iconography. Use when choosing an icon set, sizing icons, or establishing an illustration style."
 ---
 
 # Icon & Illustration Systems

@@ -1,6 +1,6 @@
 ---
 name: business-design-templates
-description: "Professional design business templates covering proposals, case studies, pitch decks, design documentation, client handoffs, pricing calculators, project briefs, and design system documentation. Use when the user mentions: proposal, case study, pitch deck, design presentation, client handoff, design documentation, project brief, design specs, style guide, design deliverable, pricing calculator, invoice, SOW, scope of work, design portfolio, client report, design brief."
+description: "Client-facing design deliverables: proposals, SOWs, case studies, pitch decks, pricing calculators, project briefs, and handoff documentation. Use when packaging design work for a client, an executive, or a portfolio — the artifact that leaves the team, not the interface itself."
 ---
 
 # Business Design Templates — The Business Side of Design
@@ -993,7 +993,7 @@ Optimized for hiring managers (scanning in 30 seconds) and clients (evaluating c
 - ux-metrics-measurement — Metrics frameworks for case study results sections
 - design-systems-architecture — Design system documentation patterns
 - ux-research-methods — Research methodology details for proposals and case studies
-- ux-process-workflow — End-to-end process for methodology sections
+- design-process-methods — End-to-end process for methodology sections
 - sector-style-intelligence — Industry-specific context for proposals and case studies
 - conversion-optimization-patterns — Data for value-based pricing and case study metrics
 - micro-copy-intelligence — UX writing for documentation and component specs

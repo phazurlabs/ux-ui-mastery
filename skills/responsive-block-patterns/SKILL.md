@@ -1,6 +1,6 @@
 ---
 name: responsive-block-patterns
-description: "Comprehensive responsive design patterns showing exactly how every UI block, section, and component transforms across 5+ breakpoints. Covers container queries, fluid scaling, breakpoint transformation catalogs, responsive grids, adaptive layouts, and mobile-first CSS patterns with production code. Use when the user mentions: responsive design, breakpoint, mobile layout, tablet layout, desktop layout, container query, fluid design, adaptive layout, responsive grid, media query, responsive component, mobile-first, responsive transformation, screen size, viewport, clamp, fluid type."
+description: "How every block and component transforms across breakpoints: container queries, fluid scaling, breakpoint transformation catalogs, responsive grids, and mobile-first CSS with production code. Use when a layout must survive small screens, or when specifying responsive behavior for handoff."
 ---
 
 # Responsive Block Patterns — Cross-Breakpoint Design Intelligence

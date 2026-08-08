@@ -1,6 +1,6 @@
 ---
 name: shadow-elevation-density
-description: "Complete elevation, shadow, depth, density, border-radius, and visual effects systems. Covers shadow scales, elevation hierarchy, glassmorphism, density modes (compact/comfortable/spacious), border-radius systems, blur effects, and modern CSS visual treatments with production code. Use when the user mentions: shadow, elevation, depth, z-index, box-shadow, density, compact mode, spacious mode, glassmorphism, blur, backdrop, border radius, rounded corners, card shadow, dropdown shadow, modal shadow, frosted glass, neumorphism, visual effects."
+description: "Elevation, shadow, depth, and density systems: shadow scales, elevation hierarchy, glassmorphism, blur effects, border-radius systems, and compact, comfortable, and spacious density modes with production CSS. Use when surfaces look flat or float wrongly, or when tuning information density."
 ---
 
 # Shadow, Elevation & Density Systems

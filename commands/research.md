@@ -311,7 +311,7 @@ When planning research, draw knowledge from:
 - `ux-research-methods` skill -- primary knowledge source for methods, sampling, analysis
 - `ux-metrics-measurement` skill -- SUS, UMUX-Lite, SEQ, task success metrics, benchmarks
 - `cognitive-psychology-ux` skill -- bias awareness (confirmation bias, leading questions, social desirability)
-- `ux-process-workflow` skill -- where research fits in the design process
+- `design-process-methods` skill -- where research fits in the design process
 - `ux-ethics-content-strategy` skill -- informed consent, privacy, ethical research practices
 - `screen-flow-patterns` skill -- identifying key flows to test
 

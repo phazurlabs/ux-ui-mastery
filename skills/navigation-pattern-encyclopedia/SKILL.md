@@ -1,6 +1,6 @@
 ---
 name: navigation-pattern-encyclopedia
-description: "Every navigation pattern with exact specs, pros/cons, use cases, and production code. Covers top nav, sidebar, bottom tabs, mega menus, breadcrumbs, command palettes, contextual navigation, and mobile navigation patterns. Complete information architecture guide. Use when the user mentions: navigation, nav bar, sidebar, menu, hamburger menu, bottom tabs, tab bar, breadcrumb, mega menu, command palette, search navigation, mobile nav, navigation pattern, site map, IA, information architecture, wayfinding, nav design."
+description: "Every navigation pattern with specs, trade-offs, and production code: top bars, sidebars, bottom tabs, mega menus, breadcrumbs, command palettes, and contextual and mobile navigation. Use when choosing a nav model, fixing discoverability, or structuring information architecture."
 ---
 
 # Navigation Pattern Encyclopedia — Every Nav Pattern

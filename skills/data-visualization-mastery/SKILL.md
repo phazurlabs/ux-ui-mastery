@@ -1,6 +1,6 @@
 ---
 name: data-visualization-mastery
-description: "Complete data visualization and data-dense UI design system. Covers 50+ chart types with selection criteria, dashboard composition, data table design, KPI cards, sparklines, heatmaps, treemaps, and accessible data presentation. Includes production code patterns for React (Recharts, D3, Nivo) and design tokens for dataviz. Use when the user mentions: chart, graph, data visualization, dashboard, data table, KPI, sparkline, heatmap, treemap, bar chart, line chart, pie chart, donut chart, area chart, scatter plot, dataviz, analytics UI, metrics display, data-dense, reporting UI."
+description: "50+ chart types with selection criteria, dashboard composition, data tables, KPI cards, sparklines, heatmaps, and accessible data presentation, with React code (Recharts, D3, Nivo) and data-viz tokens. Use when designing charts, dashboards, or any data-dense screen."
 ---
 
 # Data Visualization Mastery

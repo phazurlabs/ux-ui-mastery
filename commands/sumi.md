@@ -177,7 +177,7 @@ One word. Zero config. Complete visual identity.
 
 Skills activate automatically when relevant. You never need to call them directly.
 
-**Core UX**: ux-process-workflow, nng-ux-heuristics, ux-research-methods, cognitive-psychology-ux, ux-metrics-measurement, ux-ethics-content-strategy
+**Core UX**: design-process-methods, nng-ux-heuristics, ux-research-methods, cognitive-psychology-ux, ux-metrics-measurement, ux-ethics-content-strategy
 
 **Platform**: mobile-ux-design, desktop-app-design, platform-visual-standards, cross-cultural-i18n-ux
 

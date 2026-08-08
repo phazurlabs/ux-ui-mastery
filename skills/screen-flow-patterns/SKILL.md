@@ -1,6 +1,6 @@
 ---
-name: Screen & Flow Patterns
-description: "Comprehensive taxonomy of 25+ screen types, 15+ user flow patterns, and 25+ UI element deep-dives. Mobbin-style categorization with layout patterns, component hierarchies, state matrices, accessibility requirements, and best-in-class references for every screen, flow, and element type. Use when the user mentions: screen type, screen pattern, user flow, flow pattern, login screen, signup screen, checkout flow, onboarding flow, dashboard screen, search screen, product page, settings screen, empty state, error screen, screen builder, flow builder."
+name: screen-flow-patterns
+description: "Taxonomy of 25+ screen types, 15+ user flows, and 25+ UI element deep-dives with layout patterns, component hierarchies, state matrices, and best-in-class references. Use when deciding which screens a product needs and what connects them, before any visual design starts."
 ---
 
 # Screen & Flow Patterns — The Complete Taxonomy

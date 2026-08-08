@@ -1,6 +1,6 @@
 ---
 name: conversion-optimization-patterns
-description: "Evidence-based conversion optimization patterns grounded in behavioral psychology and A/B testing research. Covers CTA design, pricing page psychology, form optimization, trust signals, social proof placement, urgency patterns, checkout optimization, onboarding conversion, and funnel analysis. Use when the user mentions: conversion rate, CTA optimization, pricing page, checkout optimization, form conversion, trust signals, social proof, A/B testing, conversion funnel, signup flow, landing page optimization, bounce rate, cart abandonment, conversion psychology."
+description: "Evidence-based conversion patterns: CTA design, pricing page psychology, form and checkout friction, trust signals, social proof placement, urgency, and funnel analysis. Use when asking why people are not finishing a flow, or optimizing signup, cart, or pricing for completion."
 ---
 
 # Conversion Optimization Patterns

@@ -1,6 +1,6 @@
 ---
 name: layout-block-intelligence
-description: "500+ layout section/block patterns for composing production pages. Every hero, feature grid, pricing table, testimonial, CTA, footer, sidebar, stats section, team section, FAQ, comparison table, gallery, timeline, and dashboard block with exact specs, responsive behavior, spacing, and production code. Use when the user mentions: layout block, section pattern, hero section, feature section, pricing section, testimonial section, CTA block, footer pattern, sidebar layout, stats section, team section, FAQ section, comparison section, gallery section, timeline section, page section, content block, landing page section, dashboard section, card grid, masonry layout, bento grid, section design, block design, section layout."
+description: "500+ individual section patterns — heroes, feature grids, pricing tables, testimonials, CTAs, footers, FAQs, stats, timelines — each with specs, spacing, and code. Use when choosing or building one section. For ordering sections into a whole page, use page-composition-engine."
 ---
 
 # Layout Block Intelligence — 500+ Production Section Patterns

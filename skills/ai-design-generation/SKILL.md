@@ -1,6 +1,6 @@
 ---
-name: AI Design Generation
-description: "MCP integration layer for AI-powered visual design generation — Stitch MCP (UI screen generation), Fal.ai MCP (600+ models including Imagen 4, FLUX, Veo 3.1), Replicate MCP (open-source models), Recraft V3 MCP (only SVG/vector-capable model), OpenAI GPT-Image MCP, and Figma MCP (official design read/write). Covers prompt engineering for visual design output, multi-tool generation pipelines (sketch to refine to code), asset generation (icons, illustrations, photos, video), and quality control scoring for generated designs. Use when the user mentions: generate design, create mockup, AI design, generate screen, create UI, make me a design, generate icons, create illustrations, Stitch, Imagen, Veo, DALL-E, Recraft, design generation, AI mockup, generate assets, create visuals."
+name: ai-design-generation
+description: "Generate actual design assets through MCP image and UI models — Stitch screens, Fal.ai (Imagen, FLUX, Veo), Recraft V3 vectors, GPT-Image, and Figma read/write — with prompt patterns and quality scoring. Use when producing mockups, icons, illustrations, or video. Not agent interface design; that is agentic-ai-generative-ux."
 ---
 
 # AI Design Generation

@@ -1,6 +1,6 @@
 ---
 name: image-media-patterns
-description: "Complete image, video, and media UI pattern system. Covers hero images, product images, galleries, carousels, video players, audio players, avatars, thumbnails, image cropping, aspect ratios, lazy loading, responsive images, and media accessibility. Use when the user mentions: image, photo, gallery, carousel, slider, video player, audio player, avatar, thumbnail, hero image, product image, media player, image grid, lightbox, image crop, aspect ratio, responsive image, lazy loading, srcset, picture element, media pattern."
+description: "Image, video, and media UI patterns: hero and product imagery, galleries, carousels, video and audio players, avatars, thumbnails, aspect ratios, cropping, lazy loading, responsive images, and media accessibility. Use when placing media on a page or building a gallery or player."
 ---
 
 # Image & Media Patterns — Complete Visual Media System

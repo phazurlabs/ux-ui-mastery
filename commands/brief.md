@@ -269,7 +269,7 @@ The output MUST NOT include:
 ## Cross-References
 
 When defining the brief, draw knowledge from:
-- `ux-process-workflow` skill for problem framing methodology
+- `design-process-methods` skill for problem framing methodology
 - `ux-research-methods` skill for persona construction techniques
 - `cognitive-psychology-ux` skill for understanding user mental models
 - `ux-metrics-measurement` skill for success criteria frameworks (HEART, SUS)

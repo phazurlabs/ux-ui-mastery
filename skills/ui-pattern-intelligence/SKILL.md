@@ -1,6 +1,6 @@
 ---
-name: UI Pattern Intelligence
-description: "Comprehensive UI pattern taxonomy (200+ patterns across 10 categories), designer benchmark DNA (50+ world-class products analyzed), sector-specific pattern matrices (20+ industries), pattern matching engine for code and screenshot analysis, pattern evolution intelligence (2024-2026), and anti-pattern encyclopedia (100+ anti-patterns). Use when the user mentions: UI patterns, design patterns, component patterns, pattern matching, pattern analysis, pattern audit, pattern library, pattern recommendation, what pattern should I use, best practices, what does [product] do, how should this look, industry standard, anti-pattern, common mistakes, pattern quality, vibe code audit, upgrade my UI, make it look professional, match [product], pattern score, pattern benchmark."
+name: ui-pattern-intelligence
+description: "200+ UI patterns across 10 categories, benchmark DNA from 50+ world-class products, sector pattern matrices, a matcher for code and screenshots, and a 100+ entry anti-pattern encyclopedia. Use when detecting AI slop, judging whether a pattern is standard, or matching how a known product feels."
 ---
 
 # UI Pattern Intelligence

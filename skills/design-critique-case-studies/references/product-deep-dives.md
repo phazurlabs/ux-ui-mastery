@@ -479,3 +479,59 @@ These case studies are not templates to copy. They are lenses through which to e
 The most valuable insight from studying these products is not any single pattern but the meta-pattern: the best products result from teams that made thousands of intentional micro-decisions, each informed by clear principles, honest user understanding, and a willingness to be wrong and iterate. The design decisions documented here were not made once and finished --- they were made, measured, critiqued, and remade, repeatedly, over years.
 
 Study the decisions. Steal the patterns. Learn from the mistakes. Then make your own intentional choices.
+
+## Additional Products — Condensed Analyses
+
+Shorter treatments than the deep dives above. Each names the UX insight and the transferable design lesson; none is a full teardown.
+
+### Raycast — Command Palette as Operating System
+
+Raycast replaced macOS Spotlight with a command palette that serves as a universal interface to applications, scripts, extensions, and system functions. The UX achievement is the extension ecosystem — third-party developers build integrations that feel native because Raycast enforces strict UI consistency through its API. Key UX insight: a command palette scales infinitely because it is text-based — users do not need to learn spatial layouts for new functionality, just type what they want. Design lesson: constraining the extension API to enforce UX consistency creates an ecosystem where every addition feels like a first-party feature rather than a third-party plugin.
+### Supabase — Dashboard Design for Developers
+
+Supabase's dashboard makes database operations visual and immediate. The table editor feels like a spreadsheet, SQL queries execute inline with instant results, and authentication configuration uses form-based UI instead of config files. Key UX insight: abstraction level matters — developers do not always want to write SQL. Sometimes they want to click a cell and edit a value. Supabase succeeds by offering both modes without forcing a choice. Design lesson: the best tools for technical users provide GUI and CLI/code interfaces to the same functionality, letting users choose the abstraction level that fits their current task.
+### Railway — Simplicity in Infrastructure
+
+Railway reduced cloud deployment to a visual canvas where services are nodes and connections are edges. The one-click database provisioning, automatic environment variable injection, and cost visibility per service demonstrate UX thinking applied to cloud infrastructure. Key UX insight: visual topology maps make complex systems comprehensible — users can see their entire architecture at a glance rather than navigating between dozens of configuration pages. Design lesson: when the domain is inherently complex, the UX challenge is not simplification but rather making complexity visible and navigable.
+### Cal.com — Open-Source Scheduling
+
+Cal.com took the Calendly model and refined it with superior UX for multi-calendar management, team scheduling, and workflow automation. The booking flow is optimized for the booker (not just the host), with clear timezone handling, availability visualization, and minimal required fields. Key UX insight: two-sided products must optimize for both sides — most scheduling tools optimize for the person setting up the calendar while neglecting the booking experience. Design lesson: the UX of the person who did not choose your product (the booker) determines whether the person who did choose it (the host) gets value from it.
+### Instagram — Evolution from Filters to Everything
+
+Instagram's design evolution tracks the shift from photo-sharing app to social commerce platform. The 2016 icon redesign (skeuomorphic camera to gradient glyph) signaled maturity. The introduction of Stories (2016), Reels (2020), and Shopping (2020) each required fundamental navigation restructuring. Key design insight: Instagram has repeatedly sacrificed simplicity for breadth — adding tabs, moving the compose button, inserting shopping — and each change generated backlash followed by adaptation. The lesson is that established products can evolve significantly if each change serves a clear user behavior (Stories served ephemeral sharing, Reels served short-form video consumption).
+### Twitter to X — What Changed
+
+The rebrand from Twitter to X in 2023 was primarily cosmetic (logo, name, terminology from "tweets" to "posts") but accompanied functional changes: long-form posts, subscriber-only content, reduced API access, and algorithm-first default feed. Key design analysis: the rebrand violated the principle of brand equity preservation — "tweet" was a verb in the cultural lexicon, and replacing it with generic terminology erased decades of brand building. The functional changes (long-form, subscriptions) were sound product decisions wrapped in a branding misstep.
+### Google+ — Why It Failed
+
+Google+ launched in 2011 as a Facebook competitor with technically superior features: Circles (granular sharing), Hangouts (video chat), and Communities. It failed because it solved a problem users did not have (more granular social sharing), required building a new social graph from scratch (network effects favor incumbents), and was forced on users through integration with Gmail, YouTube, and other Google services — creating resentment rather than adoption. Key design lesson: superior features do not overcome inferior network effects. Social products live or die by their social graph density, and forced adoption creates hostile users rather than engaged ones.
+### Oscar Health — Healthcare UX
+
+Oscar Health redesigned the health insurance experience around a single premise: health insurance should be as easy to use as any consumer app. The member dashboard shows a clear deductible tracker, the doctor search has Yelp-like simplicity, and the concierge team is accessible via in-app chat. Key design insight: in healthcare, UX is not just convenience — it is a health outcome determinant. Users who cannot navigate their insurance avoid care. Oscar's simplified UX directly contributes to better health utilization patterns.
+### Robinhood — Fintech UX (and Its Controversies)
+
+Robinhood democratized stock trading by removing commissions and simplifying the interface to a single swipe-to-trade interaction. The UX was celebrated for lowering barriers and criticized for gamifying financial risk — confetti animations on trades, push notifications about price movements, and options trading presented with consumer-app simplicity. Key design lesson: simplification is not neutral. When you simplify a complex domain (financial trading), you must decide which complexity to hide and which to preserve. Hiding risk complexity while preserving action simplicity creates an asymmetry that can harm users.
+### Wise (formerly TransferWise) — Transparent Fintech
+
+Wise's UX is built around radical transparency. The transfer flow shows the exact exchange rate, the exact fee, the exact amount the recipient will receive, and a comparison to what banks would charge — all before the user commits. The price calculator is the hero element, not a footnote. Key design insight: in industries where competitors hide costs (banking, insurance, telecom), making pricing transparent is itself a UX differentiator. Wise's entire brand positioning emerges from a UX decision: show the math.
+### Shopify — Checkout UX
+
+Shopify Checkout processes billions in GMV and has been obsessively optimized for conversion. Shop Pay (one-click checkout for returning customers), automatic address completion, express payment methods (Apple Pay, Google Pay) above the fold, and a single-page checkout that dynamically adapts based on cart contents. Key design insight: every field removed from checkout increases conversion. Shopify's data across millions of stores provides a unique feedback loop: A/B test results from the long tail of e-commerce inform a single checkout experience that benefits all merchants.
+### Superhuman — Email Reimagined
+
+Superhuman built a premium email client around keyboard-first interaction, split inbox (triage flow), and a "Get Me to Zero" philosophy. The onboarding includes a live 30-minute human-guided session — unusual for a software product. Key design insight: charging $30/month for email forced Superhuman to deliver an experience that justifies the price, which pushed them toward power-user optimization rather than lowest-common-denominator design. The price point is itself a UX decision that shapes the product.
+### Loom — Async Video Communication
+
+Loom reduced screen recording to a single click and made sharing instant (a link, not a file). The viewer experience includes playback speed control, emoji reactions at timestamps, and threaded comments. Key design insight: the UX of the viewer matters more than the UX of the recorder. If viewers find recordings annoying to watch, recorders stop making them. Loom optimized for the consumption experience (variable speed, chaptering, reactions) to drive the creation flywheel.
+### Craft — Document Design
+
+Craft brought native app performance and visual polish to documents. Blocks, backlinks, and nested pages borrow from Notion, but Craft differentiates on aesthetics — typography, spacing, and export quality that produces documents people want to share. Key design insight: in productivity tools, aesthetics are functional. A beautifully formatted document is more likely to be read, shared, and acted upon. Craft treats visual quality as a feature, not decoration.
+### Framer — Design to Production Website
+
+Framer evolved from a prototyping tool to a website builder, and the UX of that transition is instructive. The canvas-based editor lets designers work visually while generating production React code. The component system, CMS integration, and responsive breakpoint editing bridge the gap between "looks like a website" and "is a website." Key design insight: the most powerful abstraction is eliminating the gap between design artifact and production artifact. When the thing you design is the thing that ships, an entire category of handoff friction disappears.
+### Obsidian — Knowledge Graph
+
+Obsidian's graph view visualizes connections between notes as a force-directed network. The local-first architecture (Markdown files on disk) appeals to users who distrust cloud-dependent tools. The plugin ecosystem enables radical customization. Key design insight: for knowledge workers, data ownership is a UX requirement. Obsidian's local-first model is not a technical limitation — it is a trust-building design decision that defines the product's relationship with its users.
+### Pitch — Presentation Design
+
+Pitch reimagined presentation software around collaboration (real-time multiplayer editing), brand consistency (design templates with enforced brand rules), and analytics (tracking who viewed which slides). Key design insight: presentations are collaborative artifacts created by teams but consumed by individuals. Optimizing for both creation (multiplayer editing) and consumption (viewer analytics) addresses the full lifecycle.

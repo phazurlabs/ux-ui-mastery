@@ -1,6 +1,6 @@
 ---
-name: UX Process Workflow
-description: "UX design process methodology integrating NNG's 6-phase design thinking, top company methodologies (IDEO, Double Diamond, Google Sprint, IBM EDT, Lean UX), and the vibe coder's bridge from AI-assisted development to evidence-based UX. Grounds developers in Empathize → Define → Ideate → Prototype → Test → Implement before building. Use when the user mentions: UX process, design thinking, design methodology, vibe coding, AI-assisted design, design process, user-centered design, human-centered design, design sprint, double diamond, lean UX, UX workflow, design phases, empathize define ideate."
+name: design-process-methods
+description: "Design process methodology: NNG's six phases, Double Diamond, Google Design Sprint, IDEO, Lean UX, and the bridge from AI-assisted building to evidence-based UX. Use when framing how the work should run, planning a sprint, or grounding a build in Empathize, Define, Ideate, Prototype, Test."
 ---
 
 # UX Process Workflow — From Process to Product

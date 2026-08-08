@@ -1,6 +1,6 @@
 ---
 name: animation-recipe-library
-description: "200+ production-ready animation recipes with exact CSS/Framer Motion/GSAP code. Covers entrance/exit animations, micro-interactions, page transitions, loading states, scroll-driven animations, spring physics, and reduced motion alternatives. Every recipe includes timing, easing, and copy-paste code. Use when the user mentions: animation, transition, motion, micro-interaction, page transition, entrance animation, exit animation, loading animation, skeleton animation, scroll animation, spring animation, easing, keyframe, framer motion, CSS animation, hover effect, click animation, motion design, GSAP, ScrollTrigger, SplitText, Lenis, smooth scroll, pin and scrub, parallax, horizontal scroll, cursor effect, magnetic button, custom cursor, cursor follower, text animation, typewriter, gradient text, 3D, card tilt, card flip, floating, glassmorphism, noise grain, particle, React Three Fiber, R3F, three.js, counter animation, marquee, ticker, SVG morph, stagger, spotlight."
+description: "200+ copy-paste animation recipes in CSS, Framer Motion, and GSAP: entrances, micro-interactions, page transitions, scroll-driven effects, spring physics, and cursor and text effects, each with timing, easing, and a reduced-motion fallback. Use when you need working motion code rather than motion principles."
 ---
 
 # Animation Recipe Library — 200+ Production Recipes

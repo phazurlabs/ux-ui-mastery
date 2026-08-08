@@ -1,6 +1,6 @@
 ---
 name: color-palette-library
-description: "500+ curated color palettes with accessibility scores, industry categorization, and production-ready CSS/token values. Covers brand color system design, accessible palette generation using oklch, dark mode color mapping, color combination recipes, and semantic color architecture. Use when the user mentions: color palette, color scheme, brand colors, color system, accessible colors, dark mode colors, color tokens, oklch, color contrast, color combination, color harmony, complementary colors, color psychology, warm palette, cool palette, neutral palette, color picker."
+description: "500+ ready-made color palettes with contrast scores, plus OKLCH palette generation, dark-mode luminance mapping, semantic color architecture, and data-viz scales. Use when picking or generating a specific palette. For color theory and hierarchy craft, use ui-visual-design-system."
 ---
 
 # Color Palette Library — 500+ Curated Palettes

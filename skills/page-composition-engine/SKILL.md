@@ -1,6 +1,6 @@
 ---
 name: page-composition-engine
-description: "100+ full-page composition recipes showing exact block stacking order, spacing rhythm, visual pacing, and content hierarchy for every common page type. Covers landing pages, app screens, dashboards, e-commerce, auth flows, settings, profiles, and more — each with industry variants and responsive transformations. Use when the user mentions: page layout, page composition, page recipe, landing page, page structure, page template, full page design, page flow, page rhythm, block order, section order, page wireframe, complete page, page skeleton, page blueprint."
+description: "100+ full-page recipes giving exact block order, spacing rhythm, visual pacing, and content hierarchy for landing pages, dashboards, e-commerce, auth, settings, and profiles. Use when composing a whole page. For a single section in isolation, use layout-block-intelligence."
 ---
 
 # Page Composition Engine — 100+ Full-Page Recipes

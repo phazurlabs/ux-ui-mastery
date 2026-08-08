@@ -1,6 +1,6 @@
 ---
-name: Platform Visual Standards
-description: "Current visual design standards for every major platform and device type — iOS 26 Liquid Glass (materials, vibrancy, SF Symbols 7), Material 3 Expressive (35-shape library, spring physics, HCT color, Dynamic Color), modern web CSS 2025-2026 (container queries, view transitions, scroll-driven animations, oklch(), anchor positioning), watchOS/tvOS/automotive (complications, 10-foot UI, CarPlay), spatial/XR (visionOS, Meta Quest, WebXR), and cross-platform design harmony (one design system, 9 form factors). Use when the user mentions: iOS design, Android design, Material Design, Liquid Glass, SwiftUI, Jetpack Compose, responsive design, platform guidelines, HIG, device-specific, watch app, TV app, car app, spatial design, AR, VR, visionOS, cross-platform, web design, CSS, breakpoints, form factors."
+name: platform-visual-standards
+description: "Current platform visual standards: iOS 26 Liquid Glass and SF Symbols 7, Material 3 Expressive (HCT, Dynamic Color, spring physics), web CSS 2025-2026 (container queries, view transitions, anchor positioning), plus watchOS, tvOS, and automotive. Use when a design must feel native to its platform."
 ---
 
 # Platform Visual Standards

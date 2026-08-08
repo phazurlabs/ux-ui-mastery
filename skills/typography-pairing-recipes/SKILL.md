@@ -1,6 +1,6 @@
 ---
 name: typography-pairing-recipes
-description: "100+ font pairing recipes, type scale systems, and complete typography implementation guides. Covers Google Fonts, system fonts, variable fonts, fluid typography, and platform-native type stacks with production CSS. Every pairing includes display + body + mono recommendations with exact weights, sizes, and line-heights. Use when the user mentions: font pairing, typography, type scale, font combination, Google Fonts, system font, variable font, fluid type, font size, line height, letter spacing, font weight, heading font, body font, monospace font, font stack, web font, type system."
+description: "100+ font pairing recipes and type scale systems covering Google Fonts, system stacks, variable fonts, fluid clamp() scales, and platform-native type, each with display, body, and mono picks at exact weights and line-heights. Use when choosing fonts or building a type scale."
 ---
 
 # Typography Pairing Recipes — 100+ Font Combinations

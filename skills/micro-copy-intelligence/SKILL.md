@@ -1,6 +1,6 @@
 ---
 name: micro-copy-intelligence
-description: "1000+ microcopy templates for every UI component state and context. Production-ready button labels, error messages, empty states, tooltips, confirmations, success messages, onboarding text, permission requests, notification copy, placeholder text, and helper text — organized by component, tone, and industry sector. Use when the user mentions: microcopy, button text, error message, empty state text, tooltip text, placeholder text, helper text, confirmation dialog text, success message, notification text, onboarding copy, permission request text, UI writing, UX writing, copy template, label text."
+description: "1000+ microcopy and UX-writing templates by component, tone, and sector: button labels, error messages, empty states, tooltips, confirmations, permission requests, notifications, and placeholder text. Use when writing or fixing any interface string — robotic copy is the loudest slop tell."
 ---
 
 # Micro-Copy Intelligence

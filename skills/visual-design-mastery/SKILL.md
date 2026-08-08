@@ -1,6 +1,6 @@
 ---
-name: Visual Design Mastery
-description: "World-class visual design intelligence — 36+ designer pattern libraries, 70 canonical design rules from 23 books, 10-dimension visual scoring framework (Awwwards-calibrated), deep color science (oklch, HCT, Dynamic Color), typography systems (variable fonts, fluid scales, optical sizing), and composition mastery (Swiss grid, golden ratio, visual weight). Use when the user mentions: visual design, make it look better, professional design, designer quality, color palette, typography, spacing, grid, layout, visual hierarchy, design score, design quality, polish, craft, aesthetic, beautiful, ugly, looks bad, looks cheap, visual direction, design system visuals, brand identity, visual identity, color theory, type scale."
+name: visual-design-mastery
+description: "Designer-grade visual judgement: 36+ designer pattern libraries, 70 canonical rules from 23 books, Awwwards-calibrated 10-dimension scoring, color science (OKLCH, HCT), and composition (Swiss grid, golden ratio, visual weight). Use when scoring visual quality or when work looks cheap but you cannot say why."
 ---
 
 # Visual Design Mastery

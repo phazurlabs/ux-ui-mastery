@@ -1,6 +1,6 @@
 ---
 name: form-design-encyclopedia
-description: "Complete form design system covering every input type, layout pattern, validation strategy, multi-step flow, and accessibility requirement. 200+ form patterns with production React/CSS code, mobile optimization, and conversion best practices. Use when the user mentions: form design, input field, form layout, form validation, multi-step form, form wizard, login form, signup form, checkout form, contact form, search form, filter form, settings form, form accessibility, form error, form submission, form UX, form pattern."
+description: "200+ form patterns covering every input type, layout, validation strategy, multi-step wizard, and error state, with production React and CSS, accessibility requirements, and mobile optimization. Use when building or fixing a form, choosing a validation approach, or reducing abandonment on signup and checkout."
 ---
 
 # Form Design Encyclopedia — Every Form Pattern

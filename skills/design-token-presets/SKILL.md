@@ -1,6 +1,6 @@
 ---
 name: design-token-presets
-description: "20+ complete, ready-to-deploy design token systems for every major industry vertical. Each preset includes color scales (primitive + semantic), typography scales, spacing systems, border radius, shadows, motion tokens, breakpoints, and z-index — in W3C DTCG JSON format, CSS custom property output, AND Tailwind v4 @theme configuration. Style Dictionary 4.x config included. Figma Variables mapping. Use when the user mentions: design tokens preset, token system, ready-made tokens, industry tokens, startup tokens, SaaS tokens, fintech tokens, healthcare tokens, ecommerce tokens, token set, token template, quick tokens, token starter, design tokens ready, Tailwind v4 tokens, @theme tokens, DTCG JSON, W3C design tokens, Style Dictionary, Figma Variables, token JSON."
+description: "20+ ready-to-deploy token systems by industry vertical, each in W3C DTCG JSON, CSS custom properties, and Tailwind v4 @theme, with Style Dictionary config and Figma Variables mapping. Use when you want a vetted starting token set. For architecting your own, use design-systems-architecture."
 ---
 
 # Design Token Presets — 20+ Ready-to-Deploy Token Systems

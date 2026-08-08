@@ -92,8 +92,8 @@ Spending 30 minutes debating button border-radius while ignoring a fundamental f
 
 When asked to conduct a design critique or analyze a product, use the reference materials in this skill as follows:
 
-1. **For running a critique session**: Consult `references/critique-methodology.md` for facilitator guides, session formats, feedback frameworks, and scoring rubrics.
-2. **For analyzing a specific product's design decisions**: Consult `references/product-deep-dives.md` for detailed case studies of world-class products including Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Music vs. Spotify, and Slack.
+1. **For running a critique session**: Consult `references/critique-methodology.md` for facilitator guides, session formats, feedback frameworks (I Like/I Wish/What If, Liz Lerman, Feldman's four stages, Six Thinking Hats), the 10-dimension scoring rubric, how to *receive* critique, and what to focus on at each fidelity stage (30/60/90).
+2. **For analyzing a specific product's design decisions**: Consult `references/product-deep-dives.md` for detailed case studies of world-class products including Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Music vs. Spotify, and Slack, plus condensed analyses of 17 more (Raycast, Supabase, Superhuman, Cal.com, Framer, Obsidian, Loom, Railway, Shopify, Wise, and others).
 3. **For learning from redesign mistakes**: Consult `references/redesign-failure-analysis.md` for detailed post-mortems of major product redesign failures including Snapchat, Windows 8, Digg, Twitter/X, Google Plus, Sonos, Healthcare.gov, Reddit API changes, YouTube dislikes removal, and Skype.
 
 Always ground critique feedback in specific principles, heuristics, or evidence. Never offer unanchored opinions. When principles conflict, name the tradeoff explicitly and recommend how to resolve it — through user testing, business priority alignment, or design principle hierarchy.

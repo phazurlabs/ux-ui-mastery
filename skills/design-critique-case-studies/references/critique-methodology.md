@@ -320,3 +320,72 @@ Use this rubric for structured evaluations, design portfolio reviews, or systema
 **Root cause:** Solution-mode is more comfortable and feels more productive than problem-identification mode.
 
 **Solution:** Enforce a two-phase structure: first identify the problem and ground it in a principle, then propose solutions. "I notice the seven radio buttons are causing the form to feel lengthy, which may increase abandonment [problem grounded in efficiency heuristic]. Options to consider might include a dropdown, a segmented control, or a two-step progressive disclosure pattern [solutions]." The Ladder of Feedback framework naturally enforces this by requiring clarification and concern before suggestion.
+
+### Framework 3: Feldman's Method of Art Criticism
+
+Edmund Feldman's four-stage method was designed for visual art education but maps precisely onto design critique because it enforces a discipline of observation before judgment.
+
+**Step 1: Description.** State only what you see. No interpretation, no judgment. "The page has a centered heading, a three-column card layout, and a fixed bottom bar with two buttons." This step forces critics to actually look at the design rather than reacting to their first impression. It also surfaces discrepancies — if the presenter intended a two-column layout and the critic describes three columns, there is a misalignment worth exploring.
+
+**Step 2: Analysis.** Examine the formal relationships: hierarchy, contrast, alignment, proximity, repetition, balance. "The heading and the primary CTA use the same font weight, which creates competing focal points." This step is about structure, not preference.
+
+**Step 3: Interpretation.** Infer meaning and intent from what you observed and analyzed. "The equal weight on heading and CTA suggests the design is trying to serve two goals simultaneously — brand statement and conversion — which may dilute both." This step connects observation to purpose.
+
+**Step 4: Judgment.** Evaluate the design's effectiveness relative to its goals. "Given that this is a landing page with a single conversion goal, the heading should be subordinate to the CTA in visual weight. Reducing the heading to medium weight and increasing the CTA size would clarify the hierarchy." Judgment comes last, grounded in everything that preceded it.
+
+**When to use**: Visual design reviews, brand identity critiques, any review focused on aesthetics and visual communication. Particularly effective for training junior designers to slow down and observe before opining.
+
+### Framework 4: Six Thinking Hats (De Bono) for Design Critique
+
+Edward de Bono's framework assigns different thinking modes to structure group discussion and prevent simultaneous conflicting perspectives from creating noise.
+
+**White Hat (Facts)**: What do the analytics say? What does user research tell us? What are the constraints? Only data and information.
+**Red Hat (Feelings)**: Gut reactions. "This feels cluttered." No justification required — this is the one space where emotional response is valid as-is.
+**Black Hat (Caution)**: What could go wrong? What are the risks? "If we remove the confirmation step, accidental deletions will increase."
+**Yellow Hat (Benefits)**: What is the value? "Removing the confirmation step saves power users 3 seconds per action across hundreds of daily operations."
+**Green Hat (Creativity)**: New ideas and alternatives. "What if we used an undo pattern instead of a confirmation dialog — best of both worlds?"
+**Blue Hat (Process)**: Meta-level facilitation. "We have spent 10 minutes on caution — let us move to benefits."
+
+**When to use**: Complex design decisions with multiple valid perspectives, cross-functional reviews where engineers, designers, and PMs need a shared framework, any session at risk of circular debate.
+
+---
+
+## Part 7: How to Receive Design Critique
+
+### Separate Self from Work
+
+Your design is not you. This is the foundational mindset shift. Designers who internalize critique as personal attack become defensive, stop listening, and miss opportunities to improve. The work is an artifact you produced; feedback about the artifact is not feedback about your worth.
+
+### Listen First, Respond Second
+
+The instinct to explain or defend is strong. Resist it during feedback delivery. Let the critic complete their thought. Write it down. Only then respond — and respond first with clarification questions, not justifications. "Can you say more about where the hierarchy feels unclear?" is better than "I chose that hierarchy because..."
+
+### Ask Clarifying Questions
+
+When feedback is vague, do not assume — ask. "When you say it feels busy, which section specifically? Is it the density of elements, the variety of visual styles, or something else?" Clarifying questions transform fuzzy feedback into actionable insight.
+
+### Take Notes Systematically
+
+During critique, capture every piece of feedback without filtering. Filtering happens after the session, not during it. Use a simple format: the feedback, who said it, the priority you assign after reflection, and the action you plan to take (adopt, test, defer, or reject with rationale).
+
+### Follow Up After the Session
+
+Send a summary to critique participants: "Here is what I heard, here is what I plan to change, here is what I plan to test, and here is what I am deferring with this rationale." This closes the loop, demonstrates respect for the feedback, and builds trust for future sessions.
+
+---
+
+## Part 8: The 30/60/90 Framework — Critique by Fidelity Stage
+
+### At 30% (Concept / Low Fidelity)
+
+The design is rough — sketches, rough wireframes, concept maps. Focus exclusively on strategy and structure. Is this solving the right problem? Is the information architecture logical? Are the core user flows sound? Feedback about color, typography, or pixel alignment at this stage is actively harmful because it pulls attention away from foundational decisions.
+
+### At 60% (Mid Fidelity)
+
+Defined layout, component selection, content hierarchy, and interaction patterns, but visual polish is incomplete. Focus on interaction design, content strategy, and pattern consistency. Evaluate against Nielsen's heuristics systematically. Check edge cases: empty states, error states, overflow, truncation.
+
+### At 90% (High Fidelity / Pre-Handoff)
+
+Near-final design. Focus on visual polish, micro-interactions, accessibility compliance, responsive behavior, and implementation feasibility. Feedback should be specific and scoped — not the time to question foundational architecture.
+
+---
