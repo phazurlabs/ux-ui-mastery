@@ -35,7 +35,7 @@ For builders who won't read further — the entire UX process in one block:
 ```
 BEFORE you prompt: "Who is this for, and what problem does it solve?"
 WHILE it generates:  "Does this match the user's reality, or the AI's patterns?"
-AFTER it generates:  Run /vibe-check + /include. Fix severity 3-4. Ship.
+AFTER it generates:  Run /audit + /a11y. Fix severity 3-4. Ship.
 ```
 
 That's it. Three questions. Two audits. Everything else in this skill is the *why* behind those three lines.
@@ -376,39 +376,41 @@ From *The Design of Everyday Things* (2013 revised edition):
 
 ## Process-to-Sumi Command Mapping
 
-The complete mapping from UX process phases to Sumi's 22-step journey:
+The mapping from NNG's process phases to the commands that serve them:
 
 ```
 NNG UNDERSTAND ─────────────────────────────────────────────────
-  Empathize        → /ground (0.1)  Process orientation
-                   → /intent (0.2)  Problem + persona + HMW
-  Define           → /intent (0.2)  Success criteria + constraints
+  Empathize        → /brief      Problem, persona, HMW questions
+                   → /research   Interviews, surveys, usability tests
+  Define           → /brief      Success criteria + constraint stack
+                   → /map        Information architecture
 
 NNG EXPLORE ────────────────────────────────────────────────────
-  Ideate           → /taste  (1.1)  Style direction
-                   → /inspo  (1.2)  Pattern research
-                   → /benchmark (1.3) Competitive analysis
-                   → /pulse  (1.4)  Metrics planning
-  Prototype        → /drip   (4.1)  Token system
-                   → /screen (4.2)  Screen compositions
-                   → /ship   (4.3)  Component prototypes
+  Ideate           → /style      Visual direction for the sector
+                   → /benchmark  Competitive scorecard and gaps
+                   → /measure    Metrics plan, before anything is built
+  Prototype        → /wireframe  Low-fidelity structure
+                   → /tokens     Token system
+                   → /screen     Screen compositions
+                   → /component  Component prototypes
 
 NNG MATERIALIZE ────────────────────────────────────────────────
-  Test             → /vibe-check (2.1)  Heuristic evaluation
-                   → /brain-scan (2.2)  Cognitive audit
-                   → /include    (2.3)  Accessibility audit
-                   → /flow       (2.4)  Journey audit
-                   → /dark-scan  (3.1)  Ethics scan
-                   → /trust-scan (3.2)  AI trust audit
-                   → /copy-check (3.3)  Content audit
-                   → /responsive (3.4)  Device audit
-                   → /roast      (5.1)  Design critique
-                   → /judge      (5.3)  Comprehensive review
-  Implement        → /ship    (4.3)  Production components
-                   → /onboard (4.4)  Onboarding flows
-                   → /extract (4.5)  Figma pipeline
-                   → /remix   (5.2)  Iteration redesign
+  Test             → /audit      Heuristics, cognitive load, flow, ethics
+                   → /a11y       WCAG 2.2 accessibility audit
+                   → /ai-audit   AI trust, control, recovery
+                   → /responsive Cross-device behaviour
+                   → /roast      Fast critique
+                   → /grade      Design Quality Score
+  Implement        → /component  Production components
+                   → /page       Full page compositions
+                   → /onboard    Onboarding flows
+                   → /figma      Figma design-to-code pipeline
+                   → /remix      Evidence-based redesign
+                   → /preflight  Pre-launch and post-launch plan
 ```
+
+Not every phase needs every command. `/start` routes to the right pipeline
+without you choosing from this list.
 
 ---
 

@@ -283,9 +283,14 @@ def check_artifact_schemas(corpus: Corpus, root: pathlib.Path) -> None:
                 context = "\n".join(lines[max(0, start - 25):start])
                 hits = artifact_re.findall(context)
                 if hits:
+                    # Dedent first: these blocks are often nested inside a
+                    # numbered list, and an indent-sensitive key regex silently
+                    # sees zero top-level keys and reports no conflict.
+                    body = [ln for ln in block if ln.strip()]
+                    pad = min((len(ln) - len(ln.lstrip()) for ln in body), default=0)
+                    flat = "\n".join(ln[pad:] for ln in block)
                     keys = frozenset(
-                        m.group(1) for m in
-                        re.finditer(r'^  "([^"]+)"\s*:', "\n".join(block), re.M)
+                        m.group(1) for m in re.finditer(r'^  "([^"]+)"\s*:', flat, re.M)
                     )
                     if keys:
                         art = hits[-1]

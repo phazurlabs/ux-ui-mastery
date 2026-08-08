@@ -391,37 +391,12 @@ Proper dark mode requires independent semantic remapping at the token level.
 
 9. **Save dark tokens to `.sumi/style.json`.**
 
-   Merge dark theme tokens into the existing token file under `$themes.dark`:
-   ```json
-   {
-     "$themes": {
-       "dark": {
-         "color": {
-           "bg": {
-             "primary": { "$value": "oklch(0.13 0.005 260)" },
-             "secondary": { "$value": "oklch(0.17 0.005 260)" },
-             "surface": { "$value": "oklch(0.17 0.005 260)" },
-             "surface-raised": { "$value": "oklch(0.21 0.005 260)" }
-           },
-           "text": {
-             "primary": { "$value": "oklch(0.93 0 0)" },
-             "secondary": { "$value": "oklch(0.75 0 0)" }
-           },
-           "border": {
-             "default": { "$value": "oklch(1 0 0 / 0.10)" },
-             "strong": { "$value": "oklch(1 0 0 / 0.20)" }
-           }
-         },
-         "shadow": {
-           "xs": { "$value": "none" },
-           "sm": { "$value": "none" },
-           "md": { "$value": "0 4px 16px oklch(0 0 0 / 0.4)" },
-           "lg": { "$value": "0 8px 32px oklch(0 0 0 / 0.5)" }
-         }
-       }
-     }
-   }
-   ```
+   `/dark` owns `tokens.$themes.dark` and nothing else. Follow `design-memory`:
+   load, deep-merge your subtree, append `"/dark"` to `meta.updatedBy`, write
+   back.
+
+   Store only the deltas from light. A full second palette under `dark` means
+   the file was replaced rather than merged, and the light theme is gone.
 
 ## Dark Mode Checklist
 

@@ -266,6 +266,14 @@ Double Diamond framing for stakeholders → `design-process-methods`.
 If the artifact is leaving the team — client, executive, portfolio — package it
 with `business-design-templates`.
 
+### Memory
+
+Any pipeline spanning more than one command relies on `.sumi/` to carry decisions
+between them. `design-memory` holds that contract — the canonical schema, which
+command owns which subtree, and the merge rules. Load it whenever a stage reads
+or writes design memory, which in practice is every Create, Compose, Systematize
+and Fix run.
+
 ## How this relates to the commands
 
 - **Commands do not invoke pipelines.** A command has a fixed output contract.

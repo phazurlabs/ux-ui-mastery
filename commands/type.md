@@ -637,60 +637,13 @@ Best practices for font loading to avoid layout shift (CLS) and invisible text (
 <link rel="preload" href="/fonts/[heading-font]-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 ```
 
-### Step 13 — Save to .sumi/style.json
+### Step 13 — Save to `.sumi/style.json`
 
-Save typography data to `.sumi/style.json`. If the file exists (from `/style` or `/palette`), merge into the `typography` key.
+`/type` owns `tokens.typography` and nothing else. Follow `design-memory`: load,
+deep-merge your subtree, append `"/type"` to `meta.updatedBy`, write back.
 
-```json
-{
-  "meta": {
-    "generated": "ISO-8601 timestamp",
-    "command": "/type",
-    "style": "[style]",
-    "platform": "[platform]"
-  },
-  "typography": {
-    "fonts": {
-      "heading": { "family": "[Font]", "weights": [600, 700], "category": "sans-serif" },
-      "body": { "family": "[Font]", "weights": [400, 500], "category": "sans-serif" },
-      "mono": { "family": "[Font]", "weights": [400], "category": "monospace" }
-    },
-    "scale": {
-      "ratio": 1.25,
-      "ratioName": "Major Third",
-      "base": "16px",
-      "steps": {
-        "2xs": { "px": 10, "rem": "0.625rem", "clamp": "clamp(...)" },
-        "xs": { "px": 11, "rem": "0.6875rem", "clamp": "clamp(...)" },
-        "sm": { "px": 13, "rem": "0.8125rem", "clamp": "clamp(...)" },
-        "base": { "px": 16, "rem": "1rem", "clamp": "clamp(...)" },
-        "lg": { "px": 20, "rem": "1.25rem", "clamp": "clamp(...)" },
-        "xl": { "px": 25, "rem": "1.5625rem", "clamp": "clamp(...)" },
-        "2xl": { "px": 31, "rem": "1.9375rem", "clamp": "clamp(...)" },
-        "3xl": { "px": 39, "rem": "2.4375rem", "clamp": "clamp(...)" },
-        "4xl": { "px": 49, "rem": "3.0625rem", "clamp": "clamp(...)" },
-        "5xl": { "px": 61, "rem": "3.8125rem", "clamp": "clamp(...)" },
-        "6xl": { "px": 76, "rem": "4.75rem", "clamp": "clamp(...)" }
-      }
-    },
-    "lineHeight": {
-      "display": 1.1,
-      "heading": 1.2,
-      "subheading": 1.3,
-      "body": 1.5,
-      "relaxed": 1.625
-    },
-    "letterSpacing": {
-      "display": "-0.03em",
-      "heading": "-0.02em",
-      "body": "0",
-      "small": "0.01em",
-      "uppercase": "0.08em"
-    },
-    "measure": { "default": "65ch", "narrow": "45ch", "wide": "80ch" }
-  }
-}
-```
+Merge the family stack, the modular scale, line heights and letter-spacing into
+`tokens.typography`. Leave every other subtree byte-identical.
 
 ---
 

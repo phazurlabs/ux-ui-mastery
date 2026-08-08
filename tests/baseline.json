@@ -1,8 +1,6 @@
 {
-  "always_on_tokens": 4331,
-  "artifact_schema_conflicts": [
-    "style.json"
-  ],
+  "always_on_tokens": 4400,
+  "artifact_schema_conflicts": [],
   "budget": {
     "commands": {
       "a11y": 6065,
@@ -11,9 +9,9 @@
       "audit": 10532,
       "before-after": 4878,
       "benchmark": 2297,
-      "brief": 2787,
+      "brief": 2788,
       "component": 8090,
-      "dark": 4750,
+      "dark": 4574,
       "figma": 1304,
       "fix": 10830,
       "form": 7696,
@@ -27,7 +25,7 @@
       "next": 867,
       "onboard": 6645,
       "page": 6814,
-      "palette": 6019,
+      "palette": 5818,
       "preflight": 3680,
       "qa": 4807,
       "remix": 5416,
@@ -37,10 +35,10 @@
       "screen": 10575,
       "start": 590,
       "status": 1025,
-      "style": 12359,
+      "style": 11605,
       "sumi": 2479,
-      "tokens": 7955,
-      "type": 7804,
+      "tokens": 7703,
+      "type": 7417,
       "wireframe": 8185
     },
     "references": {
@@ -96,6 +94,7 @@
       "design-critique-case-studies/critique-methodology.md": 9524,
       "design-critique-case-studies/product-deep-dives.md": 15749,
       "design-critique-case-studies/redesign-failure-analysis.md": 9318,
+      "design-memory/sumi-file-schemas.md": 2178,
       "design-process-methods/company-ux-methodologies.md": 8817,
       "design-process-methods/vibe-coder-ux-bridge.md": 7840,
       "design-systems-architecture/design-token-architecture.md": 1860,
@@ -228,7 +227,8 @@
       "cross-cultural-i18n-ux": 3949,
       "data-visualization-mastery": 7490,
       "design-critique-case-studies": 3398,
-      "design-process-methods": 5839,
+      "design-memory": 1265,
+      "design-process-methods": 5872,
       "design-systems-architecture": 3133,
       "design-token-presets": 1942,
       "desktop-app-design": 2857,
@@ -249,7 +249,7 @@
       "screen-flow-patterns": 17772,
       "sector-style-intelligence": 2462,
       "shadow-elevation-density": 9789,
-      "sumi-orchestrator": 3763,
+      "sumi-orchestrator": 3850,
       "typography-pairing-recipes": 1249,
       "ui-pattern-intelligence": 13350,
       "ui-visual-design-system": 2796,

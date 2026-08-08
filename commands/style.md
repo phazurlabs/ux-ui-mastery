@@ -922,38 +922,16 @@ module.exports = {
 }
 ```
 
-### Step 14 — Save to .sumi/style.json
+### Step 14 — Save to `.sumi/style.json`
 
-After generating all outputs, save the complete token system to `.sumi/style.json` in the project root so that other Sumi commands (`/palette`, `/type`, `/tokens`, `/screen`, `/component`) can consume it.
+Persist everything decided above so `/palette`, `/type`, `/tokens`, `/screen`,
+`/component`, `/page` and `/fix` consume it instead of inventing a second
+palette mid-session.
 
-The file structure:
-
-```json
-{
-  "meta": {
-    "generated": "ISO-8601 timestamp",
-    "command": "/style",
-    "sector": "[sector]",
-    "mood": "[mood]",
-    "platform": "[platform]"
-  },
-  "color": { "...all color tokens..." },
-  "typography": { "...all typography tokens..." },
-  "spacing": { "...all spacing tokens..." },
-  "borderRadius": { "...all radius tokens..." },
-  "shadow": { "...all shadow tokens..." },
-  "motion": { "...all motion tokens..." },
-  "tone": {
-    "formality": "[level]",
-    "traits": ["..."],
-    "wordsToUse": ["..."],
-    "wordsToAvoid": ["..."]
-  },
-  "references": [
-    { "app": "...", "platform": "...", "stealThis": "...", "takeaway": "..." }
-  ]
-}
-```
+Follow `design-memory` for the schema, ownership, and merge rules. `/style` owns
+the whole file and is the only command that may create it. Write the envelope
+(`meta`, `project`, `tone`, `references`) plus the full DTCG payload under
+`tokens`.
 
 ---
 
@@ -1012,129 +990,29 @@ The file structure:
 
 ## Design Memory Persistence
 
-After generating style output, persist decisions for use by all other Sumi commands.
+`/style` is the only command that may create `.sumi/style.json`, and it owns the
+whole file. Follow `design-memory` for the canonical schema, the read-modify-write
+discipline, and the merge rules.
 
-### Save to `.sumi/style.json`
+Write the decisions made above into the envelope:
 
-Write a JSON file at `.sumi/style.json` in the project root with this structure:
+- `meta.sector`, `meta.mood`, `meta.platform` — what was chosen and why it fits
+- `project` — the detected framework, styling approach, and TypeScript flag
+- `tokens.*` — the DTCG payload: color, typography, space, radius, shadow,
+  duration, easing, z, and `$themes.dark` as deltas from light
+- `tone` — formality, traits, words to use, words to avoid
+- `references` — the apps studied, with what to steal from each
 
-```json
-{
-  "version": "2.0",
-  "generated": "ISO-8601 timestamp",
-  "sector": "the sector used",
-  "mood": "the mood applied",
-  "technology": {
-    "framework": "react|vue|svelte|vanilla|swiftui",
-    "styling": "tailwind|css|styled-components|swiftui",
-    "typescript": true|false
-  },
-  "colors": {
-    "primary": { "value": "oklch(0.65 0.15 250)", "hex": "#2563eb" },
-    "secondary": { "value": "oklch(...)", "hex": "..." },
-    "neutral": {
-      "50": { "value": "...", "hex": "..." },
-      "100": { "value": "...", "hex": "..." },
-      "...": "full 50-950 scale"
-    },
-    "semantic": {
-      "error": { "value": "...", "hex": "..." },
-      "warning": { "value": "...", "hex": "..." },
-      "success": { "value": "...", "hex": "..." },
-      "info": { "value": "...", "hex": "..." }
-    },
-    "surface": {
-      "base": "...",
-      "raised": "...",
-      "overlay": "..."
-    }
-  },
-  "typography": {
-    "heading": { "family": "...", "weights": [...] },
-    "body": { "family": "...", "weights": [...] },
-    "mono": { "family": "...", "weights": [...] },
-    "scale": {
-      "xs": { "size": "0.75rem", "lineHeight": "1rem", "letterSpacing": "..." },
-      "sm": { "size": "...", "lineHeight": "...", "letterSpacing": "..." },
-      "base": "...",
-      "lg": "...",
-      "xl": "...",
-      "2xl": "...",
-      "3xl": "...",
-      "4xl": "...",
-      "5xl": "..."
-    }
-  },
-  "spacing": {
-    "base": 4,
-    "scale": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128]
-  },
-  "radii": {
-    "sm": "...",
-    "md": "...",
-    "lg": "...",
-    "xl": "...",
-    "full": "9999px"
-  },
-  "shadows": {
-    "sm": "...",
-    "md": "...",
-    "lg": "...",
-    "xl": "..."
-  },
-  "motion": {
-    "duration": { "fast": "...", "normal": "...", "slow": "..." },
-    "easing": { "default": "...", "spring": "..." }
-  },
-  "darkMode": {
-    "strategy": "class|media",
-    "colors": { "...inverted/adjusted palette..." }
-  }
-}
-```
+Then append one line to `.sumi/decisions.log` for any decision a later command
+might reasonably want to override.
 
-### Save to `.sumi/context.json`
+**Do not emit CSS, Tailwind, or Style Dictionary here.** `/tokens` owns
+serialization and reads `.sumi/style.json` as its input. Emitting them in both
+places is how the two files drift apart.
 
-Write project context for other commands:
+`.sumi/context.json` is retired — its `project` block now lives in
+`style.json`, and its decision array is `decisions.log`.
 
-```json
-{
-  "project": {
-    "name": "detected or user-provided",
-    "sector": "fintech",
-    "subNiche": "neobank",
-    "targetAudience": "professionals 25-45",
-    "platforms": ["web", "ios"],
-    "framework": "next.js",
-    "styling": "tailwind"
-  },
-  "designDecisions": [
-    { "decision": "Trust-first palette — blues over warm colors", "reason": "Fintech convention, user research" },
-    { "decision": "Tabular numbers for financial data", "reason": "Alignment in tables and amounts" }
-  ],
-  "lastUpdated": "ISO-8601"
-}
-```
-
-### How Other Commands Use Design Memory
-
-When ANY Sumi command runs (`/screen`, `/component`, `/form`, `/fix`, etc.):
-1. Check for `.sumi/style.json` first
-2. If found, load ALL tokens and use them in generated code
-3. If not found, proceed with defaults but suggest running `/style` first
-4. Never contradict design memory — if style.json says primary is blue, don't generate a green primary
-5. If the user explicitly overrides a decision ("make the button red"), apply the override but note the deviation
-
-### Updating Design Memory
-
-When the user modifies style decisions:
-- `/style` with new parameters → regenerate and overwrite `.sumi/style.json`
-- `/palette` → update only the color section of `.sumi/style.json`
-- `/type` → update only the typography section
-- `/tokens` → update the full token structure
-- Other commands → read-only, never modify style.json
-
----
 
 ## Cross-References
 
@@ -1152,7 +1030,7 @@ When generating style directions, draw sector knowledge and design system patter
 - `cross-cultural-i18n-ux` skill for culturally appropriate color and typography choices
 - `ux-ethics-content-strategy` skill for tone of voice guidelines
 - `design-token-presets` skill for industry-specific token presets as starting accelerators
-- `screen-flow-patterns` skill for element-level and flow-level pattern references (replacing /inspo)
+- `screen-flow-patterns` skill for element-level and flow-level pattern references
 - `ui-pattern-intelligence` skill for 200+ pattern benchmarks and anti-pattern encyclopedia
 
 ## Next Step

@@ -2,7 +2,7 @@
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v4.0.0** | 43 Skills | 168 References | 37 Commands | 1,066,453 Words | 265 Files
+**v4.0.0** | 44 Skills | 169 References | 37 Commands | 1,066,453 Words | 265 Files
 
 ---
 
@@ -19,7 +19,7 @@
 ```
 
 It asks what you're working on in plain language, picks the right process, and
-runs it. No knowledge of the 43 skills required — you never have to choose
+runs it. No knowledge of the 44 skills required — you never have to choose
 from a list.
 
 **If you know what you want**, go straight at it:
@@ -216,7 +216,7 @@ the full map with starter recipes.
 | `/grade` | Design Quality Score 0-100, Awwwards-calibrated |
 | `/style` | Sector-aware visual direction, written to `.sumi/` for every later command |
 
-## 43 Skills — The Complete Design Brain
+## 44 Skills — The Complete Design Brain
 
 Skills activate automatically. You never call them directly — `sumi-orchestrator`
 routes to them, which is why `/start` never asks you to pick from a list.
@@ -291,11 +291,11 @@ sumi/
 │   ├── plugin.json                 name, version (the cache key), license
 │   └── marketplace.json            marketplace listing
 │
-├── skills/                         43 skills, auto-invoked
+├── skills/                         44 skills, auto-invoked
 │   ├── sumi-orchestrator/          the router: 12 pipelines, stages, gates
 │   └── <skill>/
 │       ├── SKILL.md                loads in full whenever the skill triggers
-│       └── references/             168 files; load only when SKILL.md points at them
+│       └── references/             169 files; load only when SKILL.md points at them
 │
 ├── commands/                       37 commands, user-invoked
 ├── scripts/

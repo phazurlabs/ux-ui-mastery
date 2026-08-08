@@ -659,50 +659,17 @@ Tier 1 is raw values. Tier 2 assigns meaning. Tier 3 binds to components. Themes
 
 8. **Save to `.sumi/style.json`.**
 
-   The complete token file is saved in W3C DTCG format at `.sumi/style.json`. This file is consumed by:
-   - `/dark` — reads light tokens and generates dark mode counterparts
-   - `/screen` — applies tokens when building screen layouts
-   - `/component` — applies tokens when generating component code
-   - `/responsive` — references spacing and type tokens for fluid scaling
-   - Style Dictionary — transforms to any platform output
+   `/tokens` owns `tokens.*` and serializes; it does not decide. Follow
+   `design-memory`: load the file, deep-merge the DTCG payload under the
+   `tokens` key, append `"/tokens"` to `meta.updatedBy`, write it back.
 
-   File structure:
-   ```json
-   {
-     "$schema": "https://design-tokens.github.io/community-group/format/",
-     "color": {
-       "brand": { "...primitive scales..." },
-       "neutral": { "...primitive scales..." },
-       "success": { "..." },
-       "warning": { "..." },
-       "error": { "..." },
-       "info": { "..." },
-       "bg": { "...semantic backgrounds..." },
-       "text": { "...semantic text colors..." },
-       "border": { "...semantic borders..." },
-       "action": { "...semantic actions..." },
-       "feedback": { "...semantic feedback..." }
-     },
-     "typography": { "..." },
-     "space": { "..." },
-     "radius": { "..." },
-     "shadow": { "..." },
-     "duration": { "..." },
-     "easing": { "..." },
-     "z": { "..." },
-     "type": { "...composite typography semantics..." },
-     "button": { "...component tokens..." },
-     "input": { "...component tokens..." },
-     "card": { "...component tokens..." },
-     "badge": { "...component tokens..." },
-     "nav": { "...component tokens..." },
-     "$themes": {
-       "light": { "...semantic overrides..." },
-       "dark": { "...semantic overrides..." },
-       "high-contrast": { "...semantic overrides..." }
-     }
-   }
-   ```
+   The payload is W3C DTCG — primitives, semantics and component tokens with
+   `$themes` for light and dark. It nests under `tokens` rather than sitting at
+   the top level, because the envelope also carries `meta`, `project`, `tone`
+   and `references`, none of which DTCG can express.
+
+   Consumed by `/dark` (reads light, writes dark deltas), `/screen`,
+   `/component`, `/responsive`, and Style Dictionary for platform output.
 
 ## Output Format
 

@@ -210,7 +210,7 @@ Copy the block above. Paste it into ANY Sumi command:
 /screen dashboard
 [paste constraint stack]
 
-/ship notification-card
+/component notification-card
 [paste constraint stack]
 
 Every command becomes 10x more precise when it knows your

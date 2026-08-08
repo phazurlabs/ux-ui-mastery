@@ -94,9 +94,9 @@ This skill works in concert with several other sumi skills:
 
 ### With the `/style` Command
 ```
-/taste fintech — Get complete style direction for a fintech app
-/taste healthcare clinical — Get clinical healthcare style direction
-/taste e-commerce luxury — Get luxury e-commerce style direction
+/style fintech — Get complete style direction for a fintech app
+/style healthcare clinical — Get clinical healthcare style direction
+/style e-commerce luxury — Get luxury e-commerce style direction
 ```
 
 ### With the `/benchmark` Command

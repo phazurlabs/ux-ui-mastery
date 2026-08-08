@@ -423,45 +423,17 @@ Output a complete, copy-paste CSS block.
 
 All `(...)` values are replaced with actual computed values at generation time.
 
-### Step 11 — Save to .sumi/style.json
+### Step 11 — Save to `.sumi/style.json`
 
-Save the palette section to `.sumi/style.json`. If the file already exists (from `/style`), merge into the `color` key. If not, create with color data.
+`/palette` owns `tokens.color` and nothing else. Follow `design-memory`: load the
+file, deep-merge your subtree, append `"/palette"` to `meta.updatedBy`, write it
+back.
 
-```json
-{
-  "meta": {
-    "generated": "ISO-8601 timestamp",
-    "command": "/palette",
-    "input": "[what the user provided]"
-  },
-  "color": {
-    "neutral": { "50": "oklch(...)", "100": "oklch(...)", "...": "..." },
-    "brand": { "50": "oklch(...)", "...": "..." },
-    "secondary": { "50": "oklch(...)", "...": "..." },
-    "semantic": {
-      "success": { "50": "...", "100": "...", "500": "...", "700": "..." },
-      "warning": { "50": "...", "100": "...", "500": "...", "700": "..." },
-      "error": { "50": "...", "100": "...", "500": "...", "700": "..." },
-      "info": { "50": "...", "100": "...", "500": "...", "700": "..." }
-    },
-    "dataViz": {
-      "categorical": ["oklch(...)", "oklch(...)", "..."],
-      "sequential": ["oklch(...)", "oklch(...)", "..."],
-      "diverging": ["oklch(...)", "oklch(...)", "..."]
-    },
-    "gradients": {
-      "brandSubtle": "linear-gradient(...)",
-      "brandBold": "linear-gradient(...)"
-    },
-    "darkMode": {
-      "neutral": { "...": "..." },
-      "brand": { "...": "..." },
-      "secondary": { "...": "..." },
-      "semantic": { "...": "..." }
-    }
-  }
-}
-```
+Merge the neutral, brand, secondary, semantic, data-viz and gradient scales into
+`tokens.color`, and the dark-mode deltas into `tokens.$themes.dark.color`.
+
+Do not replace the file. A whole-file write here discards the type scale, the
+spacing system, the tone and the reference apps that `/style` decided.
 
 ---
 
