@@ -6,9 +6,9 @@ argument-hint: "[optional: describe what you are working on]"
 
 # Start
 
-The entry point into Sumi. The user may know nothing about this plugin, its 19
+The entry point into Sumi. The user may know nothing about this plugin, its 43
 skill domains, or which of them they need. That is the normal case — do not
-expect them to know, and do not ask them to choose from a list of 19 things.
+expect them to know, and do not ask them to choose from a list of 43 things.
 
 ## If they described something
 
@@ -54,4 +54,4 @@ underlying rigor intact.
 
 If they ask what Sumi can do, describe it in terms of outcomes — reviewing
 designs, building accessible components, setting up design systems, planning
-research, measuring whether it worked — not as a list of 19 skill names.
+research, measuring whether it worked — not as a list of 43 skill names.

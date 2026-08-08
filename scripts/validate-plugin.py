@@ -38,6 +38,9 @@ CLAUDE_CODE_ONLY = {
 }
 KEBAB = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 DESC_CAP = 1536
+# SKILL.md loads in full every time the skill triggers; references load only when
+# the SKILL.md points at them. Past this, the body belongs in references/.
+SKILL_LINE_BUDGET = 150
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -225,6 +228,60 @@ def check_layout(root: pathlib.Path) -> None:
             warnings.append(f"duplicate reference filename '{name}': {', '.join(paths)}")
 
 
+def check_counts(root: pathlib.Path, skills: int, references: int, commands: int) -> None:
+    """Fail when a manifest or README states a count that disagrees with the tree.
+
+    The counts appear in nine places across manifests, README, and commands. They
+    drifted every previous release because nothing checked them. Globbed truth is
+    the only authority; anything asserting a different number is stale.
+    """
+    patterns = [
+        (re.compile(r"(\d+)\s+skills\b", re.I), skills, "skills"),
+        (re.compile(r"(\d+)\s+reference(?:\s+files)?\b", re.I), references, "references"),
+        (re.compile(r"(\d+)\s+commands\b", re.I), commands, "commands"),
+    ]
+    targets = [
+        root / ".claude-plugin" / "plugin.json",
+        root / ".claude-plugin" / "marketplace.json",
+        root / "README.md",
+    ]
+    for path in targets:
+        if not path.exists():
+            continue
+        for lineno, line in enumerate(path.read_text().splitlines(), 1):
+            for pattern, truth, label in patterns:
+                for match in pattern.finditer(line):
+                    stated = int(match.group(1))
+                    if stated != truth:
+                        errors.append(
+                            f"{path.relative_to(root)}:{lineno}: says {stated} {label}, "
+                            f"tree has {truth}"
+                        )
+
+
+def check_skill_size(root: pathlib.Path) -> None:
+    """Report oversized SKILL.md files as one line, not one per file.
+
+    Most of the corpus is over budget today, so per-file warnings would be 35
+    lines of noise that hide everything else. A single summary naming the worst
+    offenders stays readable and still moves when someone makes it worse.
+    """
+    over = []
+    for skill_md in sorted(root.glob("skills/*/SKILL.md")):
+        lines = len(skill_md.read_text().splitlines())
+        if lines > SKILL_LINE_BUDGET:
+            over.append((lines, skill_md.parent.name))
+    if not over:
+        return
+    over.sort(reverse=True)
+    worst = ", ".join(f"{name} ({n})" for n, name in over[:3])
+    warnings.append(
+        f"{len(over)} SKILL.md files exceed the {SKILL_LINE_BUDGET}-line budget "
+        f"(SKILL.md loads in full on every trigger; references do not). "
+        f"Worst: {worst}"
+    )
+
+
 def main() -> int:
     root = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
     print(f"validating {root}\n")
@@ -233,6 +290,13 @@ def main() -> int:
     check_skills(root)
     check_commands(root)
     check_layout(root)
+    check_skill_size(root)
+    check_counts(
+        root,
+        len(list(root.glob("skills/*/SKILL.md"))),
+        len(list(root.glob("skills/*/references/*.md"))),
+        len(list(root.glob("commands/*.md"))),
+    )
 
     for warning in warnings:
         print(f"  warn  {warning}")

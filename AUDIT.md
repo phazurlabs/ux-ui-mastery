@@ -1,4 +1,4 @@
-# Citation Audit — v3.1.0
+# Citation Audit — v4.0.0
 
 Sumi makes empirical claims. This file records which have been verified against
 primary sources, which were corrected, and which are still outstanding. It is
@@ -16,6 +16,35 @@ surfaced 20 sentences; all 20 were triaged (9 resolved, 6 outstanding, 5 needing
 no external verification). The shipped script uses a wider list (adding Purdue,
 Figma, Vercel, and case-insensitive matching) and surfaces **30**. The
 **10 additional claims are not yet reviewed** — treat them as outstanding.
+
+**Status as of 2026-08-08 (v4.0.0).** The merge with chef-sumi more than tripled
+the corpus, and the extractor now surfaces **93** claims across 43 skills. The
+honest position: **the 63 claims added by the merge have not been triaged.** The
+19 skills audited in 3.1.0 keep their corrections — those files won the merge
+precisely so the corrections would survive — but the 23 skills that arrived from
+chef-sumi came with the same class of defect and have not been through this
+process.
+
+One family was fixed on the way in, because the correct wording was already
+known from the 3.1.0 audit. The NNG hamburger finding appeared in five more
+places, stated as "reduce discoverability by ~50%" or "by 50%+". NNG's study
+(179 participants, six sites) found hidden navigation cuts discoverability by
+*nearly half*; "~50%" turns a range into a point figure, and "50%+" asserts a
+floor NNG never reported. All five now carry the study's actual finding and its
+design: `ui-pattern-intelligence/references/anti-pattern-encyclopedia.md`,
+`.../pattern-evolution-2024-2026.md`, `.../pattern-taxonomy-complete.md`,
+`navigation-pattern-encyclopedia/SKILL.md`, and
+`navigation-pattern-encyclopedia/references/mobile-navigation-patterns.md`.
+
+**Highest-risk unreviewed cluster:** `conversion-optimization-patterns` carries
+roughly a dozen Baymard- and Forrester-attributed conversion figures across
+`cta-optimization.md`, `form-conversion.md`, `funnel-optimization.md`, and
+`trust-persuasion-patterns.md`. Conversion statistics are the most-copied and
+least-sourced numbers in the industry, and this skill is the one whose output
+most directly influences revenue decisions. Treat every figure in it as
+unverified until checked. `layout-block-intelligence/references/
+social-proof-patterns.md` and `form-design-encyclopedia/SKILL.md` carry the same
+risk in smaller quantity.
 
 ---
 
@@ -51,6 +80,9 @@ Do not repeat these in marketing or client-facing work until checked.
 | Google Plus: 90% of sessions under 5 seconds (2015 disclosure) | `design-critique-case-studies/references/redesign-failure-analysis.md` | Medium — widely repeated |
 | "Every 100ms of latency reduces search engagement" | `cognitive-psychology-ux/references/laws-of-ux-encyclopedia.md` | Low — directionally well-established, figure imprecise |
 | 10 further claims surfaced by the wider extraction | run the script | Unreviewed |
+| ~12 Baymard/Forrester conversion figures | `conversion-optimization-patterns/references/` | **High** — most-copied least-sourced numbers in the industry, and this skill drives revenue decisions |
+| WCAG 3.0 draft-status framing | `visual-design-mastery/SKILL.md`, `.../references/color-mastery.md` | Medium — the draft exists; only the date and status framing was ever the defect |
+| 63 claims added by the chef-sumi merge | 23 newly merged skills | Unreviewed — see the v4.0.0 status note above |
 
 ## No external verification required
 

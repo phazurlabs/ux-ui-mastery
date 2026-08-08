@@ -616,7 +616,7 @@ which section ran longest. Score each 0-10 and name the finding that set it.
 | Performance perception | | |
 
 Do not peg this list to the plugin's skill count — it is ten design domains, and
-it stays ten whether Sumi ships 19 skills or 43.
+it stays ten regardless of how many skills Sumi ships.
 
 Group the roadmap that follows into quick wins (under a day), medium lifts (under
 a sprint), and strategic work (needs a decision, not just time).

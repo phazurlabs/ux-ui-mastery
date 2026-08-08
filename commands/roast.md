@@ -204,7 +204,7 @@ Scan the design for telltale AI-generated UI patterns. Check each item that appl
 Count the number of checks that apply:
 - **0-2**: Clean — this doesn't look AI-generated
 - **3-5**: Mild slop — some AI defaults slipped through
-- **6-8**: Moderate slop — needs a Chef Sumi `/fix` pass
+- **6-8**: Moderate slop — needs a Sumi `/fix` pass
 - **9+**: Full slop — this is raw AI output, run `/fix` immediately
 
 Add a **Slop Score** to the final output alongside the letter grade. Format: `Slop Score: X/23 ([Severity]) — run /fix to transform this into visual cuisine`

@@ -2,7 +2,7 @@
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v3.1.0** | 20 Skills | 55 References | 11 Commands | 310,000+ Words | 89 Files
+**v4.0.0** | 43 Skills | 168 References | 37 Commands | 1,066,453 Words | 265 Files
 
 ---
 
@@ -19,7 +19,7 @@
 ```
 
 It asks what you're working on in plain language, picks the right process, and
-runs it. No knowledge of the 19 skill domains required — you never have to choose
+runs it. No knowledge of the 43 skills required — you never have to choose
 from a list.
 
 **If you know what you want**, go straight at it:
@@ -59,19 +59,25 @@ This plugin gives Claude Code the equivalent of a senior UX designer's entire ca
 
 **The result:** Claude doesn't just suggest "make the button bigger." It tells you Fitts's Law predicts a 23% improvement at 48px, generates the accessible React component with all 10 states, and flags that your 14-option dropdown violates Hick's Law.
 
-## What Changed in v3.0
+## What Changed in v4.0.0
 
-| Before (v2.0) | After (v3.0) |
-|----------------|-------------|
-| 12 skills, 30 references | **19 skills, 55 references** |
-| ~170K words of theory | **310K+ words of theory AND implementation** |
-| Zero code examples | **40+ production React, SwiftUI, and CSS components** |
-| Zero case studies | **18+ product deep-dives and failure analyses** |
-| No cognitive science | **25+ Laws of UX, 50+ cognitive biases, neurodesign** |
-| No Figma integration | **Full Figma MCP design-to-code flywheel** |
-| Outdated platforms | **iOS 26 Liquid Glass, Material 3 Expressive, modern CSS** |
-| No design critique tools | **Structured critique with Liz Lerman methodology** |
-| 6 commands | **10 commands** |
+Sumi 3.1.0 and Chef Sumi were one lineage that forked in February 2026. One grew
+the corpus; the other fixed the engineering. v4.0.0 merges them back into a single
+plugin, keeping both.
+
+| From Chef Sumi | From Sumi 3.1.0 |
+|---|---|
+| 23 additional skills — visual design mastery, UI pattern intelligence, sector style, layout and page composition, conversion, dataviz, microcopy | Citation audit: six empirical claims corrected against primary sources |
+| 34 action-first commands across MAKE / REVIEW / PLAN tiers | Kebab-case skill names, quoted `argument-hint`, input guards on every command |
+| The `.sumi/` design memory that carries style decisions between commands | `sumi-orchestrator` and `/start` — routing, so you never pick from a list of 43 |
+| The anti-slop engine (`/fix`) and Design Quality Score (`/grade`) | `scripts/validate-plugin.py` and CI gates that keep all of it honest |
+
+The merge also fixed a scoring defect inherited from Chef Sumi: `/audit` ran its
+Laws of UX and Gestalt lenses twice, in two sections weighted separately, so the
+same cognitive analysis carried 35% of the composite score and the two sections
+could disagree about one interface. They are now one section.
+
+Ten command names from 3.1.0 were retired or renamed — see the table in `/sumi`.
 
 ---
 
@@ -180,70 +186,73 @@ The relevant skill and deep references load automatically based on your query.
 
 ---
 
-## 10 Commands at Your Fingertips
+## 37 Commands at Your Fingertips
 
-| Command | What It Does |
-|---------|-------------|
-| `/ux-audit` | Audit any interface against Nielsen's 10 heuristics. Get severity ratings, location-specific findings, and prioritized fixes. |
-| `/cognitive-check` | Audit against 25+ Laws of UX, Gestalt principles, and cognitive biases. Score decision architecture, visual cognition, memory load, attention, and bias ethics. |
-| `/component-build` | Generate a production-ready component (React/SwiftUI/CSS) with full state matrix (10 states), ARIA, keyboard nav, design tokens, and test skeleton. |
-| `/design-critique` | Run a Liz Lerman Critical Response Process. Score 10 dimensions. Get must-fix, should-fix, and could-improve findings grounded in heuristics. |
-| `/figma-to-code` | Extract tokens, decompose component trees, and generate platform code from Figma specs. Validate accessibility. Output handoff docs. |
-| `/design-review` | Full design review scoring across all 19 skill domains. |
-| `/accessibility-check` | Deep WCAG 2.2 compliance audit with specific code fixes and WCAG 3.0 readiness notes. |
-| `/generate-design-tokens` | Generate a complete W3C Design Tokens system (Oct 2025 stable spec) with multi-platform output. |
-| `/ai-ux-audit` | Audit AI features across 4 dimensions: Trust, Safety, Usability, Accessibility. Detect AI anti-patterns. |
-| `/ux-metrics-plan` | Generate a HEART framework metrics plan with KPIs, tracking implementation, and dashboards. |
+New here? Run `/sumi:start` — it asks one question and routes you. `/sumi:sumi` is
+the full map with starter recipes.
 
----
+**MAKE (20)** — design and build
 
-## 19 Skills — The Complete Design Brain
+`/fix` `/style` `/palette` `/type` `/layout` `/wireframe` `/screen` `/component`
+`/page` `/tokens` `/form` `/nav` `/animate` `/icon` `/dark` `/responsive`
+`/onboard` `/generate` `/remix` `/figma`
 
-### Foundations: The Science Behind Every Decision
+**REVIEW (7)** — evaluate and improve
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Cognitive Psychology UX** | 25+ Laws of UX with formulas. 50+ cognitive biases with ethical annotations. Neurodesign. Attention science. Memory constraints. Flow state design. Hick's Law, Fitts's Law, Miller's Law, Peak-End Rule, Doherty Threshold — all with code examples and anti-patterns. |
-| **NNG UX Heuristics** | Nielsen's 10 heuristics with modern 2025+ interpretation. Severity rating scales. Evaluation protocols. Cross-mapped to cognitive principles. |
-| **UX Research Methods** | Contextual inquiry, usability testing, card sorting, diary studies, A/B testing, surveys. AI-augmented synthesis. JTBD, journey mapping, affinity diagramming. |
-| **UX Metrics & Measurement** | HEART framework, SUS, UEQ, SUPR-Q. Task-based metrics. A/B testing statistics. AI-specific metrics (hallucination rate, trust calibration). Design system ROI. |
+`/audit` `/roast` `/grade` `/qa` `/a11y` `/before-after` `/ai-audit`
 
-### Implementation: Code That Ships
+**PLAN (6)** — research and strategy
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Component Patterns & Code** | 40+ production components across React/TypeScript, SwiftUI, and CSS. Every component has: typed props, all 10 states (default through skeleton), ARIA attributes, keyboard handling, design token consumption, and `prefers-reduced-motion` respect. |
-| **Design Systems Architecture** | W3C Design Tokens (Oct 2025 stable). Style Dictionary pipelines. Multi-brand token architecture. 5-level maturity model. Governance. DesignOps. ROI measurement. |
-| **Figma Design Tool Workflows** | Auto Layout mastery. Variable modes. Dev Mode handoff. Figma MCP server integration. Code Connect. The full design-to-code flywheel that cuts development time 50-70%. |
-| **UI Visual Design System** | Typography scales. Color theory (oklch, color-mix, light-dark). Spacing systems. Visual hierarchy. Modern CSS: container queries, :has(), anchor positioning, view transitions, @layer, subgrid. |
+`/brief` `/research` `/benchmark` `/map` `/measure` `/preflight`
 
-### Platforms: Every Screen, Every Context
+**UTILITY (4)**
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Mobile UX Design** | iOS 26 Liquid Glass (.glassEffect, GlassEffectContainer). Material 3 Expressive (spring motion, morphing FAB). Touch, gesture, and wearable/IoT patterns. NNGroup usability critique of Liquid Glass. |
-| **Desktop App Design** | Enterprise dashboards. Data-dense interfaces. Keyboard-first design. Data visualization (chart selection matrix, D3 patterns, accessible charts with sonification). Industry-vertical patterns. |
-| **Cross-Cultural i18n UX** | RTL layout with CSS logical properties. CJK typography. Hofstede's 6 cultural dimensions mapped to interface design. Payment diversity by region. Trust signals by culture. Pseudo-localization testing. |
-| **Performance States Patterns** | Skeleton screens, optimistic UI, progressive loading (with React/SwiftUI code). Notification system architecture (toast, banner, badge, push). Empty/error/onboarding state patterns. Perceived performance psychology. |
+`/start` `/sumi` `/next` `/status`
 
-### Experience: Craft That Users Feel
+| Hero command | What it does |
+|---|---|
+| `/fix` | Anti-slop engine — turns AI-generated UI into production quality |
+| `/audit` | Heuristics, cognitive load, flow, ethics, and AI-slop in one pass |
+| `/grade` | Design Quality Score 0-100, Awwwards-calibrated |
+| `/style` | Sector-aware visual direction, written to `.sumi/` for every later command |
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Interaction & Motion Design** | Animation timing curves. Micro-interactions. M3 Expressive spring physics (stiffness/damping/mass). iOS Core Haptics + Android haptics. Brand haptic vocabulary. Emotional design (Norman's 3 levels). |
-| **Accessibility & Inclusive Design** | WCAG 2.2 full coverage. WCAG 3.0 Working Draft preview. ARIA authoring practices. Cognitive accessibility (ADHD, dyslexia, autism spectrum). Neurodiversity accommodations. AI-adaptive patterns. |
-| **Design Critique & Case Studies** | Liz Lerman Critical Response Process. 10 product deep-dives: Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord. 10 redesign failures: Snapchat, Windows 8, Digg v4, Sonos 2024, Healthcare.gov. |
-| **UX Ethics & Content Strategy** | Dark pattern detection and avoidance. 2025-2026 regulatory landscape. Privacy UX. Sustainable/green UX. Microcopy pattern library: 30+ action verbs, 20+ error templates, empty/loading/confirmation/permission copy. |
+## 43 Skills — The Complete Design Brain
 
-### Emerging Tech: What's Next
+Skills activate automatically. You never call them directly — `sumi-orchestrator`
+routes to them, which is why `/start` never asks you to pick from a list.
 
-| Skill | What Claude Knows |
-|-------|------------------|
-| **Agentic AI & Generative UX** | Multi-agent orchestration UX. Generative UI. RAG interfaces. LLM hallucination guardrails (taxonomy, confidence indicators, verification UX). Conversational AI dialogue patterns. Smashing Magazine Feb 2026 control/consent/accountability triad. |
-| **AI, Spatial & Voice UX** | AI-native interface patterns. AR/VR spatial design. Voice-first UX. Multimodal interaction. The post-UI paradigm (NNGroup 2026). |
-| **Ambient Calm & Zero UI** | Amber Case's 8 principles of calm technology. Ambient displays. Proactive intelligence. Smart home/office/automotive patterns. Privacy in ambient computing. Peripheral attention design. |
+**Routing (1)** — `sumi-orchestrator`
 
----
+**Foundations (6)** — `nng-ux-heuristics`, `cognitive-psychology-ux`,
+`ux-research-methods`, `ux-metrics-measurement`, `ux-ethics-content-strategy`,
+`design-process-methods`
+
+**Visual craft (7)** — `ui-visual-design-system`, `visual-design-mastery`,
+`color-palette-library`, `typography-pairing-recipes`, `shadow-elevation-density`,
+`image-media-patterns`, `icon-illustration-systems`
+
+**Patterns and composition (7)** — `ui-pattern-intelligence`,
+`screen-flow-patterns`, `layout-block-intelligence`, `page-composition-engine`,
+`navigation-pattern-encyclopedia`, `form-design-encyclopedia`,
+`responsive-block-patterns`
+
+**Systems and code (5)** — `design-systems-architecture`, `design-token-presets`,
+`component-patterns-code`, `figma-design-tool-workflows`,
+`performance-states-patterns`
+
+**Platform (5)** — `mobile-ux-design`, `desktop-app-design`,
+`platform-visual-standards`, `ambient-calm-zero-ui`, `cross-cultural-i18n-ux`
+
+**Experience and craft (4)** — `interaction-motion-design`,
+`animation-recipe-library`, `micro-copy-intelligence`,
+`accessibility-inclusive-design`
+
+**Strategy and outcomes (5)** — `sector-style-intelligence`,
+`conversion-optimization-patterns`, `data-visualization-mastery`,
+`design-critique-case-studies`, `business-design-templates`
+
+**AI (3)** — `agentic-ai-generative-ux`, `ai-spatial-voice-ux`,
+`ai-design-generation`
 
 ## How It Works
 
@@ -277,81 +286,38 @@ Built on the shoulders of giants:
 ## Architecture
 
 ```
-sumi/                                   310K+ words across 89 files
+sumi/
 ├── .claude-plugin/
-│   ├── plugin.json                     v3.1.0 manifest
-│   └── marketplace.json                Distribution metadata
+│   ├── plugin.json                 name, version (the cache key), license
+│   └── marketplace.json            marketplace listing
 │
-├── skills/                             20 skill domains (19 + orchestrator)
-│   ├── cognitive-psychology-ux/        Laws of UX, biases, neurodesign
-│   │   ├── SKILL.md                    2K words — overview + cross-refs
-│   │   └── references/
-│   │       ├── laws-of-ux-encyclopedia.md       25+ laws with formulas
-│   │       ├── cognitive-biases-design-patterns.md  50+ biases + dark pattern alerts
-│   │       └── neurodesign-engagement-science.md    Eye tracking, flow, dopamine
-│   │
-│   ├── component-patterns-code/        Production component code
-│   │   ├── SKILL.md                    State matrix methodology
-│   │   └── references/
-│   │       ├── react-component-cookbook.md    15 React/TS components
-│   │       ├── swiftui-component-cookbook.md  10 SwiftUI views + iOS 26
-│   │       └── css-modern-patterns.md        12 modern CSS patterns
-│   │
-│   ├── design-critique-case-studies/   Critique + real-world analysis
-│   │   ├── SKILL.md                    Liz Lerman, 30/60/90 framework
-│   │   └── references/
-│   │       ├── critique-methodology.md       Session formats + frameworks
-│   │       ├── product-deep-dives.md         10 product analyses
-│   │       └── redesign-failure-analysis.md  10 failure post-mortems
-│   │
-│   ├── figma-design-tool-workflows/    Figma MCP + design-to-code
-│   │   ├── SKILL.md                    Figma mastery overview
-│   │   └── references/
-│   │       ├── figma-mastery-workflows.md    Auto Layout, variables, Dev Mode
-│   │       ├── figma-mcp-ai-flywheel.md      MCP pipeline + 50-70% time savings
-│   │       └── design-to-code-pipeline.md    Style Dictionary, CI/CD, visual regression
-│   │
-│   ├── performance-states-patterns/    Loading, errors, notifications
-│   ├── cross-cultural-i18n-ux/        i18n, RTL, cultural dimensions
-│   ├── ambient-calm-zero-ui/          Calm technology, ambient computing
-│   ├── nng-ux-heuristics/            Nielsen's 10 heuristics
-│   ├── ux-research-methods/          Research methodology
-│   ├── mobile-ux-design/             iOS 26, M3 Expressive, wearable
-│   ├── desktop-app-design/           Dashboards, data viz, keyboard-first
-│   ├── ui-visual-design-system/      Typography, color, spacing, modern CSS
-│   ├── accessibility-inclusive-design/ WCAG 2.2 + 3.0, ARIA, neurodiversity
-│   ├── interaction-motion-design/    Animation, haptics, spring physics
-│   ├── ai-spatial-voice-ux/         AI, AR/VR, voice, multimodal
-│   ├── design-systems-architecture/  Tokens, governance, multi-brand
-│   ├── ux-ethics-content-strategy/  Ethics, microcopy, sustainable UX
-│   ├── agentic-ai-generative-ux/   Agentic AI, generative UI, hallucinations
-│   └── ux-metrics-measurement/      HEART, SUS, A/B testing, AI metrics
+├── skills/                         43 skills, auto-invoked
+│   ├── sumi-orchestrator/          the router: 12 pipelines, stages, gates
+│   └── <skill>/
+│       ├── SKILL.md                loads in full whenever the skill triggers
+│       └── references/             168 files; load only when SKILL.md points at them
 │
-├── commands/                          10 executable commands
-│   ├── ux-audit.md                    NNG heuristic audit
-│   ├── design-review.md              Full design review
-│   ├── accessibility-check.md        WCAG 2.2 compliance
-│   ├── generate-design-tokens.md     W3C token generation
-│   ├── ai-ux-audit.md               AI trust/safety audit
-│   ├── ux-metrics-plan.md           HEART metrics plan
-│   ├── component-build.md           Production component builder
-│   ├── design-critique.md           Liz Lerman critique
-│   ├── figma-to-code.md            Design-to-code pipeline
-│   └── cognitive-check.md          Cognitive psychology audit
-│
-└── README.md                         This file
+├── commands/                       37 commands, user-invoked
+├── scripts/
+│   ├── validate-plugin.py          structure, counts, frontmatter — CI gate
+│   └── extract-claims.py           pulls empirical claims for citation audit
+├── .github/workflows/              license preflight + CLA
+├── AUDIT.md                        which claims are verified, corrected, outstanding
+└── CHANGELOG.md
 ```
 
----
+The split that matters: **SKILL.md loads in full every time its skill triggers;
+references load only when a SKILL.md points at them.** That is why depth lives in
+`references/` and why `validate-plugin.py` warns when a SKILL.md gets fat.
 
 ## Knowledge Base by the Numbers
 
 | Metric | Count |
 |--------|-------|
-| Total words | **310,407** |
-| Skill domains | **19** |
-| Deep reference files | **55** |
-| Executable commands | **10** |
+| Total words | **1,066,453** |
+| Skills | **43** (42 domains + orchestrator) |
+| Deep reference files | **168** |
+| Executable commands | **37** |
 | Production code components | **40+** |
 | Laws of UX (with formulas) | **25+** |
 | Cognitive biases (with ethical flags) | **50+** |

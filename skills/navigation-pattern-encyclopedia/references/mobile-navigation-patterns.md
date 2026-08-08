@@ -270,7 +270,7 @@ A three-line icon ("hamburger") that, when tapped, slides in a navigation panel 
 - When screen real estate is needed for content
 
 ### When NOT to Use
-- When discoverability matters (hamburger menus hide navigation, reducing discovery by 50+%)
+- When discoverability matters (NNG found hiding navigation cuts content discoverability by nearly half)
 - For primary, frequently-accessed navigation (use bottom tab bar instead)
 - iOS apps (Apple discourages hamburger menus)
 - Apps where users are new and need to discover features

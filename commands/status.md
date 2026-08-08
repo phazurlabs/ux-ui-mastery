@@ -10,19 +10,19 @@ A visual progress tracker showing what Sumi commands have been run in this sessi
 
 ## Command Registry
 
-All 34 commands organized by tier:
+All 37 commands organized by tier:
 
-**MAKE (19 commands)**:
-`/fix`, `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
+**MAKE (20 commands)**:
+`/fix`, `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`, `/figma`
 
-**REVIEW (6 commands)**:
-`/audit`, `/roast`, `/grade`, `/qa`, `/a11y`, `/before-after`
+**REVIEW (7 commands)**:
+`/audit`, `/roast`, `/grade`, `/qa`, `/a11y`, `/before-after`, `/ai-audit`
 
 **PLAN (6 commands)**:
 `/brief`, `/research`, `/benchmark`, `/map`, `/measure`, `/preflight`
 
-**Utility (3 commands)**:
-`/sumi`, `/next`, `/status`
+**Utility (4 commands)**:
+`/start`, `/sumi`, `/next`, `/status`
 
 ## Protocol
 
@@ -48,7 +48,7 @@ Render the progress map with completion status.
 ## Output Format
 
 ```
-## Chef Sumi Progress
+## Sumi Progress
 
 ### MAKE — Design and Build
   [ ] /fix           Anti-slop transformation
@@ -91,7 +91,7 @@ Render the progress map with completion status.
   PLAN: 0/6
 
 ──────────────────────────────────────
-Overall: 0/34 commands  |  Next → /style
+Overall: 0/37 commands  |  Next → /style
 ──────────────────────────────────────
 
 Run /next for guidance  |  /sumi for full map

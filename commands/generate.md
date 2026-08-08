@@ -61,7 +61,7 @@ This command operates in 7 sub-modes. The user specifies which mode, or describe
 
 ## Sub-Mode 7: Figma Import (MCP Bridge)
 
-Import designs from Figma via MCP, audit them with Chef Sumi's design intelligence, and export production-ready code.
+Import designs from Figma via MCP, audit them with Sumi's design intelligence, and export production-ready code.
 
 **Trigger**: "import from Figma", "Figma to code", "convert this Figma design"
 
@@ -103,13 +103,13 @@ To connect Figma, add to your Claude Code MCP config:
   - Asset references (images, icons)
   - Component variants and properties
 
-**Step 2: Map to Chef Sumi Tokens**
+**Step 2: Map to Sumi Tokens**
 - Convert Figma colors to oklch values with hex fallbacks
 - Map Figma text styles to type scale tokens
 - Convert Figma auto layout spacing to spacing scale values
 - Map Figma effects to shadow tokens
 - Map Figma corner radius to radius tokens
-- Identify the closest Chef Sumi sector match based on visual patterns
+- Identify the closest Sumi sector match based on visual patterns
 - If `.sumi/style.json` exists, map Figma values to existing tokens (flag mismatches)
 
 **Step 3: Audit the Figma Design**
@@ -126,7 +126,7 @@ Generate code using the same protocol as `/screen` or `/component`:
 - React + TypeScript + Tailwind (default for web)
 - SwiftUI (if iOS signals detected)
 - Jetpack Compose (if Android signals detected)
-- Apply all Chef Sumi quality standards:
+- Apply all Sumi quality standards:
   - Semantic color tokens (not raw hex values)
   - Type scale tokens (not arbitrary font sizes)
   - Spacing scale tokens (not random padding)
@@ -148,7 +148,7 @@ If no `.sumi/style.json` exists, generate one from the Figma design:
 ## Figma Import — [Frame/Component Name]
 
 ### Extracted Design Values
-| Category | Figma Value | Chef Sumi Token | Status |
+| Category | Figma Value | Sumi Token | Status |
 |----------|-------------|-----------------|--------|
 | Primary Color | #2563EB | oklch(0.55 0.18 255) → --color-primary | ✅ Mapped |
 | Body Font | Inter 16/24 | --font-body, --text-base | ✅ Mapped |

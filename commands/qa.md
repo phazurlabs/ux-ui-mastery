@@ -401,7 +401,7 @@ Scan the project for all UI-related files:
 - `**/*.css`, `**/*.scss` — Stylesheets
 - `**/*.swift` — SwiftUI views
 - `**/tailwind.config.*` — Tailwind configuration
-- `.sumi/style.json` — Chef Sumi design memory
+- `.sumi/style.json` — Sumi design memory
 
 **Step 2: Extract Design Values**
 

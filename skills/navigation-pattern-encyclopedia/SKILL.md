@@ -595,7 +595,7 @@ function CommandPalette({ commands, onSelect, onClose }) {
 
 **When to Use:** As a last resort when other patterns do not fit, for secondary navigation on mobile, for sites with many top-level pages that cannot be reduced.
 
-**When to Avoid:** When you can use bottom tabs or visible navigation instead. Hamburger menus reduce discoverability by 50%+ (NNG research). Never use as sole navigation for key features.
+**When to Avoid:** When you can use bottom tabs or visible navigation instead. Nielsen Norman Group found hidden navigation cuts content discoverability by nearly half, and raises both time on task and perceived difficulty. Never use as sole navigation for key features.
 
 **Anatomy (ASCII):**
 ```

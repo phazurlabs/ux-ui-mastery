@@ -14,7 +14,7 @@ These patterns were once standard but are now actively declining. Using them mak
 
 ### Hamburger Menu on Desktop → Command Palette + Visible Nav
 **Status**: Dead on desktop. Acceptable only as a mobile fallback.
-**Why it died**: NNG research showed hamburger menus reduce discoverability by ~50%. Users don't explore menus they can't see. The rise of command palettes (Cmd+K) provides keyboard-first navigation that is faster than any menu. Visible top nav or sidebar is always superior on desktop.
+**Why it died**: Nielsen Norman Group's quantitative study (179 participants, six sites) found that hiding navigation cuts content discoverability by nearly half. Users don't explore menus they can't see. The rise of command palettes (Cmd+K) provides keyboard-first navigation that is faster than any menu. Visible top nav or sidebar is always superior on desktop.
 **Replace with**: Sidebar navigation (SaaS), top nav (marketing), or command palette as primary.
 
 ### Full-Page Loading Spinners → Skeleton Screens

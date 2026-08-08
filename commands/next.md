@@ -10,15 +10,15 @@ A compact navigation aid that suggests the best next command based on context. N
 
 ## Command Reference
 
-The 34 commands organized by tier:
+The 37 commands organized by tier:
 
-**MAKE** (19): `/fix`, `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`
+**MAKE** (20): `/fix`, `/style`, `/palette`, `/type`, `/layout`, `/wireframe`, `/screen`, `/component`, `/page`, `/tokens`, `/form`, `/nav`, `/animate`, `/icon`, `/dark`, `/responsive`, `/onboard`, `/generate`, `/remix`, `/figma`
 
-**REVIEW** (6): `/audit`, `/roast`, `/grade`, `/qa`, `/a11y`, `/before-after`
+**REVIEW** (7): `/audit`, `/roast`, `/grade`, `/qa`, `/a11y`, `/before-after`, `/ai-audit`
 
 **PLAN** (6): `/brief`, `/research`, `/benchmark`, `/map`, `/measure`, `/preflight`
 
-**Utility** (3): `/sumi`, `/next`, `/status`
+**Utility** (4): `/start`, `/sumi`, `/next`, `/status`
 
 ## Common Progressions
 

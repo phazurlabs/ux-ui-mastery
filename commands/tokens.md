@@ -800,7 +800,7 @@ When generating tokens, draw from:
 
 ## Team Design System Sync
 
-Share design tokens across a team so every developer's Chef Sumi output is consistent. One person establishes the design system, everyone inherits it.
+Share design tokens across a team so every developer's Sumi output is consistent. One person establishes the design system, everyone inherits it.
 
 ### Setup Protocol
 
@@ -815,14 +815,14 @@ One team member runs `/style` and `/tokens` to generate the design system. This 
 Add `.sumi/` to version control:
 ```bash
 git add .sumi/
-git commit -m "Add Chef Sumi design system tokens"
+git commit -m "Add Sumi design system tokens"
 ```
 
 Every team member who clones or pulls the repo now has the same design tokens.
 
 **Step 3: Automatic Inheritance**
 
-When any team member runs a Chef Sumi command (`/screen`, `/component`, `/form`, `/fix`, etc.), the command automatically:
+When any team member runs a Sumi command (`/screen`, `/component`, `/form`, `/fix`, etc.), the command automatically:
 1. Checks for `.sumi/style.json` in the project root
 2. Loads all tokens (colors, typography, spacing, motion, radii, shadows)
 3. Uses those tokens in all generated code
@@ -863,7 +863,7 @@ If no theme is specified, use `style.json` (the default).
 
 ### CI/CD Integration
 
-Use Chef Sumi's Design Quality Score in CI/CD pipelines:
+Use Sumi's Design Quality Score in CI/CD pipelines:
 
 **GitHub Action** (add to `.github/workflows/design-qa.yml`):
 ```yaml
@@ -887,10 +887,10 @@ jobs:
 **Pre-commit Hook** (add to `.husky/pre-commit` or `.git/hooks/pre-commit`):
 ```bash
 #!/bin/sh
-# Run Chef Sumi design QA on changed UI files
+# Run Sumi design QA on changed UI files
 changed_ui_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(tsx|jsx|vue|svelte|css)$')
 if [ -n "$changed_ui_files" ]; then
-  echo "Running Chef Sumi design check on changed UI files..."
+  echo "Running Sumi design check on changed UI files..."
   claude -p "Run /qa on these files: $changed_ui_files. Report any design quality issues."
 fi
 ```

@@ -1,12 +1,14 @@
 ---
 name: sumi
-description: "Command map and quick start — see all 34 commands, starter recipes, Design Quality Score, anti-slop engine, and tips for best results."
+description: "Command map and quick start — see all 37 commands, starter recipes, Design Quality Score, anti-slop engine, and tips for best results. Start with /start if you are new."
 argument-hint: "[optional: command or topic]"
 ---
 
-# Chef Sumi — Your Design Intelligence System
+# Sumi — Your Design Intelligence System
 
-Welcome to Chef Sumi v9. 34 commands. 42 skills. Vibe coded slop into visual cuisine.
+Welcome to Sumi v4.0.0. 37 commands. 43 skills. Vibe coded slop into visual cuisine.
+
+**New here?** Run `/start` instead. It asks one question and routes you — no need to read this map.
 
 ## Quick Start
 
@@ -35,9 +37,9 @@ Welcome to Chef Sumi v9. 34 commands. 42 skills. Vibe coded slop into visual cui
 
 ---
 
-## All 34 Commands
+## All 37 Commands
 
-### MAKE — Design and Build (19)
+### MAKE — Design and Build (20)
 
 Generate visual design systems, screens, components, and production-ready code.
 
@@ -62,8 +64,9 @@ Generate visual design systems, screens, components, and production-ready code.
 | `/onboard` | Onboarding flow with activation metrics and progressive disclosure |
 | `/generate` | AI-powered screen generation (Stitch MCP, Fal.ai) |
 | `/remix` | Evidence-based redesign of weak areas |
+| `/figma` | Figma design-to-code via MCP — extracts tokens, components, layout |
 
-### REVIEW — Evaluate and Improve (6)
+### REVIEW — Evaluate and Improve (7)
 
 Audit existing designs for quality, accessibility, and usability problems.
 
@@ -75,6 +78,7 @@ Audit existing designs for quality, accessibility, and usability problems.
 | `/qa` | Design QA — spec vs. implementation comparison. `/qa project` scans full codebase |
 | `/a11y` | WCAG 2.2 accessibility audit. `/a11y fix` generates corrected code |
 | `/before-after` | Visual proof of design transformation — side-by-side comparison |
+| `/ai-audit` | AI and agent interface audit — trust, control, recovery, disclosure |
 
 ### PLAN — Research and Strategy (6)
 
@@ -89,15 +93,38 @@ Research users, analyze competitors, plan metrics, and prepare for launch.
 | `/measure` | Metrics plan — HEART framework, OKRs, experimentation, dashboards |
 | `/preflight` | Pre-launch checklist AND post-launch plan — the full launch playbook |
 
-### Utility (3)
+### Utility (4)
 
 | Command | What It Does |
 |---------|-------------|
+| `/start` | Zero-knowledge entry point. One question, then it routes you. |
 | `/sumi` | You're here. Command map, quick start, tips. |
 | `/next` | Context-aware suggestion of what to do next |
 | `/status` | Progress dashboard of what you've generated |
 
 ---
+
+---
+
+## Renamed in v4.0.0
+
+Sumi 3.1.0 and Chef Sumi were one lineage that had forked. v4.0.0 merges them.
+Where both shipped a command for the same job, the richer one survived. If you
+were using a 3.1.0 name, here is where it went:
+
+| 3.1.0 name | Now |
+|---|---|
+| `/accessibility-check` | `/a11y` |
+| `/ux-audit` | `/audit` |
+| `/design-review` | `/audit` (see its domain roll-up section) |
+| `/cognitive-check` | `/audit cognitive` |
+| `/design-critique` | `/roast` |
+| `/component-build` | `/component` |
+| `/generate-design-tokens` | `/tokens` |
+| `/ux-metrics-plan` | `/measure` |
+| `/figma-to-code` | `/figma` |
+| `/ai-ux-audit` | `/ai-audit` |
+
 
 ## Starter Recipes
 
@@ -146,7 +173,7 @@ One word. Zero config. Complete visual identity.
 
 ---
 
-## What's New in v9
+## What's New in v4.0.0
 
 - **Anti-Slop Engine** (`/fix`) — 60+ detection patterns, full code transformation. Turns AI-generated UI into production quality.
 - **Design Quality Score** (`/grade`) — 0-100 Lighthouse-style scoring with badge generation. Benchmark against any product.
@@ -174,9 +201,11 @@ One word. Zero config. Complete visual identity.
 
 ---
 
-## 42 Skills (Auto-Invoked)
+## 43 Skills (Auto-Invoked)
 
 Skills activate automatically when relevant. You never need to call them directly.
+
+**Routing**: sumi-orchestrator — picks the pipeline and runs its stages in order. This is what `/start` talks to.
 
 **Core UX**: design-process-methods, nng-ux-heuristics, ux-research-methods, cognitive-psychology-ux, ux-metrics-measurement, ux-ethics-content-strategy
 

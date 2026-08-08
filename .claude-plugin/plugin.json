@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "sumi",
   "displayName": "Sumi",
-  "version": "3.1.0",
-  "description": "UX/UI design intelligence for Claude Code: cognitive psychology and Laws of UX, NNG heuristic evaluation, production component code (React/SwiftUI/CSS), design systems and W3C tokens, Figma design-to-code, accessibility (WCAG 2.2), motion and haptics, and AI/agentic interface patterns.",
+  "version": "4.0.0",
+  "description": "UX/UI design intelligence for Claude Code — 43 skills, 168 reference files, 37 commands. Start with /sumi:start. Cognitive psychology and Laws of UX, NNG heuristics, WCAG 2.2 accessibility, W3C design tokens, production component code (React/SwiftUI/CSS), Figma design-to-code, visual quality scoring, and AI interface patterns.",
   "author": {
     "name": "Phazur Labs",
     "url": "https://phazurlabs.com"
@@ -18,6 +18,8 @@
     "design-systems",
     "accessibility",
     "figma",
-    "usability"
+    "usability",
+    "design-tokens",
+    "component-library"
   ]
 }

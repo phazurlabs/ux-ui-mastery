@@ -13,7 +13,7 @@ This encyclopedia catalogs 100+ anti-patterns organized by category, each with: 
 ### N1. Desktop Hamburger Menu
 **What it looks like**: Three-line icon hiding the primary navigation on desktop (1024px+).
 **Why it seems reasonable**: "Clean" design. Minimalist. More space for content.
-**Why it fails**: NNG research shows hamburger menus reduce discoverability by ~50%. Navigation hidden behind a click is navigation users don't use. Desktop screens have plenty of room for visible navigation.
+**Why it fails**: Nielsen Norman Group's quantitative study (179 participants, six sites) found that hiding navigation cuts content discoverability by nearly half. Navigation hidden behind a click is navigation users don't use. Desktop screens have plenty of room for visible navigation.
 **Use instead**: Sidebar navigation, top navigation bar, or command palette.
 **Cognitive principle**: Recognition over recall (Nielsen H6). Users cannot recall what they cannot see.
 **Severity**: High — directly reduces feature discovery and task completion.

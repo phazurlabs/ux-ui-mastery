@@ -227,7 +227,7 @@ Navigation is the skeleton of any product. Users form a spatial mental model of 
 
 **When to use**: Mobile as a secondary navigation holder (when bottom nav handles primary destinations but you need more options). Responsive breakpoints where sidebar needs to collapse.
 
-**When NOT to use**: Desktop — almost never. If you have room to show the nav, show it. Hiding navigation behind a hamburger on desktop reduces discoverability by ~50% (NNG research). As the primary mobile navigation when you have 3-5 destinations (use bottom nav instead).
+**When NOT to use**: Desktop — almost never. If you have room to show the nav, show it. Nielsen Norman Group found that hiding navigation cuts content discoverability by nearly half (179 participants, six sites). As the primary mobile navigation when you have 3-5 destinations (use bottom nav instead).
 
 **Anti-patterns**:
 - Hamburger as the only navigation on desktop (discoverability killer)

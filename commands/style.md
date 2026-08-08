@@ -202,10 +202,10 @@ Scan the working directory for project signals:
 | `tailwind.config.js/ts` | Tailwind CSS project | Extract existing theme customizations (colors, fonts, spacing, screens). Use as baseline instead of generating from scratch |
 | `tailwind.config` → `theme.extend.colors` | Custom color tokens exist | Inherit these colors. Do not override unless explicitly asked |
 | `tailwind.config` → `theme.extend.fontFamily` | Custom fonts defined | Use these fonts. Suggest pairing improvements if appropriate |
-| `globals.css` / `app.css` | CSS custom properties | Extract `:root {}` variables. Map to Chef Sumi token structure |
+| `globals.css` / `app.css` | CSS custom properties | Extract `:root {}` variables. Map to Sumi token structure |
 | `package.json` → dependencies | Framework detection | Detect React, Vue, Svelte, Next.js, Nuxt, SvelteKit. Adjust output format |
 | `tsconfig.json` | TypeScript project | Output TypeScript types for tokens |
-| `.css` files with `--` custom properties | Existing token system | Map to Chef Sumi format. Identify gaps |
+| `.css` files with `--` custom properties | Existing token system | Map to Sumi format. Identify gaps |
 | `theme.json` / `tokens.json` | Design token file | Parse existing tokens. Use as baseline |
 | `*.swift` / `Package.swift` | SwiftUI project | Output SwiftUI color/font extensions |
 | `styles/` or `tokens/` directory | Organized design system | Scan for existing design decisions |
@@ -213,7 +213,7 @@ Scan the working directory for project signals:
 **Step 2: Existing Design Analysis**
 
 If design tokens or theme customizations are found:
-1. Map existing values to Chef Sumi's token structure
+1. Map existing values to Sumi's token structure
 2. Identify GAPS — what the project defines vs. what a complete system needs
 3. Generate ONLY the missing pieces, not the whole system
 4. Flag any inconsistencies found (e.g., 5 different border-radius values, spacing that doesn't follow a scale)
@@ -221,10 +221,10 @@ If design tokens or theme customizations are found:
 
 **Step 3: Design Memory Check**
 
-Check for existing Chef Sumi design memory:
+Check for existing Sumi design memory:
 - `.sumi/style.json` — previous style generation
 - `.sumi/context.json` — project context
-- If found: "I found your previous Chef Sumi style. Should I update it or start fresh?"
+- If found: "I found your previous Sumi style. Should I update it or start fresh?"
 - If found and user runs a sector-specific generation: merge with existing decisions, flagging any conflicts
 
 ---
@@ -1012,7 +1012,7 @@ The file structure:
 
 ## Design Memory Persistence
 
-After generating style output, persist decisions for use by all other Chef Sumi commands.
+After generating style output, persist decisions for use by all other Sumi commands.
 
 ### Save to `.sumi/style.json`
 
@@ -1118,7 +1118,7 @@ Write project context for other commands:
 
 ### How Other Commands Use Design Memory
 
-When ANY Chef Sumi command runs (`/screen`, `/component`, `/form`, `/fix`, etc.):
+When ANY Sumi command runs (`/screen`, `/component`, `/form`, `/fix`, etc.):
 1. Check for `.sumi/style.json` first
 2. If found, load ALL tokens and use them in generated code
 3. If not found, proceed with defaults but suggest running `/style` first

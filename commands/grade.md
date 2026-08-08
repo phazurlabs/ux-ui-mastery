@@ -470,7 +470,7 @@ Include the following block in the grade output, after the 10-Dimension Scores:
 
 ### Badge Generation
 
-If the design scores 80+ (Grade A or A+), generate a "Designed with Chef Sumi" badge.
+If the design scores 80+ (Grade A or A+), generate a "Designed with Sumi" badge.
 
 **Markdown badge** (for README):
 ```markdown
