@@ -659,11 +659,11 @@ Mathematical precision does not always equal visual precision. Common optical co
 
 | Command | How This Skill Is Used |
 |---------|----------------------|
-| `/10-vision` | Primary command — generates complete visual design direction using designer DNA + canonical rules |
-| `/23-roast` | References canonical rules and scoring dimensions during design critique |
-| `/27-grade` | Visual scoring contributes to overall design quality grade |
-| `/04-taste` | Enhanced with designer pattern library for richer style direction |
-| `/17-tokens` | Enhanced with color/typography mastery for better token generation |
-| `/19-ship` | Enhanced with composition mastery for better component visual quality |
-| `/07-inspo` | Designer pattern libraries inform inspiration sourcing |
-| `/25-qa` | Detail rules (61-70) power visual QA checks |
+| `/grade` | Primary command — generates complete visual design direction using designer DNA + canonical rules |
+| `/roast` | References canonical rules and scoring dimensions during design critique |
+| `/grade` | Visual scoring contributes to overall design quality grade |
+| `/style` | Enhanced with designer pattern library for richer style direction |
+| `/tokens` | Enhanced with color/typography mastery for better token generation |
+| `/component` | Enhanced with composition mastery for better component visual quality |
+| `/style` | Designer pattern libraries inform inspiration sourcing |
+| `/qa` | Detail rules (61-70) power visual QA checks |

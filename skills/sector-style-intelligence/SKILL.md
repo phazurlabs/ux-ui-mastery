@@ -92,7 +92,7 @@ This skill works in concert with several other sumi skills:
 
 ## How to Use This Skill
 
-### With the `/taste` Command
+### With the `/style` Command
 ```
 /taste fintech — Get complete style direction for a fintech app
 /taste healthcare clinical — Get clinical healthcare style direction

@@ -667,4 +667,4 @@ When building onboarding flows, draw from:
 - `/roast` — Stress-test the onboarding flow with a brutal critique
 - `/a11y` — Audit onboarding accessibility
 - `/measure` — Define HEART metrics that onboarding targets
-- `/guide` — See the full journey
+- `/sumi` — See the full journey

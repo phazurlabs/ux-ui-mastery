@@ -459,7 +459,7 @@ URLs are a critical part of IA. They are visible to users, shared in communicati
    - Pick one and redirect the other
 
 6. **No file extensions**: URLs are resources, not files
-   - Good: `/about`
+   - Good: `/sumi`
    - Bad: `/about.html`
 
 7. **Query params for filtering, not structure**:

@@ -871,5 +871,5 @@ For every screen, verify you have designed:
 | Command | Purpose |
 |---------|---------|
 | `/screen` | Generate a complete screen specification with layout, components, states, and accessibility |
-| `/flow` | Generate a user flow with step sequences, branching, error handling, and metrics |
-| `/inspo` | Get curated inspiration sources for a specific screen type, flow, or design problem |
+| `/audit` | Generate a user flow with step sequences, branching, error handling, and metrics |
+| `/style` | Get curated inspiration sources for a specific screen type, flow, or design problem |

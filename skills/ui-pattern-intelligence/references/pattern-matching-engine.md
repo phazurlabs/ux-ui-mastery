@@ -2,7 +2,7 @@
 
 ## How Pattern Matching Works
 
-When a user runs `/patterns` on their codebase or provides a screenshot, Sumi performs a systematic analysis pipeline. This file defines the exact methodology for each stage.
+When a user runs `/audit` on their codebase or provides a screenshot, Sumi performs a systematic analysis pipeline. This file defines the exact methodology for each stage.
 
 The pipeline has 5 stages: IDENTIFY → BENCHMARK → SECTOR-FIT → PRESCRIBE → COHERENCE.
 
@@ -300,11 +300,11 @@ Every prescription should link to the Sumi command that can execute the fix:
 |----------|---------|
 | Build a new component | `/ship [component]` |
 | Build a new screen | `/screen [screen type]` |
-| Create design tokens | `/drip` |
-| Fix accessibility issues | `/include` |
-| Improve content/copy | `/copy-check` |
+| Create design tokens | `/tokens` |
+| Fix accessibility issues | `/a11y` |
+| Improve content/copy | `/audit` |
 | Redesign a pattern | `/remix` |
-| Verify the fix | `/roast` or `/vibe-check` |
+| Verify the fix | `/roast` or `/audit` |
 
 ---
 
@@ -342,9 +342,9 @@ If coherence < 7:
 
 1. **Identify the dominant style** — which screens/components represent the "intended" design language?
 2. **Identify outliers** — which components break from the dominant style?
-3. **Recommend token extraction** → `/drip` to formalize the visual language into W3C design tokens
-4. **Recommend component rebuilding** → `/ship` to rebuild outlier components using the token system
-5. **Recommend audit** → `/judge` to verify coherence after fixes
+3. **Recommend token extraction** → `/tokens` to formalize the visual language into W3C design tokens
+4. **Recommend component rebuilding** → `/component` to rebuild outlier components using the token system
+5. **Recommend audit** → `/grade` to verify coherence after fixes
 
 ---
 
@@ -407,6 +407,6 @@ If coherence < 7:
 3. [Third action]
 
 → Run `/ship [component]` to build upgraded patterns
-→ Run `/drip` to formalize your design token system
-→ Run `/vibe-check` after fixes to verify improvement
+→ Run `/tokens` to formalize your design token system
+→ Run `/audit` after fixes to verify improvement
 ```

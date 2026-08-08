@@ -42,7 +42,7 @@ Before running any section, establish the baseline:
 4. **Sector**: Industry determines what counts as a violation vs. an intentional convention
 5. **Platform**: Web, iOS, Android, cross-platform, responsive targets
 6. **Constraints**: Timeline, technical, business trade-offs the designer operated within
-7. **Prior Sumi outputs**: Check for `/taste`, `/benchmark`, `/vision`, `/tokens`, `/screen` outputs. Consume them as baseline context if available
+7. **Prior Sumi outputs**: Check for `/style`, `/benchmark`, `/grade`, `/tokens`, `/screen` outputs. Consume them as baseline context if available
 8. **Specific concerns**: Does the designer suspect weak areas? Prioritize those
 
 If the user provides limited context, proceed with what is available and flag assumptions. Do not block on missing information.
@@ -885,4 +885,4 @@ After `/audit`, recommended paths:
 - `/grade` — Visual quality scoring (Awwwards-calibrated)
 - `/qa` — Design QA (spec vs. implementation verification)
 - `/remix` — Fix the issues found immediately
-- `/ship` — Rebuild flagged components
+- `/component` — Rebuild flagged components

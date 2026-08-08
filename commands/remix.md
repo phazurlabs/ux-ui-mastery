@@ -384,7 +384,7 @@ How to verify the redesign is actually better (not just different):
 ### Phase Position
 > **Phase 5: VALIDATE** | Step 24 of 30 | `/remix`
 >
-> `/23-roast` -> **`/remix`** -> `/25-qa`
+> `/roast` -> **`/remix`** -> `/qa`
 
 ---
 
@@ -480,9 +480,9 @@ Remix decisions logged to `.sumi/decisions.log`.
 
 ### Next Steps
 1. **Test it** → Copy the code, run it, verify all states work
-2. **Then** → `/25-qa` — Run full quality assurance on the redesigned component
+2. **Then** → `/qa` — Run full quality assurance on the redesigned component
 3. **Or** → `/remix` again — Iterate on a different component
-4. **Or** → `/23-roast` — Get a fresh critique of the redesign
+4. **Or** → `/roast` — Get a fresh critique of the redesign
 
 **Run `/next` to continue the journey.**
 ```
@@ -537,10 +537,10 @@ When remixing designs, draw principles and patterns from:
 
 ## Next Step
 
-**Next** -> `/25-qa` (5.4) — Run full quality assurance on the redesigned component
+**Next** -> `/qa` (5.4) — Run full quality assurance on the redesigned component
 
 **Alternatives**:
-- `/23-roast` (5.2) — Get a fresh critique of the redesign to find remaining issues
-- `/19-ship` (4.3) — Rebuild specific components from scratch
+- `/roast` (5.2) — Get a fresh critique of the redesign to find remaining issues
+- `/component` (4.3) — Rebuild specific components from scratch
 - `/wireframe` — Go back to layout exploration if the fundamental structure is wrong
-- `/guide` — See the full journey map
+- `/sumi` — See the full journey map

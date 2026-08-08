@@ -756,7 +756,7 @@ Recommended disclosure framework:
 | Command | How This Skill Is Used |
 |---------|----------------------|
 | `/generate` | Primary command — AI-powered screen generation via MCP tools |
-| `/assets` | AI-powered asset generation (icons, illustrations, photos, video) |
-| `/vision` | Can generate mood board visualizations using image generation |
+| `/generate` | AI-powered asset generation (icons, illustrations, photos, video) |
+| `/grade` | Can generate mood board visualizations using image generation |
 | `/screen` | Can use Stitch to generate screen mockups before coding |
-| `/ship` | Can reference generated designs as implementation targets |
+| `/component` | Can reference generated designs as implementation targets |

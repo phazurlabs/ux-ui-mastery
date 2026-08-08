@@ -197,4 +197,4 @@ AI-generated UI tends to produce patterns that are technically functional but st
 
 8. **Anti-pattern adoption**: Using patterns that look good in a screenshot but fail in production — auto-advancing carousels, hamburger menus on desktop, infinite scroll for data tables, modals for everything.
 
-The `/patterns` command exists to catch all 8 of these issues and prescribe the specific upgrades that close the gap between "vibe coded" and "professionally designed."
+The `/audit` command exists to catch all 8 of these issues and prescribe the specific upgrades that close the gap between "vibe coded" and "professionally designed."

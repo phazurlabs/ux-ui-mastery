@@ -42,7 +42,7 @@ If `.sumi/` does not exist, create it after the user selects their preferred wir
 }
 ```
 
-This ensures `/screen`, `/ship`, `/generate`, and `/remix` can read the wireframe decisions downstream.
+This ensures `/screen`, `/component`, `/generate`, and `/remix` can read the wireframe decisions downstream.
 
 ---
 
@@ -52,7 +52,7 @@ This ensures `/screen`, `/ship`, `/generate`, and `/remix` can read the wirefram
 
 Before wireframing, collect everything needed to make informed layout decisions:
 
-1. **Which screens to wireframe**: From `.sumi/map.json` or `/08-map` output, or the user specifies directly. Start with the 3-5 most critical screens (the ones users will use most frequently or that have the highest business impact).
+1. **Which screens to wireframe**: From `.sumi/map.json` or `/map` output, or the user specifies directly. Start with the 3-5 most critical screens (the ones users will use most frequently or that have the highest business impact).
 
 2. **Screen purpose and primary user task**: What is the user trying to accomplish on each screen? One screen = one primary task. If the screen tries to serve two equally important tasks, consider splitting it.
 
@@ -63,15 +63,15 @@ Before wireframing, collect everything needed to make informed layout decisions:
 
 4. **Platform**: Web, iOS, Android, or cross-platform — affects layout patterns, viewport assumptions, and interaction conventions. Pull from `.sumi/brief.json` if available.
 
-5. **User mental models**: How do users expect this type of screen to work? What patterns do they already know from competitor products? Pull from `.sumi/brief.json` personas and `/03-research` if available.
+5. **User mental models**: How do users expect this type of screen to work? What patterns do they already know from competitor products? Pull from `.sumi/brief.json` personas and `/research` if available.
 
 6. **Entry and exit points**: How does the user arrive at this screen? Where do they go next? This determines what navigation and wayfinding the wireframe needs.
 
 7. **Data volume expectations**: Will this screen show 3 items or 3,000? Data volume dramatically affects layout choice (cards vs. tables vs. lists vs. virtual scroll).
 
-8. **Prior Sumi outputs**: Check for `/08-map` (information architecture, content hierarchy), `/02-brief` (product brief, personas, constraints), `/03-research` (user needs, mental models), `/04-taste` (visual reference, competitive landscape). Consume if available.
+8. **Prior Sumi outputs**: Check for `/map` (information architecture, content hierarchy), `/brief` (product brief, personas, constraints), `/research` (user needs, mental models), `/style` (visual reference, competitive landscape). Consume if available.
 
-If the user has no prior Sumi outputs and no `/08-map`, ask:
+If the user has no prior Sumi outputs and no `/map`, ask:
 - What screens do you need?
 - What is each screen's primary purpose?
 - What platform are you building for?
@@ -565,7 +565,7 @@ For each region in the selected wireframe, identify what component it becomes du
 └────────┴─────────────────────────────────────────────┘
 ```
 
-This component map is written to `.sumi/wireframe-[screen].json` and consumed by `/screen` and `/ship` to generate production code.
+This component map is written to `.sumi/wireframe-[screen].json` and consumed by `/screen` and `/component` to generate production code.
 
 ---
 
@@ -602,7 +602,7 @@ For each screen, provide a clear recommendation:
 ### Phase Position
 > **Phase 2: SHAPE** | Step 9 of 30 | `/wireframe`
 >
-> `/08-map` -> **`/wireframe`** -> `/10-vision`
+> `/map` -> **`/wireframe`** -> `/grade`
 
 ---
 
@@ -747,15 +747,15 @@ For each screen, provide a clear recommendation:
 
 ### Design Memory Written
 Wireframe decisions saved to `.sumi/wireframe-[screen].json`.
-Available to downstream commands: `/screen`, `/ship`, `/generate`, `/remix`.
+Available to downstream commands: `/screen`, `/component`, `/generate`, `/remix`.
 
 ---
 
 ### Next Steps
 1. **Select a layout** → Tell me which layout (A, B, or C) for each screen
 2. **Then** → `/screen` — Build the selected wireframe into a full screen specification with real components
-3. **Or** → `/10-vision` — Set visual direction before building
-4. **Or** → `/22-test` — Plan usability testing on wireframes before investing in code
+3. **Or** → `/grade` — Set visual direction before building
+4. **Or** → `/research` — Plan usability testing on wireframes before investing in code
 
 **Run `/next` to continue the journey.**
 ```
@@ -815,11 +815,11 @@ When creating wireframes, draw knowledge from:
 
 ## Next Step
 
-**Next** -> `/10-vision` (2.3) — Set visual direction to apply to these wireframe structures
+**Next** -> `/grade` (2.3) — Set visual direction to apply to these wireframe structures
 
 **Alternatives**:
 - `/screen` (4.2) — Build selected wireframe into full screen specification with components
-- `/11-anatomy` — Analyze which specific UI patterns and components fit these layouts
-- `/15-flow` (3.4) — Map detailed user flows connecting these screens
-- `/22-test` (5.1) — Plan usability testing on wireframes before investing in visual design
-- `/guide` — See the full journey map
+- `/audit` — Analyze which specific UI patterns and components fit these layouts
+- `/audit` (3.4) — Map detailed user flows connecting these screens
+- `/research` (5.1) — Plan usability testing on wireframes before investing in visual design
+- `/sumi` — See the full journey map

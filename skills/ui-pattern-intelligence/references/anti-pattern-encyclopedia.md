@@ -320,7 +320,7 @@ The most common anti-patterns in AI-generated/vibe-coded applications, ranked by
 | 4 | No empty states (blank when no data) | ~70% | Add illustration + explanation + CTA |
 | 5 | Generic error messages | ~65% | Write specific, helpful error messages |
 | 6 | No keyboard navigation | ~60% | Add focus styles, ARIA, tab order |
-| 7 | Inconsistent visual language | ~55% | Extract design tokens with `/drip` |
+| 7 | Inconsistent visual language | ~55% | Extract design tokens with `/tokens` |
 | 8 | No mobile responsiveness | ~50% | Add responsive breakpoints |
 | 9 | No command palette or keyboard shortcuts | ~50% | Add Cmd+K with cmdk library |
 | 10 | Color-only status indicators | ~45% | Add icons and text to all status colors |

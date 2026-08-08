@@ -506,5 +506,5 @@ When generating dark mode, draw from:
 **Alternatives**:
 - `/tokens` — Generate the base token system if not done yet
 - `/responsive` — Add responsive behavior to dark mode layouts
-- `/access` — Audit dark mode for accessibility compliance
-- `/guide` — See the full journey
+- `/a11y` — Audit dark mode for accessibility compliance
+- `/sumi` — See the full journey

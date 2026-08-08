@@ -501,7 +501,7 @@ Save the palette section to `.sumi/style.json`. If the file already exists (from
 [Complete copy-paste block with light + dark themes]
 
 ### Saved
-> Palette saved to `.sumi/style.json` — available to `/style`, `/type`, `/tokens`, `/screen`, `/ship`
+> Palette saved to `.sumi/style.json` — available to `/style`, `/type`, `/tokens`, `/screen`, `/component`
 ```
 
 ---

@@ -104,7 +104,7 @@ have seen is 3.1.0, so this is 4.0.0. The chef-sumi lineage is archived at
 ### Known gaps
 
 - **Convert and Localize have no command.** They run as orchestrator pipelines.
-- **63 of the 93 extracted claims are untriaged** — everything the merge brought
+- **59 of the 89 extracted claims are untriaged** — everything the merge brought
   in. `conversion-optimization-patterns` is the highest-risk cluster. See
   `AUDIT.md`; do not repeat those figures in client-facing work.
 - **35 SKILL.md files exceed the 150-line budget**, `animation-recipe-library`

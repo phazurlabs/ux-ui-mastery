@@ -86,7 +86,7 @@ IDEO, founded by David Kelley in 1991 (who also founded Stanford's d.school), pi
 **Risk**: IDEO's strength is divergence — generating many ideas. AI tempts you to converge too early on the first generated output.
 
 **Terminal adaptation**:
-1. Empathy: Write your `/intent` problem statement before any prompting
+1. Empathy: Write your `/brief` problem statement before any prompting
 2. Ideation: Ask AI for 3 different approaches, not just 1
 3. Testing: Run Sumi audits on every AI-generated output
 4. Iteration: Use `/remix` to apply findings, then re-test
@@ -181,10 +181,10 @@ The revised framework adds four enabling factors:
 **Risk**: AI collapses both diamonds into a single convergent step. You ask one question, get one answer, and ship it.
 
 **Terminal adaptation**:
-1. Discover: `/ground` (0.1) + research prompts — diverge on the problem
-2. Define: `/intent` (0.2) — converge on the problem statement
-3. Develop: `/taste` + `/inspo` + generate 3 variations — diverge on solutions
-4. Deliver: Sumi audits (`/vibe-check`, `/include`, `/roast`) — converge on quality
+1. Discover: `/sumi` (0.1) + research prompts — diverge on the problem
+2. Define: `/brief` (0.2) — converge on the problem statement
+3. Develop: `/style` + `/style` + generate 3 variations — diverge on solutions
+4. Deliver: Sumi audits (`/audit`, `/a11y`, `/roast`) — converge on quality
 
 ---
 
@@ -283,10 +283,10 @@ Jake Knapp developed the Design Sprint at Google Ventures (GV) in 2010, refined 
 
 **Terminal adaptation — Solo Dev Sprint (2 hours)**:
 1. Map (15 min): Write user journey, circle the critical moment, define sprint questions
-2. Sketch (15 min): `/inspo` for patterns + sketch 3 approaches in notes
+2. Sketch (15 min): `/style` for patterns + sketch 3 approaches in notes
 3. Decide (10 min): Pick the best approach based on user needs
-4. Prototype (40 min): `/drip` + `/screen` or `/ship` — AI-generate the prototype
-5. Test (40 min): `/vibe-check` + `/include` + `/brain-scan` — simulate user testing
+4. Prototype (40 min): `/tokens` + `/screen` or `/component` — AI-generate the prototype
+5. Test (40 min): `/audit` + `/a11y` + `/audit` — simulate user testing
 
 ---
 
@@ -364,10 +364,10 @@ This loop runs continuously — it's not a linear process but a constant cycle.
 **Risk**: Skipping Playbacks because "I'm just one developer." Even solo devs benefit from self-review checkpoints.
 
 **Terminal adaptation**:
-1. Hills: Write 1-3 Hills in `/intent` format ("A [user] can [outcome] in [measurable way]")
-2. Observe: Define persona and context in `/intent`
-3. Make: `/screen` or `/ship` against the Hills
-4. Self-Playback: Run `/judge` — does the output achieve the Hills?
+1. Hills: Write 1-3 Hills in `/brief` format ("A [user] can [outcome] in [measurable way]")
+2. Observe: Define persona and context in `/brief`
+3. Make: `/screen` or `/component` against the Hills
+4. Self-Playback: Run `/grade` — does the output achieve the Hills?
 5. Sponsor User simulation: Have a real person (colleague, friend, target user) try the prototype
 
 ---
@@ -450,11 +450,11 @@ Eric Ries (*The Lean Startup*, 2011) and Jeff Gothelf (*Lean UX*, 2013) adapted 
 **Risk**: Building full products instead of MVPs because AI makes it easy. More code ≠ more learning.
 
 **Terminal adaptation**:
-1. Hypothesis: Write in `/intent` format — "We believe [X] if [Y] with [Z]"
-2. MVP: `/ship` one component that tests the hypothesis, not a full screen
-3. Measure: Define metric in `/pulse`, collect data
-4. Learn: `/roast` + `/judge` — does the output validate the hypothesis?
-5. Iterate: `/remix` to apply learnings, or `/intent` to reframe
+1. Hypothesis: Write in `/brief` format — "We believe [X] if [Y] with [Z]"
+2. MVP: `/component` one component that tests the hypothesis, not a full screen
+3. Measure: Define metric in `/research`, collect data
+4. Learn: `/roast` + `/grade` — does the output validate the hypothesis?
+5. Iterate: `/remix` to apply learnings, or `/brief` to reframe
 
 ---
 
@@ -539,10 +539,10 @@ Guilds are voluntary communities around shared interests (e.g., "Accessibility G
 **Risk**: Skipping Think-It because AI makes Build-It so fast.
 
 **Terminal adaptation**:
-1. Think-It: `/intent` — write the user narrative, define the bet
-2. Build-It: `/drip` + `/screen` + `/ship` — generate with full context
-3. Ship-It: `/include` + `/responsive` — quality gates before deploy
-4. Tweak-It: `/roast` + `/judge` — measure and iterate
+1. Think-It: `/brief` — write the user narrative, define the bet
+2. Build-It: `/tokens` + `/screen` + `/component` — generate with full context
+3. Ship-It: `/a11y` + `/responsive` — quality gates before deploy
+4. Tweak-It: `/roast` + `/grade` — measure and iterate
 
 ---
 
@@ -605,9 +605,9 @@ Microsoft's key contribution is the **Persona Spectrum** — showing how disabil
 
 **Terminal adaptation**:
 1. Recognize: Before prompting, ask "Who can't use this?" for all 5 interaction types
-2. Solve: `/intent` — include the most constrained persona as the target user
-3. Build: `/ship` — explicitly request accessible code with ARIA, keyboard, screen reader support
-4. Verify: `/include` — automated accessibility audit
+2. Solve: `/brief` — include the most constrained persona as the target user
+3. Build: `/component` — explicitly request accessible code with ARIA, keyboard, screen reader support
+4. Verify: `/a11y` — automated accessibility audit
 5. Learn: Test with real users, including users with disabilities
 
 ---
@@ -649,7 +649,7 @@ The "Design Engineer" role (Vercel coined the title, but the practice emerged fr
 #### Step 5: Figma MCP Integration
 
 **What**: Figma's Model Context Protocol (MCP) server enables AI agents to read Figma files, extract design decisions, and generate code that matches the design spec.
-**Flow**: Designer creates in Figma → MCP reads the file → AI generates matching code → `/extract` validates alignment.
+**Flow**: Designer creates in Figma → MCP reads the file → AI generates matching code → `/figma` validates alignment.
 **Key**: MCP doesn't replace design judgment — it accelerates the handoff of mechanical decisions (spacing, color, layout structure).
 
 ### Mapping to NNG Phases
@@ -669,11 +669,11 @@ The "Design Engineer" role (Vercel coined the title, but the practice emerged fr
 **Risk**: Losing the exploration step. Design Engineers still sketch, wireframe, and explore in Figma before committing to code. Don't skip exploration just because AI can generate code instantly.
 
 **Terminal adaptation**:
-1. Explore: `/taste` + `/inspo` — establish direction before generating
-2. Foundation: `/drip` — create the token system
-3. Build: `/screen` + `/ship` — generate components consuming tokens
-4. Validate: `/extract` — verify Figma-to-code alignment
-5. Audit: `/vibe-check` + `/include` — quality gate before shipping
+1. Explore: `/style` + `/style` — establish direction before generating
+2. Foundation: `/tokens` — create the token system
+3. Build: `/screen` + `/component` — generate components consuming tokens
+4. Validate: `/figma` — verify Figma-to-code alignment
+5. Audit: `/audit` + `/a11y` — quality gate before shipping
 
 ---
 
@@ -700,10 +700,10 @@ If you're one developer working in the terminal with AI assistance:
 **Ethics layer**: Microsoft Inclusive Design (Persona Spectrum)
 
 This combination gives you:
-1. A clear hypothesis before every build session (`/intent`)
-2. A token-driven architecture (`/drip` → `/screen` → `/ship`)
-3. Divergent thinking before convergent building (`/taste` + `/inspo` → then `/ship`)
-4. Accessibility-first design (Persona Spectrum in `/intent`, verified with `/include`)
+1. A clear hypothesis before every build session (`/brief`)
+2. A token-driven architecture (`/tokens` → `/screen` → `/component`)
+3. Divergent thinking before convergent building (`/style` + `/style` → then `/component`)
+4. Accessibility-first design (Persona Spectrum in `/brief`, verified with `/a11y`)
 
 ---
 

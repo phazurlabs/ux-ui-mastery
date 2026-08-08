@@ -544,5 +544,5 @@ When generating responsive behavior, draw from:
 **Alternatives**:
 - `/tokens` — Generate the token system that responsive values reference
 - `/dark` — Add dark mode to your responsive layout
-- `/ship` — Build responsive components directly
-- `/guide` — See the full journey
+- `/component` — Build responsive components directly
+- `/sumi` — See the full journey

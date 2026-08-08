@@ -18,8 +18,8 @@ Figma, Vercel, and case-insensitive matching) and surfaces **30**. The
 **10 additional claims are not yet reviewed** — treat them as outstanding.
 
 **Status as of 2026-08-08 (v4.0.0).** The merge with chef-sumi more than tripled
-the corpus, and the extractor now surfaces **93** claims across 43 skills. The
-honest position: **the 63 claims added by the merge have not been triaged.** The
+the corpus, and the extractor now surfaces **89** claims across 43 skills. The
+honest position: **the 59 claims added by the merge have not been triaged.** The
 19 skills audited in 3.1.0 keep their corrections — those files won the merge
 precisely so the corrections would survive — but the 23 skills that arrived from
 chef-sumi came with the same class of defect and have not been through this
@@ -82,7 +82,7 @@ Do not repeat these in marketing or client-facing work until checked.
 | 10 further claims surfaced by the wider extraction | run the script | Unreviewed |
 | ~12 Baymard/Forrester conversion figures | `conversion-optimization-patterns/references/` | **High** — most-copied least-sourced numbers in the industry, and this skill drives revenue decisions |
 | WCAG 3.0 draft-status framing | `visual-design-mastery/SKILL.md`, `.../references/color-mastery.md` | Medium — the draft exists; only the date and status framing was ever the defect |
-| 63 claims added by the chef-sumi merge | 23 newly merged skills | Unreviewed — see the v4.0.0 status note above |
+| 59 claims added by the chef-sumi merge | 23 newly merged skills | Unreviewed — see the v4.0.0 status note above |
 
 ## No external verification required
 

@@ -181,9 +181,9 @@ Before generating anything, collect:
 1. **What to generate**: Type (screen/icon/illustration/photo/video), description, purpose, target audience.
 2. **Platform**: iOS, Android, Web — affects screen generation constraints (safe areas, navigation patterns, status bars).
 3. **Sector**: Auto-detect from context or `.sumi/brief.json`. Sector determines visual expectations, pattern norms, and style benchmarks.
-4. **Design tokens**: From `.sumi/style.json` or `/17-tokens` — inject specific values (hex colors, font sizes, spacing, radii) into prompts.
-5. **Visual direction**: From `.sumi/vision.json` or `/10-vision` — designer DNA match, mood, canonical rules, reference products.
-6. **Prior Sumi outputs**: Consume `/10-vision` (visual direction), `/04-taste` (competitive landscape), `/18-screen` (screen specs), `/wireframe` (layout structure) if available.
+4. **Design tokens**: From `.sumi/style.json` or `/tokens` — inject specific values (hex colors, font sizes, spacing, radii) into prompts.
+5. **Visual direction**: From `.sumi/vision.json` or `/grade` — designer DNA match, mood, canonical rules, reference products.
+6. **Prior Sumi outputs**: Consume `/grade` (visual direction), `/style` (competitive landscape), `/screen` (screen specs), `/wireframe` (layout structure) if available.
 
 7. **Check MCP availability**: Detect which MCP servers are configured:
 
@@ -648,7 +648,7 @@ Based on the quality score:
 - Regenerate with the adjusted prompt
 
 **Score < 4/10 after 2 iterations**: Recommend alternative approach:
-- For screens → build manually with `/19-ship` instead
+- For screens → build manually with `/component` instead
 - For icons → use an established icon library (Lucide, Phosphor, Heroicons) instead of generating
 - For photos → use stock photography with specific search terms provided
 - Provide the specification as a detailed brief for manual creation
@@ -666,7 +666,7 @@ For each iteration, document:
 ### Phase Position
 > **Phase 4: BUILD** | Step 20 of 30 | `/generate`
 >
-> `/19-ship` -> **`/generate`** -> `/22-test`
+> `/component` -> **`/generate`** -> `/research`
 
 ---
 
@@ -789,11 +789,11 @@ Prompts preserved for reproducibility and iteration.
 ---
 
 ### Next Steps
-1. **Approve and build** → `/19-ship` to convert approved screens to production code
+1. **Approve and build** → `/component` to convert approved screens to production code
 2. **Iterate** → Adjust [specific dimension] and regenerate
 3. **Generate more** → `/generate` for the next asset in the set
 4. **Integrate** → Add approved assets to your project's asset directory
-5. **Critique** → `/23-roast` to score the full set of generated designs
+5. **Critique** → `/roast` to score the full set of generated designs
 
 **Run `/next` to continue the journey.**
 ```
@@ -855,11 +855,11 @@ When generating designs and assets, draw intelligence from:
 
 ## Next Step
 
-**Next** -> `/22-test` (5.1) — Plan usability testing on generated designs
+**Next** -> `/research` (5.1) — Plan usability testing on generated designs
 
 **Alternatives**:
-- `/19-ship` (4.3) — Convert approved screen generations to production code
-- `/23-roast` (5.2) — Get a design critique of generated screens and assets
-- `/18-screen` (4.2) — Define screen specifications before generating
+- `/component` (4.3) — Convert approved screen generations to production code
+- `/roast` (5.2) — Get a design critique of generated screens and assets
+- `/screen` (4.2) — Define screen specifications before generating
 - `/generate` — Run again for the next asset in the flow
-- `/guide` — See the full journey map
+- `/sumi` — See the full journey map

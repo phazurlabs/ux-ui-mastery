@@ -52,7 +52,7 @@ Before generating anything, resolve the full picture:
 **Auto-resolve:**
 - Primary user task: What is the ONE thing the user must accomplish on this screen?
 - Cognitive load budget: Apply Miller's Law — each screen region gets 4-7 chunks max
-- Prior Sumi outputs: Check for `/taste` (style direction), `/inspo` (reference patterns), `/benchmark` (competitive gaps). Consume if available; use neutral defaults and note what is missing if not
+- Prior Sumi outputs: Check for `/style` (style direction), `/style` (reference patterns), `/benchmark` (competitive gaps). Consume if available; use neutral defaults and note what is missing if not
 - Sector conventions: A fintech checkout differs from a food-delivery checkout in trust signals, data density, and regulatory constraints
 
 ### Step 2 — Research the Screen Type
@@ -527,8 +527,8 @@ When invoked, produce the following structure:
 | [decision] | [choice] | [principle] | [reasoning] |
 
 ### Prior Output Integration
-- **`/taste` consumed**: [Yes/No — what was used]
-- **`/inspo` consumed**: [Yes/No — what was used]
+- **`/style` consumed**: [Yes/No — what was used]
+- **`/style` consumed**: [Yes/No — what was used]
 - **`/benchmark` consumed**: [Yes/No — what was used]
 - **Missing context**: [what would improve this]
 
@@ -1054,4 +1054,4 @@ When building screens, draw patterns and best practices from:
 - `/page` — Build a full marketing/landing page with block stacking
 - `/generate` — AI-powered design asset generation
 - `/roast` — Jump to VALIDATE to critique what you have built
-- `/guide` — See the full command journey
+- `/sumi` — See the full command journey

@@ -17,7 +17,7 @@ If a target is evident from context, use it and say which one you picked.
 
 The flagship command. Given a sector, mood, or set of constraints, generate a **complete, opinionated, copy-paste-ready visual identity** that captures the taste and conventions of the best products in your category. Every value ships — no placeholders, no "choose your own adventure." You get a system.
 
-This command absorbs and replaces the former `/taste` and `/inspo` commands, unifying style direction with actionable reference sourcing in a single pass.
+This command absorbs and replaces the former `/style` and `/style` commands, unifying style direction with actionable reference sourcing in a single pass.
 
 ---
 
@@ -924,7 +924,7 @@ module.exports = {
 
 ### Step 14 — Save to .sumi/style.json
 
-After generating all outputs, save the complete token system to `.sumi/style.json` in the project root so that other Sumi commands (`/palette`, `/type`, `/tokens`, `/screen`, `/ship`) can consume it.
+After generating all outputs, save the complete token system to `.sumi/style.json` in the project root so that other Sumi commands (`/palette`, `/type`, `/tokens`, `/screen`, `/component`) can consume it.
 
 The file structure:
 
@@ -1005,7 +1005,7 @@ The file structure:
 [Complete extend block]
 
 ### Saved
-> Tokens saved to `.sumi/style.json` — available to `/palette`, `/type`, `/tokens`, `/screen`, `/ship`
+> Tokens saved to `.sumi/style.json` — available to `/palette`, `/type`, `/tokens`, `/screen`, `/component`
 ```
 
 ---

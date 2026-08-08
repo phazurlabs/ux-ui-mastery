@@ -736,7 +736,7 @@ Save typography data to `.sumi/style.json`. If the file exists (from `/style` or
 [Performance strategy: preload, font-display, size-adjust, fallback matching]
 
 ### Saved
-> Typography saved to `.sumi/style.json` — available to `/style`, `/palette`, `/tokens`, `/screen`, `/ship`
+> Typography saved to `.sumi/style.json` — available to `/style`, `/palette`, `/tokens`, `/screen`, `/component`
 ```
 
 ---

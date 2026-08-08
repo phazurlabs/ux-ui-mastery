@@ -842,9 +842,9 @@ tokens/
 
 | Command | How This Skill Is Used |
 |---------|----------------------|
-| `/vision` | Adapts visual direction to target platform conventions |
-| `/ship` | Generates platform-native component code |
+| `/grade` | Adapts visual direction to target platform conventions |
+| `/component` | Generates platform-native component code |
 | `/screen` | Uses platform-specific screen patterns and safe areas |
 | `/responsive` | Cross-device adaptation using platform breakpoints |
 | `/generate` | Informs AI generation prompts with platform constraints |
-| `/assets` | Generates assets at platform-correct sizes and formats |
+| `/generate` | Generates assets at platform-correct sizes and formats |

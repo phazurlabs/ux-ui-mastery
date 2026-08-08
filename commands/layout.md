@@ -51,7 +51,7 @@ Before generating, collect:
    - Responsive web (all breakpoints)
    - Specific viewport (e.g., "only desktop 1440px")
 
-4. **Prior Sumi outputs**: Check for `/wireframe` (layout structure), `/tokens` (spacing scale, breakpoints), `/taste` (density preferences). Consume if available.
+4. **Prior Sumi outputs**: Check for `/wireframe` (layout structure), `/tokens` (spacing scale, breakpoints), `/style` (density preferences). Consume if available.
 
 If no pattern is specified, ask the user. Do not guess.
 
@@ -590,4 +590,4 @@ When generating layouts, draw knowledge from:
 - `/form` — Build forms that live inside this layout
 - `/screen` — Generate full screens using this layout as the structural foundation
 - `/tokens` — Generate design tokens to power the spacing and sizing values
-- `/guide` — See the full journey map
+- `/sumi` — See the full journey map

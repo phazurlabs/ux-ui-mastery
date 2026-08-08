@@ -23,7 +23,7 @@ The paper "AI-Assisted Software Development: Implications for Developer Producti
 - Shipping frequency increases but user satisfaction plateaus or drops
 - "We built 40 screens this sprint" replaces "We validated 3 hypotheses this sprint"
 
-**Antidote**: Define success criteria before generating. The `/intent` command forces this by requiring measurable outcomes before any build activity.
+**Antidote**: Define success criteria before generating. The `/brief` command forces this by requiring measurable outcomes before any build activity.
 
 #### Risk 2: Homogenization
 
@@ -39,7 +39,7 @@ The paper "AI-Assisted Software Development: Implications for Developer Producti
 - Every screen has the same information density, the same spacing, the same card-based layout
 - Design reviews produce feedback like "it's fine" instead of "this is distinctively ours"
 
-**Antidote**: Run `/taste` before building. Sector-specific style direction creates visual differentiation that AI generation alone doesn't provide. Add the style tokens from `/drip` as constraints in every build prompt.
+**Antidote**: Run `/style` before building. Sector-specific style direction creates visual differentiation that AI generation alone doesn't provide. Add the style tokens from `/tokens` as constraints in every build prompt.
 
 #### Risk 3: Skill Erosion
 
@@ -217,7 +217,7 @@ After AI generates UI, spend 5 minutes evaluating before using or shipping.
 - [ ] User control: Can the user undo, go back, and escape?
 - [ ] Consistency: Are similar things treated similarly?
 - [ ] Error prevention: Are dangerous actions guarded?
-→ Quick alternative: Run `/vibe-check` for full evaluation
+→ Quick alternative: Run `/audit` for full evaluation
 
 ### Minute 2: Accessibility Quick-Check
 - [ ] Color contrast: Do all text/background pairs meet 4.5:1 (AA)?
@@ -225,7 +225,7 @@ After AI generates UI, spend 5 minutes evaluating before using or shipping.
 - [ ] Screen reader: Do images have alt text? Do buttons have labels?
 - [ ] Touch targets: Are all interactive elements at least 44x44px?
 - [ ] Focus order: Does tab order follow visual/logical order?
-→ Quick alternative: Run `/include` for full WCAG 2.2 audit
+→ Quick alternative: Run `/a11y` for full WCAG 2.2 audit
 
 ### Minute 3: State Completeness
 - [ ] Empty state: What shows when there's no data?
@@ -307,7 +307,7 @@ For important screens or components, invest 15 minutes for a comprehensive check
 
 **Why it fails**: No defined user, no defined problem, no defined success criteria. The "dashboard" might look professional but solve no actual user need.
 
-**The fix**: `/intent` → `/taste` → `/screen` → `/vibe-check` → `/include`
+**The fix**: `/brief` → `/style` → `/screen` → `/audit` → `/a11y`
 
 ### Anti-Pattern 2: The Iteration Illusion
 
@@ -337,7 +337,7 @@ For important screens or components, invest 15 minutes for a comprehensive check
 
 **Why it fails**: Every unaudited component ships accessibility violations, heuristic failures, and cognitive load issues. These compound. By the time someone notices, the entire product needs remediation.
 
-**The fix**: Make audits non-negotiable. `/vibe-check` + `/include` is the minimum bar. Takes 5 minutes and prevents hours of remediation.
+**The fix**: Make audits non-negotiable. `/audit` + `/a11y` is the minimum bar. Takes 5 minutes and prevents hours of remediation.
 
 ### Anti-Pattern 4: Context-Free Building
 
@@ -352,7 +352,7 @@ For important screens or components, invest 15 minutes for a comprehensive check
 
 **Why it fails**: Each component generated in isolation uses different spacing, colors, border-radius, typography, and motion. The result is a Frankenstein UI.
 
-**The fix**: `/taste` → `/drip` → then `/ship` with token constraints. Every component consumes the same token system.
+**The fix**: `/style` → `/tokens` → then `/component` with token constraints. Every component consumes the same token system.
 
 ### Anti-Pattern 5: The "Vibe" Validation
 
@@ -365,7 +365,7 @@ For important screens or components, invest 15 minutes for a comprehensive check
 
 **Why it fails**: "Vibes" is not a design validation method. The aesthetic-usability effect (Kurosu & Kashimura, 1995) means attractive interfaces are perceived as more usable — but perception ≠ reality. The prettiest interface can still be unusable.
 
-**The fix**: Replace "vibes" with evidence. `/roast` provides structured critique across 10 dimensions. `/judge` scores across all 21 skill domains. Evidence, not feelings.
+**The fix**: Replace "vibes" with evidence. `/roast` provides structured critique across 10 dimensions. `/grade` scores across all 21 skill domains. Evidence, not feelings.
 
 ### Anti-Pattern 6: One-And-Done Auditing
 
@@ -377,9 +377,9 @@ For important screens or components, invest 15 minutes for a comprehensive check
 [Ships]
 ```
 
-**Why it fails**: `/vibe-check` checks heuristics. It doesn't check accessibility, cognitive load, content quality, dark patterns, responsive behavior, or AI trust. Each audit command covers different dimensions.
+**Why it fails**: `/audit` checks heuristics. It doesn't check accessibility, cognitive load, content quality, dark patterns, responsive behavior, or AI trust. Each audit command covers different dimensions.
 
-**The fix**: Minimum audit battery = `/vibe-check` + `/include` + `/brain-scan`. For important screens, add `/flow` + `/copy-check` + `/responsive`.
+**The fix**: Minimum audit battery = `/audit` + `/a11y` + `/audit`. For important screens, add `/audit` + `/audit` + `/responsive`.
 
 ### Anti-Pattern 7: Skipping Phase 0
 
@@ -391,7 +391,7 @@ For important screens or components, invest 15 minutes for a comprehensive check
 
 **Why it fails**: Confidence is not the same as understanding. The most experienced designers still empathize and define before building. Phase 0 takes 10 minutes and prevents days of building the wrong thing.
 
-**The fix**: `/ground` → `/intent` → then build. 10 minutes to ground yourself saves hours of rework.
+**The fix**: `/sumi` → `/brief` → then build. 10 minutes to ground yourself saves hours of rework.
 
 ### Anti-Pattern 8: The Perfectionism Trap
 
@@ -419,16 +419,16 @@ Every Sumi audit command simulates a specific type of expert evaluation. Togethe
 
 | Sumi Command | Simulates | NNG Test Method | What It Catches |
 |-------------|-----------|-----------------|-----------------|
-| `/vibe-check` (2.1) | Expert heuristic evaluator | Heuristic evaluation | Usability violations, missing feedback, inconsistency |
-| `/brain-scan` (2.2) | Cognitive psychologist | Cognitive walkthrough | Mental model mismatches, cognitive overload, bias |
-| `/include` (2.3) | Accessibility specialist | WCAG audit | Contrast, keyboard, screen reader, ARIA violations |
-| `/flow` (2.4) | UX researcher | Task analysis | Drop-off points, friction, unnecessary steps |
-| `/dark-scan` (3.1) | Ethics reviewer | Ethical review | Deceptive patterns, manipulative design, regulatory risk |
-| `/trust-scan` (3.2) | AI safety researcher | AI trust evaluation | AI transparency, safety, explainability gaps |
-| `/copy-check` (3.3) | Content strategist | Content audit | Clarity, tone, inclusive language, i18n readiness |
+| `/audit` (2.1) | Expert heuristic evaluator | Heuristic evaluation | Usability violations, missing feedback, inconsistency |
+| `/audit` (2.2) | Cognitive psychologist | Cognitive walkthrough | Mental model mismatches, cognitive overload, bias |
+| `/a11y` (2.3) | Accessibility specialist | WCAG audit | Contrast, keyboard, screen reader, ARIA violations |
+| `/audit` (2.4) | UX researcher | Task analysis | Drop-off points, friction, unnecessary steps |
+| `/audit` (3.1) | Ethics reviewer | Ethical review | Deceptive patterns, manipulative design, regulatory risk |
+| `/ai-audit` (3.2) | AI safety researcher | AI trust evaluation | AI transparency, safety, explainability gaps |
+| `/audit` (3.3) | Content strategist | Content audit | Clarity, tone, inclusive language, i18n readiness |
 | `/responsive` (3.4) | QA engineer | Cross-device testing | Breakpoint issues, touch targets, reflow problems |
 | `/roast` (5.1) | Senior design critic | Design critique | Visual hierarchy, composition, polish, consistency |
-| `/judge` (5.3) | Design director | Comprehensive review | Cross-domain quality, readiness assessment |
+| `/grade` (5.3) | Design director | Comprehensive review | Cross-domain quality, readiness assessment |
 
 ### Minimum Viable Audit Battery
 
@@ -594,8 +594,8 @@ Ongoing habits:
 | Level | Name | Behavior | Process Commands Used |
 |-------|------|----------|----------------------|
 | 0 | **Prompt & Pray** | Generate → ship. No evaluation. | None |
-| 1 | **Post-Audit** | Generate → audit → fix obvious issues | `/vibe-check`, `/include` |
-| 2 | **Context-Aware** | Define context → generate with constraints → audit | `/intent`, `/taste`, `/drip` + audits |
+| 1 | **Post-Audit** | Generate → audit → fix obvious issues | `/audit`, `/a11y` |
+| 2 | **Context-Aware** | Define context → generate with constraints → audit | `/brief`, `/style`, `/tokens` + audits |
 | 3 | **Process-Driven** | Full Phase 0→5 journey. Problem before solution. | All phases used |
 | 4 | **Evidence-Based** | Hypothesis → build → measure → learn. User testing. Real metrics. | Full Sumi + real user data |
 
@@ -617,14 +617,14 @@ Ongoing habits:
 ### Level-Up Roadmap
 
 **Level 0 → Level 1** (1 day):
-- Start running `/vibe-check` + `/include` after every AI generation
+- Start running `/audit` + `/a11y` after every AI generation
 - Read the findings. Understand why they're problems.
 - Fix severity 3-4 findings before shipping.
 
 **Level 1 → Level 2** (1 week):
-- Before building, run `/intent` to define the problem and persona
-- Before building, run `/taste` to establish style direction
-- Use `/drip` tokens in every build prompt
+- Before building, run `/brief` to define the problem and persona
+- Before building, run `/style` to establish style direction
+- Use `/tokens` tokens in every build prompt
 - Start using the 2-min pre-prompt checklist
 
 **Level 2 → Level 3** (2-4 weeks):
@@ -635,7 +635,7 @@ Ongoing habits:
 
 **Level 3 → Level 4** (ongoing):
 - Test prototypes with real users (even 3-5 people)
-- Set up metrics with `/pulse` and track them
+- Set up metrics with `/research` and track them
 - Use `/benchmark` to compare against competitors regularly
 - Measure outcomes, not outputs
 

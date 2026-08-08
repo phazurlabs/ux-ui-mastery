@@ -877,5 +877,5 @@ When generating forms, draw knowledge from:
 **Alternatives**:
 - `/layout` — Build the page layout that contains this form
 - `/nav` — Add navigation around the form page
-- `/access` — Run a full accessibility audit on the form
-- `/guide` — See the full journey map
+- `/a11y` — Run a full accessibility audit on the form
+- `/sumi` — See the full journey map

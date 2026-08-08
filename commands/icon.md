@@ -491,10 +491,10 @@ When building the icon system, draw from:
 
 ## Next Step
 
-**Next** → `/ship` — Build components using your icon system
+**Next** → `/component` — Build components using your icon system
 
 **Alternatives**:
 - `/tokens` — Generate the token system that icon sizes reference
 - `/screen` — Build screens with icons integrated
-- `/access` — Audit icon accessibility
-- `/guide` — See the full journey
+- `/a11y` — Audit icon accessibility
+- `/sumi` — See the full journey

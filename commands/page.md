@@ -75,12 +75,12 @@ Every page is composed from an ordered sequence of blocks. Each block is a self-
 - Sector: neutral (SaaS, fintech, healthcare, e-commerce, creative, etc.)
 - Brand name: "Acme" (used in placeholder content)
 - Primary CTA: "Get Started" (used across hero, CTA blocks, nav)
-- Color direction: neutral (or consume from `.sumi/style.json` / `/taste` output)
+- Color direction: neutral (or consume from `.sumi/style.json` / `/style` output)
 - Tone: professional (professional, playful, bold, minimal, premium)
 - Content density: moderate (sparse, moderate, dense)
 
 **Auto-resolve:**
-- Prior Sumi outputs: Consume `/taste` (style), `/style` (design direction), `/palette` (colors), `/type` (typography) if available
+- Prior Sumi outputs: Consume `/style` (style), `/style` (design direction), `/palette` (colors), `/type` (typography) if available
 - Block order: Determined by page type (see Page Composition Recipes below)
 - Section spacing rhythm: Consistent vertical rhythm based on content density
 
@@ -670,7 +670,7 @@ When invoked, produce the following structure:
 | [tokens consumed by this page] |
 
 ### Prior Output Integration
-- **`/taste` consumed**: [Yes/No — what was used]
+- **`/style` consumed**: [Yes/No — what was used]
 - **`/style` consumed**: [Yes/No — what was used]
 - **`/palette` consumed**: [Yes/No — what was used]
 - **`/type` consumed**: [Yes/No — what was used]

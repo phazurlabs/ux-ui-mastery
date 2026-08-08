@@ -662,7 +662,7 @@ Tier 1 is raw values. Tier 2 assigns meaning. Tier 3 binds to components. Themes
    The complete token file is saved in W3C DTCG format at `.sumi/style.json`. This file is consumed by:
    - `/dark` — reads light tokens and generates dark mode counterparts
    - `/screen` — applies tokens when building screen layouts
-   - `/ship` — applies tokens when generating component code
+   - `/component` — applies tokens when generating component code
    - `/responsive` — references spacing and type tokens for fluid scaling
    - Style Dictionary — transforms to any platform output
 
@@ -791,10 +791,10 @@ When generating tokens, draw from:
 
 **Alternatives**:
 - `/dark` — Generate a complete dark mode system from these tokens
-- `/ship` — Skip screens, build components directly with tokens
+- `/component` — Skip screens, build components directly with tokens
 - `/responsive` — Add responsive behavior to your token-based layouts
 - `/style` — Go back to DISCOVER for style direction if tokens feel generic
-- `/guide` — See the full journey
+- `/sumi` — See the full journey
 
 ---
 

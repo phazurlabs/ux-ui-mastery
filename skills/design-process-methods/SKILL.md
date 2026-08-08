@@ -87,7 +87,7 @@ The stage most vibe coders skip entirely. You cannot design what you do not unde
 - What frustrates them about the current solution?
 - What environment are they in? (Mobile on a train? Desktop in an office? Accessibility needs?)
 
-**Sumi mapping**: `/intent` (0.2) captures this as a structured problem statement.
+**Sumi mapping**: `/brief` (0.2) captures this as a structured problem statement.
 
 #### Phase 2: Define
 
@@ -105,7 +105,7 @@ The stage most vibe coders skip entirely. You cannot design what you do not unde
 
 **In terminal workflow**: Write a single sentence: "Users who [X] need [Y] because [Z]." If you can't fill this in, you haven't empathized enough.
 
-**Sumi mapping**: `/intent` (0.2) generates the problem statement, persona, HMW questions, and success criteria.
+**Sumi mapping**: `/brief` (0.2) generates the problem statement, persona, HMW questions, and success criteria.
 
 ### Macro Stage 2: EXPLORE (Ideate + Prototype)
 
@@ -127,7 +127,7 @@ Generate and test multiple solutions before committing.
 
 **In terminal workflow**: Before prompting AI to generate a component, list 3 different approaches. Even 30 seconds of divergent thinking improves outcomes.
 
-**Sumi mapping**: `/inspo` (1.2) finds patterns; `/benchmark` (1.3) reveals competitive approaches; `/taste` (1.1) establishes style direction.
+**Sumi mapping**: `/style` (1.2) finds patterns; `/benchmark` (1.3) reveals competitive approaches; `/style` (1.1) establishes style direction.
 
 #### Phase 4: Prototype
 
@@ -144,7 +144,7 @@ Generate and test multiple solutions before committing.
 
 **In terminal workflow**: Use AI to rapidly generate 2-3 variations of a component or screen. Treat these as prototypes to evaluate, not production code.
 
-**Sumi mapping**: `/screen` (4.2) and `/ship` (4.3) generate prototypes; `/drip` (4.1) establishes the design foundation.
+**Sumi mapping**: `/screen` (4.2) and `/component` (4.3) generate prototypes; `/tokens` (4.1) establishes the design foundation.
 
 ### Macro Stage 3: MATERIALIZE (Test + Implement)
 
@@ -166,7 +166,7 @@ Validate with real users and ship with confidence.
 
 **In terminal workflow**: After AI generates UI, run Sumi audits before deploying. Each audit simulates expert evaluation.
 
-**Sumi mapping**: `/vibe-check` (2.1) heuristic evaluation; `/brain-scan` (2.2) cognitive audit; `/include` (2.3) accessibility; `/flow` (2.4) journey audit; `/dark-scan` (3.1) ethics; `/roast` (5.1) critique; `/judge` (5.3) comprehensive review.
+**Sumi mapping**: `/audit` (2.1) heuristic evaluation; `/audit` (2.2) cognitive audit; `/a11y` (2.3) accessibility; `/audit` (2.4) journey audit; `/audit` (3.1) ethics; `/roast` (5.1) critique; `/grade` (5.3) comprehensive review.
 
 #### Phase 6: Implement
 
@@ -183,7 +183,7 @@ Validate with real users and ship with confidence.
 
 **In terminal workflow**: Use Sumi BUILD commands with full context from earlier phases.
 
-**Sumi mapping**: `/drip` (4.1) tokens; `/screen` (4.2) screens; `/ship` (4.3) components; `/onboard` (4.4) onboarding; `/extract` (4.5) Figma pipeline.
+**Sumi mapping**: `/tokens` (4.1) tokens; `/screen` (4.2) screens; `/component` (4.3) components; `/onboard` (4.4) onboarding; `/figma` (4.5) Figma pipeline.
 
 ---
 
@@ -211,12 +211,12 @@ Sumi Phase 0: GROUND    Sumi Phases 1-3         Sumi Phases 4-5
 
 | NNG Phase | NNG Stage | Sumi Phase | Sumi Commands |
 |-----------|-----------|------------|---------------|
-| Empathize | Understand | Phase 0: GROUND | `/ground` (0.1), `/intent` (0.2) |
-| Define | Understand | Phase 0: GROUND | `/intent` (0.2) |
-| Ideate | Explore | Phase 1: DISCOVER | `/taste` (1.1), `/inspo` (1.2), `/benchmark` (1.3), `/pulse` (1.4) |
-| Prototype | Explore | Phase 4: BUILD | `/drip` (4.1), `/screen` (4.2), `/ship` (4.3) |
-| Test | Materialize | Phase 2: DIAGNOSE + Phase 3: FORTIFY + Phase 5: LAUNCH | `/vibe-check`, `/brain-scan`, `/include`, `/flow`, `/dark-scan`, `/trust-scan`, `/roast`, `/judge` |
-| Implement | Materialize | Phase 4: BUILD | `/ship` (4.3), `/onboard` (4.4), `/extract` (4.5) |
+| Empathize | Understand | Phase 0: GROUND | `/sumi` (0.1), `/brief` (0.2) |
+| Define | Understand | Phase 0: GROUND | `/brief` (0.2) |
+| Ideate | Explore | Phase 1: DISCOVER | `/style` (1.1), `/style` (1.2), `/benchmark` (1.3), `/research` (1.4) |
+| Prototype | Explore | Phase 4: BUILD | `/tokens` (4.1), `/screen` (4.2), `/component` (4.3) |
+| Test | Materialize | Phase 2: DIAGNOSE + Phase 3: FORTIFY + Phase 5: LAUNCH | `/audit`, `/audit`, `/a11y`, `/audit`, `/audit`, `/ai-audit`, `/roast`, `/grade` |
+| Implement | Materialize | Phase 4: BUILD | `/component` (4.3), `/onboard` (4.4), `/figma` (4.5) |
 
 Note: Sumi's phases don't map 1:1 to NNG because Sumi is iterative — you may prototype (BUILD) before you test (DIAGNOSE), then loop back. The NNG framework provides the *thinking*, Sumi provides the *doing*.
 
@@ -319,8 +319,8 @@ Post-generation audit catches the issues AI-generated UI consistently misses:
 
 ```markdown
 ## Post-Generation Audit (5 min)
-- [ ] Run `/vibe-check` — catches heuristic violations
-- [ ] Run `/include` — catches accessibility gaps
+- [ ] Run `/audit` — catches heuristic violations
+- [ ] Run `/a11y` — catches accessibility gaps
 - [ ] Check: does this UI work for the persona defined in BEFORE?
 - [ ] Check: does this UI handle all 7 states? (empty, loading, populated, error, partial, offline, updating)
 - [ ] Check: would you ship this if you couldn't use AI to generate more?
@@ -434,22 +434,22 @@ This skill auto-activates when the user mentions:
 Quick-reference for builders who want process without theory:
 
 ### I have 2 minutes
-Run `/intent` on whatever you're about to build. Just the problem statement. That's it.
+Run `/brief` on whatever you're about to build. Just the problem statement. That's it.
 
 ### I have 10 minutes
-`/ground` → `/intent` → then build with the constraint stack pasted into your prompt.
+`/sumi` → `/brief` → then build with the constraint stack pasted into your prompt.
 
 ### I have 30 minutes
-`/intent` → `/taste` → `/drip` → then build. You now have a defined problem, visual direction, and token system.
+`/brief` → `/style` → `/tokens` → then build. You now have a defined problem, visual direction, and token system.
 
 ### I have 2 hours
-Full Phase 0→5 journey. `/ground` → `/intent` → `/taste` → `/inspo` → `/drip` → `/screen` → `/ship` → `/vibe-check` → `/include` → `/roast`. This is what real design teams do.
+Full Phase 0→5 journey. `/sumi` → `/brief` → `/style` → `/style` → `/tokens` → `/screen` → `/component` → `/audit` → `/a11y` → `/roast`. This is what real design teams do.
 
 ### I have a real product to ship
-Follow the full 22-step journey via `/guide`. Run every audit. Loop `/roast` → `/remix` → `/roast` until all scores are 7+. This is how Stripe, Linear, and Notion work.
+Follow the full 22-step journey via `/sumi`. Run every audit. Loop `/roast` → `/remix` → `/roast` until all scores are 7+. This is how Stripe, Linear, and Notion work.
 
 ### The one non-negotiable
-Whatever your time budget: **run `/vibe-check` + `/include` before shipping**. 5 minutes. Zero excuses.
+Whatever your time budget: **run `/audit` + `/a11y` before shipping**. 5 minutes. Zero excuses.
 
 ## Cross-References
 

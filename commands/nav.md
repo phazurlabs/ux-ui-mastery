@@ -47,7 +47,7 @@ Before generating, collect:
    - **Auto-hide** — Hides on scroll down, shows on scroll up
    - **Sticky after threshold** — Becomes sticky after scrolling past hero
 
-4. **Prior Sumi outputs**: Check for `/layout` (layout shell to insert nav into), `/tokens` (colors, spacing), `/taste` (brand personality for nav style). Consume if available.
+4. **Prior Sumi outputs**: Check for `/layout` (layout shell to insert nav into), `/tokens` (colors, spacing), `/style` (brand personality for nav style). Consume if available.
 
 If no pattern is specified, ask. Do not guess.
 
@@ -1007,4 +1007,4 @@ When generating navigation, draw knowledge from:
 - `/form` — Build forms for pages within this navigation
 - `/animate` — Add entrance/transition animations to navigation elements
 - `/screen` — Generate full screens with this navigation integrated
-- `/guide` — See the full journey map
+- `/sumi` — See the full journey map

@@ -447,7 +447,7 @@ Individual patterns are like words; screens are sentences. A well-composed scree
 | `references/pattern-taxonomy-complete.md` | 200+ UI patterns across 10 categories: Navigation, Data Display, Input & Forms, Feedback & Status, Layout & Composition, Commerce & Conversion, Social & Communication, Content & Media, Onboarding & Education, AI & Generative. Each pattern: anatomy, variants, when to use, when not to use, anti-patterns, accessibility requirements, benchmarks. | Identifying patterns in code/screenshots. Recommending patterns for a use case. Understanding pattern variants. |
 | `references/designer-benchmark-dna.md` | What 50+ world-class products actually ship. Tier 1 (pattern-defining): Stripe, Linear, Notion, Airbnb, Figma. Tier 2 (category leaders): Vercel, Shopify, Mercury, Cash App, Superhuman, Arc, Raycast, Duolingo, and 15+ more. Per-product: signature patterns, design principles, pattern scores. Designer influence: Rasmus Andersson, Dieter Rams, Apple, Material Design. Scoring framework. | Benchmarking user patterns against world-class execution. Citing specific products as references. Understanding what "good" looks like for a specific pattern type. |
 | `references/sector-pattern-matrix.md` | Which patterns matter most per industry. 12+ detailed sector profiles: Fintech, SaaS, E-commerce, Healthcare, Social, Education, Developer Tools, Real Estate, Food/Delivery, Travel, Music, Gaming. Per-sector: critical patterns, important patterns, anti-patterns, visual direction. Priority summary matrix. | Determining which patterns are expected for a user's sector. Flagging missing critical patterns. Identifying sector anti-patterns. |
-| `references/pattern-matching-engine.md` | The 5-stage analysis protocol: IDENTIFY (code/screenshot to pattern taxonomy), BENCHMARK (score each pattern 1-10), SECTOR-FIT (cross-reference against sector matrix), PRESCRIBE (specific upgrade recommendations), COHERENCE (visual language unity assessment). Code signal to pattern mapping tables. Scoring dimensions and weights. Output templates. | Running the `/patterns` command. Analyzing codebases or screenshots for pattern quality. Generating pattern intelligence reports. |
+| `references/pattern-matching-engine.md` | The 5-stage analysis protocol: IDENTIFY (code/screenshot to pattern taxonomy), BENCHMARK (score each pattern 1-10), SECTOR-FIT (cross-reference against sector matrix), PRESCRIBE (specific upgrade recommendations), COHERENCE (visual language unity assessment). Code signal to pattern mapping tables. Scoring dimensions and weights. Output templates. | Running the `/audit` command. Analyzing codebases or screenshots for pattern quality. Generating pattern intelligence reports. |
 | `references/pattern-evolution-2024-2026.md` | What is dying (hamburger on desktop, full-page spinners, auto-carousels), what is evolving (search to AI-semantic, dropdowns to combobox, forms to progressive), what is emerging (command palette, AI copilot, generative UI, bottom sheets, container queries, passkeys), what is stable. What vibe coders get wrong. | Ensuring recommendations are temporally current. Flagging dated patterns. Recommending modern alternatives. |
 | `references/anti-pattern-encyclopedia.md` | 100+ anti-patterns across navigation, data display, forms, layout, commerce, feedback, accessibility, and AI. Each: description, why it seems reasonable, why it fails, what to use instead, cognitive science, severity. The Vibe Coder's Top 10 anti-patterns with frequency data. | Identifying anti-patterns in user code. Explaining why something is wrong. Prescribing the correct alternative. |
 
@@ -470,15 +470,15 @@ This skill is the connective tissue that links analysis to action:
 
 | Command | How This Skill Is Used |
 |---------|----------------------|
-| `/patterns` | Primary command — runs the full 5-stage analysis pipeline |
-| `/ship` | Consumes pattern taxonomy for component building, benchmark DNA for quality targeting |
+| `/audit` | Primary command — runs the full 5-stage analysis pipeline |
+| `/component` | Consumes pattern taxonomy for component building, benchmark DNA for quality targeting |
 | `/screen` | Consumes screen patterns from taxonomy, sector expectations from matrix |
-| `/vibe-check` | Cross-references pattern quality during heuristic evaluation |
+| `/audit` | Cross-references pattern quality during heuristic evaluation |
 | `/benchmark` | Uses designer benchmark DNA for competitive comparison |
-| `/inspo` | Uses pattern taxonomy and benchmark DNA for inspiration references |
+| `/style` | Uses pattern taxonomy and benchmark DNA for inspiration references |
 | `/roast` | References anti-pattern encyclopedia during design critique |
 | `/remix` | Uses prescriptions from pattern analysis to drive redesign |
-| `/judge` | Pattern quality contributes to overall design score |
+| `/grade` | Pattern quality contributes to overall design score |
 
 ## How to Use This Skill
 

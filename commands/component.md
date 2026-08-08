@@ -47,7 +47,7 @@ Generate a production-ready, RUNNABLE UI component with complete state coverage,
 - Cognitive context: focused (focused, browsing, stressed, relaxed)
 
 **Auto-resolve:**
-- Prior Sumi outputs: Check `/taste`, `/inspo`, `/benchmark`. Consume if available; note what is missing
+- Prior Sumi outputs: Check `/style`, `/style`, `/benchmark`. Consume if available; note what is missing
 - Sector conventions: Apply `sector-style-intelligence` if sector specified
 
 ---
@@ -524,8 +524,8 @@ When invoked, produce the following structure:
 | [more tokens...] | | |
 
 ### Prior Output Integration
-- **`/taste` consumed**: [Yes/No — what was used]
-- **`/inspo` consumed**: [Yes/No — what was used]
+- **`/style` consumed**: [Yes/No — what was used]
+- **`/style` consumed**: [Yes/No — what was used]
 - **`/benchmark` consumed**: [Yes/No — what was used]
 - **Missing context**: [what would improve this]
 ```
@@ -836,4 +836,4 @@ When building components, draw implementation patterns from:
 - `/screen` — Build a complete screen from screen type templates
 - `/generate` — AI-powered design asset generation
 - `/roast` — Jump to VALIDATE to critique what you have built
-- `/guide` — See the full command journey
+- `/sumi` — See the full command journey

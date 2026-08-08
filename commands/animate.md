@@ -52,7 +52,7 @@ Before generating, collect:
    - **Framer Motion** — React component with motion primitives
    - **Both** — CSS version + Framer Motion version
 
-4. **Prior Sumi outputs**: Check for `/tokens` (duration scale, easing curves), `/style` or `/taste` (motion personality — minimal, playful, dramatic). Consume if available.
+4. **Prior Sumi outputs**: Check for `/tokens` (duration scale, easing curves), `/style` or `/style` (motion personality — minimal, playful, dramatic). Consume if available.
 
 If no animation type is specified, ask. Do not guess.
 
@@ -1020,4 +1020,4 @@ When generating animations, draw knowledge from:
 - `/form` — Apply micro-interactions to form validation and submission
 - `/nav` — Add entrance/exit animations to navigation menus
 - `/component` — Animate individual UI components
-- `/guide` — See the full journey map
+- `/sumi` — See the full journey map
