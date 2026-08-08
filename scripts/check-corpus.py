@@ -175,12 +175,21 @@ def check_retired_commands(corpus: Corpus, root: pathlib.Path) -> None:
         r"(?:^|[\s(\[])/(" + "|".join(sorted(map(re.escape, retired), key=len, reverse=True))
         + r")(?=[\s.,;:!?)\]`*]|$)"
     )
-    for doc in corpus.docs:
-        rel = doc.path.relative_to(corpus.root)
+    # README and CHANGELOG are scanned too. The README is the first thing a user
+    # reads and the place they copy commands from, so a dead name there is worse
+    # than one buried in a reference file -- and scanning only skills/ and
+    # commands/ let five retired names survive in its install instructions.
+    docs = [(d.path, d.text) for d in corpus.docs]
+    for extra in ("README.md",):
+        p = corpus.root / extra
+        if p.exists():
+            docs.append((p, p.read_text()))
+    for path, text in docs:
+        rel = path.relative_to(corpus.root)
         # sumi.md's "Renamed in v4.0.0" table names retired commands deliberately.
         if rel.as_posix() == "commands/sumi.md":
             continue
-        for lineno, line in enumerate(doc.text.split("\n"), 1):
+        for lineno, line in enumerate(text.split("\n"), 1):
             for m in pattern.finditer(line):
                 errors.append(
                     f"{rel}:{lineno}: '/{m.group(1)}' was retired; "

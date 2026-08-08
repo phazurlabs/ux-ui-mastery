@@ -1,201 +1,140 @@
-# Sumi — UX/UI Design Intelligence for Claude Code
+# Sumi
 
-### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
+**Design intelligence for Claude Code.** Sumi gives Claude the working knowledge of a senior product designer — cognitive psychology, usability heuristics, accessibility law, design systems, and production component code — and the commands to act on it.
 
-**v4.1.0** | 44 Skills | 189 References | 37 Commands | 1,019,298 Words | 295 Files
-
----
-
-> *"Every pixel on a screen is ultimately processed by a human brain. This plugin ensures Claude understands that brain."*
+`v4.1.0` · 44 skills · 189 reference files · 37 commands · Apache-2.0
 
 ---
 
-## Quick start
+## Start here
 
-**If you've never used this before**, type one thing:
-
-```
-/sumi:start
-```
-
-It asks what you're working on in plain language, picks the right process, and
-runs it. No knowledge of the 44 skills required — you never have to choose
-from a list.
-
-**If you know what you want**, go straight at it:
-
-```
-/sumi:ux-audit src/checkout/
-/sumi:component-build a date picker, React, with error and disabled states
-/sumi:accessibility-check LoginForm.tsx
-```
-
-Every command shows what it expects when you type `/`. If you run one without a
-target, it asks rather than inventing something to analyze.
-
-**If your request spans several areas** — a redesign, a launch, a new product —
-the orchestrator picks the pipeline and sequences the skills for you:
-
-| You want to… | Sumi runs |
-|---|---|
-| Check something that exists | Heuristics → cognitive load → accessibility → ethics |
-| Design something new | Research → constraints → visual → motion → states → a11y |
-| Build a component | Tokens → visual spec → code → a11y → performance |
-| Start a design system | Architecture → visual language → components → Figma sync |
-| Ship internationally | i18n → layout → accessibility |
-| Design an AI feature | Agent patterns → conversational → ethics → trust |
-| Prove it worked | Metrics → research design |
-
-Each stage has a gate it must pass before the next begins, so you find out at
-stage 3 that findings are unrated — not at the end.
-
----
-
-## Why This Exists
-
-Most design tools give you components. Most AI assistants give you opinions. Neither gives you **the science of why users behave the way they do** — and the production code to act on it.
-
-This plugin gives Claude Code the equivalent of a senior UX designer's entire career knowledge: cognitive psychology, battle-tested heuristics, platform-native component code, real product case studies, and the latest 2025-2026 research — all activated automatically when you need it.
-
-**The result:** Claude doesn't just suggest "make the button bigger." It tells you Fitts's Law predicts a 23% improvement at 48px, generates the accessible React component with all 10 states, and flags that your 14-option dropdown violates Hick's Law.
-
-## What Changed in v4.0.0
-
-Sumi 3.1.0 and Chef Sumi were one lineage that forked in February 2026. One grew
-the corpus; the other fixed the engineering. v4.0.0 merges them back into a single
-plugin, keeping both.
-
-| From Chef Sumi | From Sumi 3.1.0 |
-|---|---|
-| 23 additional skills — visual design mastery, UI pattern intelligence, sector style, layout and page composition, conversion, dataviz, microcopy | Citation audit: six empirical claims corrected against primary sources |
-| 34 action-first commands across MAKE / REVIEW / PLAN tiers | Kebab-case skill names, quoted `argument-hint`, input guards on every command |
-| The `.sumi/` design memory that carries style decisions between commands | `sumi-orchestrator` and `/start` — routing, so you never pick from a list of 43 |
-| The anti-slop engine (`/fix`) and Design Quality Score (`/grade`) | `scripts/validate-plugin.py` and CI gates that keep all of it honest |
-
-The merge also fixed a scoring defect inherited from Chef Sumi: `/audit` ran its
-Laws of UX and Gestalt lenses twice, in two sections weighted separately, so the
-same cognitive analysis carried 35% of the composite score and the two sections
-could disagree about one interface. They are now one section.
-
-Ten command names from 3.1.0 were retired or renamed — see the table in `/sumi`.
-
----
-
-## Installation
-
-### Prerequisites
-
-- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated
-- No other dependencies — the plugin is pure markdown, zero config
-
----
-
-### Method 1: Install from GitHub Marketplace (Recommended for End Users)
-
-This is the standard way to install Claude Code plugins. Run these commands **inside a Claude Code session**:
+Install it:
 
 ```
 /plugin marketplace add phazurlabs/sumi
 /plugin install sumi@sumi-marketplace
 ```
 
-That's it. The plugin is now permanently installed and available in every session.
+Then type one thing:
 
-To choose installation scope:
-- **User scope** (all projects): Plugin is registered in `~/.claude/settings.json`
-- **Project scope** (team-shared): Plugin is registered in `.claude/settings.json` in your project
-- **Local scope** (personal, gitignored): Plugin is registered in `.claude/settings.local.json`
+```
+/sumi:start
+```
+
+It asks what you're working on in plain language, picks the right process, and runs it. You never have to know what any of the 44 skills are called.
+
+That's the whole onboarding. Everything below is for when you want to drive it yourself.
 
 ---
 
-### Method 2: Clone + Load Directly (For Development / Testing)
+## Three ways to use it
 
-Clone the repo anywhere, then load it with the `--plugin-dir` flag:
+**1. Let it route you.** `/sumi:start` asks one question and begins. Best when the job spans more than one thing — a redesign, a launch, a new product.
 
-```bash
-git clone https://github.com/phazurlabs/sumi.git
-claude --plugin-dir ./sumi
-```
-
-This loads the plugin for that session only. Great for testing or development.
-
----
-
-### Method 3: Clone + Register Permanently (Manual)
-
-**Step 1:** Clone into the plugins directory:
-
-```bash
-mkdir -p ~/.claude/plugins
-cd ~/.claude/plugins
-git clone https://github.com/phazurlabs/sumi.git
-```
-
-**Step 2:** Register the plugin in your Claude Code settings. Edit `~/.claude/settings.json`:
-
-```json
-{
-  "enabledPlugins": {
-    "sumi": true
-  }
-}
-```
-
-**Step 3:** Restart Claude Code. The plugin loads automatically every session.
-
----
-
-### Verify Installation
-
-Start Claude Code and run any slash command:
+**2. Run a command.** If you know what you want, go straight at it. Typing `/` shows what each expects.
 
 ```
-/ux-audit
-/cognitive-check
-/component-build
-/design-critique
-/figma-to-code
+/sumi:audit src/checkout/
+/sumi:component a date picker, React, with error and disabled states
+/sumi:fix DashboardCard.tsx
 ```
 
-Commands appear as `/sumi:command-name` (e.g., `/sumi:ux-audit`).
-
-You can also test skill activation by asking about any trigger topic:
+**3. Just ask.** Skills activate on their own. You don't invoke them.
 
 ```
 "What does Fitts's Law say about button sizing?"
-"Audit this component for cognitive load"
-"Build me a React modal with all states"
-"What went wrong with the Snapchat 2018 redesign?"
+"Is this countdown timer a dark pattern?"
+"Why does this dashboard feel cluttered?"
 ```
 
-The relevant skill and deep references load automatically based on your query.
-
-### Troubleshooting
-
-| Problem | Solution |
-|---------|----------|
-| Commands not showing up | Restart Claude Code after installation |
-| `/plugin` command not recognized | Update Claude Code to the latest version |
-| Skills not activating on topics | Verify `plugin.json` exists at `.claude-plugin/plugin.json` |
-| Want to uninstall | Run `/plugin uninstall sumi` or remove from `settings.json` |
-
-### Requirements
-
-- Claude Code CLI (latest version)
-- No external dependencies — pure markdown, zero config, works offline
+If you run a command with no target, it asks rather than inventing something to analyse. An audit of an imaginary interface reads as authoritative and is worthless.
 
 ---
 
-## 37 Commands at Your Fingertips
+## What to run when
 
-New here? Run `/sumi:start` — it asks one question and routes you. `/sumi:sumi` is
-the full map with starter recipes.
+| Your situation | Run this |
+|---|---|
+| Claude generated UI and it looks generic | `/sumi:fix` |
+| Starting a new product or feature | `/sumi:brief` → `/sumi:style` → `/sumi:screen` |
+| Need to know if a design is any good | `/sumi:grade` for a score, `/sumi:roast` for a fast critique |
+| Something's wrong but you can't name it | `/sumi:audit` |
+| Accessibility review before shipping | `/sumi:a11y` |
+| Building one component properly | `/sumi:component` |
+| Setting up a design system | `/sumi:tokens` |
+| Turning a Figma file into code | `/sumi:figma` |
+| Checking an AI feature is trustworthy | `/sumi:ai-audit` |
+| About to launch | `/sumi:preflight` |
+| Lost | `/sumi:next` |
+
+---
+
+## Recipes
+
+Real sequences that work. Each command writes its decisions to `.sumi/`, so later commands inherit them.
+
+**Fix AI-generated UI** — the most common job.
+
+```
+/sumi:fix Card.tsx          →  detects slop, rewrites it, cites the principle for each fix
+/sumi:before-after          →  side-by-side proof of what changed
+/sumi:grade                 →  Design Quality Score, 0-100
+```
+
+**Build a screen from nothing.**
+
+```
+/sumi:brief                 →  persona, constraints, success criteria
+/sumi:style fintech         →  palette, type, spacing, motion — saved to .sumi/
+/sumi:wireframe checkout    →  structure before pixels
+/sumi:screen checkout       →  production code, every state
+/sumi:a11y                  →  WCAG 2.2 pass with corrected code
+```
+
+**Audit something that exists.**
+
+```
+/sumi:audit src/            →  heuristics, cognitive load, flow, ethics, AI-slop
+/sumi:remix                 →  evidence-based redesign of the weak areas
+/sumi:qa                    →  does the build match the spec
+```
+
+**Stand up a design system.**
+
+```
+/sumi:tokens                →  W3C DTCG tokens: CSS, Tailwind, Style Dictionary
+/sumi:dark                  →  dark mode derived from the light palette
+/sumi:component Button      →  reference implementation, all states
+/sumi:figma                 →  keep design and code in sync
+```
+
+---
+
+## Design memory
+
+Sumi remembers decisions across commands in a `.sumi/` directory at your project root.
+
+`/sumi:style` decides a visual direction once and writes it to `.sumi/style.json`. Every later command reads it, so `/sumi:screen` uses your palette instead of inventing one, and `/sumi:fix` corrects toward *your* system rather than a generic one.
+
+| File | Written by | Holds |
+|---|---|---|
+| `style.json` | `/style`, `/palette`, `/type`, `/tokens`, `/dark` | tokens, tone, reference apps |
+| `brief.json` | `/brief` | persona, constraints, success criteria |
+| `map.json` | `/map` | sitemap and screen inventory |
+| `vision.json` | `/grade` | score and designer-DNA match |
+| `decisions.log` | any command | append-only record of what changed and why |
+
+Commit `.sumi/` to share the design direction with your team. Delete it to start fresh.
+
+---
+
+## The 37 commands
+
+New here, run `/sumi:start`. For the full map with starter recipes, run `/sumi:sumi`.
 
 **MAKE (20)** — design and build
 
-`/fix` `/style` `/palette` `/type` `/layout` `/wireframe` `/screen` `/component`
-`/page` `/tokens` `/form` `/nav` `/animate` `/icon` `/dark` `/responsive`
-`/onboard` `/generate` `/remix` `/figma`
+`/fix` `/style` `/palette` `/type` `/layout` `/wireframe` `/screen` `/component` `/page` `/tokens` `/form` `/nav` `/animate` `/icon` `/dark` `/responsive` `/onboard` `/generate` `/remix` `/figma`
 
 **REVIEW (7)** — evaluate and improve
 
@@ -209,77 +148,145 @@ the full map with starter recipes.
 
 `/start` `/sumi` `/next` `/status`
 
-| Hero command | What it does |
+The four that do the most work:
+
+| Command | What it does |
 |---|---|
-| `/fix` | Anti-slop engine — turns AI-generated UI into production quality |
-| `/audit` | Heuristics, cognitive load, flow, ethics, and AI-slop in one pass |
-| `/grade` | Design Quality Score 0-100, Awwwards-calibrated |
-| `/style` | Sector-aware visual direction, written to `.sumi/` for every later command |
-
-## 44 Skills — The Complete Design Brain
-
-Skills activate automatically. You never call them directly — `sumi-orchestrator`
-routes to them, which is why `/start` never asks you to pick from a list.
-
-**Routing (1)** — `sumi-orchestrator`
-
-**Foundations (6)** — `nng-ux-heuristics`, `cognitive-psychology-ux`,
-`ux-research-methods`, `ux-metrics-measurement`, `ux-ethics-content-strategy`,
-`design-process-methods`
-
-**Visual craft (7)** — `ui-visual-design-system`, `visual-design-mastery`,
-`color-palette-library`, `typography-pairing-recipes`, `shadow-elevation-density`,
-`image-media-patterns`, `icon-illustration-systems`
-
-**Patterns and composition (7)** — `ui-pattern-intelligence`,
-`screen-flow-patterns`, `layout-block-intelligence`, `page-composition-engine`,
-`navigation-pattern-encyclopedia`, `form-design-encyclopedia`,
-`responsive-block-patterns`
-
-**Systems and code (5)** — `design-systems-architecture`, `design-token-presets`,
-`component-patterns-code`, `figma-design-tool-workflows`,
-`performance-states-patterns`
-
-**Platform (5)** — `mobile-ux-design`, `desktop-app-design`,
-`platform-visual-standards`, `ambient-calm-zero-ui`, `cross-cultural-i18n-ux`
-
-**Experience and craft (4)** — `interaction-motion-design`,
-`animation-recipe-library`, `micro-copy-intelligence`,
-`accessibility-inclusive-design`
-
-**Strategy and outcomes (5)** — `sector-style-intelligence`,
-`conversion-optimization-patterns`, `data-visualization-mastery`,
-`design-critique-case-studies`, `business-design-templates`
-
-**AI (3)** — `agentic-ai-generative-ux`, `ai-spatial-voice-ux`,
-`ai-design-generation`
-
-## How It Works
-
-The plugin uses **progressive disclosure** — the same cognitive principle it teaches. Only the relevant skill and its references load based on your query, keeping Claude's context lean while providing deep expertise on demand.
-
-Ask about "cognitive load" and Claude loads the cognitive psychology skill with 25+ Laws of UX. Ask about "React button component" and Claude loads the component patterns skill with the full React cookbook. Ask about "iOS 26" and Claude loads mobile UX with the Liquid Glass deep-dive.
-
-Every skill cross-references every other skill. Critique methodology connects to heuristic evaluation. Component code connects to accessibility. Figma workflows connect to design tokens. Cognitive biases connect to ethics. It's a web of knowledge, not a stack of silos.
+| `/fix` | Anti-slop engine. Takes UI that works but looks machine-made and rebuilds the design layer — typography, colour, spacing, states, accessibility — without touching your logic. |
+| `/audit` | Five lenses in one pass: heuristics with severity ratings, cognitive load, flow, dark patterns, and AI-slop detection. Ends with a scored roadmap. |
+| `/grade` | Design Quality Score 0-100 across ten dimensions, Awwwards-calibrated. Honest: most AI-generated UI scores 30-50. |
+| `/style` | Sector-aware visual direction — fintech reads differently from healthcare. Writes to `.sumi/` so everything downstream inherits it. |
 
 ---
 
-## Design Philosophy
+## How it works
 
-Built on the shoulders of giants:
+### Progressive disclosure
 
-| Thinker | Contribution to This Plugin |
-|---------|----------------------------|
-| **Don Norman** | Affordances, emotional design, the 3 levels of processing |
-| **Jakob Nielsen** | 10 usability heuristics, evidence-based evaluation |
-| **Daniel Kahneman** | Peak-End Rule, cognitive biases, System 1/System 2 |
-| **John Sweller** | Cognitive Load Theory (intrinsic, extraneous, germane) |
-| **Dieter Rams** | "Less, but better" — systematic minimalism |
-| **Edward Tufte** | Data visualization, information density with clarity |
-| **Amber Case** | Calm technology, peripheral attention |
-| **Luke Wroblewski** | Mobile-first, form design |
-| **Julie Zhuo** | Design leadership, scaling quality |
-| **Liz Lerman** | Critical Response Process for design critique |
+Sumi is large. It stays cheap by loading in three tiers:
+
+| Tier | Loads | Cost |
+|---|---|---|
+| Skill descriptions | always | ~4,400 tokens |
+| A skill's `SKILL.md` | when that skill triggers | ~1,500–4,000 tokens |
+| Its `references/` | only when the skill points at one and it's needed | on demand |
+
+So asking about button sizing loads the cognitive psychology skill, not the other 43. Asking for a React modal loads the component cookbook, not the Figma pipeline.
+
+This is why v4.1.0 moved 125,000 tokens out of the always-loaded tier: a `/style` → `/screen` → `/fix` session went from 133,000 tokens to 70,000, which is the difference between two-thirds of your context window and a third of it.
+
+### The orchestrator
+
+Broad requests go to `sumi-orchestrator`, which picks one of twelve pipelines and runs its stages in order.
+
+| You want to… | Pipeline |
+|---|---|
+| Find what's wrong with something that exists | Evaluate |
+| Fix AI-generated UI that runs but looks wrong | Fix |
+| Design something that doesn't exist yet | Create |
+| Build or ship an actual component | Implement |
+| Compose a whole page | Compose |
+| Generate design assets with AI | Generate |
+| Start or scale a design system | Systematize |
+| Move a design into code | Handoff |
+| Understand why people aren't finishing | Convert |
+| Ship to new countries or languages | Localize |
+| Design an AI or agent feature | AI Surface |
+| Know whether any of it worked | Measure |
+
+Every stage has a **gate** it must clear before the next begins. Evaluate won't advance while findings lack a severity rating, because unrated findings are opinions and opinions don't survive a prioritisation meeting. Implement won't advance until every state is rendered and keyboard-navigable. You find out at stage three, not at the end.
+
+---
+
+## The 44 skills
+
+Skills activate automatically. You never call them directly.
+
+**Routing** — `sumi-orchestrator`, `design-memory`
+
+**Foundations** — `nng-ux-heuristics`, `cognitive-psychology-ux`, `ux-research-methods`, `ux-metrics-measurement`, `ux-ethics-content-strategy`, `design-process-methods`
+
+**Visual craft** — `ui-visual-design-system`, `visual-design-mastery`, `color-palette-library`, `typography-pairing-recipes`, `shadow-elevation-density`, `image-media-patterns`, `icon-illustration-systems`
+
+**Patterns and composition** — `ui-pattern-intelligence`, `screen-flow-patterns`, `layout-block-intelligence`, `page-composition-engine`, `navigation-pattern-encyclopedia`, `form-design-encyclopedia`, `responsive-block-patterns`
+
+**Systems and code** — `design-systems-architecture`, `design-token-presets`, `component-patterns-code`, `figma-design-tool-workflows`, `performance-states-patterns`
+
+**Platform** — `mobile-ux-design`, `desktop-app-design`, `platform-visual-standards`, `ambient-calm-zero-ui`, `cross-cultural-i18n-ux`
+
+**Experience and craft** — `interaction-motion-design`, `animation-recipe-library`, `micro-copy-intelligence`, `accessibility-inclusive-design`
+
+**Strategy and outcomes** — `sector-style-intelligence`, `conversion-optimization-patterns`, `data-visualization-mastery`, `design-critique-case-studies`, `business-design-templates`
+
+**AI** — `agentic-ai-generative-ux`, `ai-spatial-voice-ux`, `ai-design-generation`
+
+---
+
+## What's verified, and what isn't
+
+Sumi makes empirical claims, so it keeps an auditable record of which ones hold up.
+
+`AUDIT.md` lists every claim checked against a primary source, every one corrected, and every one still outstanding. v3.1.0 corrected six defects — including a dark-mode power figure that was wrong by two orders of magnitude and two statistics attributed to research that doesn't contain them.
+
+**54 of 84 extracted claims are not yet triaged**, almost all in skills that arrived with the v4.0.0 merge. `conversion-optimization-patterns` is the highest-risk cluster: conversion statistics are the most-copied and least-sourced numbers in the industry. Use its patterns; don't quote its figures to a client until they're checked.
+
+Two scripts keep this honest, both wired into CI:
+
+- `scripts/validate-plugin.py` — the release gate. Manifest shape, frontmatter, kebab-case names, and any count stated in the README or manifests that disagrees with the actual tree.
+- `scripts/check-corpus.py` — the knowledge graph. Every reference must be reachable from a skill, no file may silently grow, no retired command name may linger, and no `.sumi/` artifact may carry two schemas. Existing debt is frozen against a committed baseline; new debt is a hard error.
+
+A green build proves the plumbing is sound. It doesn't prove the advice is good — that's judgment, and judgment doesn't fit in CI.
+
+---
+
+## Installation
+
+**Prerequisites:** [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code), authenticated. No other dependencies — the plugin is markdown, zero config, works offline.
+
+### From the marketplace (recommended)
+
+Inside a Claude Code session:
+
+```
+/plugin marketplace add phazurlabs/sumi
+/plugin install sumi@sumi-marketplace
+```
+
+Scope is chosen at install: user (all your projects), project (shared with your team via `.claude/settings.json`), or local (personal, gitignored).
+
+### For development
+
+```bash
+git clone https://github.com/phazurlabs/sumi.git
+claude --plugin-dir ./sumi
+```
+
+Loads for that session only.
+
+### Verify it worked
+
+```
+/sumi:start
+```
+
+If the command exists, you're installed. Commands appear namespaced as `/sumi:<name>`.
+
+Then check skills activate by asking something they cover:
+
+```
+"What does Fitts's Law say about button sizing?"
+"Build me a React modal with all states"
+```
+
+### Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| Commands don't appear | Restart Claude Code after installing |
+| `/plugin` not recognised | Update Claude Code to the latest version |
+| Skills never activate | Check `.claude-plugin/plugin.json` exists at the plugin root |
+| Stuck on an old version | `version` in `plugin.json` is the cache key — `/plugin update sumi` |
+| Uninstall | `/plugin uninstall sumi` |
 
 ---
 
@@ -295,77 +302,44 @@ sumi/
 │   ├── sumi-orchestrator/          the router: 12 pipelines, stages, gates
 │   └── <skill>/
 │       ├── SKILL.md                loads in full whenever the skill triggers
-│       └── references/             189 files; load only when SKILL.md points at them
+│       └── references/             189 reference files; load only when pointed at
 │
 ├── commands/                       37 commands, user-invoked
 ├── scripts/
-│   ├── validate-plugin.py          structure, counts, frontmatter — CI gate
+│   ├── validate-plugin.py          release gate: structure, frontmatter, counts
+│   ├── check-corpus.py             knowledge graph and context budget
 │   └── extract-claims.py           pulls empirical claims for citation audit
-├── .github/workflows/              license preflight + CLA
-├── AUDIT.md                        which claims are verified, corrected, outstanding
+├── tests/
+│   ├── baseline.json               committed ratchet baselines
+│   └── routing-fixtures.yaml       does the right skill fire for a real request
+├── AUDIT.md                        claims verified, corrected, outstanding
 └── CHANGELOG.md
 ```
 
-The split that matters: **SKILL.md loads in full every time its skill triggers;
-references load only when a SKILL.md points at them.** That is why depth lives in
-`references/`, and why v4.1.0 moved 125,000 tokens out of the trigger tier into
-the on-demand one.
-
-`scripts/check-corpus.py` enforces it. Every reference must be reachable from a
-SKILL.md, no file may silently grow, and no `.sumi/` artifact may carry two
-schemas. Existing debt is frozen by a committed baseline; new debt is a hard
-error.
-
-## Knowledge Base by the Numbers
-
-| Metric | Count |
-|--------|-------|
-| Total words | **1,019,298** |
-| Skills | **43** (42 domains + orchestrator) |
-| Deep reference files | **168** |
-| Executable commands | **37** |
-| Production code components | **40+** |
-| Laws of UX (with formulas) | **25+** |
-| Cognitive biases (with ethical flags) | **50+** |
-| Product case studies | **10** |
-| Redesign failure analyses | **10** |
-| Eye tracking patterns | **6** |
-| Platform cookbooks | **3** (React, SwiftUI, CSS) |
-| Haptic feedback patterns | **30+** |
-| Microcopy templates | **50+** |
-| Cultural dimension mappings | **6** |
-| Design system maturity levels | **5** |
+The split that matters: **`SKILL.md` loads in full every time its skill triggers; `references/` load only when a skill points at them.** That is why depth lives in `references/`, and why keeping skills thin is enforced rather than encouraged.
 
 ---
 
-## Research Sources
+## Built on
 
-Every claim in this plugin traces back to authoritative research:
+| Thinker | Contribution |
+|---|---|
+| Don Norman | Affordances, emotional design, three levels of processing |
+| Jakob Nielsen | Ten usability heuristics, evidence-based evaluation |
+| Daniel Kahneman | Peak-End Rule, cognitive biases, System 1 and 2 |
+| John Sweller | Cognitive Load Theory |
+| Dieter Rams | "Less, but better" |
+| Edward Tufte | Information density with clarity |
+| Amber Case | Calm technology, peripheral attention |
+| Luke Wroblewski | Mobile-first, form design |
+| Liz Lerman | Critical Response Process for critique |
 
-**Cognitive Science**
-Kahneman (Peak-End Rule, System 1/2), Sweller (Cognitive Load Theory), Cowan (Working Memory), Iyengar & Lepper (Choice Overload), Fitts, Hick, Miller, Gestalt school, Simon (Satisficing), Csikszentmihalyi (Flow)
-
-**Academic Research**
-arXiv: UX 3.0 Paradigm, GenAI for UX Research, EvAlignUX, Emotion-Aware Interaction, LLM Hallucination Detection | ACM CHI 2025: Designing UIs with AI, Screen Reader + AI Coding, Multi-Agent GenAI, AI Literacy
-
-**Industry Standards**
-W3C: WCAG 3.0 Working Draft, Design Tokens Oct 2025 Stable, WAI-ARIA | NNG Group 2025-2026: State of UX, AI Literacy, "AI Slop" Quality Gates, iOS 26 Usability Critique
-
-**Platform Sources**
-Apple WWDC 2025 (iOS 26 Liquid Glass) | Google I/O 2025 (Material 3 Expressive) | Figma Config 2025 (MCP, Code Connect)
-
-**Industry Voices**
-Smashing Magazine Feb 2026 (Agentic UX) | Microsoft Copilot Framework | OpenAI Apps SDK | Sparkbox (Design System ROI) | Amber Case (Calm Technology) | Liz Lerman (Critical Response Process)
-
-**Case Studies**
-Stripe, Linear, Notion, Airbnb, Figma, Arc Browser, Duolingo, Vercel, Apple Health, Discord | Failures: Snapchat 2018, Windows 8, Digg v4, Sonos 2024, Healthcare.gov, Twitter/X, Google Plus, Reddit API, YouTube Dislikes, Skype
+Standards and sources: W3C (WCAG 2.2, Design Tokens 2025.10, WAI-ARIA), Nielsen Norman Group, Baymard Institute, Apple HIG (iOS 26), Material Design 3 Expressive, and product teardowns of Stripe, Linear, Notion, Figma, Arc, Vercel and others — alongside post-mortems of Snapchat 2018, Windows 8, Digg v4, Sonos 2024 and Healthcare.gov, because failures teach faster.
 
 ---
 
 ## License
 
-Apache-2.0. See `LICENSE`, `NOTICE`, and `TRADEMARKS.md`.
+Apache-2.0. See `LICENSE`, `NOTICE`, and `TRADEMARKS.md`. Contributions require a CLA — see `CONTRIBUTING.md`.
 
----
-
-*Built by Phazur Labs.*
+*Built by [Phazur Labs](https://phazurlabs.com).*

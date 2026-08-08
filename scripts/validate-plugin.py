@@ -239,6 +239,14 @@ def check_counts(root: pathlib.Path, skills: int, references: int, commands: int
         (re.compile(r"(\d+)\s+skills\b", re.I), skills, "skills"),
         (re.compile(r"(\d+)\s+reference(?:\s+files)?\b", re.I), references, "references"),
         (re.compile(r"(\d+)\s+commands\b", re.I), commands, "commands"),
+        # Table form, where the number FOLLOWS the label: | Skills | **44** |
+        # The label-first patterns above cannot see these, which is how a stale
+        # "43 skills / 168 references" summary table survived a release.
+        (re.compile(r"^\|\s*Skills\s*\|\s*\**(\d+)", re.I | re.M), skills, "skills"),
+        (re.compile(r"^\|\s*(?:Deep\s+)?[Rr]eference\s+files\s*\|\s*\**(\d+)", re.M),
+         references, "references"),
+        (re.compile(r"^\|\s*(?:Executable\s+)?[Cc]ommands\s*\|\s*\**(\d+)", re.M),
+         commands, "commands"),
     ]
     targets = [
         root / ".claude-plugin" / "plugin.json",
