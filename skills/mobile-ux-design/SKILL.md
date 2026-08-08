@@ -158,6 +158,25 @@ Based on Steven Hoober's research on how people hold phones:
 - **Offline-first architecture** for unreliable mobile networks — cache aggressively
 - **Image optimization:** WebP/AVIF format, responsive srcset, lazy loading
 
+## Routing
+
+For **platform divergence** — where iOS and Android genuinely differ on
+navigation, sheets, contextual actions, search, settings, notifications,
+onboarding and permission requests, and where they do not: read
+`references/ios-android-patterns.md`.
+
+For **mobile forms and navigation** — the mobile form design system, input types
+and keyboard optimization, autofill, multi-step wizards, address and payment
+input, authentication flows, and mobile navigation architecture: read
+`references/mobile-form-navigation.md`.
+
+For **beyond the phone** — glanceable design, Apple Watch, smart rings, hearables,
+AR glasses, IoT ecosystems, connected home and automotive: read
+`references/wearable-iot-patterns.md`.
+
+For **the current platform materials** — Liquid Glass and Material 3 Expressive:
+read `references/ios26-liquid-glass-material3-expressive.md`.
+
 ## Cross-Referencing
 
 - For visual design and typography details, reference `ui-visual-design-system`

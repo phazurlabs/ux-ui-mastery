@@ -157,6 +157,25 @@ Desktop applications serve users who invest hours of focused attention in profes
 - Progressive onboarding: introduce features as they become relevant, not all at once
 - In-app guidance: highlight new features with subtle callouts, dismissible permanently
 
+## Routing
+
+For **dense data surfaces** — the data table deep dive, inline editing, grid vs
+table, master-detail, complex forms, wizards, command palette design, keyboard
+shortcut systems, and multi-window layouts: read
+`references/data-dense-interfaces.md`.
+
+For **dashboards** — information architecture, the widget and card system, chart
+selection, accessible data-viz palettes, real-time patterns, filter and
+drill-down, personalization, responsive dashboard layout, and loading states:
+read `references/enterprise-dashboard-patterns.md`.
+
+For **an industry's conventions** — healthcare, financial services, e-commerce,
+SaaS/B2B, education, and real-time collaboration: read
+`references/industry-vertical-patterns.md`.
+
+For **chart-type depth** shared with data visualization: read
+`references/data-visualization-patterns.md`.
+
 ## Cross-Referencing
 
 - For data visualization accessibility, reference `accessibility-inclusive-design`

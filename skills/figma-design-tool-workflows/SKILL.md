@@ -120,6 +120,21 @@ The flywheel operates in six steps:
 
 Each cycle gets faster. The first pass through the flywheel for a new component might save 50% of development time compared to manual implementation. Subsequent iterations on existing components save 70-80% because the structure, tests, and stories already exist and only need updating.
 
+## Routing
+
+For **working in Figma** — Auto Layout in depth, component architecture,
+variable modes, prototyping, Dev Mode and handoff, library management, naming
+and file organization, the plugin essentials, and the shortcuts that actually
+save time: read `references/figma-mastery-workflows.md`.
+
+For **getting Figma into production code** — pipeline architecture, Style
+Dictionary configuration, token transformation examples, CI/CD integration,
+visual regression testing, component naming conventions, Storybook integration,
+multi-brand and white-label architecture, and accessibility in the pipeline:
+read `references/design-to-code-pipeline.md`.
+
+For **the MCP flywheel** specifically: read `references/figma-mcp-ai-flywheel.md`.
+
 ## Cross-References
 
 - **Component code output and patterns** — reference `component-patterns-code` for React, SwiftUI, and CSS component architecture, compound components, render props, and polymorphic patterns that Figma MCP-generated code should follow.

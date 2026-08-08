@@ -175,6 +175,32 @@ Six augmentation patterns from UX research for helping users write better prompt
 5. **Prompt builders:** Structured forms that construct prompts from discrete inputs (tone, length, audience, format).
 6. **Parametrization:** Sliders and controls that adjust generation parameters visually (creativity, length, formality).
 
+## Routing
+
+For **trust and safety surfaces** — trust calibration, confidence visualization,
+uncertainty display for LLM output, explainable-AI integration, the guardrail
+framework, risk-tiered approval, and guardrail configuration UI: read
+`references/ai-safety-trust-guardrails.md`.
+
+For **multi-agent systems** — coordination dashboards, agent identity and
+handoff visualization, background task management, agent memory UX, platform
+copilot guidelines, and the beyond-chat paradigm: read
+`references/agentic-multi-agent-patterns.md`.
+
+For **generative UI and RAG** — the three paradigms (conversational, instructed,
+generative), outcome-oriented design, design-system integration, RAG interface
+patterns, image-generation UX, and multimodal output rendering: read
+`references/generative-ui-rag-patterns.md`.
+
+For **the interface archetypes** themselves: read
+`references/ai-interface-archetypes.md`.
+
+For **hallucination guardrails** specifically: read
+`references/llm-hallucination-design-guardrails.md`.
+
+For **conversational dialogue patterns**: read
+`references/conversational-ai-dialogue-patterns.md`.
+
 ## Cross-Referencing
 
 - For foundational AI interface patterns, reference `ai-spatial-voice-ux`.

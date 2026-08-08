@@ -174,6 +174,18 @@ Even though it is better if the system can be used without documentation, it may
 4. Generate actionable recommendations with specific implementation guidance
 5. Track remediation through design and development
 
+## Routing
+
+For **running an evaluation end to end** — the step-by-step protocol, how to
+write a finding, the 0-4 severity scale with calibration examples, the
+severity x frequency x impact prioritization matrix, reporting formats per
+audience, and the common pitfalls: read `references/heuristic-evaluation-guide.md`.
+
+For **what a heuristic means on a modern interface** — all ten reinterpreted for
+today's patterns, where heuristics conflict with each other, industry-specific
+applications, cultural considerations, and case studies of famous violations:
+read `references/modern-heuristic-applications.md`.
+
 ## Cross-Referencing
 
 - For visual design evaluation criteria, reference `ui-visual-design-system`

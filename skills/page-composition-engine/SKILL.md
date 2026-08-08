@@ -259,6 +259,23 @@ Some blocks reorder on mobile for thumb-reach and visual hierarchy:
 - Social proof moves closer to hero (trust first)
 - Navigation images/illustrations hide (content first)
 
+## Routing
+
+For **marketing pages** — seven complete recipes (SaaS landing, mobile app
+landing, startup launch, enterprise B2B, e-commerce product, agency portfolio,
+event) each with block order and rationale: read
+`references/marketing-page-recipes.md`.
+
+For **product pages** — nine recipes (dashboard home, settings, profile,
+list/feed, detail, editor/canvas, chat, calendar, analytics): read
+`references/app-page-recipes.md`.
+
+For **the spacing that holds a page together** — the section spacing scale,
+stacking rhythm rules, visual rhythm patterns, the responsive reduction formula,
+container width strategy, grid systems, Z- and F-pattern layouts, and the rhythm
+diagnostics for when a page feels wrong but you cannot say why: read
+`references/spacing-rhythm-system.md`.
+
 ## Cross-References
 
 - **layout-block-intelligence** — Individual block specs and variants

@@ -180,6 +180,12 @@ Level 4: Highest (0 16px 32px rgba(0,0,0,0.16)) — toasts, floating elements
 - Standard sizes: 16px (inline), 20px (buttons), 24px (navigation), 32px (feature)
 - Consistent stroke width across all icons (typically 1.5-2px at 24px size)
 
+## Routing
+
+For **typography and color in depth** — the type deep dive, the color deep dive,
+and the section on making the two work together rather than separately: read
+`references/typography-color-mastery.md`.
+
 ## Cross-Referencing
 
 - For design token implementation, reference `design-systems-architecture`

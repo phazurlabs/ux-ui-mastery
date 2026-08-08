@@ -191,6 +191,16 @@ AI interfaces fundamentally differ from traditional deterministic UIs. Tradition
 - Personalized dashboards that surface relevant information automatically
 - Challenge: maintain consistency and learnability while personalizing
 
+## Routing
+
+For **spatial, voice and multimodal depth** — Apple Vision Pro and Meta Quest
+patterns, spatial layout principles, the voice interface deep dive, multimodal
+interaction design, and the emerging paradigms through 2030: read
+`references/spatial-voice-multimodal.md`.
+
+For **the AI interface archetypes** shared with `agentic-ai-generative-ux`: read
+`references/ai-native-interface-patterns.md`.
+
 ## Cross-Referencing
 
 - For interaction and motion patterns, reference `interaction-motion-design`

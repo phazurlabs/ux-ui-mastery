@@ -215,6 +215,18 @@ Alternative to fixed-horizon A/B testing. Allows checking results continuously w
 - **Design system ROI:** [(Time efficiency gains + Quality gains + Scale gains + Consistency gains) - (Initial cost + Maintenance cost)] / (Initial + Maintenance) x 100%.
 - Sparkbox research data: 38% design efficiency, 31% dev efficiency, 228% higher ROI with mature DesignOps.
 
+## Routing
+
+For **choosing and scoring a framework** — HEART in depth, SUS scoring, UEQ,
+UMUX-Lite, SUPR-Q, task metrics, NPS/CES/CSAT used correctly in a UX context,
+analytics metric design, and experimentation: read
+`references/metrics-frameworks-compendium.md`.
+
+For **measuring an AI feature** — the AI-specific metric taxonomy, affective and
+emotion metrics, cross-platform measurement, experimentation designs that survive
+non-determinism, continuous discovery, atomic research, and the pitfalls unique
+to AI experiments: read `references/ai-ux-metrics-experimentation.md`.
+
 ## Cross-Referencing
 
 - For heuristic evaluation methodology, reference `nng-ux-heuristics`.

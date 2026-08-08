@@ -209,6 +209,18 @@ The W3C targets April 2026 for the next major draft milestone, with the full rec
 4. Expand accessibility testing to cover native apps, documents, and non-web surfaces proactively.
 5. When WCAG 3.0 stabilizes, plan a formal gap analysis and migration timeline.
 
+## Routing
+
+For **conformance work** — the WCAG 2.2 checklist organised by POUR, the full
+ARIA role and state reference, widget patterns, focus management in SPAs, skip
+links and landmarks, live regions, form accessibility, and the image alt-text
+decision tree: read `references/wcag-aria-patterns.md`.
+
+For **cognitive and neurodivergent accommodation** — ADHD, autism, dyslexia,
+learning disabilities, anxiety, memory impairment, motor and dexterity load, and
+the preference media queries that implement them: read
+`references/neurodiversity-accommodations.md`.
+
 ## Cross-Referencing
 
 - For color contrast and visual design, reference `ui-visual-design-system`.

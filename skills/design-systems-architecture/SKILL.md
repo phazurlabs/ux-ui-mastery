@@ -245,6 +245,24 @@ For organizations with multiple brands sharing a system:
 - Generate TypeScript types from token schema
 - Visual regression testing: compare Figma designs with rendered components
 
+## Routing
+
+For **running a system as a product** — team models, the contribution workflow,
+the RFC template (motivation, detailed design, alternatives, migration,
+unresolved questions), and scaling: read `references/governance-scaling.md`.
+
+For **token architecture** — the three-tier model, W3C DTCG naming, and the 2025
+spec update: read `references/design-token-architecture.md`.
+
+For **maturity and multi-brand** — the five-level model with team size, tooling,
+governance and promotion criteria per level, multi-brand token layering,
+white-label patterns, migration strategies and ROI measurement: read
+`references/maturity-model-multi-brand.md`.
+
+For **the token spec in implementation form**: read
+`references/design-token-implementation.md` and
+`references/token-specification-guide.md`.
+
 ## Cross-Referencing
 
 - For visual design principles, reference `ui-visual-design-system`

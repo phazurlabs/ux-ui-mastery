@@ -107,6 +107,21 @@ Great typography pairings follow two rules:
 - **ALL CAPS labels**: +0.05 to +0.1em (open for legibility)
 - **Monospace**: 0 (fixed-width handles spacing)
 
+## Routing
+
+For **choosing a pairing** — 105 pairings across seven categories
+(minimal/modern, premium/editorial, friendly/warm, corporate/enterprise,
+creative/expressive, monospace, serif-only) plus the decision matrix: read
+`references/font-pairing-catalog.md`.
+
+For **building the scale** — type scale theory, complete scale recipes,
+line-height by size, letter-spacing adjustments, measure, and responsive scaling
+strategies: read `references/type-scale-systems.md`.
+
+For **shipping the fonts** — system stacks per platform, web-safe fallback
+chains, variable font technology, loading strategies, performance, and 2025
+format support: read `references/platform-font-stacks.md`.
+
 ## Cross-References
 - **ui-visual-design-system** — Typography system theory
 - **visual-design-mastery** — Typography scoring and mastery

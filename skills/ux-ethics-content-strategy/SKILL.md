@@ -212,6 +212,24 @@ Every piece of content must answer: What is the user trying to do, and how does 
 - Provide text alternatives for video and audio content
 - Support translation and localization in content architecture
 
+## Routing
+
+For **auditing manipulation** — the dark pattern taxonomy, the audit
+methodology, cookie consent design, subscription and cancellation ethics,
+e-commerce specifics, and the 2025-2026 regulatory landscape: read
+`references/dark-pattern-avoidance.md`.
+
+For **writing the interface** — the UX writing system, the microcopy
+masterclass, readability optimization, content accessibility, content strategy
+operations, and AI content design: read `references/content-writing-readability.md`.
+
+For **environmental impact** — the seven principles of sustainable UI,
+performance as sustainability, energy-efficient patterns, green hosting, carbon
+measurement, and sustainable color: read `references/sustainable-green-ux.md`.
+
+For **the microcopy pattern library** itself: read
+`references/microcopy-pattern-library.md`.
+
 ## Cross-Referencing
 
 - For visual design of content, reference `ui-visual-design-system`

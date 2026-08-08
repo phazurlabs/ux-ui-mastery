@@ -207,6 +207,22 @@ Per WCAG 2.5.8 (Target Size), interactive elements must be at least 24x24 CSS pi
 
 This is directly informed by Fitts's Law (see `cognitive-psychology-ux`): the time to reach a target is a function of distance and target size. Smaller targets increase error rates and frustration, especially under mobile conditions (one-handed use, walking, glare).
 
+## Routing
+
+For **React** — the `cn()` utility, then Button, TextInput, Select, Dialog,
+Toast, Card, Badge, Avatar and the rest as complete CVA + Tailwind + Radix
+implementations with every state and full ARIA: read
+`references/react-component-cookbook.md`.
+
+For **SwiftUI** — the EnvironmentKey-based theme system, then PrimaryButton,
+ValidatedTextField, AdaptiveSheet, SwipeableListRow, AdaptiveNavigationStack,
+DynamicForm, BadgedTabView and CachedAsyncImage: read
+`references/swiftui-component-cookbook.md`.
+
+For **modern CSS** — container queries, `:has()`, subgrid, `@layer`, and the
+patterns that replace what used to need JavaScript: read
+`references/css-modern-patterns.md`.
+
 ## Cross-References
 
 - **Cognitive psychology foundations** — `cognitive-psychology-ux` covers Fitts's Law (touch target sizing), Hick's Law (reducing choice overload in selects and menus), Miller's Law (chunking in data tables and forms), and the gestalt principles that inform component grouping and layout.

@@ -199,6 +199,18 @@ Use specific, structured prompts for research tasks:
 - Disclose AI-assisted analysis in research reports.
 - AI cannot replace researcher empathy, contextual understanding, or ethical judgment.
 
+## Routing
+
+For **running a study** — moderator scripts, interview discussion guides,
+contextual inquiry, diary studies, card sorting and tree testing, A/B protocols,
+survey design, and a participant screener template: read
+`references/research-protocols.md`.
+
+For **making sense of what you collected** — affinity diagramming, thematic
+coding, Jobs-to-Be-Done, journey-map construction, turning data into personas,
+SUS scoring and significance testing, mixing qual and quant, and repository
+management: read `references/analysis-frameworks.md`.
+
 ## Cross-Referencing
 
 - For heuristic evaluation methodology, reference `nng-ux-heuristics`.

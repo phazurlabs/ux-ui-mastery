@@ -238,6 +238,21 @@ Linear easing (`ease: linear`) feels mechanical and robotic. The only exceptions
 - Keep essential functional animations (progress bars) but simplify them.
 - Remove parallax, auto-playing video backgrounds, and decorative animations entirely.
 
+## Routing
+
+For **timing and easing** — CSS animation fundamentals, the cubic-bezier deep
+dive, the standard easing library, spring physics, duration calculation, stagger
+patterns, performance, the `@keyframes` pattern library, and the View
+Transitions API: read `references/animation-timing-curves.md`.
+
+For **why motion makes people feel something** — Norman's three levels, Saffer's
+micro-interaction anatomy, the micro-interaction catalog, haptic design, sound
+design, brand personality through motion, and the line between delight and
+annoyance: read `references/emotional-design-patterns.md`.
+
+For **the haptic feedback system** specifically: read
+`references/haptic-feedback-design-system.md`.
+
 ## Cross-Referencing
 
 - For performance impact on mobile, reference `mobile-ux-design`.
