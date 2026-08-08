@@ -92,6 +92,17 @@ jobs:
           pip install pyyaml --quiet
           python3 scripts/validate-plugin.py .
 
+      - name: Knowledge graph valid
+        # Progressive disclosure only works if SKILL.md actually points at its
+        # references. Checks the graph (orphans, dangling pointers, retired
+        # command names, artifact schemas) and freezes the context budget.
+        #
+        # Ratcheted where the corpus is already in debt, hard errors where it is
+        # currently clean -- so it lands green and only fails on regression.
+        # A second workflow would mean a second red X, which trains people to
+        # ignore both; this rides the existing job and its pip install.
+        run: python3 scripts/check-corpus.py all .
+
       - name: Plugin manifests valid (authoritative)
         # `claude plugin validate --strict` is the real checker and gates the
         # release. It caught a YAML frontmatter parse failure that a line-based

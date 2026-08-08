@@ -1,0 +1,15 @@
+# Slash-prefixed tokens that are NOT Sumi commands and never will be.
+# Everything here was measured, not guessed. Adding a line is cheap and
+# self-documenting; the check ratchets on DISTINCT names, so one new stale
+# command name trips it even if it appears only once.
+
+# URL-path examples inside sitemap illustrations (commands/map.md)
+dashboard
+projects
+team
+auth
+settings
+about
+docs
+blog
+products

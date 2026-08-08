@@ -1,0 +1,202 @@
+# Routing fixtures: does the right skill fire for a realistic request?
+#
+# Evaluated by a deterministic TF-IDF scorer over the 43 skill descriptions --
+# literally the text the model sees when deciding which skill to load.
+#
+# THE ABSOLUTE SCORE IS MEANINGLESS. TF-IDF cosine over 43 short descriptions is
+# not a model of Claude's skill selection: no synonymy, no world knowledge, no
+# instruction-following. A 20/20 here would not mean routing works and a 15/20
+# would not mean it is broken. What it IS: a cheap, deterministic function of the
+# description text that moves when the description text moves. That makes it a
+# CHANGE DETECTOR, and only the delta against tests/baseline.json is asserted.
+#
+# Fields:
+#   expect   the intended skill
+#   also_ok  top-1 here counts as a pass; encodes genuine ambiguity honestly
+#            rather than forcing a fake single answer
+#   forbid   must not be RANK 1. Not "not in top 3" -- in a 43-skill corpus with
+#            a bag-of-words scorer that would be unsatisfiable, and a neighbour
+#            at rank 2 is fine because progressive disclosure surfaces it.
+#   cluster  groups fixtures so a regression concentrated in one is diagnostic
+#   why      MANDATORY. A fixture with no stated failure hypothesis is one
+#            nobody can fix when it breaks.
+
+# ---- cluster: motion (animation-recipe-library <-> interaction-motion-design, J=0.156)
+- id: motion-recipe-not-principle
+  prompt: "add a hover animation to this button that springs in"
+  expect: animation-recipe-library
+  also_ok: [interaction-motion-design]
+  forbid: [component-patterns-code]
+  cluster: motion
+  why: "Concrete recipe request. If component-patterns-code wins, the router is
+        keying on 'button' rather than 'animation'."
+
+- id: motion-principle-not-recipe
+  prompt: "what duration and easing should a modal transition use"
+  expect: interaction-motion-design
+  also_ok: [animation-recipe-library]
+  cluster: motion
+  why: "Asks for the principle, not the code. The two motion skills must split
+        on recipe-vs-rationale, which is the only thing distinguishing them."
+
+- id: motion-gsap-specific
+  prompt: "pin and scrub a horizontal gallery with ScrollTrigger"
+  expect: animation-recipe-library
+  forbid: [interaction-motion-design]
+  cluster: motion
+  why: "Named library plus named technique. Only the recipe library carries GSAP;
+        if the principles skill wins, its description has absorbed tool names."
+
+# ---- cluster: dataviz-vs-desktop (J=0.140)
+- id: dataviz-a11y
+  prompt: "the chart colors are unreadable for colorblind users"
+  expect: data-visualization-mastery
+  also_ok: [accessibility-inclusive-design, color-palette-library]
+  cluster: dataviz-vs-desktop
+  why: "Three skills legitimately own part of this. Any of them is a good first
+        load; what would be wrong is a visual-craft skill with no dataviz or
+        a11y content."
+
+- id: desktop-chrome
+  prompt: "design a menu bar and keyboard shortcuts for a mac app"
+  expect: desktop-app-design
+  also_ok: [platform-visual-standards]
+  forbid: [data-visualization-mastery]
+  cluster: dataviz-vs-desktop
+  why: "Desktop app chrome, no data involved. Known miss today: component-patterns-code
+        takes rank 1 on 'keyboard'. Baselined as a miss so tightening the
+        desktop description registers as an improvement."
+
+- id: desktop-density
+  prompt: "an enterprise table with 40 columns and frozen headers"
+  expect: desktop-app-design
+  also_ok: [data-visualization-mastery]
+  cluster: dataviz-vs-desktop
+  why: "Data-dense but not a chart. This is the exact overlap the two
+        descriptions must divide."
+
+# ---- cluster: mobile-vs-platform (J=0.122)
+- id: mobile-ergonomics
+  prompt: "thumb reachability on a large phone screen"
+  expect: mobile-ux-design
+  also_ok: [platform-visual-standards]
+  cluster: mobile-vs-platform
+  why: "Ergonomics is mobile UX, not a platform spec. If platform-visual-standards
+        wins, it has over-claimed mobile generally."
+
+- id: platform-spec
+  prompt: "what corner radius does iOS 26 use versus Material 3"
+  expect: platform-visual-standards
+  also_ok: [mobile-ux-design]
+  cluster: mobile-vs-platform
+  why: "Named platform versions and a concrete spec value -- the platform skill's
+        whole reason to exist."
+
+# ---- cluster: copy-vs-ethics (J=0.122)
+- id: copy-template
+  prompt: "write the error message for a failed payment"
+  expect: micro-copy-intelligence
+  also_ok: [ux-ethics-content-strategy]
+  forbid: [ai-design-generation]
+  cluster: copy-vs-ethics
+  why: "Known miss today: ai-design-generation takes rank 1 because its
+        description carries broad generation verbs that capture 'write the
+        message'. Baselined as a miss -- the fix is tightening that description."
+
+- id: ethics-judgment
+  prompt: "is this countdown timer a dark pattern"
+  expect: ux-ethics-content-strategy
+  also_ok: [conversion-optimization-patterns]
+  forbid: [micro-copy-intelligence]
+  cluster: copy-vs-ethics
+  why: "A judgment about manipulation, not a string to write. Splits the ethics
+        skill from the copy skill on exactly the axis that confuses them."
+
+# ---- cluster: component-vs-form (J=0.118)
+- id: component-generic
+  prompt: "build a react select component with radix and CVA"
+  expect: component-patterns-code
+  forbid: [form-design-encyclopedia]
+  cluster: component-vs-form
+  why: "A select IS a form input, so this is the hardest direction. Named
+        libraries should pull it to the code skill."
+
+- id: form-specific
+  prompt: "multi step signup form with zod validation and inline errors"
+  expect: form-design-encyclopedia
+  also_ok: [component-patterns-code]
+  cluster: component-vs-form
+  why: "Form-shaped concerns (steps, validation strategy) rather than one
+        component's implementation."
+
+# ---- anchors: uncontested. These detect collateral damage from edits elsewhere.
+- id: heuristics
+  prompt: "run a heuristic evaluation with severity ratings"
+  expect: nng-ux-heuristics
+  cluster: anchors
+  why: "Textbook single-owner request. Failure means something absorbed
+        evaluation vocabulary it should not have."
+
+- id: a11y-screenreader
+  prompt: "our screen reader users cannot reach the dialog"
+  expect: accessibility-inclusive-design
+  cluster: anchors
+  why: "Unambiguous a11y. Failure means a component skill claimed ARIA."
+
+- id: ai-generation
+  prompt: "generate a mockup with stitch mcp"
+  expect: ai-design-generation
+  cluster: anchors
+  why: "Named MCP tool. Also the control for the copy-template miss -- confirms
+        this description SHOULD win generation requests."
+
+- id: agentic-guardrails
+  prompt: "guardrails for an autonomous agent that spends money"
+  expect: agentic-ai-generative-ux
+  also_ok: [ai-spatial-voice-ux]
+  cluster: anchors
+  why: "Agent trust and control. Must not go to ai-design-generation, which is
+        asset generation with a confusingly similar name."
+
+- id: spatial-voice
+  prompt: "voice interface for a headset in mixed reality"
+  expect: ai-spatial-voice-ux
+  also_ok: [ambient-calm-zero-ui]
+  cluster: anchors
+  why: "Spatial plus voice, the skill's two named modalities."
+
+- id: palette-oklch
+  prompt: "give me an oklch palette for a fintech brand"
+  expect: color-palette-library
+  also_ok: [sector-style-intelligence, visual-design-mastery]
+  cluster: anchors
+  why: "Concrete palette request. Sector is a modifier, not the head noun."
+
+- id: sector-direction
+  prompt: "what visual style suits a healthcare app"
+  expect: sector-style-intelligence
+  also_ok: [visual-design-mastery]
+  cluster: anchors
+  why: "Direction by industry -- the inverse of palette-oklch, where sector IS
+        the head noun."
+
+- id: perf-states
+  prompt: "skeleton screens and optimistic UI for slow loads"
+  expect: performance-states-patterns
+  cluster: anchors
+  why: "Named patterns owned by exactly one skill."
+
+- id: metrics-heart
+  prompt: "set up HEART metrics and an OKR for the redesign"
+  expect: ux-metrics-measurement
+  cluster: anchors
+  why: "Named framework. Must not go to ux-research-methods, its nearest
+        neighbour in the measurement space."
+
+- id: tokens-multibrand
+  prompt: "how do I structure design tokens for three brands"
+  expect: design-systems-architecture
+  also_ok: [design-token-presets]
+  cluster: anchors
+  why: "Architecture question, not a preset request. Splits the two token skills
+        on build-your-own versus start-from-vetted."

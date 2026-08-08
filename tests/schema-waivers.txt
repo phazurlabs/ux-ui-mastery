@@ -1,0 +1,13 @@
+# Artifacts known to be written with more than one top-level schema.
+# A waiver here silences check_artifact_schemas for that path.
+#
+# Fixing a conflict means DELETING its line from this file. That is the point:
+# the incentive to fix is a visible line of debt, not silence.
+
+# style.json — three writers, three shapes:
+#   commands/style.md:931   {meta, color, typography, spacing, borderRadius, ...}
+#   commands/style.md:1021  {version, generated, sector, mood, technology, colors}
+#   commands/tokens.md:662  raw W3C DTCG
+# /palette and /type merge into the first shape. Resolved in Phase 1 by the
+# design-memory skill; this line comes out then.
+style.json

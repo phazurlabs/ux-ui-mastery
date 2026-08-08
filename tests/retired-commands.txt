@@ -1,0 +1,47 @@
+# Command names that no longer exist. Any /name from this list appearing anywhere
+# in skills/ or commands/ is a hard error -- zero false positives by construction,
+# because every name here is known-dead.
+#
+# commands/sumi.md is exempt: its "Renamed in v4.0.0" table names these on purpose.
+#
+# The scanner deliberately looks INSIDE fenced code blocks. The defect that
+# motivated this check lives in a fenced ASCII pipeline diagram in
+# skills/design-process-methods/SKILL.md, which is exactly why the v4.0.0 manual
+# repair pass missed it.
+
+# Pre-v8 "taste-ux-ui" era names
+ground
+intent
+taste
+inspo
+pulse
+drip
+ship
+vibe-check
+brain-scan
+include
+flow
+dark-scan
+trust-scan
+copy-check
+judge
+extract
+anatomy
+think
+expose
+verdict
+welcome
+iterate
+assets
+
+# Retired in v4.0.0 when chef-sumi and sumi merged; see the table in /sumi
+accessibility-check
+ux-audit
+design-review
+cognitive-check
+design-critique
+component-build
+generate-design-tokens
+ux-metrics-plan
+figma-to-code
+ai-ux-audit
