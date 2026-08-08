@@ -2,7 +2,7 @@
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v4.0.0** | 44 Skills | 180 References | 37 Commands | 1,066,453 Words | 265 Files
+**v4.0.0** | 44 Skills | 185 References | 37 Commands | 1,066,453 Words | 265 Files
 
 ---
 
@@ -295,7 +295,7 @@ sumi/
 │   ├── sumi-orchestrator/          the router: 12 pipelines, stages, gates
 │   └── <skill>/
 │       ├── SKILL.md                loads in full whenever the skill triggers
-│       └── references/             180 files; load only when SKILL.md points at them
+│       └── references/             185 files; load only when SKILL.md points at them
 │
 ├── commands/                       37 commands, user-invoked
 ├── scripts/

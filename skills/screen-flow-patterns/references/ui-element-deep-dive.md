@@ -1123,3 +1123,142 @@
 | Rating | `radiogroup` / `slider` | Arrow keys | Text value required |
 | Empty State | N/A (content) | CTA focusable | Contextual messaging |
 | Skeleton | `aria-busy` | N/A | Respect reduced motion |
+
+---
+
+## UI Element Pattern Catalog (120+ elements)
+
+
+### 4.1 Navigation Elements (20)
+1. **Top Navigation Bar** — Primary nav for web. Logo left, links center or right, CTA right.
+2. **Bottom Tab Bar** — Mobile primary nav. 3-5 tabs. Active state indicator. Badge support.
+3. **Sidebar Navigation** — Desktop persistent nav. Collapsible. Section headers. Active indicator.
+4. **Hamburger Menu** — Hidden nav behind 3-line icon. Use only when space is critically limited.
+5. **Breadcrumbs** — Hierarchical location indicator. Clickable path segments. Separator character.
+6. **Pagination** — Page numbers, prev/next, items-per-page selector. For finite datasets.
+7. **Tab Bar (Content)** — Horizontal tabs for content sections within a page. Underline active.
+8. **Segmented Control** — 2-5 mutually exclusive options. Acts as toggle. Compact.
+9. **Stepper / Progress Bar** — Multi-step process indicator. Current, completed, upcoming states.
+10. **Back Button** — Return to previous screen. Platform-specific position (top-left iOS, top-left Android).
+11. **Close Button** — Dismiss modal or overlay. X icon. Top-right (web/Android) or top-left (iOS).
+12. **Floating Action Button (FAB)** — Primary action. Android Material pattern. Bottom-right.
+13. **Command Palette** — Keyboard-activated search for actions. Cmd+K pattern. Power user navigation.
+14. **Mega Menu** — Large dropdown with categorized links and images. E-commerce pattern.
+15. **Drawer Navigation** — Slide-in panel from edge. Temporary overlay. Mobile or secondary nav.
+16. **Anchor Links / Scroll Spy** — Jump to sections within long page. Active state updates on scroll.
+17. **Quick Actions Menu** — Long-press or right-click context menu. Relevant actions for item.
+18. **Skip Navigation Link** — Accessibility. Hidden link to skip to main content. Visible on focus.
+19. **Language / Region Selector** — Globe icon dropdown. Flag icons optional (controversial for accessibility).
+20. **Notification Bell** — Badge count indicator. Dropdown or navigate to notifications center.
+
+### 4.2 Input Elements (25)
+21. **Text Input** — Single-line. Label, placeholder, helper text, error state, character count.
+22. **Password Input** — Masked characters. Show/hide toggle. Strength indicator.
+23. **Textarea** — Multi-line text. Auto-resize or fixed with scroll. Character/word count.
+24. **Select / Dropdown** — Single selection from list. Native or custom. Search within for long lists.
+25. **Multi-Select** — Multiple selections. Chips/tags display. Checkbox list or token input.
+26. **Checkbox** — Binary toggle for single item. Can be grouped for multiple selections.
+27. **Radio Button** — Mutually exclusive selection within a group. Always show all options.
+28. **Toggle / Switch** — Binary on/off. Instant effect (no save button needed). Label describes on-state.
+29. **Date Picker** — Calendar-based date selection. Min/max date constraints. Range selection variant.
+30. **Time Picker** — Hour/minute selection. 12/24 hour format. Scroll wheel or dropdown.
+31. **Range Slider** — Value within a range. Single handle or dual (min-max). Step increments.
+32. **File Upload** — Drag-and-drop zone or button. File type/size restrictions. Progress indicator.
+33. **Color Picker** — Hue/saturation/brightness selector. Hex/RGB/HSL input. Preset swatches.
+34. **Search Input** — Text input with search icon. Debounced. Clear button. Autocomplete dropdown.
+35. **Number Input** — Numeric value. Increment/decrement buttons. Min/max/step constraints.
+36. **Phone Input** — Country code selector + number. Format validation. Auto-formatting.
+37. **Email Input** — Email format validation. Suggestion for common domain typos.
+38. **URL Input** — Protocol prefix. Validation. Preview/favicon fetch.
+39. **Credit Card Input** — Number with Luhn validation. Auto-detect card type. Expiry + CVV.
+40. **OTP / Verification Code** — 4-6 digit boxes. Auto-focus next. Paste support. Auto-submit on complete.
+41. **Rich Text Editor** — Formatted text input. Toolbar with bold/italic/list/link/image.
+42. **Autocomplete / Combobox** — Text input with suggestion dropdown. Fuzzy matching.
+43. **Tag Input** — Add/remove tags. Autocomplete suggestions. Max tag limit.
+44. **Rating Input** — Star rating (1-5). Hover preview. Half-star option.
+45. **Signature Input** — Canvas for drawing signature. Clear/redo. Touch and mouse support.
+
+### 4.3 Display Elements (25)
+46. **Avatar** — User photo circle. Fallback to initials. Size variants. Status dot indicator.
+47. **Badge** — Count or status indicator. Dot or number. Color-coded by type.
+48. **Card** — Contained content block. Image + title + description + actions. Clickable or static.
+49. **Table** — Rows and columns. Sortable headers. Row selection. Responsive collapse strategy.
+50. **Data Grid** — Enhanced table with inline editing, column resize, virtual scroll, export.
+51. **List Item** — Row in a list. Leading icon/avatar + text + trailing action/metadata.
+52. **Chip / Tag** — Compact element for labels, filters, selections. Dismissible variant.
+53. **Progress Bar** — Determinate (percentage) or indeterminate (loading). Linear.
+54. **Progress Circle** — Circular progress indicator. Percentage display. Size variants.
+55. **Skeleton Screen** — Placeholder shapes mimicking content layout during loading.
+56. **Stat / Metric Card** — Single KPI display. Number + label + trend indicator + sparkline.
+57. **Timeline** — Chronological sequence of events. Vertical line with nodes. Expandable entries.
+58. **Accordion / Collapsible** — Expandable sections. Single-expand or multi-expand. Icon rotation.
+59. **Carousel / Slider** — Horizontal scrolling content. Dots/arrows navigation. Auto-play optional.
+60. **Image Gallery** — Grid of images. Lightbox on click. Zoom. Thumbnail strip.
+61. **Video Player** — Play/pause, progress bar, volume, fullscreen, speed, captions.
+62. **Audio Player** — Play/pause, progress bar, volume, speed, waveform visualization.
+63. **Code Block** — Syntax-highlighted code. Copy button. Language label. Line numbers.
+64. **Markdown Renderer** — Rendered markdown with heading hierarchy, lists, tables, code.
+65. **Chart (Line)** — Trend over time. Multiple series. Hover tooltip. Legend.
+66. **Chart (Bar)** — Comparison across categories. Horizontal or vertical. Stacked variant.
+67. **Chart (Pie/Donut)** — Part-to-whole relationships. Legend. Hover tooltip. Avoid > 6 slices.
+68. **Map Embed** — Interactive map with markers. Zoom/pan. Popup on marker click.
+69. **Empty State Illustration** — Friendly graphic for zero-data states. Pairs with CTA.
+70. **Divider / Separator** — Horizontal or vertical line. Separates content sections.
+
+### 4.4 Feedback Elements (20)
+71. **Toast / Snackbar** — Temporary message. Bottom of screen. Auto-dismiss. Optional action (undo).
+72. **Alert Banner** — Persistent message at top. Info/warning/error/success variants. Dismissible.
+73. **Inline Error** — Error message below form field. Red text + icon. Specific guidance.
+74. **Success Message** — Green confirmation. Checkmark icon. Brief and clear.
+75. **Warning Message** — Yellow/amber alert. Caution icon. Describes risk and recommended action.
+76. **Loading Spinner** — Indeterminate circular indicator. Inline or overlay. With optional text.
+77. **Pull-to-Refresh** — Mobile gesture. Animated indicator at top of scrollable content.
+78. **Tooltip** — Hover-triggered popover with brief help text. Arrow pointing to trigger.
+79. **Popover** — Click-triggered rich content popup. Can contain forms, lists, actions.
+80. **Notification Badge** — Red dot or count on icon. Indicates unread/pending items.
+81. **Confetti / Celebration** — Particle animation for milestone achievements. Use sparingly.
+82. **Shake Animation** — Error feedback on invalid submission. Subtle horizontal shake.
+83. **Haptic Feedback** — Physical vibration on mobile. Success, warning, error patterns.
+84. **Sound Feedback** — Audio cue for actions. Message sent whoosh, error beep. Respects mute.
+85. **Progress Toast** — Upload/download progress. Percentage + cancel option. Persists until complete.
+86. **Validation Summary** — List of all form errors at top of form. Links to each field.
+87. **Status Indicator** — Colored dot (green/yellow/red) for system or user status.
+88. **Typing Indicator** — Three animated dots in chat. Shows when another user is composing.
+89. **Read Receipt** — Check marks for sent/delivered/read message status.
+90. **Connection Status** — Online/offline indicator. Banner when connection lost/restored.
+
+### 4.5 Overlay Elements (15)
+91. **Modal Dialog** — Centered overlay with backdrop. Focused task. Trap focus inside.
+92. **Bottom Sheet** — Slides up from bottom. Mobile pattern. Draggable. Snap points.
+93. **Side Sheet / Drawer** — Slides from edge. Detail panel. Desktop pattern.
+94. **Lightbox** — Full-screen media viewer. Dark backdrop. Swipe to navigate. Close X.
+95. **Full-Screen Overlay** — Takes over entire viewport. For immersive tasks (editor, video).
+96. **Action Sheet** — iOS-style bottom options list. Cancel button. Destructive option in red.
+97. **Alert Dialog** — System-level confirmation. Title + message + 2 buttons (cancel + confirm).
+98. **Dropdown Menu** — Triggered by button click. List of actions. Positioned relative to trigger.
+99. **Context Menu** — Right-click (web) or long-press (mobile) options. Contextual actions.
+100. **Command Palette** — Cmd+K overlay. Search for actions, pages, settings. Power user tool.
+101. **Cookie Consent Banner** — Bottom or overlay. Accept/reject/customize. GDPR/CCPA compliance.
+102. **Announcement Bar** — Top of page. Promotional or system message. Dismissible.
+103. **Onboarding Tooltip** — Pointed overlay highlighting a feature. Step sequence. Skip all option.
+104. **Image Crop Modal** — Crop tool for uploaded images. Aspect ratio lock. Zoom.
+105. **Share Sheet** — Native or custom sharing options. Copy link, social platforms, messaging.
+
+### 4.6 Layout Elements (15+)
+106. **Grid System** — 12-column (web), flexible (mobile). Gutters, margins, breakpoints.
+107. **Stack (Vertical)** — Elements stacked top-to-bottom. Consistent spacing.
+108. **Stack (Horizontal)** — Elements arranged left-to-right. Wrap on overflow.
+109. **Split View** — Two panels side by side. Master-detail pattern. Resizable divider.
+110. **Sticky Header** — Fixed at top on scroll. Compact variant after scroll threshold.
+111. **Sticky Footer** — Fixed at bottom. CTA bar, action buttons, or tab bar.
+112. **Scroll Container** — Scrollable area within fixed layout. Vertical or horizontal.
+113. **Masonry Grid** — Pinterest-style variable-height grid. Optimal for mixed-size content.
+114. **Container** — Max-width wrapper centering content. Responsive breakpoints.
+115. **Spacer** — Empty spacing element. Consistent vertical rhythm.
+116. **Responsive Breakpoints** — Mobile (<640px), Tablet (640-1024px), Desktop (>1024px). Content reflows.
+117. **Aspect Ratio Box** — Maintains width-to-height ratio regardless of container width.
+118. **Overlay Layout** — Content layered with z-index. Map + controls, video + captions.
+119. **Holy Grail Layout** — Header + sidebar + main + sidebar + footer. Classic web layout.
+120. **Dashboard Grid** — Draggable, resizable widget tiles. User-configurable layout.
+
+---

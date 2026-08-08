@@ -85,7 +85,7 @@ navigation and the other patterns as production CSS: read
 For **whole-layout recipes** — column progressions, collapsing sidebars, holy
 grail and the rest: read `references/responsive-layout-recipes.md`.
 
-For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/supplementary-patterns.md`.
+For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/responsive-supplementary.md`.
 
 ## Cross-References
 

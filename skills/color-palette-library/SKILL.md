@@ -97,7 +97,7 @@ rules, and elevation-by-lightness: read `references/dark-mode-color-science.md`.
 For **how real products do it** — Stripe, Linear, Vercel, Notion, Figma, Shopify
 and GitHub deconstructed: read `references/brand-color-systems.md`.
 
-For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/supplementary-patterns.md`.
+For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/color-supplementary.md`.
 
 ## Cross-References
 - design-token-presets — complete token system templates by industry

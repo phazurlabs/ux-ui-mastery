@@ -83,7 +83,7 @@ For **structuring the content underneath** — IA research methods, IA structure
 labeling and taxonomy, sitemap design and URL structure: read
 `references/information-architecture.md`.
 
-For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/supplementary-patterns.md`.
+For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/navigation-supplementary.md`.
 
 ## Cross-References
 - **mobile-ux-design** — iOS and Android navigation deep dives

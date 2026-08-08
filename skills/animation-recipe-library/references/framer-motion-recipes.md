@@ -889,3 +889,82 @@ export const MotionSafe = ({ children, animation, reducedAnimation }: {
   );
 };
 ```
+
+---
+
+## Orchestration
+
+
+### Stagger Patterns
+
+#### Linear Stagger
+Each child enters sequentially with a fixed delay.
+```tsx
+variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
+```
+**Best for**: Lists, navigation items, grid cards.
+
+#### Cascade Stagger
+Delay increases per item (accelerating or decelerating).
+```css
+.item:nth-child(1) { animation-delay: 0ms; }
+.item:nth-child(2) { animation-delay: 60ms; }
+.item:nth-child(3) { animation-delay: 130ms; }
+.item:nth-child(4) { animation-delay: 210ms; }
+/* Increasing gaps: 60, 70, 80... */
+```
+
+#### Center-Out Stagger
+Items animate from the center outward.
+```tsx
+const getDelay = (index: number, total: number) => {
+  const center = Math.floor(total / 2);
+  return Math.abs(index - center) * 0.05;
+};
+```
+
+#### Random Stagger
+Subtle random delays for organic feel.
+```tsx
+transition={{ delay: Math.random() * 0.3 }}
+```
+
+### Choreography Patterns
+
+**Sequential**: A finishes, then B starts, then C starts. For dependent actions.
+```tsx
+<motion.div animate={controls}>
+  {/* Trigger B after A */}
+  await controlsA.start({ opacity: 1 });
+  await controlsB.start({ x: 0 });
+  await controlsC.start({ scale: 1 });
+</motion.div>
+```
+
+**Parallel**: A, B, C all start together. For independent elements.
+```tsx
+initial={{ opacity: 0, y: 20, scale: 0.9 }}
+animate={{ opacity: 1, y: 0, scale: 1 }}
+/* All properties animate simultaneously */
+```
+
+**Overlapping**: B starts before A finishes. For fluid choreography.
+```tsx
+variants={{
+  visible: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+  }
+}}
+```
+
+### Orchestration with useAnimation
+```tsx
+const controls = useAnimation();
+const sequence = async () => {
+  await controls.start("step1");
+  await controls.start("step2");
+  await controls.start("step3");
+};
+```
+
+---

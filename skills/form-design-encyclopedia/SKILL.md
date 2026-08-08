@@ -94,7 +94,7 @@ For **accessibility** — semantic HTML foundations, label association methods,
 required-field marking, error association and group labeling: read
 `references/form-accessibility-code.md`.
 
-For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/supplementary-patterns.md`.
+For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/form-supplementary.md`.
 
 ## Cross-References
 - component-patterns-code (React component implementations)

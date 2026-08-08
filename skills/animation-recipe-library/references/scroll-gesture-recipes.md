@@ -947,3 +947,356 @@ window.addEventListener("scroll", () => {
 
 ### Prefer CSS Scroll-Driven Over JS
 CSS scroll-driven animations run on the compositor thread and cannot cause jank. Always prefer them when browser support allows, with Intersection Observer as a fallback.
+
+---
+
+## Scroll-Driven Animations (16 recipes)
+
+
+#### F1. parallax
+**CSS Scroll-Driven (modern)**:
+```css
+.parallax-bg {
+  animation: parallaxMove linear;
+  animation-timeline: scroll();
+  animation-range: 0% 100%;
+}
+@keyframes parallaxMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-30%); }
+}
+```
+
+#### F2. fadeOnScroll (Intersection Observer)
+```js
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+```
+```css
+.scroll-reveal { opacity: 0; transform: translateY(20px); transition: all 500ms var(--ease-out); }
+.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+```
+
+#### F3. stickyReveal
+```css
+.sticky-header {
+  position: sticky; top: 0;
+  transition: all 300ms var(--ease-out);
+}
+.sticky-header.is-scrolled {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding-block: 8px;
+}
+```
+
+#### F4. countUp
+```tsx
+const CountUp = ({ end, duration = 2 }: { end: number; duration?: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+  useEffect(() => {
+    if (isInView) animate(count, end, { duration });
+  }, [isInView]);
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
+```
+
+#### F5. progressIndicator (scroll progress bar)
+```css
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: #3b82f6; transform-origin: left;
+  animation: scaleProgress linear;
+  animation-timeline: scroll();
+}
+@keyframes scaleProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+```
+
+#### F6. scrollRevealStagger
+```tsx
+const StaggerOnScroll = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  return (
+    <motion.div ref={ref} initial="hidden" animate={isInView ? "visible" : "hidden"}
+      variants={{ visible: { transition: { staggerChildren: 0.08 } } }}>
+      {React.Children.map(children, child => (
+        <motion.div variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}>{child}</motion.div>
+      ))}
+    </motion.div>
+  );
+};
+```
+
+#### F7. horizontalScrollSnap
+```css
+.scroll-container {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-item { scroll-snap-align: start; flex: 0 0 80%; }
+```
+
+#### F8. scrollLinkedOpacity
+```css
+.scroll-fade {
+  animation: scrollFade linear;
+  animation-timeline: view();
+  animation-range: entry 0% entry 100%;
+}
+@keyframes scrollFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+```
+
+#### F9. scrollLinkedScale
+```css
+.scroll-scale {
+  animation: scrollScale linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+@keyframes scrollScale {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+```
+
+#### F10. scrollVideoPlayback
+```js
+const video = document.querySelector('video');
+window.addEventListener('scroll', () => {
+  const scrollFraction = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  video.currentTime = scrollFraction * video.duration;
+});
+```
+
+#### F11. pinnedScrollSection
+```css
+.pinned-section {
+  position: sticky; top: 0; height: 100vh;
+}
+.pinned-content {
+  animation: pinnedReveal linear;
+  animation-timeline: scroll(nearest);
+}
+```
+
+#### F12. scrollColorShift
+```css
+.color-section {
+  animation: colorShift linear;
+  animation-timeline: scroll();
+}
+@keyframes colorShift {
+  0% { background-color: #1e293b; color: white; }
+  50% { background-color: #f8fafc; color: #1e293b; }
+  100% { background-color: #1e293b; color: white; }
+}
+```
+
+#### F13. scrollTextHighlight
+```css
+.highlight-text {
+  background: linear-gradient(90deg, #fbbf24, #fbbf24) no-repeat;
+  background-size: 0% 100%;
+  animation: highlightDraw linear;
+  animation-timeline: view();
+  animation-range: entry 50% cover 50%;
+}
+@keyframes highlightDraw {
+  to { background-size: 100% 100%; }
+}
+```
+
+#### F14. scrollRotate
+```css
+.scroll-rotate {
+  animation: scrollRotate linear;
+  animation-timeline: scroll();
+}
+@keyframes scrollRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+```
+
+#### F15. scrollBlur
+```css
+.scroll-blur {
+  animation: scrollBlur linear;
+  animation-timeline: view();
+  animation-range: exit 0% exit 100%;
+}
+@keyframes scrollBlur {
+  from { filter: blur(0); opacity: 1; }
+  to { filter: blur(8px); opacity: 0; }
+}
+```
+
+#### F16. scrollCounter
+```js
+const animateCounter = (el, target) => {
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { el.textContent = target; clearInterval(timer); }
+        else { el.textContent = Math.round(current); }
+      }, 16);
+      observer.disconnect();
+    }
+  }, { threshold: 0.5 });
+  observer.observe(el);
+};
+```
+
+---
+
+---
+
+## Gesture Animations (12 recipes)
+
+
+#### H1. drag
+```tsx
+<motion.div drag dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
+  dragElastic={0.1} whileDrag={{ scale: 1.05, cursor: "grabbing" }}
+  transition={{ type: "spring", stiffness: 300, damping: 25 }} />
+```
+
+#### H2. swipeToDismiss
+```tsx
+const SwipeDismiss = ({ onDismiss, children }) => (
+  <motion.div drag="x" dragConstraints={{ left: 0, right: 0 }}
+    onDragEnd={(_, info) => { if (Math.abs(info.offset.x) > 100) onDismiss(); }}
+    animate={{ x: 0 }} exit={{ x: info.offset.x > 0 ? 300 : -300, opacity: 0 }}
+    transition={{ type: "spring", stiffness: 300, damping: 25 }}>
+    {children}
+  </motion.div>
+);
+```
+
+#### H3. swipeCard (Tinder-style)
+```tsx
+<motion.div drag="x" dragConstraints={{ left: 0, right: 0 }}
+  style={{ rotate, x }} whileDrag={{ scale: 1.02 }}
+  onDragEnd={(_, info) => {
+    if (info.offset.x > 150) handleLike();
+    else if (info.offset.x < -150) handlePass();
+  }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }} />
+```
+
+#### H4. pinchZoom
+```tsx
+const [scale, setScale] = useState(1);
+// Use touch events
+<div onTouchMove={handlePinch} style={{ transform: `scale(${scale})`, transition: "transform 100ms ease-out" }} />
+```
+
+#### H5. longPress
+```tsx
+<motion.button onTapStart={() => startTimer()} onTap={() => cancelTimer()} onTapCancel={() => cancelTimer()}
+  whileTap={{ scale: 0.98 }}>
+  <motion.div className="progress-ring"
+    animate={isHolding ? { pathLength: 1 } : { pathLength: 0 }}
+    transition={{ duration: 1.5 }} />
+</motion.button>
+```
+
+#### H6. pullToRefresh
+```tsx
+const PullToRefresh = ({ onRefresh, children }) => {
+  const y = useMotionValue(0);
+  const opacity = useTransform(y, [0, 80], [0, 1]);
+  return (
+    <motion.div drag="y" dragConstraints={{ top: 0, bottom: 0 }}
+      dragElastic={0.4} style={{ y }}
+      onDragEnd={(_, info) => { if (info.offset.y > 80) onRefresh(); }}>
+      <motion.div style={{ opacity }} className="refresh-indicator">
+        <Spinner />
+      </motion.div>
+      {children}
+    </motion.div>
+  );
+};
+```
+
+#### H7. dragToReorder
+```tsx
+<Reorder.Group axis="y" values={items} onReorder={setItems}>
+  {items.map(item => (
+    <Reorder.Item key={item.id} value={item}
+      whileDrag={{ scale: 1.03, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }} />
+  ))}
+</Reorder.Group>
+```
+
+#### H8. rubberBand (overscroll)
+```css
+.scrollable {
+  overscroll-behavior: contain;
+}
+/* Custom rubber band effect */
+.rubber-band { transition: transform 300ms var(--spring-bouncy); }
+.rubber-band.is-overpulled { transform: scaleY(1.03); }
+```
+
+#### H9. gestureRotate
+```tsx
+<motion.div drag dragMomentum={false}
+  onDrag={(_, info) => {
+    const angle = Math.atan2(info.point.y - center.y, info.point.x - center.x);
+    setRotation(angle * (180 / Math.PI));
+  }}
+  style={{ rotate: rotation }} />
+```
+
+#### H10. snapToGrid
+```tsx
+<motion.div drag dragSnapToOrigin={false}
+  dragConstraints={containerRef}
+  onDragEnd={(_, info) => {
+    const snappedX = Math.round(info.point.x / gridSize) * gridSize;
+    const snappedY = Math.round(info.point.y / gridSize) * gridSize;
+    // animate to snapped position
+  }}
+  transition={{ type: "spring", stiffness: 400, damping: 30 }} />
+```
+
+#### H11. swipeNavigation
+```tsx
+<motion.div drag="x" dragConstraints={{ left: 0, right: 0 }}
+  onDragEnd={(_, info) => {
+    if (info.velocity.x < -500) goNext();
+    else if (info.velocity.x > 500) goPrev();
+  }} />
+```
+
+#### H12. doubleTapZoom
+```tsx
+const [zoomed, setZoomed] = useState(false);
+<motion.div onDoubleClick={() => setZoomed(!zoomed)}
+  animate={{ scale: zoomed ? 2 : 1 }}
+  transition={{ type: "spring", stiffness: 300, damping: 25 }} />
+```
+
+---

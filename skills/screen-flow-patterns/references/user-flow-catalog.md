@@ -906,3 +906,216 @@
 6. **Error prevention over error handling** — Inline validation, constraints, and confirmations
 7. **Emotional design** — Celebrate completions, empathize with errors, reduce anxiety at payment
 8. **Accessibility throughout** — Every step must be keyboard navigable, screen reader compatible, and respect motion preferences
+
+---
+
+## User Flow Patterns (22 types)
+
+
+Each flow pattern includes: trigger, step sequence, decision nodes, happy path, error paths, edge cases, emotional arc, and key metrics.
+
+### 2.1 Onboarding Flow
+- **Trigger**: First app launch or account creation.
+- **Steps**: Welcome screen -> Value props (2-3 slides) -> Permission requests (notifications, location) -> Profile setup (avatar, name, preferences) -> First key action guidance -> Home/dashboard.
+- **Decision Nodes**: Skip onboarding? Grant permissions? Complete optional profile fields?
+- **Happy Path**: User completes all steps and performs first key action within session.
+- **Error Path**: User skips everything -> lands on empty dashboard -> churn risk.
+- **Edge Cases**: Returning user after reinstall, invited user with pre-filled data, enterprise SSO user.
+- **Emotional Arc**: Excited -> Curious -> Empowered -> Ready.
+- **Key Metrics**: Completion rate per step, time to first key action, Day 1 retention.
+
+### 2.2 Authentication Flow
+- **Trigger**: App launch (no session), session expiration, accessing protected resource.
+- **Steps**: Login screen -> Credential entry -> (Optional: MFA challenge) -> Session creation -> Redirect to intended destination.
+- **Decision Nodes**: New or returning user? Social or email login? MFA required? Biometric available?
+- **Happy Path**: Biometric/passkey -> instant access. Social login -> one tap -> access.
+- **Error Path**: Wrong password -> inline error -> forgot password sub-flow. Account locked -> support contact.
+- **Edge Cases**: Multiple social accounts, device change, expired magic link, rate-limited login attempts.
+- **Emotional Arc**: Friction -> Relief.
+- **Key Metrics**: Login success rate, time to authenticate, MFA drop-off rate, password reset rate.
+
+### 2.3 Purchase / Checkout Flow
+- **Trigger**: Add to cart, buy now, plan selection.
+- **Steps**: Cart review -> (Guest or login) -> Shipping address -> Shipping method -> Payment -> Order review -> Place order -> Confirmation.
+- **Decision Nodes**: Guest checkout? Saved address? Saved payment? Apply promo code? Express checkout (Apple Pay/Google Pay)?
+- **Happy Path**: Returning user with saved info -> review -> confirm -> 2 clicks.
+- **Error Path**: Payment declined -> retry with different method. Address validation failure -> manual correction. Inventory changed during checkout -> notification.
+- **Edge Cases**: Cart expiration, price change between cart and checkout, international shipping, tax calculation delays, 3D Secure challenge.
+- **Emotional Arc**: Intent -> Consideration -> Commitment -> Satisfaction.
+- **Key Metrics**: Cart abandonment rate, checkout completion rate, average steps to purchase, payment failure rate.
+
+### 2.4 Search -> Filter -> Select Flow
+- **Trigger**: User has a goal but needs to find the right item.
+- **Steps**: Tap search -> Enter query (with autocomplete) -> View results -> Apply filters -> Refine results -> Select item -> View detail.
+- **Decision Nodes**: Use suggested query? Apply filters? Change sort order? View in list or grid? Open quick view or full detail?
+- **Happy Path**: Type query -> first result matches -> tap -> done.
+- **Error Path**: No results -> suggest alternatives, check spelling, broaden filters. Too many results -> prompt filter usage.
+- **Edge Cases**: Zero-state search (trending, recent), voice search, search within category, saved searches.
+- **Emotional Arc**: Seeking -> Scanning -> Narrowing -> Found.
+- **Key Metrics**: Search-to-select rate, average queries per session, filter usage rate, zero-result rate.
+
+### 2.5 CRUD Flow (Create, Read, Update, Delete)
+- **Trigger**: User manages their own content or data.
+- **Steps**: List view (Read all) -> Create (form/wizard) -> Detail view (Read one) -> Edit (pre-filled form) -> Delete (confirmation dialog).
+- **Decision Nodes**: Create from scratch or from template? Edit inline or in modal? Confirm delete or undo?
+- **Happy Path**: Create -> save -> appears in list. Edit -> save -> updated in place. Delete -> confirm -> removed with undo toast.
+- **Error Path**: Validation failure on create/edit -> inline errors. Conflict on save (another user edited) -> merge or overwrite prompt. Delete of item with dependencies -> warning.
+- **Edge Cases**: Bulk operations (multi-select + bulk delete/edit), draft saving, optimistic updates, offline edits.
+- **Emotional Arc**: Productive -> Accomplished (create/edit). Cautious -> Relieved (delete).
+- **Key Metrics**: Create completion rate, edit frequency, delete rate, error rate per form.
+
+### 2.6 Invite / Share Flow
+- **Trigger**: User wants to add collaborators or share content.
+- **Steps**: Tap share/invite -> Select method (email, link, social) -> Configure permissions (view, edit, admin) -> Send/copy -> Confirmation.
+- **Decision Nodes**: Share with specific people or public link? What permission level? Add a message? Set expiration?
+- **Happy Path**: Tap share -> copy link -> paste in chat. Or: invite by email -> recipient gets email -> clicks link -> joins.
+- **Error Path**: Invalid email format -> inline error. Recipient already has access -> notification. Share limit reached -> upgrade prompt.
+- **Edge Cases**: Sharing with non-users (creates invite), revoking access, share link expiration, shared item deletion.
+- **Emotional Arc**: Collaborative -> Generous -> Connected.
+- **Key Metrics**: Share rate, invite acceptance rate, viral coefficient, sharing method distribution.
+
+### 2.7 Settings Management Flow
+- **Trigger**: User needs to change a preference or configuration.
+- **Steps**: Navigate to settings -> Find relevant setting (scan or search) -> Change value -> Confirm/save -> See effect.
+- **Decision Nodes**: Which category? Immediate apply or save button? Confirm dangerous changes?
+- **Happy Path**: Navigate -> toggle -> instant effect. No save button needed.
+- **Error Path**: Invalid input -> validation error. Setting requires verification (e.g., email change -> confirm email).
+- **Edge Cases**: Settings sync across devices, admin vs. user settings, setting dependencies (changing one affects another), reset to defaults.
+- **Emotional Arc**: Purposeful -> Satisfied.
+- **Key Metrics**: Settings page visit rate, most-changed settings, support tickets related to settings.
+
+### 2.8 Content Creation Flow
+- **Trigger**: User wants to create new content (post, document, image, etc.).
+- **Steps**: Tap create (+) -> Select content type -> Editor/composer -> Add content (text, media, formatting) -> Preview (optional) -> Publish/save -> Confirmation + share prompt.
+- **Decision Nodes**: Which content type? Draft or publish immediately? Add tags/categories? Set visibility? Schedule?
+- **Happy Path**: Tap + -> type text -> publish -> live instantly.
+- **Error Path**: Unsaved changes on exit -> save draft prompt. Upload failure -> retry. Content policy violation -> warning.
+- **Edge Cases**: Long-form content with auto-save, collaborative editing, version history, content scheduling, cross-posting.
+- **Emotional Arc**: Creative -> Expressive -> Proud -> Social (sharing).
+- **Key Metrics**: Content creation rate, publish rate (vs. draft), time to publish, media attachment rate.
+
+### 2.9 Communication Flow
+- **Trigger**: User wants to message or contact another user.
+- **Steps**: Find contact (search, contacts list, profile page) -> Open/create conversation -> Compose message -> Send -> Await response.
+- **Decision Nodes**: New or existing conversation? Text, voice, or video? Add attachments? Mark as urgent?
+- **Happy Path**: Tap contact -> type -> send -> delivered -> read -> reply.
+- **Error Path**: Network failure -> message queued with retry. User blocked -> notification. Rate limit -> cool-down.
+- **Edge Cases**: Offline messaging, message editing/deletion, reactions, threads/replies, group conversations, message forwarding.
+- **Emotional Arc**: Intent -> Connected -> Awaiting -> Satisfied.
+- **Key Metrics**: Messages per user per day, response time, conversation start rate, media sharing rate.
+
+### 2.10 Notification -> Action Flow
+- **Trigger**: System event generates a notification.
+- **Steps**: Event occurs -> Notification created -> Delivered (push/in-app/email) -> User sees notification -> Taps -> Navigated to relevant screen -> Takes action.
+- **Decision Nodes**: Which channel (push, in-app, email)? Tap or dismiss? Act now or later?
+- **Happy Path**: Push notification -> tap -> relevant screen -> action completed.
+- **Error Path**: Notification for deleted content -> graceful error. Stale notification -> already handled state. Notification overload -> user mutes.
+- **Edge Cases**: Notification grouping/batching, do-not-disturb respect, cross-device deduplication, notification preferences per type.
+- **Emotional Arc**: Alerted -> Curious -> Resolved.
+- **Key Metrics**: Notification tap rate, action completion rate post-tap, opt-out rate, notification-to-engagement time.
+
+### 2.11 Upgrade / Upsell Flow
+- **Trigger**: User hits a paywall, usage limit, or encounters premium feature.
+- **Steps**: Feature gate encountered -> Value proposition for upgrade -> Plan comparison -> Plan selection -> Payment -> Confirmation -> Feature unlocked.
+- **Decision Nodes**: Which plan? Monthly or annual? Use existing payment method? Apply coupon?
+- **Happy Path**: Hit limit -> see value -> upgrade -> instant access.
+- **Error Path**: Payment failure -> retry. Price shock -> abandon -> follow-up email.
+- **Edge Cases**: Mid-cycle upgrade proration, team/org billing, downgrade from upgrade page, free trial extension.
+- **Emotional Arc**: Frustrated (limit) -> Intrigued (value) -> Committed (purchase) -> Empowered (access).
+- **Key Metrics**: Upgrade conversion rate, paywall encounter-to-upgrade rate, average time from signup to upgrade, plan distribution.
+
+### 2.12 Cancellation / Churn Flow
+- **Trigger**: User initiates cancellation or downgrade.
+- **Steps**: Navigate to subscription settings -> Tap cancel -> Retention offer (pause, downgrade, discount) -> Cancellation reason survey -> Confirm cancellation -> Confirmation + what-you-lose summary -> Follow-up email.
+- **Decision Nodes**: Accept retention offer? Provide feedback reason? Confirm despite warning?
+- **Happy Path (for business)**: User accepts pause or downgrade instead of canceling.
+- **Error Path**: User frustrated by dark patterns -> leaves negative review. Can't find cancel button -> support complaint.
+- **Edge Cases**: Cancel with time remaining, cancel with annual commitment, team owner canceling for entire team, data export before cancellation.
+- **Emotional Arc**: Frustrated -> Heard (survey) -> Resolved.
+- **Key Metrics**: Cancellation rate, save rate (retention offer acceptance), reason distribution, reactivation rate.
+
+### 2.13 Error Recovery Flow
+- **Trigger**: Something went wrong during a user action.
+- **Steps**: Error occurs -> Error message displayed (what happened + what to do) -> User decides recovery path -> Retry / alternative action / contact support -> Resolution.
+- **Decision Nodes**: Retry same action? Try alternative? Contact support? Abandon task?
+- **Happy Path**: Error -> retry -> success.
+- **Error Path**: Persistent error -> escalate to support. Data loss -> apologetic recovery with compensation offer.
+- **Edge Cases**: Partial completion (some items saved, some failed), cascading errors, offline errors with queue.
+- **Emotional Arc**: Confused -> Informed -> Resolving -> Recovered.
+- **Key Metrics**: Error rate, recovery rate, support escalation rate, abandon rate after error.
+
+### 2.14 Help / Support Flow
+- **Trigger**: User is confused, stuck, or has a problem they cannot solve alone.
+- **Steps**: Tap help/support -> Search knowledge base -> Browse FAQs -> (If unresolved) Start conversation (chatbot -> human) -> Describe issue -> Resolution -> Satisfaction survey.
+- **Decision Nodes**: Self-serve or contact support? Chat, email, or phone? Satisfied with bot answer?
+- **Happy Path**: Search help -> find article -> problem solved.
+- **Error Path**: No relevant article -> chatbot fails -> long wait for human -> frustrated.
+- **Edge Cases**: Urgent issues (account locked), pre-authenticated support (no re-login), support in different languages, support during off-hours.
+- **Emotional Arc**: Stuck -> Seeking -> Helped -> Relieved.
+- **Key Metrics**: Self-serve resolution rate, contact rate, first response time, CSAT score, ticket volume.
+
+### 2.15 Data Import / Export Flow
+- **Trigger**: User wants to bring data in from another system or export their data.
+- **Steps**: Select import/export -> Choose format (CSV, JSON, API) -> Map fields (import) or select data (export) -> Preview -> Confirm -> Processing -> Completion notification.
+- **Decision Nodes**: Which format? Map fields manually or auto-detect? Include all data or select?
+- **Happy Path**: Upload CSV -> auto-detect fields -> preview looks correct -> import -> done.
+- **Error Path**: Format error -> validation report with row-level errors. Partial import -> summary of successes and failures.
+- **Key Metrics**: Import completion rate, error rate per import, export frequency.
+
+### 2.16 Review / Rating Flow
+- **Trigger**: User completes a purchase, finishes a course, ends a trip.
+- **Steps**: Prompt to review (timing matters) -> Star rating -> Written review (optional) -> Photo upload (optional) -> Submit -> Thank you.
+- **Decision Nodes**: Rate now or later? Add text? Add photos? Make review public?
+- **Happy Path**: Prompt -> 5 stars -> short text -> submit.
+- **Error Path**: Dismiss prompt -> follow-up prompt later (max 2 attempts). Inappropriate content -> moderation flag.
+- **Key Metrics**: Review completion rate, average rating, text review rate, photo attachment rate.
+
+### 2.17 Onboarding Checklist / Progressive Activation Flow
+- **Trigger**: User has signed up but has not completed all activation milestones.
+- **Steps**: Dashboard shows checklist -> User completes each item -> Progress updates -> All items complete -> Celebration + badge/reward.
+- **Decision Nodes**: Which item to tackle next? Skip optional items?
+- **Happy Path**: Complete all items in first session -> fully activated.
+- **Error Path**: Abandon checklist -> incomplete activation -> lower retention.
+- **Key Metrics**: Checklist completion rate per item, time to full activation, correlation between activation and retention.
+
+### 2.18 Collaborative Editing Flow
+- **Trigger**: Multiple users editing the same document or resource simultaneously.
+- **Steps**: Open shared document -> See other cursors/presence -> Edit concurrently -> Changes sync in real-time -> Conflict resolution (if any) -> Version saved.
+- **Decision Nodes**: Accept incoming change or keep yours? Resolve conflict manually?
+- **Happy Path**: Multiple users edit different sections -> all changes merge cleanly.
+- **Error Path**: Edit conflict -> conflict marker shown -> manual merge. Connection lost -> offline edits queued.
+- **Key Metrics**: Concurrent editing session rate, conflict rate, sync latency.
+
+### 2.19 Subscription / Renewal Flow
+- **Trigger**: Subscription approaching renewal or payment method expiring.
+- **Steps**: Reminder notification (email/in-app) -> Review subscription details -> Update payment if needed -> Confirm renewal -> Receipt.
+- **Decision Nodes**: Auto-renew or manual confirm? Update payment method? Change plan at renewal?
+- **Happy Path**: Auto-renew with valid payment -> receipt email -> no friction.
+- **Error Path**: Payment method expired -> update prompt -> retry billing.
+- **Key Metrics**: Renewal rate, voluntary vs involuntary churn, payment update rate.
+
+### 2.20 Referral Flow
+- **Trigger**: User wants to refer friends for mutual benefit.
+- **Steps**: Navigate to referral page -> See reward structure -> Copy referral link or invite by email -> Friend signs up via link -> Both receive reward -> Notification of reward.
+- **Decision Nodes**: Share via link, email, or social? Track status of referrals?
+- **Happy Path**: Share link -> friend signs up -> both get credit -> repeat.
+- **Error Path**: Friend already has account -> no reward. Referral abuse detected -> blocked.
+- **Key Metrics**: Referral send rate, referral conversion rate, reward claim rate, viral coefficient.
+
+### 2.21 Account Deletion Flow
+- **Trigger**: User wants to permanently delete their account and data.
+- **Steps**: Settings -> Account -> Delete account -> Data export offer -> Consequences summary -> Confirm with password/verification -> Cooling-off period notice -> Account scheduled for deletion -> Confirmation email.
+- **Decision Nodes**: Export data first? Understand consequences? Confirm identity?
+- **Happy Path**: User understands consequences -> exports data -> confirms -> account deleted after cooling-off.
+- **Error Path**: User changes mind during cooling-off -> reactivate. User cannot verify identity -> support contact.
+- **Key Metrics**: Deletion request rate, cooling-off reactivation rate, data export rate before deletion.
+
+### 2.22 Multi-Device Handoff Flow
+- **Trigger**: User switches between devices while performing a task.
+- **Steps**: Start task on device A -> State synced to cloud -> Open same app on device B -> Handoff prompt or automatic resume -> Continue task.
+- **Decision Nodes**: Accept handoff or start fresh? Which device is primary?
+- **Happy Path**: Writing email on phone -> sit at desk -> laptop shows "Continue on Mac" -> seamless.
+- **Error Path**: Sync conflict -> latest-edit-wins or manual merge. Offline device -> sync on reconnect.
+- **Key Metrics**: Handoff usage rate, cross-device session rate, sync failure rate.
+
+---

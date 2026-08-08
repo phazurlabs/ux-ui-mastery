@@ -82,7 +82,7 @@ For **shipping images well** — width- and DPR-based `srcset`, art direction wi
 ThumbHash and dominant-color placeholders: read
 `references/responsive-image-recipes.md`.
 
-For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/supplementary-patterns.md`.
+For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/media-supplementary.md`.
 
 ## Cross-References
 

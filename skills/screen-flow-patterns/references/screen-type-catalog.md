@@ -1443,3 +1443,294 @@
 | Onboarding | Full-screen steps | Progress + benefits + skip | Required vs. optional steps |
 | Pricing | Horizontal cards | Plan comparison + toggle | Current plan indication |
 | Admin Table | Full-width table | Sort + filter + bulk actions | Mobile responsiveness |
+
+---
+
+## Screen Type Taxonomy (32 types)
+
+
+Each screen type includes: purpose, key components, canonical layout pattern, common user flows in and out, information density level, and platform variations.
+
+### 1.1 Landing Page
+- **Purpose**: Convert visitors into users or customers. First impression. Single call to action.
+- **Key Components**: Hero section (headline + subhead + CTA), social proof strip, feature grid (3-4 cards), testimonials carousel, pricing teaser, final CTA block, footer.
+- **Layout Pattern**: Single-column stack. Hero is full-viewport or near-full. Content alternates left-right sections. Sticky CTA on mobile.
+- **Flows In**: Direct URL, ad click, search engine result, social media link, email campaign.
+- **Flows Out**: Sign-up, pricing page, product tour, demo request, app store redirect.
+- **Density**: Low. Generous whitespace. One idea per viewport fold.
+- **Platform Notes**: Web-primary. Mobile landing pages must load under 2.5s (Core Web Vitals). iOS/Android deep links should route to equivalent native onboarding if app installed.
+
+### 1.2 Home / Dashboard
+- **Purpose**: Orient the user. Show personalized content, key metrics, recent activity, and shortcuts to primary actions.
+- **Key Components**: Greeting/header, key metric cards (KPIs), recent activity feed, quick action buttons, navigation to all major sections, notification badge.
+- **Layout Pattern**: Grid of cards on desktop (2-3 columns). Single-column scrolling feed on mobile. Optional sidebar for navigation on desktop. Top-level tabs or segmented control for content categories.
+- **Flows In**: Login, app launch, back from any section, notification tap, deep link.
+- **Flows Out**: Any primary feature, settings, notifications, profile, search.
+- **Density**: Medium-High. Dashboards are information-dense by nature but must prioritize hierarchy.
+- **Platform Notes**: iOS uses large title collapsing on scroll. Android uses top app bar with optional bottom nav. Web dashboards commonly use persistent left sidebar.
+
+### 1.3 List / Feed
+- **Purpose**: Browse, scan, and select from a collection of items. Supports filtering, sorting, and pagination.
+- **Key Components**: List header with count, sort/filter controls, list items (thumbnail + title + metadata + action), pull-to-refresh, infinite scroll or pagination, empty state, skeleton loading.
+- **Layout Pattern**: Vertical list (mobile), grid or table (desktop). Filter panel as sidebar (desktop) or bottom sheet (mobile). Sticky header with active filter chips.
+- **Flows In**: Navigation tab, search results, dashboard shortcut, back from detail.
+- **Flows Out**: Detail/show page, create new item, filter/sort modal, bulk actions.
+- **Density**: High. Each list item is a compressed information unit. Scanability is paramount.
+- **Platform Notes**: iOS uses grouped/inset list style with swipe actions. Android uses RecyclerView patterns. Web supports both list and grid toggle views.
+
+### 1.4 Detail / Show
+- **Purpose**: Present complete information about a single item. Allow primary actions on that item.
+- **Key Components**: Hero image/media, title + metadata, description/body content, action buttons (primary + secondary), related items, share/bookmark, back navigation.
+- **Layout Pattern**: Top media area, scrolling content below. Sticky bottom action bar on mobile. Side panel for metadata on desktop. Tabs for sections if content is deep.
+- **Flows In**: List item tap, search result, deep link, notification, related item.
+- **Flows Out**: Back to list, edit, delete, share, related detail, external link.
+- **Density**: Medium. Balance completeness with scannability. Progressive disclosure for secondary info.
+- **Platform Notes**: iOS uses large title with hero image parallax. Android uses collapsing toolbar layout. Web uses breadcrumb trail for context.
+
+### 1.5 Profile
+- **Purpose**: Display user identity, activity history, and settings access. Can be own profile or another user's.
+- **Key Components**: Avatar, display name, bio/tagline, stats row (followers, posts, etc.), action buttons (edit profile / follow / message), content tabs (posts, media, likes), settings gear icon.
+- **Layout Pattern**: Header card with avatar and stats, horizontal tabs below, scrolling content per tab. Sticky header on scroll (avatar shrinks).
+- **Flows In**: Navigation tab, user mention tap, search result, follower list.
+- **Flows Out**: Edit profile, settings, follower/following list, content detail, message.
+- **Density**: Medium. Header is compact; tab content varies.
+- **Platform Notes**: All platforms follow the header-tabs-content pattern. iOS uses segmented control. Android uses TabLayout. Web uses horizontal tab bar.
+
+### 1.6 Settings
+- **Purpose**: Let users configure their experience. Account, preferences, notifications, privacy, about.
+- **Key Components**: Grouped sections with headers, toggle switches, drill-down rows (chevron indicator), destructive actions at bottom (delete account, log out), version info footer.
+- **Layout Pattern**: Grouped table/list view. Single column. Each row is a key-value pair or toggle. Drill-down for complex settings. Search bar at top for large settings surfaces.
+- **Flows In**: Profile page, gear icon, navigation menu, system prompt (e.g., notification permission).
+- **Flows Out**: Sub-setting pages, external links (privacy policy, terms), logout, delete account confirmation.
+- **Density**: Low-Medium. Clean rows. No clutter.
+- **Platform Notes**: iOS uses UITableView grouped style. Android uses PreferenceScreen. Web uses tabbed settings panels or vertical nav.
+
+### 1.7 Search / Results
+- **Purpose**: Help users find specific content. Includes search input, suggestions, and results display.
+- **Key Components**: Search bar (prominent), recent searches, trending/suggested searches, results list with relevance ranking, filter chips, no-results state, voice search button.
+- **Layout Pattern**: Three states: empty (recent + trending), typing (autocomplete suggestions), results (filtered list/grid). Filters as horizontal chips or sidebar.
+- **Flows In**: Search icon tap, spotlight/universal search, command palette (desktop).
+- **Flows Out**: Detail page, filter refinement, clear and retry, back to previous screen.
+- **Density**: Variable. Empty state is low. Results state is high.
+- **Platform Notes**: iOS uses UISearchController with scope bar. Android uses SearchView in toolbar. Web uses dedicated search page or inline expandable search.
+
+### 1.8 Checkout
+- **Purpose**: Complete a purchase transaction. Minimize friction while collecting necessary information.
+- **Key Components**: Order summary (items, quantities, prices), shipping address form, payment method selector, promo code input, tax/fee breakdown, place order CTA, trust signals (security badges, return policy).
+- **Layout Pattern**: Multi-step wizard (3-5 steps) with progress indicator, or single-page with accordion sections. Order summary sidebar (desktop) or collapsible top section (mobile). Sticky CTA button.
+- **Flows In**: Cart, buy-now button, pricing page selection.
+- **Flows Out**: Confirmation/success page, back to cart, payment failure error, abandon (exit intent modal).
+- **Density**: Medium. Show only what is needed per step. Progressive disclosure.
+- **Platform Notes**: Web uses full-page checkout. iOS/Android use Apple Pay / Google Pay for express checkout. Native apps should support biometric payment confirmation.
+
+### 1.9 Onboarding
+- **Purpose**: Introduce new users to the product. Set up their account. Establish first value.
+- **Key Components**: Welcome screen, value proposition slides (3-5 max), permission requests (notifications, location), account setup (avatar, preferences), progress dots, skip button, get-started CTA.
+- **Layout Pattern**: Horizontal paged carousel with dots indicator. Full-screen each step. Final step transitions to home/dashboard. Optional vertical scrolling variant for complex setup.
+- **Flows In**: First app launch, sign-up completion, invitation link.
+- **Flows Out**: Home/dashboard, first key action (create first item), tutorial overlay.
+- **Density**: Very Low. One concept per screen. Minimal text.
+- **Platform Notes**: iOS uses UIPageViewController. Android uses ViewPager2. Web uses stepped modal or full-page carousel. All platforms: respect skip — onboarding should never trap users.
+
+### 1.10 Login
+- **Purpose**: Authenticate returning users. Fast re-entry to the product.
+- **Key Components**: Email/username field, password field (with show/hide toggle), remember me checkbox, forgot password link, submit button, social login buttons (Google, Apple, GitHub), sign-up link, biometric login prompt.
+- **Layout Pattern**: Centered card on desktop. Full-screen form on mobile. Logo at top. Fields stacked vertically. Social logins separated by "or" divider. Error messages inline.
+- **Flows In**: App launch (session expired), logout, deep link to protected content, sign-up redirect.
+- **Flows Out**: Home/dashboard, MFA challenge, forgot password, sign-up page.
+- **Density**: Very Low. Single purpose. No distractions.
+- **Platform Notes**: iOS supports Sign in with Apple (required if social login offered), passkeys, Face ID/Touch ID. Android supports Google One Tap, fingerprint. Web supports WebAuthn/passkeys.
+
+### 1.11 Sign-up / Registration
+- **Purpose**: Create a new account. Collect minimum viable information to activate the user.
+- **Key Components**: Name field, email field, password field (with strength indicator), terms acceptance checkbox, create account CTA, social sign-up buttons, login redirect link.
+- **Layout Pattern**: Similar to login. Centered card or full-screen. Minimal fields (email + password minimum). Social options prominent. Progressive profiling defers non-essential data to post-signup.
+- **Flows In**: Landing page CTA, login page redirect, invitation link, pricing page selection.
+- **Flows Out**: Email verification, onboarding, home/dashboard, plan selection.
+- **Density**: Very Low. Reduce fields to reduce abandonment.
+- **Platform Notes**: Same as login. Sign in with Apple required on iOS if any social option exists. Password autofill support on all platforms.
+
+### 1.12 Forgot Password / Reset
+- **Purpose**: Recover account access. Verify identity and set new password.
+- **Key Components**: Email input, submit button, success message (check your email), reset link/code entry, new password fields, confirmation.
+- **Layout Pattern**: Two-step: request (email form) then reset (new password form). Simple centered layout. Back to login link prominent.
+- **Flows In**: Login page "forgot password" link.
+- **Flows Out**: Login page (after reset), email app (to find reset link).
+- **Density**: Minimal. Single input per step.
+
+### 1.13 Error 404 (Not Found)
+- **Purpose**: Inform user the requested page does not exist. Provide escape routes.
+- **Key Components**: Error code/title, friendly explanation, illustration/graphic, search bar, link to home, link to sitemap or popular pages, report broken link option.
+- **Layout Pattern**: Centered content. Single column. Illustration above text. 2-3 action links below.
+- **Flows In**: Broken link, mistyped URL, deleted content, expired link.
+- **Flows Out**: Home page, search, back button, suggested pages.
+- **Density**: Minimal. The page itself is the message.
+
+### 1.14 Error 500 (Server Error)
+- **Purpose**: Inform user of a system failure. Reassure that the issue is being addressed.
+- **Key Components**: Error title, apologetic message, illustration, retry button, status page link, support contact, auto-refresh timer (optional).
+- **Layout Pattern**: Centered. Similar to 404 but with retry emphasis.
+- **Flows In**: Any server failure during navigation or action.
+- **Flows Out**: Retry (same page), home page, status page, support.
+- **Density**: Minimal. Empathetic tone.
+
+### 1.15 Maintenance Page
+- **Purpose**: Inform user the service is temporarily down for maintenance. Set expectations for return.
+- **Key Components**: Maintenance title, estimated return time, progress indicator (optional), subscribe for updates option, social media links.
+- **Layout Pattern**: Centered. Single purpose. Often a static HTML page served from CDN.
+- **Flows In**: Any URL during maintenance window.
+- **Flows Out**: Auto-redirect to home when maintenance complete, subscribe confirmation.
+- **Density**: Minimal.
+
+### 1.16 Empty State
+- **Purpose**: Guide user when a screen has no content yet. Motivate first action.
+- **Key Components**: Illustration, headline, explanatory text, primary CTA (create first item / import data / invite team), optional secondary CTA.
+- **Layout Pattern**: Centered vertically and horizontally in the content area. Illustration above text. CTA below. Should not look like a broken page.
+- **Flows In**: First use of any list/collection/feed screen, after deleting all items, after clearing filters with no results.
+- **Flows Out**: Create flow, import flow, tutorial, adjust filters.
+- **Density**: Very Low. The emptiness is intentional.
+
+### 1.17 Loading Screen / Splash
+- **Purpose**: Bridge the gap while content loads. Maintain perceived performance.
+- **Key Components**: Brand logo, progress indicator (determinate or indeterminate), skeleton screen, shimmer placeholders, loading tips (optional).
+- **Layout Pattern**: Full-screen splash for app launch. Inline skeleton screens for content areas. Progress bar at top for page-level loading.
+- **Flows In**: App launch, heavy content fetch, file upload/processing.
+- **Flows Out**: Loaded content screen. Error screen if load fails.
+- **Density**: None. Pure transition.
+- **Platform Notes**: iOS requires a launch storyboard matching initial UI. Android uses splash screen API (Android 12+). Web uses skeleton screens (avoid full-page spinners).
+
+### 1.18 Notifications Center
+- **Purpose**: Aggregate all notifications. Allow users to review, act on, and manage alerts.
+- **Key Components**: Notification list (grouped by time: today, earlier, this week), read/unread indicators, action buttons per notification, mark all read, notification preferences link, empty state.
+- **Layout Pattern**: Full-screen list on mobile. Dropdown panel on desktop. Grouped by time. Swipe to dismiss on mobile. Click to navigate to relevant screen.
+- **Flows In**: Bell icon tap, push notification tap, badge indicator.
+- **Flows Out**: Relevant detail screen per notification, notification settings, mark as read.
+- **Density**: Medium-High. Dense list but clear hierarchy.
+
+### 1.19 Chat / Messaging
+- **Purpose**: Real-time or async communication between users. Support text, media, and reactions.
+- **Key Components**: Conversation list, message thread (bubbles), input bar (text field + send + attachments), typing indicator, read receipts, message status (sent/delivered/read), user presence indicator.
+- **Layout Pattern**: Split view on desktop (list left, thread right). Full-screen thread on mobile with back to list. Messages anchored to bottom. Input bar sticky at bottom. Auto-scroll to newest.
+- **Flows In**: Contact list, notification tap, user profile message button, deep link.
+- **Flows Out**: User profile, shared content detail, file preview, call initiation.
+- **Density**: High in thread. Medium in list.
+- **Platform Notes**: iOS uses MessageKit patterns. Android uses conversation notifications. Web uses WebSocket for real-time updates.
+
+### 1.20 Calendar
+- **Purpose**: Display and manage time-based content. Events, schedules, availability.
+- **Key Components**: Month/week/day view toggle, date grid, event indicators (dots or blocks), event detail popup, create event button, today button, navigation arrows (prev/next month).
+- **Layout Pattern**: Grid-based for month view. Timeline (vertical hours) for day/week view. Side panel for event details on desktop. Bottom sheet or full screen for event detail on mobile.
+- **Flows In**: Navigation tab, notification about upcoming event, deep link to specific date.
+- **Flows Out**: Event detail, create event, edit event, related contact/project.
+- **Density**: High. Calendars are inherently data-dense.
+- **Platform Notes**: iOS uses EventKit integration. Android uses CalendarProvider. Web implementations vary (FullCalendar, custom).
+
+### 1.21 Map View
+- **Purpose**: Display location-based content. Search, browse, and interact with geospatial data.
+- **Key Components**: Map canvas, location pins/markers, search bar overlay, current location button, zoom controls, bottom sheet with list view, cluster indicators, filter chips.
+- **Layout Pattern**: Full-screen map with overlaid controls. Bottom sheet pulls up for list/detail. Search bar at top with filter chips below. Floating action buttons for current location and zoom.
+- **Flows In**: Navigation tab, location-based search, address tap, directions request.
+- **Flows Out**: Location detail, directions/navigation, list view toggle, filter adjustment.
+- **Density**: Variable. Map itself is high density. Overlaid UI should be minimal.
+- **Platform Notes**: iOS uses MapKit or Google Maps SDK. Android uses Google Maps SDK. Web uses Mapbox GL, Google Maps JS, or Leaflet.
+
+### 1.22 Analytics / Reporting
+- **Purpose**: Visualize data trends, KPIs, and business metrics. Support decision-making.
+- **Key Components**: Date range picker, KPI summary cards, charts (line, bar, pie, area), data tables, export button, comparison toggles (vs previous period), filter controls.
+- **Layout Pattern**: Top: date range + filters. Below: KPI cards row. Below: charts in grid (2-column desktop, stacked mobile). Below: detailed data table. Sticky header with controls.
+- **Flows In**: Dashboard shortcut, navigation menu, report notification, scheduled report link.
+- **Flows Out**: Drill-down detail, export/download, share report, configure dashboard.
+- **Density**: Very High. Analytics screens are the densest screen type. Requires excellent visual hierarchy to avoid overwhelm.
+
+### 1.23 File Manager
+- **Purpose**: Browse, organize, and manage files and folders. Upload, download, move, share.
+- **Key Components**: Folder tree (sidebar), file grid/list toggle, breadcrumb path, upload button, search, sort/filter, file preview, multi-select + bulk actions, context menu (right-click).
+- **Layout Pattern**: Three-panel on desktop (tree + list + preview). Single list on mobile with drill-down navigation. Toolbar at top with view controls. Drag-and-drop support.
+- **Flows In**: Navigation menu, file link, upload completion notification, share link.
+- **Flows Out**: File preview/editor, share dialog, download, move/copy dialog.
+- **Density**: High. Many items, nested structure.
+
+### 1.24 Editor / Canvas
+- **Purpose**: Create or edit content. Text editor, image editor, diagram tool, code editor.
+- **Key Components**: Canvas/workspace area (maximized), toolbar (contextual tools), properties panel (sidebar), layers panel, zoom controls, undo/redo, save indicator, collaboration cursors.
+- **Layout Pattern**: Full-screen workspace. Toolbar at top or left. Properties panel on right (collapsible). Layers/assets panel on left (collapsible). Minimal chrome to maximize canvas.
+- **Flows In**: Create new, edit existing, template selection, duplicate item.
+- **Flows Out**: Save and exit, preview, publish, share, export.
+- **Density**: Variable. Toolbar and panels are dense. Canvas is user-controlled.
+- **Platform Notes**: Web-primary for complex editors (Figma, Notion, VS Code). Native apps for performance-sensitive editing (Photoshop, Final Cut). Touch-optimized toolbars for iPad.
+
+### 1.25 Wizard / Multi-Step Form
+- **Purpose**: Break a complex task into manageable sequential steps. Reduce cognitive load.
+- **Key Components**: Step progress indicator (stepper), step title, form fields for current step, next/back buttons, save draft option, validation per step, summary/review step before submission.
+- **Layout Pattern**: Progress indicator at top. One step visible at a time. Navigation buttons at bottom (back left, next right). Summary step shows all entries for review. Confirmation after final submit.
+- **Flows In**: CTA to start complex process (apply, configure, onboard).
+- **Flows Out**: Completion/success page, back to dashboard, save as draft.
+- **Density**: Low per step. The whole point is to chunk information.
+
+### 1.26 Comparison
+- **Purpose**: Help users evaluate options side by side. Feature comparison, plan comparison.
+- **Key Components**: Column headers (options being compared), feature rows, check/cross indicators, highlight for recommended option, sticky column headers, add/remove columns.
+- **Layout Pattern**: Table/grid with horizontal scroll on mobile. Sticky first column (feature names). 2-4 columns typical. Highlight recommended with badge or color. Collapse categories with expand/collapse.
+- **Flows In**: Pricing page, product listing, category browse.
+- **Flows Out**: Selection/purchase, detail page per option, customize option.
+- **Density**: High. Dense by necessity.
+- **Platform Notes**: Horizontal scroll with snap points on mobile. Full table on desktop. Consider card-based toggle view for mobile as alternative.
+
+### 1.27 Pricing
+- **Purpose**: Present plans and pricing. Drive conversion to optimal plan.
+- **Key Components**: Plan cards (3-4 plans), plan name + price + billing toggle (monthly/annual), feature list per plan, CTA per plan, recommended badge, FAQ section, enterprise contact option.
+- **Layout Pattern**: Horizontal card layout (3-4 columns desktop, horizontal scroll or stacked on mobile). Monthly/annual toggle at top. Recommended plan visually elevated (larger, bordered, badged). FAQ below.
+- **Flows In**: Landing page, upgrade prompt, navigation menu, trial expiration.
+- **Flows Out**: Checkout/payment, plan comparison detail, contact sales, FAQ anchor links.
+- **Density**: Medium. Clear pricing must not feel cluttered.
+
+### 1.28 About / Team
+- **Purpose**: Build trust and human connection. Company story, mission, team members.
+- **Key Components**: Company narrative section, mission/values, team member grid (photo + name + role + bio), office photos, metrics (customers served, years in business), investor logos, career link.
+- **Layout Pattern**: Long-scroll single page. Narrative sections with full-width imagery. Team grid (3-4 columns). Alternating content blocks.
+- **Flows In**: Footer link, navigation menu, about link from landing page.
+- **Flows Out**: Careers page, contact page, specific team member profile, social links.
+- **Density**: Low-Medium. Storytelling pace.
+
+### 1.29 Contact
+- **Purpose**: Provide communication channels. Collect inquiries.
+- **Key Components**: Contact form (name, email, subject, message), office address + map, phone number, email address, social media links, business hours, FAQ link.
+- **Layout Pattern**: Two-column on desktop (form left, contact info right). Stacked on mobile (form then info). Map embed optional.
+- **Flows In**: Footer link, navigation, support redirect, about page.
+- **Flows Out**: Form submission confirmation, email client open, map/directions app, FAQ page.
+- **Density**: Low.
+
+### 1.30 Blog / Article
+- **Purpose**: Present long-form content. Readability and engagement.
+- **Key Components**: Title, author byline + avatar + date, hero image, body content (rich text with headings, images, code blocks, quotes), table of contents (sidebar), share buttons, related articles, comments section, reading time estimate, progress bar.
+- **Layout Pattern**: Single-column centered content (max-width 680-720px for readability). Optional sticky TOC sidebar on desktop. Sticky share buttons. Related articles grid at bottom.
+- **Flows In**: Blog listing, search result, social media link, newsletter link, internal link.
+- **Flows Out**: Related articles, author profile, category listing, share to social, comment, CTA within article.
+- **Density**: Medium. Text-heavy but well-spaced.
+- **Platform Notes**: Web uses semantic HTML (article, header, time). Reader mode support matters. RSS feed availability. AMP optional.
+
+### 1.31 Product Gallery
+- **Purpose**: Showcase products visually. Enable browsing, filtering, and selection.
+- **Key Components**: Product cards (image + title + price + rating), grid layout, filter sidebar/bar, sort dropdown, pagination or infinite scroll, quick view modal, wishlist toggle, compare toggle.
+- **Layout Pattern**: Grid (2-4 columns desktop, 2 columns mobile). Filter sidebar on desktop, filter icon + bottom sheet on mobile. Sticky sort/filter bar. Cards have consistent aspect ratio images.
+- **Flows In**: Category navigation, search results, homepage featured section, ad click.
+- **Flows Out**: Product detail page, quick view modal, add to cart, wishlist, comparison.
+- **Density**: High. Visual scanning of many items.
+
+### 1.32 Booking / Reservation
+- **Purpose**: Schedule appointments, reserve resources, book services. Date/time selection with availability.
+- **Key Components**: Service/resource selector, date picker (calendar), time slot grid, duration selector, provider/staff selector (optional), booking summary, confirm button, cancellation policy.
+- **Layout Pattern**: Step-by-step (select service, select date/time, confirm details, payment). Calendar with available dates highlighted. Time slots as selectable chips. Summary panel on right (desktop) or bottom sheet (mobile).
+- **Flows In**: Service page, provider profile, CTA from landing page, rebooking from confirmation.
+- **Flows Out**: Confirmation/success page, calendar add prompt, payment, cancellation flow.
+- **Density**: Medium. Progressive disclosure through steps.
+
+### 1.33 Confirmation / Success
+- **Purpose**: Confirm successful completion of an action. Provide next steps.
+- **Key Components**: Success icon (checkmark), confirmation title, order/reference number, summary of what was completed, next steps list, primary CTA (continue shopping / go to dashboard), secondary CTA (download receipt / share), estimated timeline (if applicable).
+- **Layout Pattern**: Centered content. Large success icon at top. Summary card. CTA buttons at bottom. Confetti animation optional for celebratory moments.
+- **Flows In**: Checkout completion, form submission, booking confirmation, account creation.
+- **Flows Out**: Home/dashboard, order tracking, related actions, share.
+- **Density**: Low. Celebratory moment. Let the user breathe.
+
+---

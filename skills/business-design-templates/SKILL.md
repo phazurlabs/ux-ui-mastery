@@ -73,7 +73,7 @@ checklist, token export and asset export: read
 For **documenting the system** — design spec format, component documentation and
 interaction specification: read `references/design-documentation.md`.
 
-For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/supplementary-patterns.md`.
+For **odds and ends** — the patterns that had no home in the files above when this skill was converted to a router: read `references/business-supplementary.md`.
 
 ## Cross-References
 

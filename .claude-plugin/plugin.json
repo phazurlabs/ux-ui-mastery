@@ -3,7 +3,7 @@
   "name": "sumi",
   "displayName": "Sumi",
   "version": "4.0.0",
-  "description": "UX/UI design intelligence for Claude Code — 44 skills, 180 reference files, 37 commands. Start with /sumi:start. Cognitive psychology and Laws of UX, NNG heuristics, WCAG 2.2 accessibility, W3C design tokens, production component code (React/SwiftUI/CSS), Figma design-to-code, visual quality scoring, and AI interface patterns.",
+  "description": "UX/UI design intelligence for Claude Code — 44 skills, 185 reference files, 37 commands. Start with /sumi:start. Cognitive psychology and Laws of UX, NNG heuristics, WCAG 2.2 accessibility, W3C design tokens, production component code (React/SwiftUI/CSS), Figma design-to-code, visual quality scoring, and AI interface patterns.",
   "author": {
     "name": "Phazur Labs",
     "url": "https://phazurlabs.com"
