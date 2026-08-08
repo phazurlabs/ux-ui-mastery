@@ -1235,6 +1235,22 @@ Serve alternate versions optimized for dark backgrounds.
 
 ---
 
+## Routing
+
+For **galleries and carousels** — masonry (both CSS-columns and grid), justified,
+uniform and mosaic grids, lightboxes, scroll-snap and autoplay carousels,
+filmstrips, infinite scroll and comparison sliders: read
+`references/gallery-carousel-patterns.md`.
+
+For **players** — a complete custom video player spec, scroll-triggered
+picture-in-picture, full audio player, podcast player, and voice-message UI:
+read `references/media-player-patterns.md`.
+
+For **shipping images well** — width- and DPR-based `srcset`, art direction with
+`<picture>`, native and IntersectionObserver lazy loading, LQIP, BlurHash,
+ThumbHash and dominant-color placeholders: read
+`references/responsive-image-recipes.md`.
+
 ## Cross-References
 
 - **layout-block-intelligence** — Hero sections, feature blocks containing images

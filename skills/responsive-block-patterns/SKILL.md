@@ -1234,6 +1234,26 @@ Every block transformation in Section 7 uses one or more of these strategies. Wh
 
 ---
 
+## Routing
+
+For **what each component does at each breakpoint** — 60+ components across
+navigation, content, input and layout with their transformation type: read
+`references/breakpoint-transformation-catalog.md`.
+
+For **container queries** — fundamentals plus adaptive cards, morphing
+navigation, table-to-card transformation and the rest: read
+`references/container-query-patterns.md`.
+
+For **fluid scaling** — the `clamp()` master formula, complete fluid type and
+space scales, and fluid padding: read `references/fluid-scaling-system.md`.
+
+For **component-level responsive code** — responsive typography, images, tables,
+navigation and the other patterns as production CSS: read
+`references/responsive-component-patterns.md`.
+
+For **whole-layout recipes** — column progressions, collapsing sidebars, holy
+grail and the rest: read `references/responsive-layout-recipes.md`.
+
 ## Cross-References
 
 - layout-block-intelligence, component-patterns-code, mobile-ux-design, page-composition-engine

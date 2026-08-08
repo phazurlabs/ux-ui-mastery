@@ -1533,6 +1533,28 @@ function PasswordStrength({ password }: { password: string }) {
 
 ---
 
+## Routing
+
+For **a specific input** — the field-state reference plus every input type from
+text and icon-prefixed through to password strength meters: read
+`references/input-field-catalog.md`.
+
+For **arranging a form** — single column, two column, card-based and the rest of
+the nineteen layouts, plus the specialized login, signup, contact, payment,
+address, settings and survey forms: read `references/form-layout-patterns.md`.
+
+For **validation and errors** — timing strategy, error message anatomy, 100+
+message templates, and warning patterns: read
+`references/validation-error-patterns.md`.
+
+For **multi-step flows** — when to split at all, step indicators, navigation
+between steps, and data persistence: read
+`references/multi-step-form-patterns.md`.
+
+For **accessibility** — semantic HTML foundations, label association methods,
+required-field marking, error association and group labeling: read
+`references/form-accessibility-code.md`.
+
 ## Cross-References
 - component-patterns-code (React component implementations)
 - micro-copy-intelligence (error messages, helper text, button labels)

@@ -1615,6 +1615,25 @@ Brand oklch(55% 0.25 265) maps to:
 
 ---
 
+## Routing
+
+For **generating a palette** — the APCA contrast algorithm, step-by-step OKLCH
+generation, and colorblind-safe categorical scales: read
+`references/accessible-palette-generator.md`.
+
+For **a ready-made palette by industry** — ten each for fintech, healthcare,
+SaaS, e-commerce, social and more: read `references/industry-palette-catalog.md`.
+
+For **combination theory** — monochromatic, duotone, neutral-plus-accent, and
+the rest of the twelve categories including gradients: read
+`references/color-combination-recipes.md`.
+
+For **dark mode** — why it is not inversion, luminance reduction, desaturation
+rules, and elevation-by-lightness: read `references/dark-mode-color-science.md`.
+
+For **how real products do it** — Stripe, Linear, Vercel, Notion, Figma, Shopify
+and GitHub deconstructed: read `references/brand-color-systems.md`.
+
 ## Cross-References
 - design-token-presets — complete token system templates by industry
 - visual-design-mastery — color scoring on the 10-dimension Awwwards scale

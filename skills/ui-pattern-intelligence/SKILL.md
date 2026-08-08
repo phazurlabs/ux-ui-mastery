@@ -451,6 +451,27 @@ Individual patterns are like words; screens are sentences. A well-composed scree
 | `references/pattern-evolution-2024-2026.md` | What is dying (hamburger on desktop, full-page spinners, auto-carousels), what is evolving (search to AI-semantic, dropdowns to combobox, forms to progressive), what is emerging (command palette, AI copilot, generative UI, bottom sheets, container queries, passkeys), what is stable. What vibe coders get wrong. | Ensuring recommendations are temporally current. Flagging dated patterns. Recommending modern alternatives. |
 | `references/anti-pattern-encyclopedia.md` | 100+ anti-patterns across navigation, data display, forms, layout, commerce, feedback, accessibility, and AI. Each: description, why it seems reasonable, why it fails, what to use instead, cognitive science, severity. The Vibe Coder's Top 10 anti-patterns with frequency data. | Identifying anti-patterns in user code. Explaining why something is wrong. Prescribing the correct alternative. |
 
+## Routing
+
+For **finding a pattern fast** — the complete indexed lookup across navigation,
+content display, data entry, feedback and social patterns: read
+`references/pattern-quick-lookup.md`.
+
+For **choosing between candidates** — decision trees for lists, navigation
+systems, and the other recurring "which of these five" questions: read
+`references/pattern-decision-engine.md`.
+
+For **matching a product's feel** — Linear, Stripe, Notion and the rest
+deconstructed into the paradigm each is built on: read
+`references/world-class-pattern-dna.md`.
+
+For **what is arriving** — AI-native, spatial/AR, voice and multimodal,
+collaborative and ambient patterns: read `references/emerging-patterns-2025-2026.md`.
+
+For **the full taxonomy and the anti-patterns**: read
+`references/pattern-taxonomy-complete.md` and
+`references/anti-pattern-encyclopedia.md`.
+
 ## Cross-References
 
 This skill is the connective tissue that links analysis to action:

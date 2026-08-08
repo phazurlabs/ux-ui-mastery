@@ -1231,6 +1231,28 @@ How many primary destinations?
 
 ---
 
+## Routing
+
+For **primary navigation** — 27 patterns with specs and TSX, including top bar,
+mega menu, centered logo, integrated search, sidebar and command palette: read
+`references/primary-navigation-patterns.md`.
+
+For **secondary navigation** — breadcrumbs (simple, dropdown, truncated), tabs,
+segmented controls, pagination and steppers: read
+`references/secondary-navigation-patterns.md`.
+
+For **mobile** — bottom tab bar (iOS), bottom navigation (Material 3), hamburger
+and drawer variants, and the gesture patterns around them: read
+`references/mobile-navigation-patterns.md`.
+
+For **making it accessible** — ARIA landmarks, skip navigation, current-page
+indication, expanded/collapsed state, and focus management: read
+`references/navigation-accessibility.md`.
+
+For **structuring the content underneath** — IA research methods, IA structures,
+labeling and taxonomy, sitemap design and URL structure: read
+`references/information-architecture.md`.
+
 ## Cross-References
 - **mobile-ux-design** — iOS and Android navigation deep dives
 - **desktop-app-design** — Desktop navigation conventions

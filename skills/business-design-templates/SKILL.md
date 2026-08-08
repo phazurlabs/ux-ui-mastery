@@ -987,6 +987,24 @@ Optimized for hiring managers (scanning in 30 seconds) and clients (evaluating c
 
 ---
 
+## Routing
+
+For **winning the work** — redesign, new-product, design-system, UX-audit and
+ongoing-retainer proposals: read `references/proposal-templates.md`.
+
+For **presenting** — design review decks and stakeholder decks for pitching a
+direction: read `references/pitch-presentation-templates.md`.
+
+For **telling the story afterwards** — the case study narrative structure plus
+e-commerce and SaaS templates: read `references/case-study-templates.md`.
+
+For **handing off to engineering** — Figma handoff practice, the developer
+checklist, token export and asset export: read
+`references/client-handoff-templates.md`.
+
+For **documenting the system** — design spec format, component documentation and
+interaction specification: read `references/design-documentation.md`.
+
 ## Cross-References
 
 - figma-design-tool-workflows — Figma-specific handoff and dev mode workflows

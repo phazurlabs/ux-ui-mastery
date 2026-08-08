@@ -356,6 +356,28 @@ Before implementing any conversion pattern, apply these four questions:
 
 If any answer gives you pause, redesign the pattern.
 
+## Routing
+
+For **CTAs** — button copy psychology, 50+ templates by context, and button
+design specifics: read `references/cta-optimization.md`.
+
+For **pricing pages** — anchoring, the decoy effect in three-tier layouts, and
+the rest of the pricing mechanics: read `references/pricing-page-psychology.md`.
+
+For **forms as the drop-off point** — field reduction, progressive disclosure,
+and multi-step versus single page: read `references/form-conversion.md`.
+
+For **the funnel as a whole** — mapping methodologies and top-of-funnel landing
+page optimization: read `references/funnel-optimization.md`.
+
+For **trust** — the trust signal taxonomy, testimonial design, and star ratings
+and reviews: read `references/trust-persuasion-patterns.md`.
+
+Every figure in these files is unverified — see `AUDIT.md`. Conversion
+statistics are the most-copied and least-sourced numbers in the industry, and
+this skill's output influences revenue decisions. Use the patterns; do not quote
+the numbers to a client until they are checked.
+
 ## Cross-References
 
 - **cognitive-psychology-ux**: Deep coverage of Laws of UX, cognitive biases, and mental models that underpin conversion behavior

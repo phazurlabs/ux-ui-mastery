@@ -662,6 +662,27 @@ What's the goal of this section?
 
 ---
 
+## Routing
+
+For **heroes** — anatomy, breakpoint specs, and variants from centered and split
+to full-bleed: read `references/hero-section-patterns.md`.
+
+For **content sections** — universal block specs plus the 3-column, 4-column and
+alternating feature-grid variants: read `references/content-section-patterns.md`.
+
+For **conversion blocks** — CTA banners, email-capture CTAs, and pricing tables
+with the psychology behind each: read `references/cta-pricing-patterns.md`.
+
+For **social proof** — testimonial grids and carousels, logo walls, and review
+displays: read `references/social-proof-patterns.md`.
+
+For **navigation and footers** as page blocks — standard top nav, mega menu,
+transparent-over-hero, and footer variants: read
+`references/navigation-footer-patterns.md`.
+
+For **dashboard blocks** — layout patterns, the dashboard spacing system, KPI
+card rows and data-widget variants: read `references/dashboard-data-patterns.md`.
+
 ## Cross-References
 
 - **component-patterns-code** — Individual component implementation (buttons, inputs, modals, cards)

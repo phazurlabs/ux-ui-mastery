@@ -1276,6 +1276,28 @@ As of Figma's variable system, shadow values can be stored as variables:
 
 ---
 
+## Routing
+
+For **a shadow system** — minimal (Linear/Vercel), layered (Stripe), Material,
+colored/brand-tinted, dark-mode ambient glow, and neumorphic, each as complete
+CSS: read `references/shadow-system-recipes.md`.
+
+For **stacking and z-index** — the scale, stacking-context management, surface
+layer architecture, elevation-to-shadow mapping, and the common z-index bugs:
+read `references/elevation-hierarchy.md`.
+
+For **density** — full token specifications for compact, comfortable and
+spacious, the side-by-side comparison, implementation strategies and
+component-specific rules: read `references/density-modes.md`.
+
+For **corner radius** — the scale, the nested radius rule, component
+conventions, and five named systems from sharp/corporate to fully rounded: read
+`references/border-radius-systems.md`.
+
+For **glass and blur** — glassmorphism fundamentals and ten recipes including
+frosted glass (Apple) and acrylic (Windows): read
+`references/glassmorphism-effects.md`.
+
 ## Cross-References
 - design-token-presets — Complete token systems including elevation presets by industry
 - platform-visual-standards — iOS 26 Liquid Glass, Material 3 Expressive elevation specifics
