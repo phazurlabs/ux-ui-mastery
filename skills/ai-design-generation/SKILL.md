@@ -1,6 +1,6 @@
 ---
 name: ai-design-generation
-description: "Generate actual design assets through MCP image and UI models — Stitch screens, Fal.ai (Imagen, FLUX, Veo), Recraft V3 vectors, GPT-Image, and Figma read/write — with prompt patterns and quality scoring. Use when producing mockups, icons, illustrations, or video. Not agent interface design; that is agentic-ai-generative-ux."
+description: "Produce visual assets from AI image and UI models through MCP — Stitch screens, Fal.ai (Imagen, FLUX, Veo), Recraft V3 vectors, GPT-Image and Figma file access — with prompt patterns and quality scoring. Use when rendering mockups, icons, illustrations or video. Not for interface copy; not for agent UX."
 ---
 
 # AI Design Generation

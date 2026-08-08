@@ -1,6 +1,6 @@
 ---
 name: micro-copy-intelligence
-description: "1000+ microcopy and UX-writing templates by component, tone, and sector: button labels, error messages, empty states, tooltips, confirmations, permission requests, notifications, and placeholder text. Use when writing or fixing any interface string — robotic copy is the loudest slop tell."
+description: "1000+ microcopy and UX-writing templates by component, tone and sector: button labels, every error message and failure state, empty states, tooltips, confirmations, permission requests and notifications. Use when writing any interface string — robotic copy is the loudest slop tell."
 ---
 
 # Micro-Copy Intelligence

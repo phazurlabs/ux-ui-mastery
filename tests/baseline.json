@@ -1,5 +1,5 @@
 {
-  "always_on_tokens": 4400,
+  "always_on_tokens": 4393,
   "artifact_schema_conflicts": [],
   "budget": {
     "commands": {
@@ -235,7 +235,7 @@
     "skills": {
       "accessibility-inclusive-design": 4128,
       "agentic-ai-generative-ux": 4133,
-      "ai-design-generation": 8837,
+      "ai-design-generation": 8832,
       "ai-spatial-voice-ux": 3141,
       "ambient-calm-zero-ui": 4485,
       "animation-recipe-library": 2861,
@@ -258,7 +258,7 @@
       "image-media-patterns": 1191,
       "interaction-motion-design": 3152,
       "layout-block-intelligence": 2005,
-      "micro-copy-intelligence": 5870,
+      "micro-copy-intelligence": 5868,
       "mobile-ux-design": 3065,
       "navigation-pattern-encyclopedia": 1283,
       "nng-ux-heuristics": 3322,
@@ -307,9 +307,9 @@
   "max_description_jaccard": 0.1628,
   "orphan_references": {},
   "routing": {
-    "forbid_hits": 1,
+    "forbid_hits": 0,
     "n": 22,
-    "top1": 19,
+    "top1": 20,
     "top3": 20
   },
   "skills_without_reference_index": [],

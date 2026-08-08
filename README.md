@@ -2,7 +2,7 @@
 
 ### The most comprehensive UX/UI design intelligence ever built for an AI coding assistant.
 
-**v4.0.0** | 44 Skills | 189 References | 37 Commands | 1,066,453 Words | 265 Files
+**v4.1.0** | 44 Skills | 189 References | 37 Commands | 1,019,298 Words | 295 Files
 
 ---
 
@@ -308,13 +308,19 @@ sumi/
 
 The split that matters: **SKILL.md loads in full every time its skill triggers;
 references load only when a SKILL.md points at them.** That is why depth lives in
-`references/` and why `validate-plugin.py` warns when a SKILL.md gets fat.
+`references/`, and why v4.1.0 moved 125,000 tokens out of the trigger tier into
+the on-demand one.
+
+`scripts/check-corpus.py` enforces it. Every reference must be reachable from a
+SKILL.md, no file may silently grow, and no `.sumi/` artifact may carry two
+schemas. Existing debt is frozen by a committed baseline; new debt is a hard
+error.
 
 ## Knowledge Base by the Numbers
 
 | Metric | Count |
 |--------|-------|
-| Total words | **1,066,453** |
+| Total words | **1,019,298** |
 | Skills | **43** (42 domains + orchestrator) |
 | Deep reference files | **168** |
 | Executable commands | **37** |

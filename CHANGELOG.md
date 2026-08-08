@@ -3,6 +3,114 @@
 All notable changes to this project are documented here. This project follows
 [Semantic Versioning](https://semver.org).
 
+## [4.1.0] — 2026-08-08
+
+Progressive disclosure release. v4.0.0 merged two lineages into one plugin; this
+one makes the plugin's central mechanism actually work, and adds the harness that
+keeps it working.
+
+Sumi's claim is vast design intelligence at low context cost. The mechanism is
+three tiers: skill descriptions always in context, `SKILL.md` in full when a skill
+triggers, `references/` only when something points at them. Measured at v4.0.0,
+the architecture was inverted.
+
+**84 of 168 reference files — exactly half, ~748,000 tokens — were unreachable.**
+No SKILL.md or command pointed at them, so progressive disclosure could never
+load them. Sixteen skills shipped references with no working pointer at all.
+Meanwhile those same skills carried compressed restatements of that material in
+SKILL.md, which loads on every fire. The plugin paid for the summary and could
+not open the source.
+
+### Added
+
+- **`scripts/check-corpus.py` and `scripts/sumi_corpus.py`** — the knowledge-graph
+  and context-budget harness, wired into the existing CI job. Checks orphaned
+  references, dangling pointers, retired command names, `.sumi/` artifact schemas,
+  orchestrator resolution in both directions, command cross-references,
+  description collision, per-file token budgets, and required command sections.
+  `validate-plugin.py` is deliberately untouched — it is the release gate, and
+  ratchets against a mutable baseline do not belong in it.
+- **Three severities.** Hard errors where the corpus is already clean, so they
+  are free to lock. Ratchets where it is in bulk debt — as a hard error the
+  orphan check would have failed on 84 files on day one and been disabled within
+  a week. Grandfathering is by name, not count, so existing debt may stay and new
+  debt cannot.
+- **`skills/design-memory`** (skill #44) — the `.sumi/` contract: canonical
+  schema, ownership per command, read order, merge rules.
+- **`tests/routing-fixtures.yaml`** — 22 fixtures weighted toward the five
+  confusable description clusters, scored by a deterministic TF-IDF delta
+  detector. The absolute score is meaningless and the file says so; only the
+  delta is asserted.
+
+### Fixed
+
+- **`.sumi/style.json` had four schemas across six writers.** `/style` wrote it
+  twice with different key sets ninety lines apart — `color` in one, `colors` in
+  the other — while `/tokens` wrote raw DTCG at the top level, `/dark` wrote a
+  bare `$themes`, and `/palette` and `/type` merged into shapes matching neither.
+  Downstream commands read whichever they assumed, so `/style` followed by
+  `/screen` could silently find no palette. All six now share one envelope.
+- **25 references to retired command names**, twenty of them in a fenced ASCII
+  pipeline diagram in `design-process-methods`. The v4.0.0 repair pass missed
+  them because it matched backticks and a diagram has none.
+- **`ai-design-generation` and `micro-copy-intelligence` descriptions** were
+  close enough that "write the error message for a failed payment" routed to the
+  image-generation skill. Found by the routing fixtures, and the fix moved the
+  score from 19/22 to 20/22 with the forbid violation cleared.
+
+### Changed
+
+- **Every reference is now reachable: 84 orphaned → 0.** 189 files, all routed.
+  Routing text is task-condition → exact file → enumerated contents, never a bare
+  file list — a router that gives the model no basis to judge whether a
+  1,500-line read is worth it does not get opened, and answers worse than the fat
+  skill it replaced.
+- **Twelve skills converted from catalogs to routers**, moving ~125,000 tokens
+  out of the always-loaded tier:
+
+  | skill | before | after |
+  |---|---:|---:|
+  | `animation-recipe-library` | 18,116 | 2,861 |
+  | `screen-flow-patterns` | 17,772 | 2,358 |
+  | `form-design-encyclopedia` | 16,755 | 1,279 |
+  | `color-palette-library` | 14,053 | 1,338 |
+  | `ui-pattern-intelligence` | 13,564 | 2,028 |
+  | `navigation-pattern-encyclopedia` | 11,856 | 1,242 |
+  | `image-media-patterns` | 11,118 | 1,151 |
+  | `layout-block-intelligence` | 11,013 | 2,005 |
+  | `business-design-templates` | 10,296 | 1,060 |
+  | `shadow-elevation-density` | 10,035 | 1,793 |
+  | `icon-illustration-systems` | 8,977 | 1,733 |
+  | `responsive-block-patterns` | 8,537 | 1,101 |
+
+  Skill tier 292,212 → 167,554 tokens. Real sessions: `/audit` −23%, `/fix` −38%,
+  `/style` → `/screen` → `/fix` −47%, which takes that run from 67% of a 200K
+  window to 35% with the command tier untouched.
+- **Each router is mental model, constants, index, routing.** The constants block
+  is load-bearing, not decoration: the easing custom properties, the z-index
+  scale, the six form field states, the breakpoint values and the semantic colour
+  token names are emitted literally by the reference files, so a reference is
+  unusable without them in context.
+- **Content was moved, not dropped.** Sections with no reference home were
+  extracted first, then a heading-coverage sweep against the pre-conversion files
+  recovered ~25 more that would have been lost — @-mention inputs, autosave,
+  tetradic harmonies, popover navigation, avatar groups, dense auto-placement,
+  and Disney's twelve principles, which existed nowhere else in the corpus.
+
+### Known gaps
+
+- **Five skills remain over budget** — `visual-design-mastery`,
+  `platform-visual-standards`, `ai-design-generation`,
+  `data-visualization-mastery`, `conversion-optimization-patterns`, ~48,000
+  tokens between them. They measure 60–70% coverage against their own
+  references, making them hybrids rather than delete-and-point. Doing them
+  properly means extracting the uncovered third first; rushing it trades real
+  risk of content loss for a modest saving.
+- **The command tier is untouched** at ~202,000 tokens, with `/nav` at 9,300 of
+  which most regenerates what `navigation-pattern-encyclopedia` specifies, and
+  ~2,500 lines of verbatim output templates across 37 files.
+- **59 of 89 extracted citations remain untriaged.** See `AUDIT.md`.
+
 ## [4.0.0] — 2026-08-08
 
 Merge release. Sumi 3.1.0 and Chef Sumi were one lineage that forked at `cc165ef`
